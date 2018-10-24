@@ -302,7 +302,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/10/24/C-監聽QEvent並將事件重寫/" itemprop="url">C++ 如何監聽QEvent並將事件重寫</a></h1>
+                <a class="post-title-link" href="/2018/10/24/C-監聽QEvent並將事件重寫/" itemprop="url">QEvent攔截事件</a></h1>
         
 
         <div class="post-meta">
@@ -389,8 +389,8 @@
           
 本篇環境使用版本:QT 5.10.1Visual Studio 2015windows 10 SDK
 
-目的可以將既有的事件行為重新編寫此篇紀錄關閉事件改寫，在點擊X離開程式的時候不動作或觸發新行為
-事件過濾器eventFilter1virtual bool eventFilter(QObject
+目的可以將既有的事件行為覆寫此篇紀錄關閉事件攔截，在點擊X離開程式的時候不動作或觸發新行為
+事件過濾器eventFilter1virtual bool eventFilter(QObject *
           ...
           <!--noindex-->
           <div class="post-button text-center">
