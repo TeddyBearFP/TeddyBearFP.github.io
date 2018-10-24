@@ -70,7 +70,7 @@
 
 
 
-  <meta name="keywords" content="單例模式,C++ Singleton,Singleton">
+  <meta name="keywords" content="Qt 管理員權限">
 
 
 
@@ -81,18 +81,20 @@
 
 
 
-<meta name="description" content="本篇環境使用版本:QT 5.10.1Visual Studio 2015windows 10 SDK  單例模式 保證一個class只有一個實體(Instance) 在宣告的同時直接new這個類別的實例(instance)，並且將建構子宣告為private， 這樣其他程式就無法再new這個類別的實例，保證這個類別只存在一個實例 優點 單例實作了它的唯一實例,便於團隊共享與開發 在系統中僅存在一個">
-<meta name="keywords" content="單例模式,C++ Singleton,Singleton">
+<meta name="description" content="本篇環境使用版本:QT 5.10.1Visual Studio 2015windows 10 SDK  前言 有些程序需要管理員權限User Account Control(UAC) 例如:要更改系統時間或是做一些需要權限存取的行為，若是沒有使用MANIFESTUAC則會以為程式沒有動作，其實是權限不夠。 提升系統管理員權限有幾種方法，此篇紀錄的是我覺得最簡單最快速的方式  目標: 執行檔獲得小">
+<meta name="keywords" content="Qt 管理員權限">
 <meta property="og:type" content="article">
-<meta property="og:title" content="C++ 單例模式(Singleton)">
-<meta property="og:url" content="https://teddybearfp.github.io/2018/10/23/C-單例模式/index.html">
+<meta property="og:title" content="Qt 一句指令提升至系統管理員權限">
+<meta property="og:url" content="https://teddybearfp.github.io/2018/10/22/Qt-如何提升系統管理員權限/index.html">
 <meta property="og:site_name" content="泰迪熊的程式足跡">
-<meta property="og:description" content="本篇環境使用版本:QT 5.10.1Visual Studio 2015windows 10 SDK  單例模式 保證一個class只有一個實體(Instance) 在宣告的同時直接new這個類別的實例(instance)，並且將建構子宣告為private， 這樣其他程式就無法再new這個類別的實例，保證這個類別只存在一個實例 優點 單例實作了它的唯一實例,便於團隊共享與開發 在系統中僅存在一個">
+<meta property="og:description" content="本篇環境使用版本:QT 5.10.1Visual Studio 2015windows 10 SDK  前言 有些程序需要管理員權限User Account Control(UAC) 例如:要更改系統時間或是做一些需要權限存取的行為，若是沒有使用MANIFESTUAC則會以為程式沒有動作，其實是權限不夠。 提升系統管理員權限有幾種方法，此篇紀錄的是我覺得最簡單最快速的方式  目標: 執行檔獲得小">
 <meta property="og:locale" content="zh-tw">
-<meta property="og:updated_time" content="2018-10-24T13:56:53.416Z">
+<meta property="og:image" content="https://i.imgur.com/GccgSDh.png">
+<meta property="og:updated_time" content="2018-10-24T13:58:49.660Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="C++ 單例模式(Singleton)">
-<meta name="twitter:description" content="本篇環境使用版本:QT 5.10.1Visual Studio 2015windows 10 SDK  單例模式 保證一個class只有一個實體(Instance) 在宣告的同時直接new這個類別的實例(instance)，並且將建構子宣告為private， 這樣其他程式就無法再new這個類別的實例，保證這個類別只存在一個實例 優點 單例實作了它的唯一實例,便於團隊共享與開發 在系統中僅存在一個">
+<meta name="twitter:title" content="Qt 一句指令提升至系統管理員權限">
+<meta name="twitter:description" content="本篇環境使用版本:QT 5.10.1Visual Studio 2015windows 10 SDK  前言 有些程序需要管理員權限User Account Control(UAC) 例如:要更改系統時間或是做一些需要權限存取的行為，若是沒有使用MANIFESTUAC則會以為程式沒有動作，其實是權限不夠。 提升系統管理員權限有幾種方法，此篇紀錄的是我覺得最簡單最快速的方式  目標: 執行檔獲得小">
+<meta name="twitter:image" content="https://i.imgur.com/GccgSDh.png">
 
 
 
@@ -122,13 +124,13 @@
 
 
 
-  <link rel="canonical" href="https://teddybearfp.github.io/2018/10/23/C-單例模式/">
+  <link rel="canonical" href="https://teddybearfp.github.io/2018/10/22/Qt-如何提升系統管理員權限/">
 
 
 
 
 
-  <title>C++ 單例模式(Singleton) | 泰迪熊的程式足跡</title>
+  <title>Qt 一句指令提升至系統管理員權限 | 泰迪熊的程式足跡</title>
   
 <script>
   window.fbAsyncInit = function() {
@@ -283,7 +285,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://teddybearfp.github.io/2018/10/23/C-單例模式/">
+    <link itemprop="mainEntityOfPage" href="https://teddybearfp.github.io/2018/10/22/Qt-如何提升系統管理員權限/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="G.C.L.">
@@ -300,7 +302,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">C++ 單例模式(Singleton)</h1>
+          <h1 class="post-title" itemprop="name headline">Qt 一句指令提升至系統管理員權限</h1>
         
 
         <div class="post-meta">
@@ -312,8 +314,8 @@
               
                 <span class="post-meta-item-text">發表於</span>
               
-              <time title="創建於" itemprop="dateCreated datePublished" datetime="2018-10-23T20:30:16+08:00">
-                2018-10-23
+              <time title="創建於" itemprop="dateCreated datePublished" datetime="2018-10-22T21:05:16+08:00">
+                2018-10-22
               </time>
             
 
@@ -335,8 +337,8 @@
               
               
                 <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/C/" itemprop="url" rel="index">
-                    <span itemprop="name">C++</span>
+                  <a href="/categories/Qt/" itemprop="url" rel="index">
+                    <span itemprop="name">Qt</span>
                   </a>
                 </span>
 
@@ -353,8 +355,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2018/10/23/C-單例模式/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count fb-comments-count" data-href="https://teddybearfp.github.io/2018/10/23/C-單例模式/" itemprop="commentCount">0</span> comments
+                <a href="/2018/10/22/Qt-如何提升系統管理員權限/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count fb-comments-count" data-href="https://teddybearfp.github.io/2018/10/22/Qt-如何提升系統管理員權限/" itemprop="commentCount">0</span> comments
                 </a>
               </span>
             
@@ -390,30 +392,14 @@
         <blockquote>
 <p>本篇環境使用版本:<br><a href="https://download.qt.io/official_releases/qt/5.10/5.10.1/" target="_blank" rel="noopener">QT 5.10.1</a><br>Visual Studio 2015<br><a href="https://developer.microsoft.com/zh-tw/windows/downloads/windows-10-sdk" target="_blank" rel="noopener">windows 10 SDK</a></p>
 </blockquote>
-<h3 id="單例模式"><a href="#單例模式" class="headerlink" title="單例模式"></a>單例模式</h3><ul>
-<li>保證一個class只有一個實體(Instance)</li>
-<li>在宣告的同時直接new這個類別的實例(instance)，並且將建構子宣告為private， 這樣其他程式就無法再new這個類別的實例，保證這個類別只存在一個實例</li>
-<li>優點<ul>
-<li>單例實作了它的唯一實例,便於團隊共享與開發</li>
-<li>在系統中僅存在一個對象,因此可以節省系統資源,對於頻繁創建與銷毀對象,單例可以提高系統性能</li>
+<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><ul>
+<li>有些程序需要管理員權限User Account Control(UAC)</li>
+<li>例如:要<strong>更改系統時間</strong>或是做一些需要權限存取的行為，若是沒有使用MANIFESTUAC則會以為程式沒有動作，其實是權限不夠。</li>
+<li>提升系統管理員權限有幾種方法，此篇紀錄的是我覺得最簡單最快速的方式</li>
 </ul>
-</li>
-<li>風險<ul>
-<li>單例模式在多執行緒的應用下必須小心使用。如果當唯一實例尚未創建時，有兩個執行緒同時調用創建方法，那麼它們同時沒有檢測到唯一實例的存在，從而同時各自創建了一個實例，這樣就有兩個實例被構造出來，從而違反了單例模式中唯一實例的原則。</li>
-<li>解決方案: 可以透過第一時間建立實例或是運用雙重檢查上鎖</li>
-</ul>
-</li>
-<li>會將何者設為單例呢?<ul>
-<li>通常會將Model(管理與儲存資料)的類別設為單例，可以確保資料的一致性也能方便供其他程式使用。</li>
-</ul>
-</li>
-</ul>
-<h2 id="用法一"><a href="#用法一" class="headerlink" title="用法一"></a>用法一</h2><h3 id="h宣告"><a href="#h宣告" class="headerlink" title=".h宣告"></a>.h宣告</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Singleton</span>:</span></span><br><span class="line">&#123; </span><br><span class="line">	Q_OBJECT </span><br><span class="line"><span class="keyword">public</span>: </span><br><span class="line">	<span class="function"><span class="keyword">static</span> Singleton* <span class="title">Inst</span><span class="params">()</span> </span>&#123; <span class="keyword">return</span> &amp;inst; &#125;</span><br><span class="line">	Singleton();</span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">startCamera</span><span class="params">()</span></span>;</span><br><span class="line"><span class="keyword">private</span>: </span><br><span class="line">	<span class="keyword">static</span> Singleton inst;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<h3 id="cpp定義"><a href="#cpp定義" class="headerlink" title=".cpp定義"></a>.cpp定義</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Singleton Singleton::inst; </span><br><span class="line"></span><br><span class="line">Singleton::Singleton() &#123; &#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">void</span> Singleton::startCamera() &#123; </span><br><span class="line">	<span class="keyword">bool</span> CameraStartResult = CameraStart(cameraDevice); </span><br><span class="line">	isStarted = <span class="literal">true</span>; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="調用單例"><a href="#調用單例" class="headerlink" title="調用單例"></a>調用單例</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">void</span> VideoPanel::startCamera() &#123; </span><br><span class="line">	Singleton::Inst()-&gt;startCamera(); </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="用法二"><a href="#用法二" class="headerlink" title="用法二"></a>用法二</h2><h3 id="h宣告-1"><a href="#h宣告-1" class="headerlink" title=".h宣告"></a>.h宣告</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Singleton</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">	TCHAR *m_strUserName;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">	<span class="function"><span class="keyword">static</span> Singleton* <span class="title">GetInstance</span><span class="params">()</span></span>;</span><br><span class="line"><span class="function">TCHAR <span class="title">GetUserName</span><span class="params">()</span></span>;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<h3 id="cpp定義-1"><a href="#cpp定義-1" class="headerlink" title=".cpp定義"></a>.cpp定義</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Singleton* Singleton::GetInstance()</span><br><span class="line">&#123;</span><br><span class="line">	<span class="keyword">static</span> Singleton *Inst;</span><br><span class="line">	<span class="keyword">return</span> Inst;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="調用單例-1"><a href="#調用單例-1" class="headerlink" title="調用單例"></a>調用單例</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">CString strMemberName = (Singleton::GetInstance())-&gt;GetUserName();</span><br></pre></td></tr></table></figure>
+<h3 id="目標-執行檔獲得小盾牌"><a href="#目標-執行檔獲得小盾牌" class="headerlink" title="目標: 執行檔獲得小盾牌"></a>目標: 執行檔獲得<code>小盾牌</code></h3><p><img src="https://i.imgur.com/GccgSDh.png" alt="" title="UAC"></p>
+<h3 id="QMAKE-LFLAGS設置UAC權限"><a href="#QMAKE-LFLAGS設置UAC權限" class="headerlink" title="QMAKE_LFLAGS設置UAC權限"></a>QMAKE_LFLAGS設置UAC權限</h3><p>在pro檔中加入下面指令<br><figure class="highlight qt"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">QMAKE_LFLAGS+=<span class="regexp">/MANIFESTUAC:\"level=\'requireAdministrator\' uiAccess=\'false\'\"</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="Qt-Creator重新rebuild"><a href="#Qt-Creator重新rebuild" class="headerlink" title="Qt Creator重新rebuild"></a>Qt Creator重新rebuild</h3><p>若還是沒產出<strong>有盾牌</strong>的exe則刪掉執行檔再rebuild一次<br>這樣就可以產出有小盾牌的執行檔囉!</p>
 
       
     </div>
@@ -431,9 +417,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/C/" rel="tag"><i class="fa fa-tag"></i> C++</a>
+            <a href="/tags/Qt/" rel="tag"><i class="fa fa-tag"></i> Qt</a>
           
-            <a href="/tags/單例模式/" rel="tag"><i class="fa fa-tag"></i> 單例模式</a>
+            <a href="/tags/UAC/" rel="tag"><i class="fa fa-tag"></i> UAC</a>
           
         </div>
       
@@ -446,8 +432,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/10/23/共享資料夾/" rel="next" title="共享資料夾">
-                <i class="fa fa-chevron-left"></i> 共享資料夾
+              <a href="/2018/10/22/Qt-Canvas畫圖/" rel="next" title="Qt Canvas 前景畫圖">
+                <i class="fa fa-chevron-left"></i> Qt Canvas 前景畫圖
               </a>
             
           </div>
@@ -456,8 +442,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/10/24/C-監聽QEvent並將事件重寫/" rel="prev" title="QEvent攔截事件">
-                QEvent攔截事件 <i class="fa fa-chevron-right"></i>
+              <a href="/2018/10/23/共享資料夾/" rel="prev" title="共享資料夾">
+                共享資料夾 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -489,7 +475,7 @@
 
   
     <div class="comments" id="comments">
-      <div class="fb-comments" data-href="https://teddybearfp.github.io/2018/10/23/C-單例模式/" data-numposts="10" data-width="100%" data-colorscheme="light">
+      <div class="fb-comments" data-href="https://teddybearfp.github.io/2018/10/22/Qt-如何提升系統管理員權限/" data-numposts="10" data-width="100%" data-colorscheme="light">
       </div>
     </div>
 
@@ -596,7 +582,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#單例模式"><span class="nav-number">1.</span> <span class="nav-text">單例模式</span></a></li></ol><li class="nav-item nav-level-2"><a class="nav-link" href="#用法一"><span class="nav-number"></span> <span class="nav-text">用法一</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#h宣告"><span class="nav-number">1.</span> <span class="nav-text">.h宣告</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#cpp定義"><span class="nav-number">2.</span> <span class="nav-text">.cpp定義</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#調用單例"><span class="nav-number">3.</span> <span class="nav-text">調用單例</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#用法二"><span class="nav-number"></span> <span class="nav-text">用法二</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#h宣告-1"><span class="nav-number">1.</span> <span class="nav-text">.h宣告</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#cpp定義-1"><span class="nav-number">2.</span> <span class="nav-text">.cpp定義</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#調用單例-1"><span class="nav-number">3.</span> <span class="nav-text">調用單例</span></a></li></ol></li></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#目標-執行檔獲得小盾牌"><span class="nav-number">2.</span> <span class="nav-text">目標: 執行檔獲得小盾牌</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#QMAKE-LFLAGS設置UAC權限"><span class="nav-number">3.</span> <span class="nav-text">QMAKE_LFLAGS設置UAC權限</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Qt-Creator重新rebuild"><span class="nav-number">4.</span> <span class="nav-text">Qt Creator重新rebuild</span></a></li></ol></div>
             
 
           </div>
@@ -788,9 +774,9 @@
     
       <script type="text/javascript">
         var disqus_config = function () {
-          this.page.url = 'https://teddybearfp.github.io/2018/10/23/C-單例模式/';
-          this.page.identifier = '2018/10/23/C-單例模式/';
-          this.page.title = 'C++ 單例模式(Singleton)';
+          this.page.url = 'https://teddybearfp.github.io/2018/10/22/Qt-如何提升系統管理員權限/';
+          this.page.identifier = '2018/10/22/Qt-如何提升系統管理員權限/';
+          this.page.title = 'Qt 一句指令提升至系統管理員權限';
         };
         var d = document, s = d.createElement('script');
         s.src = 'https://teddybearfp.disqus.com/embed.js';
