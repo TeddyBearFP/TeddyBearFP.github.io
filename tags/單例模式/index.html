@@ -433,7 +433,6 @@
 
 
 
-<div id="disqus_thread"></div>
 <% if="" (config.disqus_shortname){="" %="">
 <script>
   var disqus_shortname = '<%= config.disqus_shortname %>';
@@ -449,7 +448,14 @@
   })();
 </script>
 <% }="" %="">
-
+                 
+<footer>
+  &copy; <%= date(new="" date(),="" 'yyyy')="" %="">
+  <span class="author">
+    <%= config.author="" ||="" ''="" %="">
+  </%=></span>
+</%=></footer>
+<div id="disqus_thread"></div>
         
 <div class="busuanzi-count">
   <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
