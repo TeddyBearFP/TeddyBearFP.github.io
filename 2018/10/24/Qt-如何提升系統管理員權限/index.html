@@ -70,7 +70,7 @@
 
 
 
-  <meta name="keywords" content="C++ 監聽事件,QEvent,事件重寫,事件覆寫">
+  <meta name="keywords" content="Qt 管理員權限">
 
 
 
@@ -81,18 +81,20 @@
 
 
 
-<meta name="description" content="本篇環境使用版本:QT 5.10.1Visual Studio 2015windows 10 SDK  目的可以將既有的事件行為覆寫此篇紀錄關閉事件攔截，在點擊X離開程式的時候不動作或觸發新行為 事件過濾器eventFilter1virtual bool eventFilter(QObject *object, QEvent *event) 事件會由此經過，而我們可以在這將有興趣的事件攔下並覆寫">
-<meta name="keywords" content="C++ 監聽事件,QEvent,事件重寫,事件覆寫">
+<meta name="description" content="本篇環境使用版本:QT 5.10.1Visual Studio 2015windows 10 SDK  前言 有些程序需要管理員權限User Account Control(UAC) 例如:要更改系統時間或是做一些需要權限存取的行為，若是沒有使用MANIFESTUAC則會以為程式沒有動作，其實是權限不夠。 提升系統管理員權限有幾種方法，此篇紀錄的是我覺得最簡單最快速的方式  目標: 執行檔獲得小">
+<meta name="keywords" content="Qt 管理員權限">
 <meta property="og:type" content="article">
-<meta property="og:title" content="QEvent攔截事件">
-<meta property="og:url" content="https://teddybearfp.github.io/2018/10/24/C-監聽QEvent並將事件重寫/index.html">
+<meta property="og:title" content="Qt 一句指令提升至系統管理員權限">
+<meta property="og:url" content="https://teddybearfp.github.io/2018/10/24/Qt-如何提升系統管理員權限/index.html">
 <meta property="og:site_name" content="泰迪熊的程式足跡">
-<meta property="og:description" content="本篇環境使用版本:QT 5.10.1Visual Studio 2015windows 10 SDK  目的可以將既有的事件行為覆寫此篇紀錄關閉事件攔截，在點擊X離開程式的時候不動作或觸發新行為 事件過濾器eventFilter1virtual bool eventFilter(QObject *object, QEvent *event) 事件會由此經過，而我們可以在這將有興趣的事件攔下並覆寫">
+<meta property="og:description" content="本篇環境使用版本:QT 5.10.1Visual Studio 2015windows 10 SDK  前言 有些程序需要管理員權限User Account Control(UAC) 例如:要更改系統時間或是做一些需要權限存取的行為，若是沒有使用MANIFESTUAC則會以為程式沒有動作，其實是權限不夠。 提升系統管理員權限有幾種方法，此篇紀錄的是我覺得最簡單最快速的方式  目標: 執行檔獲得小">
 <meta property="og:locale" content="zh-tw">
-<meta property="og:updated_time" content="2018-10-24T06:35:18.560Z">
+<meta property="og:image" content="https://i.imgur.com/GccgSDh.png">
+<meta property="og:updated_time" content="2018-10-24T00:53:58.348Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="QEvent攔截事件">
-<meta name="twitter:description" content="本篇環境使用版本:QT 5.10.1Visual Studio 2015windows 10 SDK  目的可以將既有的事件行為覆寫此篇紀錄關閉事件攔截，在點擊X離開程式的時候不動作或觸發新行為 事件過濾器eventFilter1virtual bool eventFilter(QObject *object, QEvent *event) 事件會由此經過，而我們可以在這將有興趣的事件攔下並覆寫">
+<meta name="twitter:title" content="Qt 一句指令提升至系統管理員權限">
+<meta name="twitter:description" content="本篇環境使用版本:QT 5.10.1Visual Studio 2015windows 10 SDK  前言 有些程序需要管理員權限User Account Control(UAC) 例如:要更改系統時間或是做一些需要權限存取的行為，若是沒有使用MANIFESTUAC則會以為程式沒有動作，其實是權限不夠。 提升系統管理員權限有幾種方法，此篇紀錄的是我覺得最簡單最快速的方式  目標: 執行檔獲得小">
+<meta name="twitter:image" content="https://i.imgur.com/GccgSDh.png">
 
 
 
@@ -122,13 +124,13 @@
 
 
 
-  <link rel="canonical" href="https://teddybearfp.github.io/2018/10/24/C-監聽QEvent並將事件重寫/">
+  <link rel="canonical" href="https://teddybearfp.github.io/2018/10/24/Qt-如何提升系統管理員權限/">
 
 
 
 
 
-  <title>QEvent攔截事件 | 泰迪熊的程式足跡</title>
+  <title>Qt 一句指令提升至系統管理員權限 | 泰迪熊的程式足跡</title>
   
 <script>
   window.fbAsyncInit = function() {
@@ -283,7 +285,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://teddybearfp.github.io/2018/10/24/C-監聽QEvent並將事件重寫/">
+    <link itemprop="mainEntityOfPage" href="https://teddybearfp.github.io/2018/10/24/Qt-如何提升系統管理員權限/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="G.C.L.">
@@ -300,7 +302,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">QEvent攔截事件</h1>
+          <h1 class="post-title" itemprop="name headline">Qt 一句指令提升至系統管理員權限</h1>
         
 
         <div class="post-meta">
@@ -353,8 +355,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2018/10/24/C-監聽QEvent並將事件重寫/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count fb-comments-count" data-href="https://teddybearfp.github.io/2018/10/24/C-監聽QEvent並將事件重寫/" itemprop="commentCount">0</span> comments
+                <a href="/2018/10/24/Qt-如何提升系統管理員權限/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count fb-comments-count" data-href="https://teddybearfp.github.io/2018/10/24/Qt-如何提升系統管理員權限/" itemprop="commentCount">0</span> comments
                 </a>
               </span>
             
@@ -390,12 +392,14 @@
         <blockquote>
 <p>本篇環境使用版本:<br><a href="https://download.qt.io/official_releases/qt/5.10/5.10.1/" target="_blank" rel="noopener">QT 5.10.1</a><br>Visual Studio 2015<br><a href="https://developer.microsoft.com/zh-tw/windows/downloads/windows-10-sdk" target="_blank" rel="noopener">windows 10 SDK</a></p>
 </blockquote>
-<h3 id="目的"><a href="#目的" class="headerlink" title="目的"></a>目的</h3><p>可以將既有的事件行為覆寫<br>此篇紀錄關閉事件攔截，在點擊X離開程式的時候不動作或觸發新行為</p>
-<h3 id="事件過濾器eventFilter"><a href="#事件過濾器eventFilter" class="headerlink" title="事件過濾器eventFilter"></a>事件過濾器eventFilter</h3><figure class="highlight qt"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">virtual <span class="built_in">bool</span> eventFilter(QObject *object, QEvent *event)</span><br></pre></td></tr></table></figure>
-<p>事件會由此經過，而我們可以在這將有興趣的事件攔下並覆寫</p>
-<h3 id="事件種類"><a href="#事件種類" class="headerlink" title="事件種類"></a>事件種類</h3><p>可以參考<a href="http://doc.qt.io/qt-5/qevent.html" target="_blank" rel="noopener">官方文件</a>針對有興趣的事件讓我們開始訂製新的行為吧!</p>
-<h3 id="h宣告"><a href="#h宣告" class="headerlink" title=".h宣告"></a>.h宣告</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;QObject&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;QDebug&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;QEvent&gt;</span></span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ControlView</span>:</span><span class="keyword">public</span> QObject</span><br><span class="line">&#123;</span><br><span class="line">    Q_OBJECT</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    ControlView();</span><br><span class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">eventFilter</span><span class="params">(QObject *object, QEvent *event)</span></span>;</span><br><span class="line"></span><br><span class="line">signals:</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">closed</span><span class="params">()</span></span>;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<h3 id="cpp定義"><a href="#cpp定義" class="headerlink" title=".cpp定義"></a>.cpp定義</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"controlview.h"</span></span></span><br><span class="line"></span><br><span class="line">ControlView::ControlView()</span><br><span class="line">&#123;</span><br><span class="line">    qApp-&gt;installEventFilter(<span class="keyword">this</span>);             <span class="comment">//一定要註冊事件過濾器 就像吃中藥一定要配溫開水一樣重要</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">bool</span> ControlView::eventFilter(QObject *object, QEvent *event) &#123;</span><br><span class="line">    <span class="keyword">if</span>(event-&gt;type() == QEvent::Close)&#123;         <span class="comment">//偵測到關閉事件</span></span><br><span class="line">        qDebug()&lt;&lt;<span class="string">"emit closed()"</span>;</span><br><span class="line">        <span class="function">emit <span class="title">closed</span><span class="params">()</span></span>;                          <span class="comment">//對qml發出關閉信號 則qml可在關閉時進行新的動作</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> QObject::eventFilter(object, event);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><ul>
+<li>有些程序需要管理員權限User Account Control(UAC)</li>
+<li>例如:要<strong>更改系統時間</strong>或是做一些需要權限存取的行為，若是沒有使用MANIFESTUAC則會以為程式沒有動作，其實是權限不夠。</li>
+<li>提升系統管理員權限有幾種方法，此篇紀錄的是我覺得最簡單最快速的方式</li>
+</ul>
+<h3 id="目標-執行檔獲得小盾牌"><a href="#目標-執行檔獲得小盾牌" class="headerlink" title="目標: 執行檔獲得小盾牌"></a>目標: 執行檔獲得<code>小盾牌</code></h3><p><img src="https://i.imgur.com/GccgSDh.png" alt="" title="UAC"></p>
+<h3 id="QMAKE-LFLAGS設置UAC權限"><a href="#QMAKE-LFLAGS設置UAC權限" class="headerlink" title="QMAKE_LFLAGS設置UAC權限"></a>QMAKE_LFLAGS設置UAC權限</h3><p>在pro檔中加入下面指令<br><figure class="highlight qt"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">QMAKE_LFLAGS+=<span class="regexp">/MANIFESTUAC:\"level=\'requireAdministrator\' uiAccess=\'false\'\"</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="Qt-Creator重新rebuild"><a href="#Qt-Creator重新rebuild" class="headerlink" title="Qt Creator重新rebuild"></a>Qt Creator重新rebuild</h3><p>若還是沒產出<strong>有盾牌</strong>的exe則刪掉執行檔再rebuild一次<br>這樣就可以產出有小盾牌的執行檔囉!</p>
 
       
     </div>
@@ -415,11 +419,7 @@
           
             <a href="/tags/Qt/" rel="tag"><i class="fa fa-tag"></i> Qt</a>
           
-            <a href="/tags/C/" rel="tag"><i class="fa fa-tag"></i> C++</a>
-          
-            <a href="/tags/QEvent/" rel="tag"><i class="fa fa-tag"></i> QEvent</a>
-          
-            <a href="/tags/事件重寫/" rel="tag"><i class="fa fa-tag"></i> 事件重寫</a>
+            <a href="/tags/UAC/" rel="tag"><i class="fa fa-tag"></i> UAC</a>
           
         </div>
       
@@ -432,8 +432,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/10/24/C-單例模式/" rel="next" title="C++ 單例模式(Singleton)">
-                <i class="fa fa-chevron-left"></i> C++ 單例模式(Singleton)
+              <a href="/2018/10/24/Qt-Canvas畫圖/" rel="next" title="Qt Canvas 前景畫圖">
+                <i class="fa fa-chevron-left"></i> Qt Canvas 前景畫圖
               </a>
             
           </div>
@@ -442,8 +442,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/10/24/Qt-Setup/" rel="prev" title="Qt 安裝與Hello World!">
-                Qt 安裝與Hello World! <i class="fa fa-chevron-right"></i>
+              <a href="/2018/10/24/共享資料夾/" rel="prev" title="共享資料夾">
+                共享資料夾 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -475,7 +475,7 @@
 
   
     <div class="comments" id="comments">
-      <div class="fb-comments" data-href="https://teddybearfp.github.io/2018/10/24/C-監聽QEvent並將事件重寫/" data-numposts="10" data-width="100%" data-colorscheme="light">
+      <div class="fb-comments" data-href="https://teddybearfp.github.io/2018/10/24/Qt-如何提升系統管理員權限/" data-numposts="10" data-width="100%" data-colorscheme="light">
       </div>
     </div>
 
@@ -582,7 +582,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#目的"><span class="nav-number">1.</span> <span class="nav-text">目的</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#事件過濾器eventFilter"><span class="nav-number">2.</span> <span class="nav-text">事件過濾器eventFilter</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#事件種類"><span class="nav-number">3.</span> <span class="nav-text">事件種類</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#h宣告"><span class="nav-number">4.</span> <span class="nav-text">.h宣告</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#cpp定義"><span class="nav-number">5.</span> <span class="nav-text">.cpp定義</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#目標-執行檔獲得小盾牌"><span class="nav-number">2.</span> <span class="nav-text">目標: 執行檔獲得小盾牌</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#QMAKE-LFLAGS設置UAC權限"><span class="nav-number">3.</span> <span class="nav-text">QMAKE_LFLAGS設置UAC權限</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Qt-Creator重新rebuild"><span class="nav-number">4.</span> <span class="nav-text">Qt Creator重新rebuild</span></a></li></ol></div>
             
 
           </div>
@@ -774,9 +774,9 @@
     
       <script type="text/javascript">
         var disqus_config = function () {
-          this.page.url = 'https://teddybearfp.github.io/2018/10/24/C-監聽QEvent並將事件重寫/';
-          this.page.identifier = '2018/10/24/C-監聽QEvent並將事件重寫/';
-          this.page.title = 'QEvent攔截事件';
+          this.page.url = 'https://teddybearfp.github.io/2018/10/24/Qt-如何提升系統管理員權限/';
+          this.page.identifier = '2018/10/24/Qt-如何提升系統管理員權限/';
+          this.page.title = 'Qt 一句指令提升至系統管理員權限';
         };
         var d = document, s = d.createElement('script');
         s.src = 'https://teddybearfp.disqus.com/embed.js';
