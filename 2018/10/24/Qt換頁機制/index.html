@@ -81,20 +81,20 @@
 
 
 
-<meta name="description" content="前言How to use “ldMain” inside whole project?一個loader負責Qt全專案的頁面切換，之前都是以loader方式去編寫，這種方式很簡單只要用 loaderId.source:”目的地” 即可已達成換頁例如: 123456789101112import QtQuick 2.0Item &amp;#123;    width: 200; height: 200">
+<meta name="description" content="前言How to use “ldMain” inside whole project?一個qml loader負責Qt全專案的頁面切換，之前都是以loader方式去編寫，這種方式很簡單只要用 loaderId.source:”目的地” 即可已達成換頁例如: 123456789101112import QtQuick 2.0Item &amp;#123;    width: 200; height: 200">
 <meta name="keywords" content="loader,viewChanger,How to use “ldMain” inside whole project?,ldMain">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Qt 換頁機制">
 <meta property="og:url" content="https://teddybearfp.github.io/2018/10/24/Qt換頁機制/index.html">
 <meta property="og:site_name" content="泰迪熊的程式足跡">
-<meta property="og:description" content="前言How to use “ldMain” inside whole project?一個loader負責Qt全專案的頁面切換，之前都是以loader方式去編寫，這種方式很簡單只要用 loaderId.source:”目的地” 即可已達成換頁例如: 123456789101112import QtQuick 2.0Item &amp;#123;    width: 200; height: 200">
+<meta property="og:description" content="前言How to use “ldMain” inside whole project?一個qml loader負責Qt全專案的頁面切換，之前都是以loader方式去編寫，這種方式很簡單只要用 loaderId.source:”目的地” 即可已達成換頁例如: 123456789101112import QtQuick 2.0Item &amp;#123;    width: 200; height: 200">
 <meta property="og:locale" content="zh-tw">
 <meta property="og:image" content="https://i.imgur.com/9thQQDP.png">
 <meta property="og:image" content="https://i.imgur.com/0i5fM2C.png">
-<meta property="og:updated_time" content="2018-10-24T06:42:24.882Z">
+<meta property="og:updated_time" content="2018-10-24T06:46:01.497Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Qt 換頁機制">
-<meta name="twitter:description" content="前言How to use “ldMain” inside whole project?一個loader負責Qt全專案的頁面切換，之前都是以loader方式去編寫，這種方式很簡單只要用 loaderId.source:”目的地” 即可已達成換頁例如: 123456789101112import QtQuick 2.0Item &amp;#123;    width: 200; height: 200">
+<meta name="twitter:description" content="前言How to use “ldMain” inside whole project?一個qml loader負責Qt全專案的頁面切換，之前都是以loader方式去編寫，這種方式很簡單只要用 loaderId.source:”目的地” 即可已達成換頁例如: 123456789101112import QtQuick 2.0Item &amp;#123;    width: 200; height: 200">
 <meta name="twitter:image" content="https://i.imgur.com/9thQQDP.png">
 
 
@@ -368,7 +368,7 @@
       
 
       
-        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><h3 id="How-to-use-“ldMain”-inside-whole-project"><a href="#How-to-use-“ldMain”-inside-whole-project" class="headerlink" title="How to use “ldMain” inside whole project?"></a>How to use “ldMain” inside whole project?</h3><p>一個loader負責Qt全專案的頁面切換，之前都是以<a href="http://doc.qt.io/qt-5/qml-qtquick-loader.html" target="_blank" rel="noopener">loader</a>方式去編寫，這種方式很簡單只要用 loaderId.source:”目的地” 即可已達成換頁<br>例如:</p>
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><h3 id="How-to-use-“ldMain”-inside-whole-project"><a href="#How-to-use-“ldMain”-inside-whole-project" class="headerlink" title="How to use “ldMain” inside whole project?"></a>How to use “ldMain” inside whole project?</h3><p>一個qml loader負責Qt全專案的頁面切換，之前都是以<a href="http://doc.qt.io/qt-5/qml-qtquick-loader.html" target="_blank" rel="noopener">loader</a>方式去編寫，這種方式很簡單只要用 loaderId.source:”目的地” 即可已達成換頁<br>例如:</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> QtQuick <span class="number">2.0</span></span><br><span class="line"></span><br><span class="line">Item &#123;</span><br><span class="line">    width: <span class="number">200</span>; height: <span class="number">200</span></span><br><span class="line"></span><br><span class="line">    Loader &#123; <span class="attr">id</span>: pageLoader &#125;</span><br><span class="line"></span><br><span class="line">    MouseArea &#123;</span><br><span class="line">        anchors.fill: parent</span><br><span class="line">        onClicked: pageLoader.source = <span class="string">"Page1.qml"</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>但是這樣的編寫不能在全專案中被識別，在團隊開發中會出現未識別的參數並不是很好的方式</p>
 <h3 id="解決辦法"><a href="#解決辦法" class="headerlink" title="解決辦法"></a>解決辦法</h3><p>透過C++設定loader達成全專案中可被識別</p>
