@@ -89,14 +89,14 @@
 <meta property="og:site_name" content="泰迪熊的程式足跡">
 <meta property="og:description" content="前言 運用GPL的Qt小鍵盤，進階使其可以像Windows On-Screen Keyboard對任何程式進行輸入，並且有多國輸入法的特性，把鍵盤與程式分離有個好處就是鍵盤比較彈性也比較萬用  想法 藉由Qt寫好的虛擬鍵盤加以改造成將輸入傳送給系統，在app端中埋一個看不到的EditField在默默輔助，因為是偵測EditField，所以必須透過些許方式處理無法掌握的按鍵，例如:BackSpac">
 <meta property="og:locale" content="zh-tw">
-<meta property="og:image" content="https://teddybearfp.github.io/2018/10/26/Qt-Virtual-Keyboard/%22https://i.imgur.com/hTjY0wM.png%22">
-<meta property="og:image" content="https://teddybearfp.github.io/2018/10/26/Qt-Virtual-Keyboard/%22https://i.imgur.com/AmKSTxX.png%22">
-<meta property="og:image" content="https://teddybearfp.github.io/2018/10/26/Qt-Virtual-Keyboard/%22https://i.imgur.com/uLHoPs8.png%22">
-<meta property="og:updated_time" content="2018-10-26T04:10:29.975Z">
+<meta property="og:image" content="https://i.imgur.com/hTjY0wM.png">
+<meta property="og:image" content="https://i.imgur.com/AmKSTxX.png">
+<meta property="og:image" content="https://i.imgur.com/uLHoPs8.png">
+<meta property="og:updated_time" content="2018-10-26T04:14:44.185Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Qt 如何製作Windows多國輸入法的虛擬鍵盤">
 <meta name="twitter:description" content="前言 運用GPL的Qt小鍵盤，進階使其可以像Windows On-Screen Keyboard對任何程式進行輸入，並且有多國輸入法的特性，把鍵盤與程式分離有個好處就是鍵盤比較彈性也比較萬用  想法 藉由Qt寫好的虛擬鍵盤加以改造成將輸入傳送給系統，在app端中埋一個看不到的EditField在默默輔助，因為是偵測EditField，所以必須透過些許方式處理無法掌握的按鍵，例如:BackSpac">
-<meta name="twitter:image" content="https://teddybearfp.github.io/2018/10/26/Qt-Virtual-Keyboard/%22https://i.imgur.com/hTjY0wM.png%22">
+<meta name="twitter:image" content="https://i.imgur.com/hTjY0wM.png">
 
 
 
@@ -391,7 +391,7 @@
       
 
       
-        <p><img src="&quot;https://i.imgur.com/hTjY0wM.png&quot;" alt="泰迪熊的Qt小鍵盤" title="泰迪熊的Qt小鍵盤"></p>
+        <p><img src="https://i.imgur.com/hTjY0wM.png" alt="泰迪熊的Qt小鍵盤" title="泰迪熊的Qt小鍵盤"></p>
 <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><blockquote>
 <p>運用GPL的Qt小鍵盤，進階使其可以像Windows On-Screen Keyboard對任何程式進行輸入，並且有多國輸入法的特性，把鍵盤與程式分離有個好處就是鍵盤比較彈性也比較萬用</p>
 </blockquote>
@@ -433,7 +433,7 @@
 <h4 id="注意-cl-exe問題"><a href="#注意-cl-exe問題" class="headerlink" title="注意 cl.exe問題"></a>注意 cl.exe問題</h4><blockquote>
 <p>到這一步基本上是完成了，但是我的環境找不到<strong>cl.exe</strong>此時搜尋<strong>cl.exe</strong>並將所在位置貼在path環境路徑中</p>
 </blockquote>
-<p>打開剛剛編寫的Virtual Keyboard會發現多個小地球可以選擇多國輸入法囉 ~<br><img src="&quot;https://i.imgur.com/AmKSTxX.png&quot;" alt="泰迪熊的Qt小鍵盤" title="語言可以選擇"></p>
+<p>打開剛剛編寫的Virtual Keyboard會發現多個小地球可以選擇多國輸入法囉 ~<br><img src="https://i.imgur.com/AmKSTxX.png" alt="泰迪熊的Qt小鍵盤" title="語言可以選擇"></p>
 <h3 id="Qt-Virtual-Keyboard"><a href="#Qt-Virtual-Keyboard" class="headerlink" title="Qt Virtual Keyboard"></a>Qt Virtual Keyboard</h3><blockquote>
 <p>此時你的鍵盤已經可以在app當中使用並且可以輸入各國輸入法但是想要像Windows On-Screen Keyboard在各個視窗中任意編輯呢??</p>
 <p>讓我們繼續看下去…</p>
@@ -469,7 +469,7 @@
 <p>onClicked的時候執行sendEnterKey()<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">void</span> VirtualKeyboard::sendEnterKey() &#123;</span><br><span class="line">    keybd_event(<span class="number">13</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>);</span><br><span class="line">    keybd_event(<span class="number">13</span>,<span class="number">0</span>,KEYEVENTF_KEYUP,<span class="number">0</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <h2 id="釋放hook"><a href="#釋放hook" class="headerlink" title="釋放hook"></a>釋放hook</h2><p>大功告成!!! 我們把hook這大功臣放生吧<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">void</span> VirtualKeyboard::releaseHook()</span><br><span class="line">&#123;</span><br><span class="line">    UnhookWindowsHookEx(_hook); <span class="comment">//掰~</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <h2 id="Qml端"><a href="#Qml端" class="headerlink" title="Qml端"></a>Qml端</h2><p>只要在程式進入時呼叫幾個Funtion就可以囉<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">Component.onCompleted: &#123;</span><br><span class="line">    <span class="comment">//取得handle</span></span><br><span class="line">    virtualKeyboard.setHWNDNoActive()</span><br><span class="line">    <span class="comment">//將找到的handle置頂</span></span><br><span class="line">    virtualKeyboard.setHWNDTopmost()</span><br><span class="line">    <span class="comment">//設置hook攔截事件</span></span><br><span class="line">    virtualKeyboard.setHook()</span><br><span class="line">    vkb.visible = <span class="literal">true</span></span><br><span class="line">    <span class="comment">//VirtualKeyboardSettings.styleName = "retro" //復古風鍵盤</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<h2 id="現在你有了自己的小鍵盤囉"><a href="#現在你有了自己的小鍵盤囉" class="headerlink" title="現在你有了自己的小鍵盤囉"></a>現在你有了自己的小鍵盤囉</h2><p>可以在各種程式使用(網頁、記事本、Word、Line…)<br><img src="&quot;https://i.imgur.com/uLHoPs8.png&quot;" alt="泰迪熊的Qt小鍵盤" title="這就是我要的鍵盤啦!"></p>
+<h2 id="現在你有了自己的小鍵盤囉"><a href="#現在你有了自己的小鍵盤囉" class="headerlink" title="現在你有了自己的小鍵盤囉"></a>現在你有了自己的小鍵盤囉</h2><p>可以在各種程式使用(網頁、記事本、Word、Line…)<br><img src="https://i.imgur.com/uLHoPs8.png" alt="泰迪熊的Qt小鍵盤" title="這就是我要的鍵盤啦!"></p>
 <h2 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h2><p>hook相關:<br><a href="https://www.smwenku.com/a/5b8a3bb92b71775d1ce6181c/" target="_blank" rel="noopener">c++ hook 鉤子的使用介紹</a><br><a href="https://blog.csdn.net/dotneterbj/article/details/41077309" target="_blank" rel="noopener">HOOK技术浅谈</a></p>
 <p>SendInput相關:<br><a href="&quot;http://www.cctry.com/thread-45211-1-1.html&quot;">中文字判斷與傳遞 SendUnicode,SendAscii 都是參考大神ccstd </a><br><a href="&quot;https://hk.saowen.com/a/9e0a750a695576478d158c9dd185fe3e6e42f38fa4a4a0e311b035e7dce6fecd&quot;">SendInput模擬鍵盤輸入的問題</a></p>
 
