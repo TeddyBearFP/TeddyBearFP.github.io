@@ -92,7 +92,7 @@
 <meta property="og:image" content="https://i.imgur.com/hTjY0wM.png">
 <meta property="og:image" content="https://i.imgur.com/r6ORder.png">
 <meta property="og:image" content="https://i.imgur.com/uLHoPs8.png">
-<meta property="og:updated_time" content="2018-10-26T05:21:22.894Z">
+<meta property="og:updated_time" content="2018-10-26T06:39:01.251Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Qt 如何製作Windows多國輸入法的虛擬鍵盤">
 <meta name="twitter:description" content="前言 運用GPL的Qt小鍵盤，進階使其可以像Windows On-Screen Keyboard對任何程式進行輸入，並且有多國輸入法的特性，把鍵盤與程式分離有個好處就是鍵盤比較彈性也比較萬用  想法 藉由Qt寫好的虛擬鍵盤加以改造成將輸入傳送給系統，在app端中埋一個看不到的EditField在默默輔助，因為是偵測EditField長度變化，所以必須透過些許方式將特殊情況無法掌握的按鍵，例如:B">
@@ -396,7 +396,7 @@
 <p>運用GPL的Qt小鍵盤，進階使其可以像Windows On-Screen Keyboard對任何程式進行輸入，並且有多國輸入法的特性，把鍵盤與程式分離有個好處就是鍵盤比較彈性也比較萬用</p>
 </blockquote>
 <h2 id="想法"><a href="#想法" class="headerlink" title="想法"></a>想法</h2><blockquote>
-<p>藉由Qt寫好的虛擬鍵盤加以改造成將輸入傳送給系統，在app端中埋一個看不到的EditField在默默輔助，因為是偵測EditField長度變化，所以必須透過些許方式將特殊情況無法掌握的按鍵，例如:BackSpace退格、Enter輸入</p>
+<p>藉由Qt寫好的虛擬鍵盤加以改造成將輸入傳送給系統，在app端中埋一個看不到的EditField在默默輔助，因為是偵測EditField長度變化，所以必須透過些許方式將特殊情況無法掌握的按鍵，例如:BackSpace退格、Enter輸入另外處理</p>
 </blockquote>
 <h2 id="整體流程"><a href="#整體流程" class="headerlink" title="整體流程"></a>整體流程</h2><ul>
 <li>首先搭載Qt Virtual Keyboard並使其擁有多國輸入法</li>
