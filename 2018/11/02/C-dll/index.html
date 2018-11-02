@@ -70,7 +70,7 @@
 
 
 
-  <meta name="keywords" content="編譯流程">
+  <meta name="keywords" content="DLL">
 
 
 
@@ -81,20 +81,21 @@
 
 
 
-<meta name="description" content="C/C++特性在 C/C++ 語言裡都要明確地指定，程式中必須明確指定每一筆資料的型態和儲存方式，所以 C/C++ 語言被稱為強型別(strong type)語言。 名詞簡介建置(build)執行檔的過程包括編譯和連結。編譯器(compiler)把原始碼變成機械碼。連結器(linker)把多份機械碼合併成執行檔，並更正檔案內的參考位址(address)。程式庫檔案(.lib)只不過是一些機械碼檔案">
-<meta name="keywords" content="編譯流程">
+<meta name="description" content="編寫C語言dll用純C去編寫的dll彈性比較高，在各語言導入比較沒有相容性問題 先在專案new subproject中選擇library新增 DataProc_global.h123456789101112#ifndef DATAPROC_GLOBAL_H#define DATAPROC_GLOBAL_H#include &amp;lt;QtCore/qglobal.h&amp;gt;#if defined(DA">
+<meta name="keywords" content="DLL">
 <meta property="og:type" content="article">
-<meta property="og:title" content="C&#x2F;C++編譯流程">
-<meta property="og:url" content="https://teddybearfp.github.io/2018/11/02/C-compile/index.html">
+<meta property="og:title" content="C&#x2F;C++ DLL編寫">
+<meta property="og:url" content="https://teddybearfp.github.io/2018/11/02/C-dll/index.html">
 <meta property="og:site_name" content="泰迪熊的程式足跡">
-<meta property="og:description" content="C/C++特性在 C/C++ 語言裡都要明確地指定，程式中必須明確指定每一筆資料的型態和儲存方式，所以 C/C++ 語言被稱為強型別(strong type)語言。 名詞簡介建置(build)執行檔的過程包括編譯和連結。編譯器(compiler)把原始碼變成機械碼。連結器(linker)把多份機械碼合併成執行檔，並更正檔案內的參考位址(address)。程式庫檔案(.lib)只不過是一些機械碼檔案">
+<meta property="og:description" content="編寫C語言dll用純C去編寫的dll彈性比較高，在各語言導入比較沒有相容性問題 先在專案new subproject中選擇library新增 DataProc_global.h123456789101112#ifndef DATAPROC_GLOBAL_H#define DATAPROC_GLOBAL_H#include &amp;lt;QtCore/qglobal.h&amp;gt;#if defined(DA">
 <meta property="og:locale" content="zh-tw">
-<meta property="og:image" content="https://i.imgur.com/FYOgmWq.png">
-<meta property="og:updated_time" content="2018-11-02T09:49:25.733Z">
+<meta property="og:image" content="https://i.imgur.com/GdgVaj1.png">
+<meta property="og:image" content="https://i.imgur.com/pmZF7pE.png">
+<meta property="og:updated_time" content="2018-11-02T10:25:26.402Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="C&#x2F;C++編譯流程">
-<meta name="twitter:description" content="C/C++特性在 C/C++ 語言裡都要明確地指定，程式中必須明確指定每一筆資料的型態和儲存方式，所以 C/C++ 語言被稱為強型別(strong type)語言。 名詞簡介建置(build)執行檔的過程包括編譯和連結。編譯器(compiler)把原始碼變成機械碼。連結器(linker)把多份機械碼合併成執行檔，並更正檔案內的參考位址(address)。程式庫檔案(.lib)只不過是一些機械碼檔案">
-<meta name="twitter:image" content="https://i.imgur.com/FYOgmWq.png">
+<meta name="twitter:title" content="C&#x2F;C++ DLL編寫">
+<meta name="twitter:description" content="編寫C語言dll用純C去編寫的dll彈性比較高，在各語言導入比較沒有相容性問題 先在專案new subproject中選擇library新增 DataProc_global.h123456789101112#ifndef DATAPROC_GLOBAL_H#define DATAPROC_GLOBAL_H#include &amp;lt;QtCore/qglobal.h&amp;gt;#if defined(DA">
+<meta name="twitter:image" content="https://i.imgur.com/GdgVaj1.png">
 
 
 
@@ -124,13 +125,13 @@
 
 
 
-  <link rel="canonical" href="https://teddybearfp.github.io/2018/11/02/C-compile/">
+  <link rel="canonical" href="https://teddybearfp.github.io/2018/11/02/C-dll/">
 
 
 
 
 
-  <title>C/C++編譯流程 | 泰迪熊的程式足跡</title>
+  <title>C/C++ DLL編寫 | 泰迪熊的程式足跡</title>
   
 <script>
   window.fbAsyncInit = function() {
@@ -285,7 +286,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://teddybearfp.github.io/2018/11/02/C-compile/">
+    <link itemprop="mainEntityOfPage" href="https://teddybearfp.github.io/2018/11/02/C-dll/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="G.C.L.">
@@ -302,7 +303,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">C/C++編譯流程</h1>
+          <h1 class="post-title" itemprop="name headline">C/C++ DLL編寫</h1>
         
 
         <div class="post-meta">
@@ -314,7 +315,7 @@
               
                 <span class="post-meta-item-text">發表於</span>
               
-              <time title="創建於" itemprop="dateCreated datePublished" datetime="2018-11-02T16:05:16+08:00">
+              <time title="創建於" itemprop="dateCreated datePublished" datetime="2018-11-02T18:05:16+08:00">
                 2018-11-02
               </time>
             
@@ -355,8 +356,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2018/11/02/C-compile/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count fb-comments-count" data-href="https://teddybearfp.github.io/2018/11/02/C-compile/" itemprop="commentCount">0</span> comments
+                <a href="/2018/11/02/C-dll/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count fb-comments-count" data-href="https://teddybearfp.github.io/2018/11/02/C-dll/" itemprop="commentCount">0</span> comments
                 </a>
               </span>
             
@@ -389,39 +390,31 @@
       
 
       
-        <h2 id="C-C-特性"><a href="#C-C-特性" class="headerlink" title="C/C++特性"></a>C/C++特性</h2><p>在 C/C++ 語言裡都要明確地指定，程式中必須明確指定每一筆資料的型態和儲存方式，所以 C/C++ 語言被稱為強型別(strong type)語言。</p>
-<h2 id="名詞簡介"><a href="#名詞簡介" class="headerlink" title="名詞簡介"></a>名詞簡介</h2><p>建置(build)執行檔的過程包括編譯和連結。<br>編譯器(compiler)把原始碼變成機械碼。<br>連結器(linker)把多份機械碼合併成執行檔，並更正檔案內的參考位址(address)。<br>程式庫檔案(.lib)只不過是一些機械碼檔案(.obj)的集合體</p>
-<h2 id="流程圖"><a href="#流程圖" class="headerlink" title="流程圖"></a>流程圖</h2><p><img src="https://i.imgur.com/FYOgmWq.png" alt=""></p>
-<h2 id="編譯步驟"><a href="#編譯步驟" class="headerlink" title="編譯步驟"></a>編譯步驟</h2><h3 id="編譯器"><a href="#編譯器" class="headerlink" title="編譯器"></a>編譯器</h3><h4 id="檢查語法錯誤-SyntaxError"><a href="#檢查語法錯誤-SyntaxError" class="headerlink" title="檢查語法錯誤(SyntaxError)"></a>檢查語法錯誤(SyntaxError)</h4><p>例如多打了符號或括號數目不平衡等，那麼編譯器就看不懂你的程式。</p>
-<h4 id="檢查語義錯誤-SemanticError"><a href="#檢查語義錯誤-SemanticError" class="headerlink" title="檢查語義錯誤(SemanticError)"></a>檢查語義錯誤(SemanticError)</h4><p>例如你用了未經宣告的變數，就算編譯器看得懂，但是也不懂得如何編譯你的程式。</p>
-<h4 id="通過編譯"><a href="#通過編譯" class="headerlink" title="通過編譯"></a>通過編譯</h4><p>當沒有任何錯誤後，編譯器會把程式內每個句子轉成更低階的語言，一般來說是指「組合語言」(Assembly)方式。</p>
-<h3 id="組譯器"><a href="#組譯器" class="headerlink" title="組譯器"></a>組譯器</h3><h4 id="轉成「目的碼」-ObjectCode"><a href="#轉成「目的碼」-ObjectCode" class="headerlink" title="轉成「目的碼」(ObjectCode)"></a>轉成「目的碼」(ObjectCode)</h4><p>組譯過程就會把每個組合語言句子轉成「機械語言」(MachineCode)這種方式稱為「目的碼」(ObjectCode)，產生另一個檔案”file.obj”。</p>
-<h3 id="連結器"><a href="#連結器" class="headerlink" title="連結器"></a>連結器</h3><h4 id="連結"><a href="#連結" class="headerlink" title="連結"></a>連結</h4><p>最後到了「連結」(Link)過程，就會把你的程式、有關的程式和程式庫所產生出來的*.obj，<br>轉成可以在電腦上執行的方式。</p>
-<h4 id="產出執行檔"><a href="#產出執行檔" class="headerlink" title="產出執行檔"></a>產出執行檔</h4><p>產生另一個檔”file.exe”，這個檔案就可以執行了。</p>
-<h2 id="執行程式分成兩階段"><a href="#執行程式分成兩階段" class="headerlink" title="執行程式分成兩階段"></a>執行程式分成兩階段</h2><h3 id="編譯階段"><a href="#編譯階段" class="headerlink" title="編譯階段"></a>編譯階段</h3><p>編譯器(Compile)</p>
-<ul>
-<li>1.檢查語法錯誤(SyntaxError)</li>
-<li>2.檢查語義錯誤(SemanticError)</li>
-</ul>
-<p>組譯器(Assemble)</p>
-<ul>
-<li>1.產出目的檔file.obj</li>
-<li>2.產出其他目的檔*.obj</li>
-<li>3.產出程式庫.lib</li>
-</ul>
-<p>連結(Link)</p>
-<ul>
-<li>產出執行檔exe</li>
-</ul>
-<p>:::danger<br>沒找到Link函式入口則會有LINKERROR<br>:::</p>
+        <h2 id="編寫C語言dll"><a href="#編寫C語言dll" class="headerlink" title="編寫C語言dll"></a>編寫C語言dll</h2><p>用純C去編寫的dll彈性比較高，在各語言導入比較沒有相容性問題</p>
+<p>先在專案new subproject中選擇library新增</p>
+<p>DataProc_global.h<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">ifndef</span> DATAPROC_GLOBAL_H</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> DATAPROC_GLOBAL_H</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;QtCore/qglobal.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">if</span> defined(DATAPROC_LIBRARY)</span></span><br><span class="line"><span class="meta">#  <span class="meta-keyword">define</span> DATAPROCSHARED_EXPORT Q_DECL_EXPORT</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">else</span></span></span><br><span class="line"><span class="meta">#  <span class="meta-keyword">define</span> DATAPROCSHARED_EXPORT Q_DECL_IMPORT</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span> <span class="comment">// CVDATAPROC_GLOBAL_H</span></span></span><br></pre></td></tr></table></figure></p>
+<p>DataProc.h</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">ifndef</span> CVDATAPROC_H</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> CVDATAPROC_H</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"cvdataproc_global.h"</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"stdafx.h"</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">extern</span> <span class="string">"C"</span> <span class="function">CVDATAPROCSHARED_EXPORT <span class="keyword">bool</span> <span class="title">DCCCKJ_Px</span><span class="params">(</span></span></span><br><span class="line"><span class="function"><span class="params">        <span class="keyword">int</span> RawSig_Px, </span></span></span><br><span class="line"><span class="function"><span class="params">        <span class="built_in">vector</span>&lt;<span class="keyword">double</span>&gt; &amp;CCTSig_Px, </span></span></span><br><span class="line"><span class="function"><span class="params">        <span class="built_in">vector</span>&lt;<span class="keyword">double</span>&gt; &amp;NrSP)</span></span>;</span><br></pre></td></tr></table></figure>
+<p>DataProc.cpp<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"cvdataproc.h"</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">DCCCKJ_Px</span><span class="params">(</span></span></span><br><span class="line"><span class="function"><span class="params">        <span class="keyword">int</span> RawSig_Px,</span></span></span><br><span class="line"><span class="function"><span class="params">        <span class="built_in">vector</span>&lt;<span class="keyword">double</span>&gt; &amp;CCTSig_Px,</span></span></span><br><span class="line"><span class="function"><span class="params">        <span class="built_in">vector</span>&lt;<span class="keyword">double</span>&gt; &amp;NrSP)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    doSomething...</span><br><span class="line">    <span class="keyword">return</span> getDCCCKJ_Px(</span><br><span class="line">        RawSig_Px,</span><br><span class="line">        CCTSig_Px,</span><br><span class="line">        NrSP);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">若是dll中有使用include其他的第三方檔案，則需在使用端也一併在pro檔中導入這個第三方檔案</span><br><span class="line"></span><br><span class="line">例如:dll中include &lt;opencv2/core.hpp&gt;</span><br><span class="line">在dll專案中需要導入opencv_core2413</span><br><span class="line">在使用dll的專案中也需要在pro檔中導入opencv_core2413否則會有說讀不到opencv2/core.hpp</span><br></pre></td></tr></table></figure>
+<h2 id="導入dll"><a href="#導入dll" class="headerlink" title="導入dll"></a>導入dll</h2><p><img src="https://i.imgur.com/GdgVaj1.png" alt=""></p>
 <blockquote>
-<p>解決辦法:常見的LINKERROR是在.h宣告了卻未在cpp中未定義，所以可以檢查是不是有宣告且定義了</p>
+<p>Library file: lib位置<br>INCLUDEPATH: .h檔位置</p>
 </blockquote>
-<h3 id="執行階段"><a href="#執行階段" class="headerlink" title="執行階段"></a>執行階段</h3><p>執行程式<br>:::danger<br>缺少DLL執行時會crash<br>:::</p>
-<blockquote>
-<p>解決辦法:可以直接至產出的exe雙擊執行，此時會跳出少了哪個dll的錯誤訊息</p>
-</blockquote>
-<p>參考資料:<br>編譯器與連結器的基本概念 :<a href="http://shukaiyang.myweb.hinet.net/cpp/concept.zhtw.htm" target="_blank" rel="noopener">http://shukaiyang.myweb.hinet.net/cpp/concept.zhtw.htm</a><br>Compiler介紹@ Amin’s Note :: 痞客邦::  <a href="http://lagunawang.pixnet.net/blog/post/9743288-compiler%E4%BB%8B%E7%B4%B9" target="_blank" rel="noopener">http://lagunawang.pixnet.net/blog/post/9743288-compiler%E4%BB%8B%E7%B4%B9</a><br>程式編譯過程: <a href="http://www2.lssh.tp.edu.tw/~hlf/class-1/lang-c/compile.htm" target="_blank" rel="noopener">http://www2.lssh.tp.edu.tw/~hlf/class-1/lang-c/compile.htm</a></p>
+<p>\$\$OUT_PWD : build出來的資料夾中主程式的位置<br>\$\$PWD : 專案.pro檔的位置</p>
+<p>將編譯好的dll導入到與exe同一層寫法如下<br>Debug:DESTDIR = ../DataProc(專案名稱)/debug<br>Release:DESTDIR = ../DataProc(專案名稱)/release</p>
+<p>搭配上述寫法的話\$\$OUT_PWD/release/此段要注意不需切換到別層<br>win32:CONFIG(release, debug|release): LIBS += -L$\$OUT_PWD/release/ -lfindContours<br>else:win32:CONFIG(debug, debug|release): LIBS += -L$$OUT_PWD/debug/ -lfindContours</p>
+<p>INCLUDEPATH += \$$PWD/../findContours<br>DEPENDPATH += $$PWD/../findContours</p>
+<hr>
+<p><img src="https://i.imgur.com/pmZF7pE.png" alt=""></p>
+<h3 id="外部導入-第三方或協作的dll"><a href="#外部導入-第三方或協作的dll" class="headerlink" title="外部導入(第三方或協作的dll)"></a>外部導入(第三方或協作的dll)</h3><p>一般dll導入 add library &gt;&gt; external library &gt;&gt; 選擇路徑<br>win32: LIBS += -L$$PWD/../CVCamera/ -lCVCamera</p>
+<p>INCLUDEPATH += \$$PWD/../CVCamera<br>DEPENDPATH += $$PWD/../CVCamera</p>
+<hr>
+<h3 id="內部導入-自己編寫或是有原始碼的dll"><a href="#內部導入-自己編寫或是有原始碼的dll" class="headerlink" title="內部導入(自己編寫或是有原始碼的dll)"></a>內部導入(自己編寫或是有原始碼的dll)</h3><p>自己寫的dll導入 add library &gt;&gt; internal library &gt;&gt; 選擇名稱<br>win32:CONFIG(release, debug|release): LIBS += -L\$$OUT_PWD/release/ -lDataProc<br>else:win32:CONFIG(debug, debug|release): LIBS += -L\$$OUT_PWD/debug/ -lDataProc</p>
+<p>INCLUDEPATH += \$$PWD/../DataProc<br>DEPENDPATH += $$PWD/../fDataProc</p>
+<hr>
+<h2 id="dll放置位置"><a href="#dll放置位置" class="headerlink" title="dll放置位置"></a>dll放置位置</h2><p>External Library(第三方或是協作的DLL)<br>放在與專案.pro同層中的SDKs裡面</p>
+<p>Internal Library(自行建立的DLL)<br>放在與專案.pro同層中的檔案夾內</p>
 
       
     </div>
@@ -439,7 +432,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/編譯流程/" rel="tag"><i class="fa fa-tag"></i> 編譯流程</a>
+            <a href="/tags/DLL/" rel="tag"><i class="fa fa-tag"></i> DLL</a>
           
         </div>
       
@@ -452,8 +445,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/10/26/Python-LineBot/" rel="next" title="Python 如何打造專屬的LineBot呢">
-                <i class="fa fa-chevron-left"></i> Python 如何打造專屬的LineBot呢
+              <a href="/2018/11/02/C-compile/" rel="next" title="C/C++編譯流程">
+                <i class="fa fa-chevron-left"></i> C/C++編譯流程
               </a>
             
           </div>
@@ -461,10 +454,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/11/02/C-dll/" rel="prev" title="C/C++ DLL編寫">
-                C/C++ DLL編寫 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -495,7 +484,7 @@
 
   
     <div class="comments" id="comments">
-      <div class="fb-comments" data-href="https://teddybearfp.github.io/2018/11/02/C-compile/" data-numposts="10" data-width="100%" data-colorscheme="light">
+      <div class="fb-comments" data-href="https://teddybearfp.github.io/2018/11/02/C-dll/" data-numposts="10" data-width="100%" data-colorscheme="light">
       </div>
     </div>
 
@@ -602,7 +591,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#C-C-特性"><span class="nav-number">1.</span> <span class="nav-text">C/C++特性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#名詞簡介"><span class="nav-number">2.</span> <span class="nav-text">名詞簡介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#流程圖"><span class="nav-number">3.</span> <span class="nav-text">流程圖</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#編譯步驟"><span class="nav-number">4.</span> <span class="nav-text">編譯步驟</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#編譯器"><span class="nav-number">4.1.</span> <span class="nav-text">編譯器</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#檢查語法錯誤-SyntaxError"><span class="nav-number">4.1.1.</span> <span class="nav-text">檢查語法錯誤(SyntaxError)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#檢查語義錯誤-SemanticError"><span class="nav-number">4.1.2.</span> <span class="nav-text">檢查語義錯誤(SemanticError)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#通過編譯"><span class="nav-number">4.1.3.</span> <span class="nav-text">通過編譯</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#組譯器"><span class="nav-number">4.2.</span> <span class="nav-text">組譯器</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#轉成「目的碼」-ObjectCode"><span class="nav-number">4.2.1.</span> <span class="nav-text">轉成「目的碼」(ObjectCode)</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#連結器"><span class="nav-number">4.3.</span> <span class="nav-text">連結器</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#連結"><span class="nav-number">4.3.1.</span> <span class="nav-text">連結</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#產出執行檔"><span class="nav-number">4.3.2.</span> <span class="nav-text">產出執行檔</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#執行程式分成兩階段"><span class="nav-number">5.</span> <span class="nav-text">執行程式分成兩階段</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#編譯階段"><span class="nav-number">5.1.</span> <span class="nav-text">編譯階段</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#執行階段"><span class="nav-number">5.2.</span> <span class="nav-text">執行階段</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#編寫C語言dll"><span class="nav-number">1.</span> <span class="nav-text">編寫C語言dll</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#導入dll"><span class="nav-number">2.</span> <span class="nav-text">導入dll</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#外部導入-第三方或協作的dll"><span class="nav-number">2.1.</span> <span class="nav-text">外部導入(第三方或協作的dll)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#內部導入-自己編寫或是有原始碼的dll"><span class="nav-number">2.2.</span> <span class="nav-text">內部導入(自己編寫或是有原始碼的dll)</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#dll放置位置"><span class="nav-number">3.</span> <span class="nav-text">dll放置位置</span></a></li></ol></div>
             
 
           </div>
@@ -794,9 +783,9 @@
     
       <script type="text/javascript">
         var disqus_config = function () {
-          this.page.url = 'https://teddybearfp.github.io/2018/11/02/C-compile/';
-          this.page.identifier = '2018/11/02/C-compile/';
-          this.page.title = 'C/C++編譯流程';
+          this.page.url = 'https://teddybearfp.github.io/2018/11/02/C-dll/';
+          this.page.identifier = '2018/11/02/C-dll/';
+          this.page.title = 'C/C++ DLL編寫';
         };
         var d = document, s = d.createElement('script');
         s.src = 'https://teddybearfp.disqus.com/embed.js';
