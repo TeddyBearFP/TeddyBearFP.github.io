@@ -90,7 +90,7 @@
 <meta property="og:description" content="C/C++特性在 C/C++ 語言裡都要明確地指定，程式中必須明確指定每一筆資料的型態和儲存方式，所以 C/C++ 語言被稱為強型別(strong type)語言。 名詞簡介建置(build)執行檔的過程包括編譯和連結。編譯器(compiler)把原始碼變成機械碼。連結器(linker)把多份機械碼合併成執行檔，並更正檔案內的參考位址(address)。程式庫檔案(.lib)只不過是一些機械碼檔案">
 <meta property="og:locale" content="zh-tw">
 <meta property="og:image" content="https://i.imgur.com/FYOgmWq.png">
-<meta property="og:updated_time" content="2018-11-02T09:45:25.042Z">
+<meta property="og:updated_time" content="2018-11-02T09:49:25.733Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="C&#x2F;C++編譯流程">
 <meta name="twitter:description" content="C/C++特性在 C/C++ 語言裡都要明確地指定，程式中必須明確指定每一筆資料的型態和儲存方式，所以 C/C++ 語言被稱為強型別(strong type)語言。 名詞簡介建置(build)執行檔的過程包括編譯和連結。編譯器(compiler)把原始碼變成機械碼。連結器(linker)把多份機械碼合併成執行檔，並更正檔案內的參考位址(address)。程式庫檔案(.lib)只不過是一些機械碼檔案">
@@ -411,11 +411,12 @@
 </ul>
 <p>連結(Link)</p>
 <ul>
-<li>產出執行檔exe<br>:::danger<br>沒找到Link函式入口則會有LINKERROR<br>:::<blockquote>
+<li>產出執行檔exe</li>
+</ul>
+<p>:::danger<br>沒找到Link函式入口則會有LINKERROR<br>:::</p>
+<blockquote>
 <p>解決辦法:常見的LINKERROR是在.h宣告了卻未在cpp中未定義，所以可以檢查是不是有宣告且定義了</p>
 </blockquote>
-</li>
-</ul>
 <h3 id="執行階段"><a href="#執行階段" class="headerlink" title="執行階段"></a>執行階段</h3><p>執行程式<br>:::danger<br>缺少DLL執行時會crash<br>:::</p>
 <blockquote>
 <p>解決辦法:可以直接至產出的exe雙擊執行，此時會跳出少了哪個dll的錯誤訊息</p>
