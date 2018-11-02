@@ -70,7 +70,7 @@
 
 
 
-  <meta name="keywords" content="C++ 監聽事件,QEvent,事件重寫,事件覆寫">
+  <meta name="keywords" content="編譯流程">
 
 
 
@@ -81,18 +81,20 @@
 
 
 
-<meta name="description" content="本篇環境使用版本:QT 5.10.1Visual Studio 2015windows 10 SDK  目的可以將既有的事件行為覆寫此篇紀錄關閉事件攔截，在點擊X離開程式的時候不動作或觸發新行為 事件過濾器eventFilter1virtual bool eventFilter(QObject *object, QEvent *event) 事件會由此經過，而我們可以在這將有興趣的事件攔下並覆寫">
-<meta name="keywords" content="C++ 監聽事件,QEvent,事件重寫,事件覆寫">
+<meta name="description" content="C/C++特性在 C/C++ 語言裡都要明確地指定，程式中必須明確指定每一筆資料的型態和儲存方式，所以 C/C++ 語言被稱為強型別(strong type)語言。 名詞簡介建置(build)執行檔的過程包括編譯和連結。編譯器(compiler)把原始碼變成機械碼。連結器(linker)把多份機械碼合併成執行檔，並更正檔案內的參考位址(address)。程式庫檔案(.lib)只不過是一些機械碼檔案">
+<meta name="keywords" content="編譯流程">
 <meta property="og:type" content="article">
-<meta property="og:title" content="QEvent攔截事件">
-<meta property="og:url" content="https://teddybearfp.github.io/2018/10/24/C-監聽QEvent並將事件重寫/index.html">
+<meta property="og:title" content="C&#x2F;C++編譯流程">
+<meta property="og:url" content="https://teddybearfp.github.io/2018/11/02/C-compile/index.html">
 <meta property="og:site_name" content="泰迪熊的程式足跡">
-<meta property="og:description" content="本篇環境使用版本:QT 5.10.1Visual Studio 2015windows 10 SDK  目的可以將既有的事件行為覆寫此篇紀錄關閉事件攔截，在點擊X離開程式的時候不動作或觸發新行為 事件過濾器eventFilter1virtual bool eventFilter(QObject *object, QEvent *event) 事件會由此經過，而我們可以在這將有興趣的事件攔下並覆寫">
+<meta property="og:description" content="C/C++特性在 C/C++ 語言裡都要明確地指定，程式中必須明確指定每一筆資料的型態和儲存方式，所以 C/C++ 語言被稱為強型別(strong type)語言。 名詞簡介建置(build)執行檔的過程包括編譯和連結。編譯器(compiler)把原始碼變成機械碼。連結器(linker)把多份機械碼合併成執行檔，並更正檔案內的參考位址(address)。程式庫檔案(.lib)只不過是一些機械碼檔案">
 <meta property="og:locale" content="zh-tw">
-<meta property="og:updated_time" content="2018-10-24T14:27:46.181Z">
+<meta property="og:image" content="https://i.imgur.com/FYOgmWq.png">
+<meta property="og:updated_time" content="2018-11-02T09:45:25.042Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="QEvent攔截事件">
-<meta name="twitter:description" content="本篇環境使用版本:QT 5.10.1Visual Studio 2015windows 10 SDK  目的可以將既有的事件行為覆寫此篇紀錄關閉事件攔截，在點擊X離開程式的時候不動作或觸發新行為 事件過濾器eventFilter1virtual bool eventFilter(QObject *object, QEvent *event) 事件會由此經過，而我們可以在這將有興趣的事件攔下並覆寫">
+<meta name="twitter:title" content="C&#x2F;C++編譯流程">
+<meta name="twitter:description" content="C/C++特性在 C/C++ 語言裡都要明確地指定，程式中必須明確指定每一筆資料的型態和儲存方式，所以 C/C++ 語言被稱為強型別(strong type)語言。 名詞簡介建置(build)執行檔的過程包括編譯和連結。編譯器(compiler)把原始碼變成機械碼。連結器(linker)把多份機械碼合併成執行檔，並更正檔案內的參考位址(address)。程式庫檔案(.lib)只不過是一些機械碼檔案">
+<meta name="twitter:image" content="https://i.imgur.com/FYOgmWq.png">
 
 
 
@@ -122,13 +124,13 @@
 
 
 
-  <link rel="canonical" href="https://teddybearfp.github.io/2018/10/24/C-監聽QEvent並將事件重寫/">
+  <link rel="canonical" href="https://teddybearfp.github.io/2018/11/02/C-compile/">
 
 
 
 
 
-  <title>QEvent攔截事件 | 泰迪熊的程式足跡</title>
+  <title>C/C++編譯流程 | 泰迪熊的程式足跡</title>
   
 <script>
   window.fbAsyncInit = function() {
@@ -283,7 +285,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://teddybearfp.github.io/2018/10/24/C-監聽QEvent並將事件重寫/">
+    <link itemprop="mainEntityOfPage" href="https://teddybearfp.github.io/2018/11/02/C-compile/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="G.C.L.">
@@ -300,7 +302,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">QEvent攔截事件</h1>
+          <h1 class="post-title" itemprop="name headline">C/C++編譯流程</h1>
         
 
         <div class="post-meta">
@@ -312,8 +314,8 @@
               
                 <span class="post-meta-item-text">發表於</span>
               
-              <time title="創建於" itemprop="dateCreated datePublished" datetime="2018-10-24T10:05:16+08:00">
-                2018-10-24
+              <time title="創建於" itemprop="dateCreated datePublished" datetime="2018-11-02T16:05:16+08:00">
+                2018-11-02
               </time>
             
 
@@ -335,8 +337,8 @@
               
               
                 <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/Qt/" itemprop="url" rel="index">
-                    <span itemprop="name">Qt</span>
+                  <a href="/categories/C/" itemprop="url" rel="index">
+                    <span itemprop="name">C++</span>
                   </a>
                 </span>
 
@@ -353,8 +355,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2018/10/24/C-監聽QEvent並將事件重寫/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count fb-comments-count" data-href="https://teddybearfp.github.io/2018/10/24/C-監聽QEvent並將事件重寫/" itemprop="commentCount">0</span> comments
+                <a href="/2018/11/02/C-compile/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count fb-comments-count" data-href="https://teddybearfp.github.io/2018/11/02/C-compile/" itemprop="commentCount">0</span> comments
                 </a>
               </span>
             
@@ -387,15 +389,38 @@
       
 
       
-        <blockquote>
-<p>本篇環境使用版本:<br><a href="https://download.qt.io/official_releases/qt/5.10/5.10.1/" target="_blank" rel="noopener">QT 5.10.1</a><br>Visual Studio 2015<br><a href="https://developer.microsoft.com/zh-tw/windows/downloads/windows-10-sdk" target="_blank" rel="noopener">windows 10 SDK</a></p>
+        <h2 id="C-C-特性"><a href="#C-C-特性" class="headerlink" title="C/C++特性"></a>C/C++特性</h2><p>在 C/C++ 語言裡都要明確地指定，程式中必須明確指定每一筆資料的型態和儲存方式，所以 C/C++ 語言被稱為強型別(strong type)語言。</p>
+<h2 id="名詞簡介"><a href="#名詞簡介" class="headerlink" title="名詞簡介"></a>名詞簡介</h2><p>建置(build)執行檔的過程包括編譯和連結。<br>編譯器(compiler)把原始碼變成機械碼。<br>連結器(linker)把多份機械碼合併成執行檔，並更正檔案內的參考位址(address)。<br>程式庫檔案(.lib)只不過是一些機械碼檔案(.obj)的集合體</p>
+<h2 id="流程圖"><a href="#流程圖" class="headerlink" title="流程圖"></a>流程圖</h2><p><img src="https://i.imgur.com/FYOgmWq.png" alt=""></p>
+<h2 id="編譯步驟"><a href="#編譯步驟" class="headerlink" title="編譯步驟"></a>編譯步驟</h2><h3 id="編譯器"><a href="#編譯器" class="headerlink" title="編譯器"></a>編譯器</h3><h4 id="檢查語法錯誤-SyntaxError"><a href="#檢查語法錯誤-SyntaxError" class="headerlink" title="檢查語法錯誤(SyntaxError)"></a>檢查語法錯誤(SyntaxError)</h4><p>例如多打了符號或括號數目不平衡等，那麼編譯器就看不懂你的程式。</p>
+<h4 id="檢查語義錯誤-SemanticError"><a href="#檢查語義錯誤-SemanticError" class="headerlink" title="檢查語義錯誤(SemanticError)"></a>檢查語義錯誤(SemanticError)</h4><p>例如你用了未經宣告的變數，就算編譯器看得懂，但是也不懂得如何編譯你的程式。</p>
+<h4 id="通過編譯"><a href="#通過編譯" class="headerlink" title="通過編譯"></a>通過編譯</h4><p>當沒有任何錯誤後，編譯器會把程式內每個句子轉成更低階的語言，一般來說是指「組合語言」(Assembly)方式。</p>
+<h3 id="組譯器"><a href="#組譯器" class="headerlink" title="組譯器"></a>組譯器</h3><h4 id="轉成「目的碼」-ObjectCode"><a href="#轉成「目的碼」-ObjectCode" class="headerlink" title="轉成「目的碼」(ObjectCode)"></a>轉成「目的碼」(ObjectCode)</h4><p>組譯過程就會把每個組合語言句子轉成「機械語言」(MachineCode)這種方式稱為「目的碼」(ObjectCode)，產生另一個檔案”file.obj”。</p>
+<h3 id="連結器"><a href="#連結器" class="headerlink" title="連結器"></a>連結器</h3><h4 id="連結"><a href="#連結" class="headerlink" title="連結"></a>連結</h4><p>最後到了「連結」(Link)過程，就會把你的程式、有關的程式和程式庫所產生出來的*.obj，<br>轉成可以在電腦上執行的方式。</p>
+<h4 id="產出執行檔"><a href="#產出執行檔" class="headerlink" title="產出執行檔"></a>產出執行檔</h4><p>產生另一個檔”file.exe”，這個檔案就可以執行了。</p>
+<h2 id="執行程式分成兩階段"><a href="#執行程式分成兩階段" class="headerlink" title="執行程式分成兩階段"></a>執行程式分成兩階段</h2><h3 id="編譯階段"><a href="#編譯階段" class="headerlink" title="編譯階段"></a>編譯階段</h3><p>編譯器(Compile)</p>
+<ul>
+<li>1.檢查語法錯誤(SyntaxError)</li>
+<li>2.檢查語義錯誤(SemanticError)</li>
+</ul>
+<p>組譯器(Assemble)</p>
+<ul>
+<li>1.產出目的檔file.obj</li>
+<li>2.產出其他目的檔*.obj</li>
+<li>3.產出程式庫.lib</li>
+</ul>
+<p>連結(Link)</p>
+<ul>
+<li>產出執行檔exe<br>:::danger<br>沒找到Link函式入口則會有LINKERROR<br>:::<blockquote>
+<p>解決辦法:常見的LINKERROR是在.h宣告了卻未在cpp中未定義，所以可以檢查是不是有宣告且定義了</p>
 </blockquote>
-<h3 id="目的"><a href="#目的" class="headerlink" title="目的"></a>目的</h3><p>可以將既有的事件行為覆寫<br>此篇紀錄關閉事件攔截，在點擊X離開程式的時候不動作或觸發新行為</p>
-<h3 id="事件過濾器eventFilter"><a href="#事件過濾器eventFilter" class="headerlink" title="事件過濾器eventFilter"></a>事件過濾器eventFilter</h3><figure class="highlight qt"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">virtual <span class="built_in">bool</span> eventFilter(QObject *object, QEvent *event)</span><br></pre></td></tr></table></figure>
-<p>事件會由此經過，而我們可以在這將有興趣的事件攔下並覆寫</p>
-<h3 id="事件種類"><a href="#事件種類" class="headerlink" title="事件種類"></a>事件種類</h3><p>可以參考<a href="http://doc.qt.io/qt-5/qevent.html" target="_blank" rel="noopener">官方文件</a>針對有興趣的事件讓我們開始訂製新的行為吧!</p>
-<h3 id="h宣告"><a href="#h宣告" class="headerlink" title=".h宣告"></a>.h宣告</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;QObject&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;QDebug&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;QEvent&gt;</span></span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ControlView</span>:</span><span class="keyword">public</span> QObject</span><br><span class="line">&#123;</span><br><span class="line">    Q_OBJECT</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    ControlView();</span><br><span class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">eventFilter</span><span class="params">(QObject *object, QEvent *event)</span></span>;</span><br><span class="line"></span><br><span class="line">signals:</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">closed</span><span class="params">()</span></span>;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<h3 id="cpp定義"><a href="#cpp定義" class="headerlink" title=".cpp定義"></a>.cpp定義</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"controlview.h"</span></span></span><br><span class="line"></span><br><span class="line">ControlView::ControlView()</span><br><span class="line">&#123;</span><br><span class="line">    qApp-&gt;installEventFilter(<span class="keyword">this</span>);             <span class="comment">//一定要註冊事件過濾器 就像吃中藥一定要配溫開水一樣重要</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">bool</span> ControlView::eventFilter(QObject *object, QEvent *event) &#123;</span><br><span class="line">    <span class="keyword">if</span>(event-&gt;type() == QEvent::Close)&#123;         <span class="comment">//偵測到關閉事件</span></span><br><span class="line">        qDebug()&lt;&lt;<span class="string">"emit closed()"</span>;</span><br><span class="line">        <span class="function">emit <span class="title">closed</span><span class="params">()</span></span>;                          <span class="comment">//對qml發出關閉信號 則qml可在關閉時進行新的動作</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> QObject::eventFilter(object, event);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="執行階段"><a href="#執行階段" class="headerlink" title="執行階段"></a>執行階段</h3><p>執行程式<br>:::danger<br>缺少DLL執行時會crash<br>:::</p>
+<blockquote>
+<p>解決辦法:可以直接至產出的exe雙擊執行，此時會跳出少了哪個dll的錯誤訊息</p>
+</blockquote>
+<p>參考資料:<br>編譯器與連結器的基本概念 :<a href="http://shukaiyang.myweb.hinet.net/cpp/concept.zhtw.htm" target="_blank" rel="noopener">http://shukaiyang.myweb.hinet.net/cpp/concept.zhtw.htm</a><br>Compiler介紹@ Amin’s Note :: 痞客邦::  <a href="http://lagunawang.pixnet.net/blog/post/9743288-compiler%E4%BB%8B%E7%B4%B9" target="_blank" rel="noopener">http://lagunawang.pixnet.net/blog/post/9743288-compiler%E4%BB%8B%E7%B4%B9</a><br>程式編譯過程: <a href="http://www2.lssh.tp.edu.tw/~hlf/class-1/lang-c/compile.htm" target="_blank" rel="noopener">http://www2.lssh.tp.edu.tw/~hlf/class-1/lang-c/compile.htm</a></p>
 
       
     </div>
@@ -413,13 +438,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/C/" rel="tag"><i class="fa fa-tag"></i> C++</a>
-          
-            <a href="/tags/Qt/" rel="tag"><i class="fa fa-tag"></i> Qt</a>
-          
-            <a href="/tags/QEvent/" rel="tag"><i class="fa fa-tag"></i> QEvent</a>
-          
-            <a href="/tags/事件重寫/" rel="tag"><i class="fa fa-tag"></i> 事件重寫</a>
+            <a href="/tags/編譯流程/" rel="tag"><i class="fa fa-tag"></i> 編譯流程</a>
           
         </div>
       
@@ -432,8 +451,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/10/23/C-單例模式/" rel="next" title="C++ 單例模式(Singleton)">
-                <i class="fa fa-chevron-left"></i> C++ 單例模式(Singleton)
+              <a href="/2018/10/26/Python-LineBot/" rel="next" title="Python 如何打造專屬的LineBot呢">
+                <i class="fa fa-chevron-left"></i> Python 如何打造專屬的LineBot呢
               </a>
             
           </div>
@@ -441,10 +460,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/10/24/Qt換頁機制/" rel="prev" title="Qt 換頁機制">
-                Qt 換頁機制 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -475,7 +490,7 @@
 
   
     <div class="comments" id="comments">
-      <div class="fb-comments" data-href="https://teddybearfp.github.io/2018/10/24/C-監聽QEvent並將事件重寫/" data-numposts="10" data-width="100%" data-colorscheme="light">
+      <div class="fb-comments" data-href="https://teddybearfp.github.io/2018/11/02/C-compile/" data-numposts="10" data-width="100%" data-colorscheme="light">
       </div>
     </div>
 
@@ -582,7 +597,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#目的"><span class="nav-number">1.</span> <span class="nav-text">目的</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#事件過濾器eventFilter"><span class="nav-number">2.</span> <span class="nav-text">事件過濾器eventFilter</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#事件種類"><span class="nav-number">3.</span> <span class="nav-text">事件種類</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#h宣告"><span class="nav-number">4.</span> <span class="nav-text">.h宣告</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#cpp定義"><span class="nav-number">5.</span> <span class="nav-text">.cpp定義</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#C-C-特性"><span class="nav-number">1.</span> <span class="nav-text">C/C++特性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#名詞簡介"><span class="nav-number">2.</span> <span class="nav-text">名詞簡介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#流程圖"><span class="nav-number">3.</span> <span class="nav-text">流程圖</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#編譯步驟"><span class="nav-number">4.</span> <span class="nav-text">編譯步驟</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#編譯器"><span class="nav-number">4.1.</span> <span class="nav-text">編譯器</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#檢查語法錯誤-SyntaxError"><span class="nav-number">4.1.1.</span> <span class="nav-text">檢查語法錯誤(SyntaxError)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#檢查語義錯誤-SemanticError"><span class="nav-number">4.1.2.</span> <span class="nav-text">檢查語義錯誤(SemanticError)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#通過編譯"><span class="nav-number">4.1.3.</span> <span class="nav-text">通過編譯</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#組譯器"><span class="nav-number">4.2.</span> <span class="nav-text">組譯器</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#轉成「目的碼」-ObjectCode"><span class="nav-number">4.2.1.</span> <span class="nav-text">轉成「目的碼」(ObjectCode)</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#連結器"><span class="nav-number">4.3.</span> <span class="nav-text">連結器</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#連結"><span class="nav-number">4.3.1.</span> <span class="nav-text">連結</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#產出執行檔"><span class="nav-number">4.3.2.</span> <span class="nav-text">產出執行檔</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#執行程式分成兩階段"><span class="nav-number">5.</span> <span class="nav-text">執行程式分成兩階段</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#編譯階段"><span class="nav-number">5.1.</span> <span class="nav-text">編譯階段</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#執行階段"><span class="nav-number">5.2.</span> <span class="nav-text">執行階段</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -774,9 +789,9 @@
     
       <script type="text/javascript">
         var disqus_config = function () {
-          this.page.url = 'https://teddybearfp.github.io/2018/10/24/C-監聽QEvent並將事件重寫/';
-          this.page.identifier = '2018/10/24/C-監聽QEvent並將事件重寫/';
-          this.page.title = 'QEvent攔截事件';
+          this.page.url = 'https://teddybearfp.github.io/2018/11/02/C-compile/';
+          this.page.identifier = '2018/11/02/C-compile/';
+          this.page.title = 'C/C++編譯流程';
         };
         var d = document, s = d.createElement('script');
         s.src = 'https://teddybearfp.disqus.com/embed.js';
