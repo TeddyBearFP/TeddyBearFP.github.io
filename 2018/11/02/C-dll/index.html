@@ -81,20 +81,20 @@
 
 
 
-<meta name="description" content="編寫C語言dll用純C去編寫的dll彈性比較高，在各語言導入比較沒有相容性問題 先在專案new subproject中選擇library新增 DataProc_global.h123456789101112#ifndef DATAPROC_GLOBAL_H#define DATAPROC_GLOBAL_H#include &amp;lt;QtCore/qglobal.h&amp;gt;#if defined(DA">
+<meta name="description" content="前言動態連結函式庫Dynamic-link library，縮寫為DLL所謂動態連結，就是把一些經常會共用的程式碼（靜態連結的OBJ程式庫）製作成DLL檔，當執行檔呼叫到DLL檔內的函式時，Windows作業系統才會把DLL檔載入記憶體內，DLL檔本身的結構就是可執行檔，當程式有需求時函式才進行連結。透過動態連結方式，記憶體浪費的情形將可大幅降低。靜態連結函式庫則是直接連結到執行檔。透過dll製作">
 <meta name="keywords" content="DLL">
 <meta property="og:type" content="article">
 <meta property="og:title" content="C&#x2F;C++ DLL編寫">
 <meta property="og:url" content="https://teddybearfp.github.io/2018/11/02/C-dll/index.html">
 <meta property="og:site_name" content="泰迪熊的程式足跡">
-<meta property="og:description" content="編寫C語言dll用純C去編寫的dll彈性比較高，在各語言導入比較沒有相容性問題 先在專案new subproject中選擇library新增 DataProc_global.h123456789101112#ifndef DATAPROC_GLOBAL_H#define DATAPROC_GLOBAL_H#include &amp;lt;QtCore/qglobal.h&amp;gt;#if defined(DA">
+<meta property="og:description" content="前言動態連結函式庫Dynamic-link library，縮寫為DLL所謂動態連結，就是把一些經常會共用的程式碼（靜態連結的OBJ程式庫）製作成DLL檔，當執行檔呼叫到DLL檔內的函式時，Windows作業系統才會把DLL檔載入記憶體內，DLL檔本身的結構就是可執行檔，當程式有需求時函式才進行連結。透過動態連結方式，記憶體浪費的情形將可大幅降低。靜態連結函式庫則是直接連結到執行檔。透過dll製作">
 <meta property="og:locale" content="zh-tw">
 <meta property="og:image" content="https://i.imgur.com/GdgVaj1.png">
 <meta property="og:image" content="https://i.imgur.com/pmZF7pE.png">
-<meta property="og:updated_time" content="2018-11-02T10:25:26.402Z">
+<meta property="og:updated_time" content="2018-11-02T13:44:45.834Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="C&#x2F;C++ DLL編寫">
-<meta name="twitter:description" content="編寫C語言dll用純C去編寫的dll彈性比較高，在各語言導入比較沒有相容性問題 先在專案new subproject中選擇library新增 DataProc_global.h123456789101112#ifndef DATAPROC_GLOBAL_H#define DATAPROC_GLOBAL_H#include &amp;lt;QtCore/qglobal.h&amp;gt;#if defined(DA">
+<meta name="twitter:description" content="前言動態連結函式庫Dynamic-link library，縮寫為DLL所謂動態連結，就是把一些經常會共用的程式碼（靜態連結的OBJ程式庫）製作成DLL檔，當執行檔呼叫到DLL檔內的函式時，Windows作業系統才會把DLL檔載入記憶體內，DLL檔本身的結構就是可執行檔，當程式有需求時函式才進行連結。透過動態連結方式，記憶體浪費的情形將可大幅降低。靜態連結函式庫則是直接連結到執行檔。透過dll製作">
 <meta name="twitter:image" content="https://i.imgur.com/GdgVaj1.png">
 
 
@@ -390,7 +390,8 @@
       
 
       
-        <h2 id="編寫C語言dll"><a href="#編寫C語言dll" class="headerlink" title="編寫C語言dll"></a>編寫C語言dll</h2><p>用純C去編寫的dll彈性比較高，在各語言導入比較沒有相容性問題</p>
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>動態連結函式庫Dynamic-link library，縮寫為DLL所謂動態連結，就是把一些經常會共用的程式碼（靜態連結的OBJ程式庫）製作成DLL檔，當執行檔呼叫到DLL檔內的函式時，Windows作業系統才會把DLL檔載入記憶體內，DLL檔本身的結構就是可執行檔，當程式有需求時函式才進行連結。透過動態連結方式，記憶體浪費的情形將可大幅降低。靜態連結函式庫則是直接連結到執行檔。透過dll製作，在專案的協作上是必備的技能</p>
+<h2 id="編寫C語言dll"><a href="#編寫C語言dll" class="headerlink" title="編寫C語言dll"></a>編寫C語言dll</h2><p>用純C去編寫的dll彈性比較高，在各語言導入比較沒有相容性問題</p>
 <p>先在專案new subproject中選擇library新增</p>
 <p>DataProc_global.h<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">ifndef</span> DATAPROC_GLOBAL_H</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> DATAPROC_GLOBAL_H</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;QtCore/qglobal.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">if</span> defined(DATAPROC_LIBRARY)</span></span><br><span class="line"><span class="meta">#  <span class="meta-keyword">define</span> DATAPROCSHARED_EXPORT Q_DECL_EXPORT</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">else</span></span></span><br><span class="line"><span class="meta">#  <span class="meta-keyword">define</span> DATAPROCSHARED_EXPORT Q_DECL_IMPORT</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span> <span class="comment">// CVDATAPROC_GLOBAL_H</span></span></span><br></pre></td></tr></table></figure></p>
 <p>DataProc.h</p>
@@ -403,18 +404,19 @@
 </blockquote>
 <p>\$\$OUT_PWD : build出來的資料夾中主程式的位置<br>\$\$PWD : 專案.pro檔的位置</p>
 <p>將編譯好的dll導入到與exe同一層寫法如下<br>Debug:DESTDIR = ../DataProc(專案名稱)/debug<br>Release:DESTDIR = ../DataProc(專案名稱)/release</p>
-<p>搭配上述寫法的話\$\$OUT_PWD/release/此段要注意不需切換到別層<br>win32:CONFIG(release, debug|release): LIBS += -L$\$OUT_PWD/release/ -lfindContours<br>else:win32:CONFIG(debug, debug|release): LIBS += -L$$OUT_PWD/debug/ -lfindContours</p>
-<p>INCLUDEPATH += \$$PWD/../findContours<br>DEPENDPATH += $$PWD/../findContours</p>
+<p>搭配上述寫法的話$$OUT_PWD/release/此段要注意不需切換到別層<br>win32:CONFIG(release, debug|release): LIBS += -L$$OUT_PWD/release/ -lfindContours<br>else:win32:CONFIG(debug, debug|release): LIBS += -L$$OUT_PWD/debug/ -lfindContours</p>
+<p>INCLUDEPATH += $$PWD/../findContours<br>DEPENDPATH += $$PWD/../findContours</p>
 <hr>
 <p><img src="https://i.imgur.com/pmZF7pE.png" alt=""></p>
 <h3 id="外部導入-第三方或協作的dll"><a href="#外部導入-第三方或協作的dll" class="headerlink" title="外部導入(第三方或協作的dll)"></a>外部導入(第三方或協作的dll)</h3><p>一般dll導入 add library &gt;&gt; external library &gt;&gt; 選擇路徑<br>win32: LIBS += -L$$PWD/../CVCamera/ -lCVCamera</p>
-<p>INCLUDEPATH += \$$PWD/../CVCamera<br>DEPENDPATH += $$PWD/../CVCamera</p>
+<p>INCLUDEPATH += $$PWD/../CVCamera<br>DEPENDPATH += $$PWD/../CVCamera</p>
 <hr>
-<h3 id="內部導入-自己編寫或是有原始碼的dll"><a href="#內部導入-自己編寫或是有原始碼的dll" class="headerlink" title="內部導入(自己編寫或是有原始碼的dll)"></a>內部導入(自己編寫或是有原始碼的dll)</h3><p>自己寫的dll導入 add library &gt;&gt; internal library &gt;&gt; 選擇名稱<br>win32:CONFIG(release, debug|release): LIBS += -L\$$OUT_PWD/release/ -lDataProc<br>else:win32:CONFIG(debug, debug|release): LIBS += -L\$$OUT_PWD/debug/ -lDataProc</p>
-<p>INCLUDEPATH += \$$PWD/../DataProc<br>DEPENDPATH += $$PWD/../fDataProc</p>
+<h3 id="內部導入-自己編寫或是有原始碼的dll"><a href="#內部導入-自己編寫或是有原始碼的dll" class="headerlink" title="內部導入(自己編寫或是有原始碼的dll)"></a>內部導入(自己編寫或是有原始碼的dll)</h3><p>自己寫的dll導入 add library &gt;&gt; internal library &gt;&gt; 選擇名稱<br>win32:CONFIG(release, debug|release): LIBS += -L$$OUT_PWD/release/ -lDataProc<br>else:win32:CONFIG(debug, debug|release): LIBS += -L$$OUT_PWD/debug/ -lDataProc</p>
+<p>INCLUDEPATH += $$PWD/../DataProc<br>DEPENDPATH += $$PWD/../fDataProc</p>
 <hr>
 <h2 id="dll放置位置"><a href="#dll放置位置" class="headerlink" title="dll放置位置"></a>dll放置位置</h2><p>External Library(第三方或是協作的DLL)<br>放在與專案.pro同層中的SDKs裡面</p>
 <p>Internal Library(自行建立的DLL)<br>放在與專案.pro同層中的檔案夾內</p>
+<p>參考資料:<br>維基百科 動態連結函式庫:<a href="https://zh.wikipedia.org/wiki/%E5%8A%A8%E6%80%81%E9%93%BE%E6%8E%A5%E5%BA%93" target="_blank" rel="noopener">https://zh.wikipedia.org/wiki/%E5%8A%A8%E6%80%81%E9%93%BE%E6%8E%A5%E5%BA%93</a></p>
 
       
     </div>
@@ -591,7 +593,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#編寫C語言dll"><span class="nav-number">1.</span> <span class="nav-text">編寫C語言dll</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#導入dll"><span class="nav-number">2.</span> <span class="nav-text">導入dll</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#外部導入-第三方或協作的dll"><span class="nav-number">2.1.</span> <span class="nav-text">外部導入(第三方或協作的dll)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#內部導入-自己編寫或是有原始碼的dll"><span class="nav-number">2.2.</span> <span class="nav-text">內部導入(自己編寫或是有原始碼的dll)</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#dll放置位置"><span class="nav-number">3.</span> <span class="nav-text">dll放置位置</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#編寫C語言dll"><span class="nav-number">2.</span> <span class="nav-text">編寫C語言dll</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#導入dll"><span class="nav-number">3.</span> <span class="nav-text">導入dll</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#外部導入-第三方或協作的dll"><span class="nav-number">3.1.</span> <span class="nav-text">外部導入(第三方或協作的dll)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#內部導入-自己編寫或是有原始碼的dll"><span class="nav-number">3.2.</span> <span class="nav-text">內部導入(自己編寫或是有原始碼的dll)</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#dll放置位置"><span class="nav-number">4.</span> <span class="nav-text">dll放置位置</span></a></li></ol></div>
             
 
           </div>
