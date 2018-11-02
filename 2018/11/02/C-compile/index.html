@@ -90,7 +90,7 @@
 <meta property="og:description" content="C/C++特性在 C/C++ 語言裡都要明確地指定，程式中必須明確指定每一筆資料的型態和儲存方式，所以 C/C++ 語言被稱為強型別(strong type)語言。 名詞簡介建置(build)執行檔的過程包括編譯和連結。編譯器(compiler)把原始碼變成機械碼。連結器(linker)把多份機械碼合併成執行檔，並更正檔案內的參考位址(address)。程式庫檔案(.lib)只不過是一些機械碼檔案">
 <meta property="og:locale" content="zh-tw">
 <meta property="og:image" content="https://i.imgur.com/FYOgmWq.png">
-<meta property="og:updated_time" content="2018-11-02T09:49:25.733Z">
+<meta property="og:updated_time" content="2018-11-02T14:03:00.436Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="C&#x2F;C++編譯流程">
 <meta name="twitter:description" content="C/C++特性在 C/C++ 語言裡都要明確地指定，程式中必須明確指定每一筆資料的型態和儲存方式，所以 C/C++ 語言被稱為強型別(strong type)語言。 名詞簡介建置(build)執行檔的過程包括編譯和連結。編譯器(compiler)把原始碼變成機械碼。連結器(linker)把多份機械碼合併成執行檔，並更正檔案內的參考位址(address)。程式庫檔案(.lib)只不過是一些機械碼檔案">
@@ -394,6 +394,7 @@
 <h2 id="流程圖"><a href="#流程圖" class="headerlink" title="流程圖"></a>流程圖</h2><p><img src="https://i.imgur.com/FYOgmWq.png" alt=""></p>
 <h2 id="編譯步驟"><a href="#編譯步驟" class="headerlink" title="編譯步驟"></a>編譯步驟</h2><h3 id="編譯器"><a href="#編譯器" class="headerlink" title="編譯器"></a>編譯器</h3><h4 id="檢查語法錯誤-SyntaxError"><a href="#檢查語法錯誤-SyntaxError" class="headerlink" title="檢查語法錯誤(SyntaxError)"></a>檢查語法錯誤(SyntaxError)</h4><p>例如多打了符號或括號數目不平衡等，那麼編譯器就看不懂你的程式。</p>
 <h4 id="檢查語義錯誤-SemanticError"><a href="#檢查語義錯誤-SemanticError" class="headerlink" title="檢查語義錯誤(SemanticError)"></a>檢查語義錯誤(SemanticError)</h4><p>例如你用了未經宣告的變數，就算編譯器看得懂，但是也不懂得如何編譯你的程式。</p>
+<p>####檢查宣告與型態<br>如果有變數是透過 include 而來的，在檢查過程中也會去參考其他有 include 到的檔案該變數是否被宣告過或是變數型態錯誤</p>
 <h4 id="通過編譯"><a href="#通過編譯" class="headerlink" title="通過編譯"></a>通過編譯</h4><p>當沒有任何錯誤後，編譯器會把程式內每個句子轉成更低階的語言，一般來說是指「組合語言」(Assembly)方式。</p>
 <h3 id="組譯器"><a href="#組譯器" class="headerlink" title="組譯器"></a>組譯器</h3><h4 id="轉成「目的碼」-ObjectCode"><a href="#轉成「目的碼」-ObjectCode" class="headerlink" title="轉成「目的碼」(ObjectCode)"></a>轉成「目的碼」(ObjectCode)</h4><p>組譯過程就會把每個組合語言句子轉成「機械語言」(MachineCode)這種方式稱為「目的碼」(ObjectCode)，產生另一個檔案”file.obj”。</p>
 <h3 id="連結器"><a href="#連結器" class="headerlink" title="連結器"></a>連結器</h3><h4 id="連結"><a href="#連結" class="headerlink" title="連結"></a>連結</h4><p>最後到了「連結」(Link)過程，就會把你的程式、有關的程式和程式庫所產生出來的*.obj，<br>轉成可以在電腦上執行的方式。</p>
