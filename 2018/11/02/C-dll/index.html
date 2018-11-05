@@ -81,20 +81,20 @@
 
 
 
-<meta name="description" content="前言專案合作上，常常使用到動態連結函式庫，因為它可以將記憶體浪費的情形將可大幅降低，並且很適合協作開發，一直都沒很了解extern “C”，而且導入的時候或是連結的時候有時候都會發生問題，所以紀錄了這一篇一探究竟並且避免錯誤重複發生。 動態連結函式庫動態連結函式庫Dynamic-link library，縮寫為DLL所謂動態連結，就是把一些經常會共用的程式碼（靜態連結的OBJ程式庫）製作成DLL檔">
+<meta name="description" content="前言專案合作上，常常使用到動態連結函式庫，因為它可以將記憶體浪費的情形將可大幅降低，並且很適合協作開發，一直都沒很了解extern “C”，而且導入的時候或是連結的時候有時候都會發生問題，所以紀錄了這一篇一探究竟並且避免錯誤重複發生。 動態連結函式庫動態連結函式庫Dynamic-link library ，縮寫為DLL所謂動態連結，就是把一些經常會共用的程式碼（靜態連結的OBJ程式庫）製作成DLL">
 <meta name="keywords" content="DLL">
 <meta property="og:type" content="article">
 <meta property="og:title" content="C&#x2F;C++ DLL編寫">
 <meta property="og:url" content="https://teddybearfp.github.io/2018/11/02/C-dll/index.html">
 <meta property="og:site_name" content="泰迪熊的程式足跡">
-<meta property="og:description" content="前言專案合作上，常常使用到動態連結函式庫，因為它可以將記憶體浪費的情形將可大幅降低，並且很適合協作開發，一直都沒很了解extern “C”，而且導入的時候或是連結的時候有時候都會發生問題，所以紀錄了這一篇一探究竟並且避免錯誤重複發生。 動態連結函式庫動態連結函式庫Dynamic-link library，縮寫為DLL所謂動態連結，就是把一些經常會共用的程式碼（靜態連結的OBJ程式庫）製作成DLL檔">
+<meta property="og:description" content="前言專案合作上，常常使用到動態連結函式庫，因為它可以將記憶體浪費的情形將可大幅降低，並且很適合協作開發，一直都沒很了解extern “C”，而且導入的時候或是連結的時候有時候都會發生問題，所以紀錄了這一篇一探究竟並且避免錯誤重複發生。 動態連結函式庫動態連結函式庫Dynamic-link library ，縮寫為DLL所謂動態連結，就是把一些經常會共用的程式碼（靜態連結的OBJ程式庫）製作成DLL">
 <meta property="og:locale" content="zh-tw">
 <meta property="og:image" content="https://i.imgur.com/GdgVaj1.png">
 <meta property="og:image" content="https://i.imgur.com/pmZF7pE.png">
-<meta property="og:updated_time" content="2018-11-05T02:59:36.623Z">
+<meta property="og:updated_time" content="2018-11-05T03:01:41.659Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="C&#x2F;C++ DLL編寫">
-<meta name="twitter:description" content="前言專案合作上，常常使用到動態連結函式庫，因為它可以將記憶體浪費的情形將可大幅降低，並且很適合協作開發，一直都沒很了解extern “C”，而且導入的時候或是連結的時候有時候都會發生問題，所以紀錄了這一篇一探究竟並且避免錯誤重複發生。 動態連結函式庫動態連結函式庫Dynamic-link library，縮寫為DLL所謂動態連結，就是把一些經常會共用的程式碼（靜態連結的OBJ程式庫）製作成DLL檔">
+<meta name="twitter:description" content="前言專案合作上，常常使用到動態連結函式庫，因為它可以將記憶體浪費的情形將可大幅降低，並且很適合協作開發，一直都沒很了解extern “C”，而且導入的時候或是連結的時候有時候都會發生問題，所以紀錄了這一篇一探究竟並且避免錯誤重複發生。 動態連結函式庫動態連結函式庫Dynamic-link library ，縮寫為DLL所謂動態連結，就是把一些經常會共用的程式碼（靜態連結的OBJ程式庫）製作成DLL">
 <meta name="twitter:image" content="https://i.imgur.com/GdgVaj1.png">
 
 
@@ -391,7 +391,7 @@
 
       
         <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>專案合作上，常常使用到動態連結函式庫，因為它可以將記憶體浪費的情形將可大幅降低，並且很適合協作開發，一直都沒很了解extern “C”，而且導入的時候或是連結的時候有時候都會發生問題，所以紀錄了這一篇一探究竟並且避免錯誤重複發生。</p>
-<h2 id="動態連結函式庫"><a href="#動態連結函式庫" class="headerlink" title="動態連結函式庫"></a>動態連結函式庫</h2><p><em>動態連結函式庫Dynamic-link library</em>，縮寫為DLL所謂動態連結，就是把一些經常會共用的程式碼（靜態連結的OBJ程式庫）製作成DLL檔，當執行檔呼叫到DLL檔內的函式時，Windows作業系統才會把DLL檔載入記憶體內，DLL檔本身的結構就是可執行檔，<em>當程式有需求時函式才進行連結</em>。透過動態連結方式，<em>記憶體浪費的情形將可大幅降低</em>。<em>靜態連結函式庫則是直接連結到執行檔</em>。透過dll製作，在專案的協作上是必備的技能</p>
+<h2 id="動態連結函式庫"><a href="#動態連結函式庫" class="headerlink" title="動態連結函式庫"></a>動態連結函式庫</h2><p><strong>動態連結函式庫Dynamic-link library</strong> ，縮寫為DLL所謂動態連結，就是把一些經常會共用的程式碼（靜態連結的OBJ程式庫）製作成DLL檔，當執行檔呼叫到DLL檔內的函式時，Windows作業系統才會把DLL檔載入記憶體內，DLL檔本身的結構就是可執行檔，<strong>當程式有需求時函式才進行連結</strong> 。透過動態連結方式，<strong>記憶體浪費的情形將可大幅降低</strong> 。<strong>靜態連結函式庫則是直接連結到執行檔</strong> 。透過dll製作，在專案的協作上是必備的技能</p>
 <h2 id="關於-ifdef-cplusplus-endif-cplusplus及發散"><a href="#關於-ifdef-cplusplus-endif-cplusplus及發散" class="headerlink" title="關於#ifdef _cplusplus/#endif _cplusplus及發散"></a>關於#ifdef _cplusplus/#endif _cplusplus及發散</h2><p>避免重複包含頭文件</p>
 <h2 id="編寫C語言dll"><a href="#編寫C語言dll" class="headerlink" title="編寫C語言dll"></a>編寫C語言dll</h2><p>用純C去編寫的dll彈性比較高，在各語言導入比較沒有相容性問題</p>
 <p>先在專案new subproject中選擇library新增</p>
@@ -421,8 +421,7 @@
 <hr>
 <h2 id="dll放置位置"><a href="#dll放置位置" class="headerlink" title="dll放置位置"></a>dll放置位置</h2><p>External Library(第三方或是協作的DLL)<br>放在與專案.pro同層中的SDKs裡面</p>
 <p>Internal Library(自行建立的DLL)<br>放在與專案.pro同層中的檔案夾內</p>
-<p>參考資料:</p>
-<p>維基百科動態連結函式庫: <a href="https://zh.wikipedia.org/wiki/%E5%8A%A8%E6%80%81%E9%93%BE%E6%8E%A5%E5%BA%93" target="_blank" rel="noopener">https://zh.wikipedia.org/wiki/%E5%8A%A8%E6%80%81%E9%93%BE%E6%8E%A5%E5%BA%93</a><br>C++項目中的extern “C” : <a href="https://www.cnblogs.com/skynet/archive/2010/07/10/1774964.html" target="_blank" rel="noopener">https://www.cnblogs.com/skynet/archive/2010/07/10/1774964.html</a></p>
+<p>參考資料:<br>維基百科動態連結函式庫: <a href="https://zh.wikipedia.org/wiki/%E5%8A%A8%E6%80%81%E9%93%BE%E6%8E%A5%E5%BA%93" target="_blank" rel="noopener">https://zh.wikipedia.org/wiki/%E5%8A%A8%E6%80%81%E9%93%BE%E6%8E%A5%E5%BA%93</a><br>C++項目中的extern “C” : <a href="https://www.cnblogs.com/skynet/archive/2010/07/10/1774964.html" target="_blank" rel="noopener">https://www.cnblogs.com/skynet/archive/2010/07/10/1774964.html</a></p>
 
       
     </div>
