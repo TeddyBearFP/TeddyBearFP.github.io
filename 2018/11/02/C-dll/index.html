@@ -91,7 +91,7 @@
 <meta property="og:locale" content="zh-tw">
 <meta property="og:image" content="https://i.imgur.com/GdgVaj1.png">
 <meta property="og:image" content="https://i.imgur.com/pmZF7pE.png">
-<meta property="og:updated_time" content="2018-11-05T05:43:29.421Z">
+<meta property="og:updated_time" content="2018-11-05T05:57:59.620Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="C&#x2F;C++ 動態連結函式庫">
 <meta name="twitter:description" content="前言專案合作上，常常使用到動態連結函式庫，因為它可以將記憶體浪費的情形將可大幅降低，並且很適合協作開發，一直都沒很了解extern “C”真正意義，而且導入的時候或是連結的時候有時候都會發生問題，所以紀錄了這一篇一探究竟並且避免錯誤重複發生。 動態連結函式庫動態連結函式庫Dynamic-link library ，縮寫為DLL所謂動態連結，就是把一些經常會共用的程式碼（靜態連結的OBJ程式庫）製作">
@@ -429,7 +429,7 @@
 <blockquote>
 <p>Library file: lib位置<br>INCLUDEPATH: .h檔位置</p>
 </blockquote>
-<p>$$OUT_PWD : build出來的資料夾中主程式的位置<br>$$PWD : 專案.pro檔的位置</p>
+<p>$$OUT_PWD : build出來的資料夾中主程式的位置(看的到debug/release那一層)<br>$$PWD : 專案.pro檔的位置</p>
 <p>將編譯好的dll導入到與exe同一層寫法如下<br>Debug:DESTDIR = ../DataProc(專案名稱)/debug<br>Release:DESTDIR = ../DataProc(專案名稱)/release</p>
 <p>搭配上述寫法的話$$OUT_PWD/release/此段要注意不需切換到別層<br>win32:CONFIG(release, debug|release): LIBS += -L$$OUT_PWD/release/ -lfindContours<br>else:win32:CONFIG(debug, debug|release): LIBS += -L$$OUT_PWD/debug/ -lfindContours</p>
 <p>INCLUDEPATH += $$PWD/../findContours<br>DEPENDPATH += $$PWD/../findContours</p>
