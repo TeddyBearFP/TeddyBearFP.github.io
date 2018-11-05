@@ -81,20 +81,20 @@
 
 
 
-<meta name="description" content="前言動態連結函式庫Dynamic-link library，縮寫為DLL所謂動態連結，就是把一些經常會共用的程式碼（靜態連結的OBJ程式庫）製作成DLL檔，當執行檔呼叫到DLL檔內的函式時，Windows作業系統才會把DLL檔載入記憶體內，DLL檔本身的結構就是可執行檔，當程式有需求時函式才進行連結。透過動態連結方式，記憶體浪費的情形將可大幅降低。靜態連結函式庫則是直接連結到執行檔。透過dll製作">
+<meta name="description" content="前言專案合作上，常常使用到動態連結函式庫，因為它可以將記憶體浪費的情形將可大幅降低，並且很適合協作開發，一直都沒很了解extern “C”，而且導入的時候或是連結的時候有時候都會發生問題，所以紀錄了這一篇一探究竟並且避免重複錯誤重複發生。 動態連結函式庫動態連結函式庫Dynamic-link library，縮寫為DLL所謂動態連結，就是把一些經常會共用的程式碼（靜態連結的OBJ程式庫）製作成DL">
 <meta name="keywords" content="DLL">
 <meta property="og:type" content="article">
 <meta property="og:title" content="C&#x2F;C++ DLL編寫">
 <meta property="og:url" content="https://teddybearfp.github.io/2018/11/02/C-dll/index.html">
 <meta property="og:site_name" content="泰迪熊的程式足跡">
-<meta property="og:description" content="前言動態連結函式庫Dynamic-link library，縮寫為DLL所謂動態連結，就是把一些經常會共用的程式碼（靜態連結的OBJ程式庫）製作成DLL檔，當執行檔呼叫到DLL檔內的函式時，Windows作業系統才會把DLL檔載入記憶體內，DLL檔本身的結構就是可執行檔，當程式有需求時函式才進行連結。透過動態連結方式，記憶體浪費的情形將可大幅降低。靜態連結函式庫則是直接連結到執行檔。透過dll製作">
+<meta property="og:description" content="前言專案合作上，常常使用到動態連結函式庫，因為它可以將記憶體浪費的情形將可大幅降低，並且很適合協作開發，一直都沒很了解extern “C”，而且導入的時候或是連結的時候有時候都會發生問題，所以紀錄了這一篇一探究竟並且避免重複錯誤重複發生。 動態連結函式庫動態連結函式庫Dynamic-link library，縮寫為DLL所謂動態連結，就是把一些經常會共用的程式碼（靜態連結的OBJ程式庫）製作成DL">
 <meta property="og:locale" content="zh-tw">
 <meta property="og:image" content="https://i.imgur.com/GdgVaj1.png">
 <meta property="og:image" content="https://i.imgur.com/pmZF7pE.png">
-<meta property="og:updated_time" content="2018-11-02T14:28:11.720Z">
+<meta property="og:updated_time" content="2018-11-05T02:55:40.543Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="C&#x2F;C++ DLL編寫">
-<meta name="twitter:description" content="前言動態連結函式庫Dynamic-link library，縮寫為DLL所謂動態連結，就是把一些經常會共用的程式碼（靜態連結的OBJ程式庫）製作成DLL檔，當執行檔呼叫到DLL檔內的函式時，Windows作業系統才會把DLL檔載入記憶體內，DLL檔本身的結構就是可執行檔，當程式有需求時函式才進行連結。透過動態連結方式，記憶體浪費的情形將可大幅降低。靜態連結函式庫則是直接連結到執行檔。透過dll製作">
+<meta name="twitter:description" content="前言專案合作上，常常使用到動態連結函式庫，因為它可以將記憶體浪費的情形將可大幅降低，並且很適合協作開發，一直都沒很了解extern “C”，而且導入的時候或是連結的時候有時候都會發生問題，所以紀錄了這一篇一探究竟並且避免重複錯誤重複發生。 動態連結函式庫動態連結函式庫Dynamic-link library，縮寫為DLL所謂動態連結，就是把一些經常會共用的程式碼（靜態連結的OBJ程式庫）製作成DL">
 <meta name="twitter:image" content="https://i.imgur.com/GdgVaj1.png">
 
 
@@ -390,7 +390,8 @@
       
 
       
-        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>動態連結函式庫Dynamic-link library，縮寫為DLL所謂動態連結，就是把一些經常會共用的程式碼（靜態連結的OBJ程式庫）製作成DLL檔，當執行檔呼叫到DLL檔內的函式時，Windows作業系統才會把DLL檔載入記憶體內，DLL檔本身的結構就是可執行檔，當程式有需求時函式才進行連結。透過動態連結方式，記憶體浪費的情形將可大幅降低。靜態連結函式庫則是直接連結到執行檔。透過dll製作，在專案的協作上是必備的技能</p>
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>專案合作上，常常使用到動態連結函式庫，因為它可以將記憶體浪費的情形將可大幅降低，並且很適合協作開發，一直都沒很了解extern “C”，而且導入的時候或是連結的時候有時候都會發生問題，所以紀錄了這一篇一探究竟並且避免重複錯誤重複發生。</p>
+<h2 id="動態連結函式庫"><a href="#動態連結函式庫" class="headerlink" title="動態連結函式庫"></a>動態連結函式庫</h2><p>動態連結函式庫Dynamic-link library，縮寫為DLL所謂動態連結，就是把一些經常會共用的程式碼（靜態連結的OBJ程式庫）製作成DLL檔，當執行檔呼叫到DLL檔內的函式時，Windows作業系統才會把DLL檔載入記憶體內，DLL檔本身的結構就是可執行檔，當程式有需求時函式才進行連結。透過動態連結方式，記憶體浪費的情形將可大幅降低。靜態連結函式庫則是直接連結到執行檔。透過dll製作，在專案的協作上是必備的技能</p>
 <h2 id="關於-ifdef-cplusplus-endif-cplusplus及發散"><a href="#關於-ifdef-cplusplus-endif-cplusplus及發散" class="headerlink" title="關於#ifdef _cplusplus/#endif _cplusplus及發散"></a>關於#ifdef _cplusplus/#endif _cplusplus及發散</h2><p>避免重複包含頭文件</p>
 <h2 id="編寫C語言dll"><a href="#編寫C語言dll" class="headerlink" title="編寫C語言dll"></a>編寫C語言dll</h2><p>用純C去編寫的dll彈性比較高，在各語言導入比較沒有相容性問題</p>
 <p>先在專案new subproject中選擇library新增</p>
@@ -597,7 +598,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#關於-ifdef-cplusplus-endif-cplusplus及發散"><span class="nav-number">2.</span> <span class="nav-text">關於#ifdef _cplusplus/#endif _cplusplus及發散</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#編寫C語言dll"><span class="nav-number">3.</span> <span class="nav-text">編寫C語言dll</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#導入dll"><span class="nav-number">4.</span> <span class="nav-text">導入dll</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#外部導入-第三方或協作的dll"><span class="nav-number">4.1.</span> <span class="nav-text">外部導入(第三方或協作的dll)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#內部導入-自己編寫或是有原始碼的dll"><span class="nav-number">4.2.</span> <span class="nav-text">內部導入(自己編寫或是有原始碼的dll)</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#dll放置位置"><span class="nav-number">5.</span> <span class="nav-text">dll放置位置</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#動態連結函式庫"><span class="nav-number">2.</span> <span class="nav-text">動態連結函式庫</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#關於-ifdef-cplusplus-endif-cplusplus及發散"><span class="nav-number">3.</span> <span class="nav-text">關於#ifdef _cplusplus/#endif _cplusplus及發散</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#編寫C語言dll"><span class="nav-number">4.</span> <span class="nav-text">編寫C語言dll</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#導入dll"><span class="nav-number">5.</span> <span class="nav-text">導入dll</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#外部導入-第三方或協作的dll"><span class="nav-number">5.1.</span> <span class="nav-text">外部導入(第三方或協作的dll)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#內部導入-自己編寫或是有原始碼的dll"><span class="nav-number">5.2.</span> <span class="nav-text">內部導入(自己編寫或是有原始碼的dll)</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#dll放置位置"><span class="nav-number">6.</span> <span class="nav-text">dll放置位置</span></a></li></ol></div>
             
 
           </div>
