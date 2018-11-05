@@ -70,7 +70,7 @@
 
 
 
-  <meta name="keywords" content="DLL">
+  <meta name="keywords" content="DLL,動態連結函式庫">
 
 
 
@@ -82,18 +82,18 @@
 
 
 <meta name="description" content="前言專案合作上，常常使用到動態連結函式庫，因為它可以將記憶體浪費的情形將可大幅降低，並且很適合協作開發，一直都沒很了解extern “C”真正意義，而且導入的時候或是連結的時候有時候都會發生問題，所以紀錄了這一篇一探究竟並且避免錯誤重複發生。 動態連結函式庫動態連結函式庫Dynamic-link library ，縮寫為DLL所謂動態連結，就是把一些經常會共用的程式碼（靜態連結的OBJ程式庫）製作">
-<meta name="keywords" content="DLL">
+<meta name="keywords" content="DLL,動態連結函式庫">
 <meta property="og:type" content="article">
-<meta property="og:title" content="C&#x2F;C++ DLL編寫">
+<meta property="og:title" content="C&#x2F;C++ 動態連結函式庫">
 <meta property="og:url" content="https://teddybearfp.github.io/2018/11/02/C-dll/index.html">
 <meta property="og:site_name" content="泰迪熊的程式足跡">
 <meta property="og:description" content="前言專案合作上，常常使用到動態連結函式庫，因為它可以將記憶體浪費的情形將可大幅降低，並且很適合協作開發，一直都沒很了解extern “C”真正意義，而且導入的時候或是連結的時候有時候都會發生問題，所以紀錄了這一篇一探究竟並且避免錯誤重複發生。 動態連結函式庫動態連結函式庫Dynamic-link library ，縮寫為DLL所謂動態連結，就是把一些經常會共用的程式碼（靜態連結的OBJ程式庫）製作">
 <meta property="og:locale" content="zh-tw">
 <meta property="og:image" content="https://i.imgur.com/GdgVaj1.png">
 <meta property="og:image" content="https://i.imgur.com/pmZF7pE.png">
-<meta property="og:updated_time" content="2018-11-05T03:42:47.691Z">
+<meta property="og:updated_time" content="2018-11-05T03:44:26.056Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="C&#x2F;C++ DLL編寫">
+<meta name="twitter:title" content="C&#x2F;C++ 動態連結函式庫">
 <meta name="twitter:description" content="前言專案合作上，常常使用到動態連結函式庫，因為它可以將記憶體浪費的情形將可大幅降低，並且很適合協作開發，一直都沒很了解extern “C”真正意義，而且導入的時候或是連結的時候有時候都會發生問題，所以紀錄了這一篇一探究竟並且避免錯誤重複發生。 動態連結函式庫動態連結函式庫Dynamic-link library ，縮寫為DLL所謂動態連結，就是把一些經常會共用的程式碼（靜態連結的OBJ程式庫）製作">
 <meta name="twitter:image" content="https://i.imgur.com/GdgVaj1.png">
 
@@ -131,7 +131,7 @@
 
 
 
-  <title>C/C++ DLL編寫 | 泰迪熊的程式足跡</title>
+  <title>C/C++ 動態連結函式庫 | 泰迪熊的程式足跡</title>
   
 <script>
   window.fbAsyncInit = function() {
@@ -303,7 +303,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">C/C++ DLL編寫</h1>
+          <h1 class="post-title" itemprop="name headline">C/C++ 動態連結函式庫</h1>
         
 
         <div class="post-meta">
@@ -455,6 +455,8 @@
           
             <a href="/tags/DLL/" rel="tag"><i class="fa fa-tag"></i> DLL</a>
           
+            <a href="/tags/動態連結函式庫/" rel="tag"><i class="fa fa-tag"></i> 動態連結函式庫</a>
+          
         </div>
       
 
@@ -579,7 +581,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">22</span>
+                  <span class="site-state-item-count">23</span>
                   <span class="site-state-item-name">標籤</span>
                 </a>
               </div>
@@ -806,7 +808,7 @@
         var disqus_config = function () {
           this.page.url = 'https://teddybearfp.github.io/2018/11/02/C-dll/';
           this.page.identifier = '2018/11/02/C-dll/';
-          this.page.title = 'C/C++ DLL編寫';
+          this.page.title = 'C/C++ 動態連結函式庫';
         };
         var d = document, s = d.createElement('script');
         s.src = 'https://teddybearfp.disqus.com/embed.js';
