@@ -90,7 +90,7 @@
 <meta property="og:description" content="前言最近做專案整合的時候，要將他人編寫的程式碼整合在一起，常常會有錯誤發生，這時如果很清楚問題所在，就能將問題迎刃而解，像是清楚的了解是在編譯時就發生錯誤是語法錯誤還是語意錯誤，產生obj檔了嗎?或是DLL導入時才發生錯誤呢?所以我趁這個機會來好好複習一下之前所學的程式語言，將發生的錯誤歸類一下，了解來龍去脈更能有效率的除錯! 簡介建置(build)執行檔的過程包括編譯和連結。編譯器(compil">
 <meta property="og:locale" content="zh-tw">
 <meta property="og:image" content="https://i.imgur.com/A3s5UL9.jpg">
-<meta property="og:updated_time" content="2018-11-05T07:27:47.149Z">
+<meta property="og:updated_time" content="2018-11-06T02:52:16.395Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="C&#x2F;C++ 編譯流程">
 <meta name="twitter:description" content="前言最近做專案整合的時候，要將他人編寫的程式碼整合在一起，常常會有錯誤發生，這時如果很清楚問題所在，就能將問題迎刃而解，像是清楚的了解是在編譯時就發生錯誤是語法錯誤還是語意錯誤，產生obj檔了嗎?或是DLL導入時才發生錯誤呢?所以我趁這個機會來好好複習一下之前所學的程式語言，將發生的錯誤歸類一下，了解來龍去脈更能有效率的除錯! 簡介建置(build)執行檔的過程包括編譯和連結。編譯器(compil">
@@ -416,7 +416,7 @@
 </ul>
 <pre><code>沒找到Link函式入口則會有LINKERROR
 </code></pre><blockquote>
-<p>解決辦法:常見的LINKERROR是在.h宣告了卻未在cpp中未定義，所以可以檢查是不是有宣告並且定義了</p>
+<p>解決辦法:常見的LINKERROR是在.h宣告了卻未在cpp中未定義，所以可以檢查是不是有宣告並且定義了,或是檢查pro檔有沒有正確導入lib與header,同時檢查使用的地方有沒有#include “header”</p>
 </blockquote>
 <h3 id="執行階段"><a href="#執行階段" class="headerlink" title="執行階段"></a>執行階段</h3><p>執行程式</p>
 <pre><code>缺少DLL執行時會crash
