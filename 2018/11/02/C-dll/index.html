@@ -81,20 +81,20 @@
 
 
 
-<meta name="description" content="前言專案合作上，常常使用到動態連結函式庫，因為它可以將記憶體浪費的情形將可大幅降低，並且很適合協作開發，一直都沒很了解extern “C”真正意義，而且導入的時候或是連結的時候有時候都會發生問題，所以紀錄了這一篇一探究竟並且避免錯誤重複發生。 動態連結函式庫動態連結函式庫Dynamic-link library ，縮寫為DLL所謂動態連結，就是把一些經常會共用的程式碼（靜態連結的OBJ程式庫）製作">
+<meta name="description" content="前言專案合作上，經常使用到動態連結函式庫，因為它可以將記憶體浪費的情形將可大幅降低，並且很適合協作開發，一直都沒很了解extern “C”真正意義，而且導入的時候或是連結的時候有時候都會發生問題，所以紀錄了這一篇一探究竟並且避免錯誤重複發生。 動態連結函式庫動態連結函式庫Dynamic-link library ，縮寫為DLL所謂動態連結，就是把一些經常會共用的程式碼（靜態連結的OBJ程式庫）製作">
 <meta name="keywords" content="DLL,動態連結函式庫">
 <meta property="og:type" content="article">
 <meta property="og:title" content="C&#x2F;C++ 動態連結函式庫">
 <meta property="og:url" content="https://teddybearfp.github.io/2018/11/02/C-dll/index.html">
 <meta property="og:site_name" content="泰迪熊的程式足跡">
-<meta property="og:description" content="前言專案合作上，常常使用到動態連結函式庫，因為它可以將記憶體浪費的情形將可大幅降低，並且很適合協作開發，一直都沒很了解extern “C”真正意義，而且導入的時候或是連結的時候有時候都會發生問題，所以紀錄了這一篇一探究竟並且避免錯誤重複發生。 動態連結函式庫動態連結函式庫Dynamic-link library ，縮寫為DLL所謂動態連結，就是把一些經常會共用的程式碼（靜態連結的OBJ程式庫）製作">
+<meta property="og:description" content="前言專案合作上，經常使用到動態連結函式庫，因為它可以將記憶體浪費的情形將可大幅降低，並且很適合協作開發，一直都沒很了解extern “C”真正意義，而且導入的時候或是連結的時候有時候都會發生問題，所以紀錄了這一篇一探究竟並且避免錯誤重複發生。 動態連結函式庫動態連結函式庫Dynamic-link library ，縮寫為DLL所謂動態連結，就是把一些經常會共用的程式碼（靜態連結的OBJ程式庫）製作">
 <meta property="og:locale" content="zh-tw">
 <meta property="og:image" content="https://i.imgur.com/GdgVaj1.png">
 <meta property="og:image" content="https://i.imgur.com/pmZF7pE.png">
-<meta property="og:updated_time" content="2018-11-05T06:22:02.387Z">
+<meta property="og:updated_time" content="2018-11-06T06:45:34.860Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="C&#x2F;C++ 動態連結函式庫">
-<meta name="twitter:description" content="前言專案合作上，常常使用到動態連結函式庫，因為它可以將記憶體浪費的情形將可大幅降低，並且很適合協作開發，一直都沒很了解extern “C”真正意義，而且導入的時候或是連結的時候有時候都會發生問題，所以紀錄了這一篇一探究竟並且避免錯誤重複發生。 動態連結函式庫動態連結函式庫Dynamic-link library ，縮寫為DLL所謂動態連結，就是把一些經常會共用的程式碼（靜態連結的OBJ程式庫）製作">
+<meta name="twitter:description" content="前言專案合作上，經常使用到動態連結函式庫，因為它可以將記憶體浪費的情形將可大幅降低，並且很適合協作開發，一直都沒很了解extern “C”真正意義，而且導入的時候或是連結的時候有時候都會發生問題，所以紀錄了這一篇一探究竟並且避免錯誤重複發生。 動態連結函式庫動態連結函式庫Dynamic-link library ，縮寫為DLL所謂動態連結，就是把一些經常會共用的程式碼（靜態連結的OBJ程式庫）製作">
 <meta name="twitter:image" content="https://i.imgur.com/GdgVaj1.png">
 
 
@@ -390,7 +390,7 @@
       
 
       
-        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>專案合作上，常常使用到動態連結函式庫，因為它可以將記憶體浪費的情形將可大幅降低，並且很適合協作開發，一直都沒很了解extern “C”真正意義，而且導入的時候或是連結的時候有時候都會發生問題，所以紀錄了這一篇一探究竟並且避免錯誤重複發生。</p>
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>專案合作上，經常使用到動態連結函式庫，因為它可以將記憶體浪費的情形將可大幅降低，並且很適合協作開發，一直都沒很了解extern “C”真正意義，而且導入的時候或是連結的時候有時候都會發生問題，所以紀錄了這一篇一探究竟並且避免錯誤重複發生。</p>
 <h2 id="動態連結函式庫"><a href="#動態連結函式庫" class="headerlink" title="動態連結函式庫"></a>動態連結函式庫</h2><p><strong>動態連結函式庫Dynamic-link library</strong> ，縮寫為DLL所謂動態連結，就是把一些經常會共用的程式碼（靜態連結的OBJ程式庫）製作成DLL檔，當執行檔呼叫到DLL檔內的函式時，Windows作業系統才會把DLL檔載入記憶體內，DLL檔本身的結構就是可執行檔，<strong>當程式有需求時函式才進行連結</strong> 。透過動態連結方式，<strong>記憶體浪費的情形將可大幅降低</strong> 。<strong>靜態連結函式庫則是直接連結到執行檔</strong> 。透過dll製作，在專案的協作上是必備的技能</p>
 <h2 id="關於-ifdef-cplusplus-endif-cplusplus-很重要"><a href="#關於-ifdef-cplusplus-endif-cplusplus-很重要" class="headerlink" title="關於#ifdef cplusplus/#endif cplusplus(很重要)"></a>關於#ifdef <strong>cplusplus/#endif </strong>cplusplus(很重要)</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">ifndef</span> DATAPROC_HEADER_INCLUDED</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span>    DATAPROC_HEADER_INCLUDED</span></span><br><span class="line"> </span><br><span class="line"><span class="meta">#<span class="meta-keyword">ifdef</span> __cplusplus</span></span><br><span class="line"><span class="keyword">extern</span> <span class="string">"C"</span> &#123;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span> <span class="comment">/* __cplusplus */</span></span></span><br><span class="line"> </span><br><span class="line"><span class="comment">/*.................................</span></span><br><span class="line"><span class="comment"> * do something here</span></span><br><span class="line"><span class="comment"> *.................................</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">ifdef</span> __cplusplus</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span> <span class="comment">/* __cplusplus */</span></span></span><br><span class="line"> </span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span> <span class="comment">/* DATAPROC_HEADER_INCLUDED */</span></span></span><br></pre></td></tr></table></figure>
 <p>ifndef/endif條件編譯<br>上面程式碼，ifndef/endif的作用是<strong>避免重複包含header</strong> ，在#include上面這段程式碼時如果DEFINE __cplusplus則會進ifdef__cplusplus以extern “C”編譯</p>
