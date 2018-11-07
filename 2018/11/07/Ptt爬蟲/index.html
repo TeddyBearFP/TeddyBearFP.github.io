@@ -93,7 +93,7 @@
 <meta property="og:image" content="https://i.imgur.com/XEMUT0c.png">
 <meta property="og:image" content="https://i.imgur.com/arYoW4A.png">
 <meta property="og:image" content="https://i.imgur.com/CvskUx3.png">
-<meta property="og:updated_time" content="2018-11-07T14:10:13.972Z">
+<meta property="og:updated_time" content="2018-11-07T14:14:01.377Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Python 爬蟲幫你精選PTT文章!(靜態爬取)">
 <meta name="twitter:description" content="前言在朋友都是鄉民的情況下，在這一兩年才加入鄉民的行列，開始看一些八卦版、笑話版、科技版、薪資版…，逛各大板的同時，總覺得各版有不少廢文，一頁一頁慢慢滑，要看到優質好文章，實在有點耗時，這時就動手寫了個幫忙精選PTT文章的爬蟲，五樓有了這爬蟲之後考試都一百分了 名詞概述靜態頁面爬取所謂靜態頁面是指純粹的HTML格式的頁面，這樣的頁面在瀏覽器中呈現的內容都在HTML原始碼中。 sessionsess">
@@ -394,10 +394,7 @@
       
         <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>在朋友都是鄉民的情況下，在這一兩年才加入鄉民的行列，開始看一些八卦版、笑話版、科技版、薪資版…，逛各大板的同時，總覺得各版有不少廢文，一頁一頁慢慢滑，要看到優質好文章，實在有點耗時，這時就動手寫了個幫忙精選PTT文章的爬蟲，五樓有了這爬蟲之後考試都一百分了</p>
 <h2 id="名詞概述"><a href="#名詞概述" class="headerlink" title="名詞概述"></a>名詞概述</h2><h3 id="靜態頁面爬取"><a href="#靜態頁面爬取" class="headerlink" title="靜態頁面爬取"></a>靜態頁面爬取</h3><p>所謂靜態頁面是指純粹的HTML格式的頁面，這樣的頁面在瀏覽器中呈現的內容都在HTML原始碼中。</p>
-<h3 id="session"><a href="#session" class="headerlink" title="session"></a>session</h3><p>session，自動保存cookies，可以設置請求參數，下次請求自動帶上請求參數</p>
-<blockquote>
-<p>res = requests.Session()</p>
-</blockquote>
+<h3 id="session"><a href="#session" class="headerlink" title="session"></a>session</h3><p>session，自動保存cookies，可以設置請求參數，下次請求自動帶上請求參數<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">res = requests.Session()</span><br></pre></td></tr></table></figure></p>
 <h3 id="requests"><a href="#requests" class="headerlink" title="requests"></a>requests</h3><p>requests是一個很實用的Python HTTP客户端庫，編寫爬蟲和測試服務器響應數據時經常會用到。可以説，Requests 完全滿足如今網絡的需求</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">res  = requests.get(<span class="string">'https://www.google.com/'</span>)</span><br><span class="line">res.encoding = <span class="string">'utf-8'</span><span class="comment">#支援中文</span></span><br><span class="line">res.text <span class="comment">#返回get到的編碼解析的結果</span></span><br></pre></td></tr></table></figure>
 <blockquote>
