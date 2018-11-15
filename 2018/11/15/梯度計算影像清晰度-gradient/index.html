@@ -70,7 +70,7 @@
 
 
 
-  <meta name="keywords" content="Python,壓力測試,Stress Test">
+  <meta name="keywords" content="清晰度,梯度,gradient">
 
 
 
@@ -81,20 +81,20 @@
 
 
 
-<meta name="description" content="前言 最近有台平板引進，要測試是否適合搭載在機器上，這時候就要測試看看這台平板的能耐拉，就由小新肝我負責編寫一個簡易的程式讓他四核心滿載時時刻刻處於 CPU 100% (趨近)的狀況，持續一陣子之後檢測溫度看合不合格  運作原理 利用四條多進程 multiprocessing 寫無窮迴圈讓四顆核心滿載 一開始有嘗試用多執行緒multithreading但是python的先天限制保護得很好，讓CPU">
-<meta name="keywords" content="Python,壓力測試,Stress Test">
+<meta name="description" content="前言相機提供的訊息影響接下來對圖的運算，所以對焦有沒有清楚很重要，藉由梯度計算出來的數值，簡易的判別出是否屬於良好的對焦 梯度計算像素與右方、下方的差累加，可以得出一組梯度值(gradient)，對焦清晰的圖像相比對焦模糊的圖像，它的數據之間的灰度差異應該更大，即它的方差應該較大，可以通過圖像灰度數據的方差來衡量圖像的清晰度，方差越大，表示清晰度越好。  RGB圖用綠色的像素去做，因為綠色對光的反">
+<meta name="keywords" content="清晰度,梯度,gradient">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Python 如何編寫簡單的壓力測試程式">
-<meta property="og:url" content="https://teddybearfp.github.io/2018/10/25/PythonStressTest/index.html">
+<meta property="og:title" content="梯度計算影像清晰度">
+<meta property="og:url" content="https://teddybearfp.github.io/2018/11/15/梯度計算影像清晰度-gradient/index.html">
 <meta property="og:site_name" content="泰迪熊的程式足跡">
-<meta property="og:description" content="前言 最近有台平板引進，要測試是否適合搭載在機器上，這時候就要測試看看這台平板的能耐拉，就由小新肝我負責編寫一個簡易的程式讓他四核心滿載時時刻刻處於 CPU 100% (趨近)的狀況，持續一陣子之後檢測溫度看合不合格  運作原理 利用四條多進程 multiprocessing 寫無窮迴圈讓四顆核心滿載 一開始有嘗試用多執行緒multithreading但是python的先天限制保護得很好，讓CPU">
+<meta property="og:description" content="前言相機提供的訊息影響接下來對圖的運算，所以對焦有沒有清楚很重要，藉由梯度計算出來的數值，簡易的判別出是否屬於良好的對焦 梯度計算像素與右方、下方的差累加，可以得出一組梯度值(gradient)，對焦清晰的圖像相比對焦模糊的圖像，它的數據之間的灰度差異應該更大，即它的方差應該較大，可以通過圖像灰度數據的方差來衡量圖像的清晰度，方差越大，表示清晰度越好。  RGB圖用綠色的像素去做，因為綠色對光的反">
 <meta property="og:locale" content="zh-tw">
-<meta property="og:image" content="https://i.imgur.com/opDwDQm.png">
-<meta property="og:updated_time" content="2018-10-26T05:25:46.367Z">
+<meta property="og:image" content="https://i.imgur.com/iFQjM7v.png">
+<meta property="og:updated_time" content="2018-11-15T03:41:22.982Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Python 如何編寫簡單的壓力測試程式">
-<meta name="twitter:description" content="前言 最近有台平板引進，要測試是否適合搭載在機器上，這時候就要測試看看這台平板的能耐拉，就由小新肝我負責編寫一個簡易的程式讓他四核心滿載時時刻刻處於 CPU 100% (趨近)的狀況，持續一陣子之後檢測溫度看合不合格  運作原理 利用四條多進程 multiprocessing 寫無窮迴圈讓四顆核心滿載 一開始有嘗試用多執行緒multithreading但是python的先天限制保護得很好，讓CPU">
-<meta name="twitter:image" content="https://i.imgur.com/opDwDQm.png">
+<meta name="twitter:title" content="梯度計算影像清晰度">
+<meta name="twitter:description" content="前言相機提供的訊息影響接下來對圖的運算，所以對焦有沒有清楚很重要，藉由梯度計算出來的數值，簡易的判別出是否屬於良好的對焦 梯度計算像素與右方、下方的差累加，可以得出一組梯度值(gradient)，對焦清晰的圖像相比對焦模糊的圖像，它的數據之間的灰度差異應該更大，即它的方差應該較大，可以通過圖像灰度數據的方差來衡量圖像的清晰度，方差越大，表示清晰度越好。  RGB圖用綠色的像素去做，因為綠色對光的反">
+<meta name="twitter:image" content="https://i.imgur.com/iFQjM7v.png">
 
 
 
@@ -124,13 +124,13 @@
 
 
 
-  <link rel="canonical" href="https://teddybearfp.github.io/2018/10/25/PythonStressTest/">
+  <link rel="canonical" href="https://teddybearfp.github.io/2018/11/15/梯度計算影像清晰度-gradient/">
 
 
 
 
 
-  <title>Python 如何編寫簡單的壓力測試程式 | 泰迪熊的程式足跡</title>
+  <title>梯度計算影像清晰度 | 泰迪熊的程式足跡</title>
   
 <script>
   window.fbAsyncInit = function() {
@@ -285,7 +285,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://teddybearfp.github.io/2018/10/25/PythonStressTest/">
+    <link itemprop="mainEntityOfPage" href="https://teddybearfp.github.io/2018/11/15/梯度計算影像清晰度-gradient/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="G.C.L.">
@@ -302,7 +302,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Python 如何編寫簡單的壓力測試程式</h1>
+          <h1 class="post-title" itemprop="name headline">梯度計算影像清晰度</h1>
         
 
         <div class="post-meta">
@@ -314,8 +314,8 @@
               
                 <span class="post-meta-item-text">發表於</span>
               
-              <time title="創建於" itemprop="dateCreated datePublished" datetime="2018-10-25T09:55:16+08:00">
-                2018-10-25
+              <time title="創建於" itemprop="dateCreated datePublished" datetime="2018-11-15T10:05:16+08:00">
+                2018-11-15
               </time>
             
 
@@ -337,8 +337,8 @@
               
               
                 <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/Python/" itemprop="url" rel="index">
-                    <span itemprop="name">Python</span>
+                  <a href="/categories/C/" itemprop="url" rel="index">
+                    <span itemprop="name">C++</span>
                   </a>
                 </span>
 
@@ -355,8 +355,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2018/10/25/PythonStressTest/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count fb-comments-count" data-href="https://teddybearfp.github.io/2018/10/25/PythonStressTest/" itemprop="commentCount">0</span> comments
+                <a href="/2018/11/15/梯度計算影像清晰度-gradient/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count fb-comments-count" data-href="https://teddybearfp.github.io/2018/11/15/梯度計算影像清晰度-gradient/" itemprop="commentCount">0</span> comments
                 </a>
               </span>
             
@@ -389,20 +389,22 @@
       
 
       
-        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><blockquote>
-<p>最近有台平板引進，要測試是否適合搭載在機器上，這時候就要測試看看這台平板的能耐拉，就由小新肝我負責編寫一個簡易的程式讓他四核心滿載時時刻刻處於 <strong>CPU 100%</strong> (趨近)的狀況，持續一陣子之後檢測溫度看合不合格</p>
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>相機提供的訊息影響接下來對圖的運算，所以對焦有沒有清楚很重要，藉由梯度計算出來的數值，簡易的判別出是否屬於良好的對焦</p>
+<h2 id="梯度計算"><a href="#梯度計算" class="headerlink" title="梯度計算"></a>梯度計算</h2><p>像素與右方、下方的差累加，可以得出一組梯度值(gradient)，<br>對焦清晰的圖像相比對焦模糊的圖像，它的數據之間的灰度差異應該更大，即它的方差應該較大，可以通過圖像灰度數據的方差來衡量圖像的清晰度，方差越大，表示清晰度越好。</p>
+<ul>
+<li>RGB圖用綠色的像素去做，因為綠色對光的反應是最靈敏的</li>
+<li>每個G跟右邊、下方的比較</li>
+<li>最右排跟最下排不做</li>
+</ul>
+<p>由左上至右下</p>
+<p><img src="https://i.imgur.com/iFQjM7v.png" alt="" title="左上到右下計算"></p>
+<blockquote>
+<p>梯度 = ((G1-G2)+(G1-G4))+((G2-G3)+(G2-G5))+…<br>數值越大代表清晰度越好</p>
 </blockquote>
-<h2 id="運作原理"><a href="#運作原理" class="headerlink" title="運作原理"></a>運作原理</h2><ul>
-<li>利用四條多進程 <strong>multiprocessing</strong> 寫無窮迴圈讓四顆核心滿載</li>
-<li>一開始有嘗試用多執行緒multithreading但是python的先天限制保護得很好，讓CPU只能到3X%不能達到我們理想的趨近100%</li>
-</ul>
-<h2 id="KillCPU步驟"><a href="#KillCPU步驟" class="headerlink" title="KillCPU步驟"></a>KillCPU步驟</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> multiprocessing</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">looping</span><span class="params">()</span>:</span><span class="comment"># 無窮迴圈</span></span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        <span class="keyword">while</span> <span class="keyword">True</span>:</span><br><span class="line">            i = <span class="number">0</span></span><br><span class="line">            i += <span class="number">1</span></span><br><span class="line">    <span class="keyword">except</span> KeyboardInterrupt:</span><br><span class="line">        <span class="keyword">pass</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">"__main__"</span>:</span><br><span class="line">    <span class="comment">#這句打包exe一定要有以免memory爆掉</span></span><br><span class="line">    multiprocessing.freeze_support() <span class="comment">#multiprocessing.freeze_support()windows系统上是必须要有這句，因為windows的API不包含fork()</span></span><br><span class="line">    Processes = <span class="keyword">None</span></span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        Processes = [multiprocessing.Process(target=looping) <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">4</span>)]</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">for</span> p <span class="keyword">in</span> Processes:</span><br><span class="line">            p.daemon = <span class="keyword">True</span></span><br><span class="line">            p.start()</span><br><span class="line">        <span class="keyword">for</span> p <span class="keyword">in</span> Processes:</span><br><span class="line">            p.join()</span><br><span class="line">    <span class="keyword">except</span> KeyboardInterrupt:</span><br><span class="line">        <span class="keyword">for</span> p <span class="keyword">in</span> Processes:</span><br><span class="line">            p.terminate()</span><br><span class="line">        <span class="keyword">print</span> (<span class="string">"Kill all looping!!"</span>)</span><br></pre></td></tr></table></figure>
-<p><img src="https://i.imgur.com/opDwDQm.png" alt="" title="四顆核心做好做滿!!!"></p>
-<h2 id="Python-如何打包程式"><a href="#Python-如何打包程式" class="headerlink" title="Python 如何打包程式"></a>Python 如何打包程式</h2><h3 id="利用pyinstaller就能輕鬆達到打包成exe的效果囉"><a href="#利用pyinstaller就能輕鬆達到打包成exe的效果囉" class="headerlink" title="利用pyinstaller就能輕鬆達到打包成exe的效果囉~"></a>利用pyinstaller就能輕鬆達到打包成exe的效果囉~</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">pip3 install pyinstaller    //CMD安裝pyinstaller</span><br><span class="line"></span><br><span class="line">pyinstaller -F MultiLanguage.py -i teddybear.ico</span><br><span class="line">-F: 打包成一個執行檔</span><br><span class="line">-i: 換圖片</span><br></pre></td></tr></table></figure>
-<h3 id="注意事項"><a href="#注意事項" class="headerlink" title="注意事項"></a>注意事項</h3><ul>
-<li>如果是用64位元去編執行檔則只能在64位元上使用</li>
-<li>而32位元編譯的執行檔可以在64位元跟32位元下使用</li>
-</ul>
+<h2 id="算法"><a href="#算法" class="headerlink" title="算法"></a>算法</h2><p>640 x 480的圖梯度計算處理<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">double</span> gradient = <span class="number">0</span>;</span><br><span class="line">uchar* buf = canvas.bits()</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">639</span>; i++) &#123;<span class="comment">//略過最右排</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; <span class="number">479</span>; j++) &#123;<span class="comment">//略過最下排</span></span><br><span class="line">        <span class="keyword">int</span> idx = i * <span class="number">3</span> + j * canvas.bytePerline();</span><br><span class="line">        <span class="keyword">int</span> idxRight = (i + <span class="number">1</span>) * <span class="number">3</span> + j * bytePerLine();</span><br><span class="line">        <span class="keyword">int</span> idxBottom = i * <span class="number">3</span> + (j + <span class="number">1</span>) * canvas.bytePerLine();</span><br><span class="line">        gradient += <span class="built_in">abs</span>(buf[idx + <span class="number">1</span>] - buf[idxRight + <span class="number">1</span>]) + <span class="built_in">abs</span>(buf[idx +<span class="number">1</span>] - buf[idxBottom +<span class="number">1</span>])<span class="comment">//梯度等於綠色像素跟右方與下方比較</span></span><br><span class="line">    &#125;    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="水波紋現象"><a href="#水波紋現象" class="headerlink" title="水波紋現象"></a>水波紋現象</h2><p>頻率不一致造成水波紋，室內拍攝時會造成水波紋，主要的原因是日光燈的閃爍頻率所致。一般常見的T9日光燈管是種氣體電燈，燈管內有低壓氬氣或氬氖混合氣體及水銀蒸氣，燈管的光線與色溫會隨著交流電的頻率（60Hz）變化，也就造成閃爍的現象。但因為閃爍的頻率很高，因此肉眼難以辨識，會覺得燈管放出的是連續光。但對於電子儀器來說，日光燈的閃爍頻率並不算高。因此造成手機、相機在拍攝上的波紋現象，關鍵就在於光源、快門、感光元件的頻率不一所致。</p>
+<h2 id="結論"><a href="#結論" class="headerlink" title="結論"></a>結論</h2><p>在工業應用中，最清晰的對焦拍攝出來的圖像不一定是最好的，有可能出現摩爾紋（水波紋）現象，一般需要在最清晰對焦位置做微調。</p>
+<h2 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h2><p><a href="https://blog.csdn.net/dcrmg/article/details/53543341" target="_blank" rel="noopener">OpenCV 图像清晰度评价（相机自动对焦） - 牧野的博客- CSDN博客</a><br><a href="https://www.techbang.com/posts/17861-principle-analysis-of-cell-phone-camera-water-ripples-all-fluorescent-lamp-frequency-labranche" target="_blank" rel="noopener">解決手機、相機水波紋現象，全是日光燈頻率在搞鬼| T客邦</a></p>
 
       
     </div>
@@ -420,9 +422,13 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Python/" rel="tag"><i class="fa fa-tag"></i> Python</a>
+            <a href="/tags/清晰度/" rel="tag"><i class="fa fa-tag"></i> 清晰度</a>
           
-            <a href="/tags/壓力測試/" rel="tag"><i class="fa fa-tag"></i> 壓力測試</a>
+            <a href="/tags/Focus/" rel="tag"><i class="fa fa-tag"></i> Focus</a>
+          
+            <a href="/tags/梯度/" rel="tag"><i class="fa fa-tag"></i> 梯度</a>
+          
+            <a href="/tags/gradient/" rel="tag"><i class="fa fa-tag"></i> gradient</a>
           
         </div>
       
@@ -435,8 +441,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/10/24/兩程式間溝通/" rel="next" title="兩個獨立執行檔溝通">
-                <i class="fa fa-chevron-left"></i> 兩個獨立執行檔溝通
+              <a href="/2018/11/12/執行緒/" rel="next" title="執行緒">
+                <i class="fa fa-chevron-left"></i> 執行緒
               </a>
             
           </div>
@@ -444,10 +450,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/10/26/Qt-Virtual-Keyboard/" rel="prev" title="Qt 如何製作Windows多國輸入法的虛擬鍵盤">
-                Qt 如何製作Windows多國輸入法的虛擬鍵盤 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -478,7 +480,7 @@
 
   
     <div class="comments" id="comments">
-      <div class="fb-comments" data-href="https://teddybearfp.github.io/2018/10/25/PythonStressTest/" data-numposts="10" data-width="100%" data-colorscheme="light">
+      <div class="fb-comments" data-href="https://teddybearfp.github.io/2018/11/15/梯度計算影像清晰度-gradient/" data-numposts="10" data-width="100%" data-colorscheme="light">
       </div>
     </div>
 
@@ -585,7 +587,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#運作原理"><span class="nav-number">2.</span> <span class="nav-text">運作原理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#KillCPU步驟"><span class="nav-number">3.</span> <span class="nav-text">KillCPU步驟</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Python-如何打包程式"><span class="nav-number">4.</span> <span class="nav-text">Python 如何打包程式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#利用pyinstaller就能輕鬆達到打包成exe的效果囉"><span class="nav-number">4.1.</span> <span class="nav-text">利用pyinstaller就能輕鬆達到打包成exe的效果囉~</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#注意事項"><span class="nav-number">4.2.</span> <span class="nav-text">注意事項</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#梯度計算"><span class="nav-number">2.</span> <span class="nav-text">梯度計算</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#算法"><span class="nav-number">3.</span> <span class="nav-text">算法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#水波紋現象"><span class="nav-number">4.</span> <span class="nav-text">水波紋現象</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#結論"><span class="nav-number">5.</span> <span class="nav-text">結論</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#參考資料"><span class="nav-number">6.</span> <span class="nav-text">參考資料</span></a></li></ol></div>
             
 
           </div>
@@ -777,9 +779,9 @@
     
       <script type="text/javascript">
         var disqus_config = function () {
-          this.page.url = 'https://teddybearfp.github.io/2018/10/25/PythonStressTest/';
-          this.page.identifier = '2018/10/25/PythonStressTest/';
-          this.page.title = 'Python 如何編寫簡單的壓力測試程式';
+          this.page.url = 'https://teddybearfp.github.io/2018/11/15/梯度計算影像清晰度-gradient/';
+          this.page.identifier = '2018/11/15/梯度計算影像清晰度-gradient/';
+          this.page.title = '梯度計算影像清晰度';
         };
         var d = document, s = d.createElement('script');
         s.src = 'https://teddybearfp.disqus.com/embed.js';
