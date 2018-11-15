@@ -70,7 +70,7 @@
 
 
 
-  <meta name="keywords" content="單例模式,C++ Singleton,Singleton">
+  <meta name="keywords" content="rufus,GetColor,ActivePresenter,NSIS,clonezilla,tourtoise git Hg,bitBucket">
 
 
 
@@ -81,18 +81,24 @@
 
 
 
-<meta name="description" content="本篇環境使用版本:QT 5.10.1Visual Studio 2015windows 10 SDK  單例模式 保證一個class只有一個實體(Instance) 在宣告的同時直接new這個類別的實例(instance)，並且將建構子宣告為private， 這樣其他程式就無法再new這個類別的實例，保證這個類別只存在一個實例 優點 單例實作了它的唯一實例,便於團隊共享與開發 在系統中僅存在一個">
-<meta name="keywords" content="單例模式,C++ Singleton,Singleton">
+<meta name="description" content="前言GetColor 取得色碼製做UI的時候，顏色要很精準，GetColor可以將任一pixel的顏色代碼清楚寫出，是個製做UI的好幫手! ActivePresenter 製作影片製做影片時，不外乎就是調整影片長度與加字幕，這套ActivePresenter可以很輕鬆的達到這些需求，好操作又免費，讚! ReIcon 圖示定位如果你也跟我一樣有接雙螢幕的習慣，開會時插拔HDMI/DSub線，排列好的">
+<meta name="keywords" content="rufus,GetColor,ActivePresenter,NSIS,clonezilla,tourtoise git Hg,bitBucket">
 <meta property="og:type" content="article">
-<meta property="og:title" content="C++ 單例模式(Singleton)">
-<meta property="og:url" content="https://teddybearfp.github.io/2018/10/23/C-單例模式/index.html">
+<meta property="og:title" content="優質小工具">
+<meta property="og:url" content="https://teddybearfp.github.io/2018/11/15/優質小工具/index.html">
 <meta property="og:site_name" content="泰迪熊的程式足跡">
-<meta property="og:description" content="本篇環境使用版本:QT 5.10.1Visual Studio 2015windows 10 SDK  單例模式 保證一個class只有一個實體(Instance) 在宣告的同時直接new這個類別的實例(instance)，並且將建構子宣告為private， 這樣其他程式就無法再new這個類別的實例，保證這個類別只存在一個實例 優點 單例實作了它的唯一實例,便於團隊共享與開發 在系統中僅存在一個">
+<meta property="og:description" content="前言GetColor 取得色碼製做UI的時候，顏色要很精準，GetColor可以將任一pixel的顏色代碼清楚寫出，是個製做UI的好幫手! ActivePresenter 製作影片製做影片時，不外乎就是調整影片長度與加字幕，這套ActivePresenter可以很輕鬆的達到這些需求，好操作又免費，讚! ReIcon 圖示定位如果你也跟我一樣有接雙螢幕的習慣，開會時插拔HDMI/DSub線，排列好的">
 <meta property="og:locale" content="zh-tw">
-<meta property="og:updated_time" content="2018-10-24T14:28:01.607Z">
+<meta property="og:image" content="https://i.imgur.com/ZY8i183.png">
+<meta property="og:image" content="https://i.imgur.com/7KLoXkz.png">
+<meta property="og:image" content="https://i.imgur.com/KxPtiqS.png">
+<meta property="og:image" content="https://i.imgur.com/ku1cqn1.png">
+<meta property="og:image" content="https://i.imgur.com/SvyQStu.png">
+<meta property="og:updated_time" content="2018-11-15T06:24:23.423Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="C++ 單例模式(Singleton)">
-<meta name="twitter:description" content="本篇環境使用版本:QT 5.10.1Visual Studio 2015windows 10 SDK  單例模式 保證一個class只有一個實體(Instance) 在宣告的同時直接new這個類別的實例(instance)，並且將建構子宣告為private， 這樣其他程式就無法再new這個類別的實例，保證這個類別只存在一個實例 優點 單例實作了它的唯一實例,便於團隊共享與開發 在系統中僅存在一個">
+<meta name="twitter:title" content="優質小工具">
+<meta name="twitter:description" content="前言GetColor 取得色碼製做UI的時候，顏色要很精準，GetColor可以將任一pixel的顏色代碼清楚寫出，是個製做UI的好幫手! ActivePresenter 製作影片製做影片時，不外乎就是調整影片長度與加字幕，這套ActivePresenter可以很輕鬆的達到這些需求，好操作又免費，讚! ReIcon 圖示定位如果你也跟我一樣有接雙螢幕的習慣，開會時插拔HDMI/DSub線，排列好的">
+<meta name="twitter:image" content="https://i.imgur.com/ZY8i183.png">
 
 
 
@@ -122,13 +128,13 @@
 
 
 
-  <link rel="canonical" href="https://teddybearfp.github.io/2018/10/23/C-單例模式/">
+  <link rel="canonical" href="https://teddybearfp.github.io/2018/11/15/優質小工具/">
 
 
 
 
 
-  <title>C++ 單例模式(Singleton) | 泰迪熊的程式足跡</title>
+  <title>優質小工具 | 泰迪熊的程式足跡</title>
   
 <script>
   window.fbAsyncInit = function() {
@@ -283,7 +289,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://teddybearfp.github.io/2018/10/23/C-單例模式/">
+    <link itemprop="mainEntityOfPage" href="https://teddybearfp.github.io/2018/11/15/優質小工具/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="G.C.L.">
@@ -300,7 +306,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">C++ 單例模式(Singleton)</h1>
+          <h1 class="post-title" itemprop="name headline">優質小工具</h1>
         
 
         <div class="post-meta">
@@ -312,8 +318,8 @@
               
                 <span class="post-meta-item-text">發表於</span>
               
-              <time title="創建於" itemprop="dateCreated datePublished" datetime="2018-10-23T20:30:16+08:00">
-                2018-10-23
+              <time title="創建於" itemprop="dateCreated datePublished" datetime="2018-11-15T13:05:16+08:00">
+                2018-11-15
               </time>
             
 
@@ -335,8 +341,8 @@
               
               
                 <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/C/" itemprop="url" rel="index">
-                    <span itemprop="name">C++</span>
+                  <a href="/categories/其他/" itemprop="url" rel="index">
+                    <span itemprop="name">其他</span>
                   </a>
                 </span>
 
@@ -353,8 +359,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2018/10/23/C-單例模式/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count fb-comments-count" data-href="https://teddybearfp.github.io/2018/10/23/C-單例模式/" itemprop="commentCount">0</span> comments
+                <a href="/2018/11/15/優質小工具/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count fb-comments-count" data-href="https://teddybearfp.github.io/2018/11/15/優質小工具/" itemprop="commentCount">0</span> comments
                 </a>
               </span>
             
@@ -387,33 +393,26 @@
       
 
       
-        <blockquote>
-<p>本篇環境使用版本:<br><a href="https://download.qt.io/official_releases/qt/5.10/5.10.1/" target="_blank" rel="noopener">QT 5.10.1</a><br>Visual Studio 2015<br><a href="https://developer.microsoft.com/zh-tw/windows/downloads/windows-10-sdk" target="_blank" rel="noopener">windows 10 SDK</a></p>
-</blockquote>
-<h3 id="單例模式"><a href="#單例模式" class="headerlink" title="單例模式"></a>單例模式</h3><ul>
-<li>保證一個class只有一個實體(Instance)</li>
-<li>在宣告的同時直接new這個類別的實例(instance)，並且將建構子宣告為private， 這樣其他程式就無法再new這個類別的實例，保證這個類別只存在一個實例</li>
-<li>優點<ul>
-<li>單例實作了它的唯一實例,便於團隊共享與開發</li>
-<li>在系統中僅存在一個對象,因此可以節省系統資源,對於頻繁創建與銷毀對象,單例可以提高系統性能</li>
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><h2 id="GetColor-取得色碼"><a href="#GetColor-取得色碼" class="headerlink" title="GetColor 取得色碼"></a>GetColor 取得色碼</h2><p>製做UI的時候，顏色要很精準，GetColor可以將任一pixel的顏色代碼清楚寫出，是個製做UI的好幫手!<br><img src="https://i.imgur.com/ZY8i183.png" alt="" title="滴管取得色碼"></p>
+<h2 id="ActivePresenter-製作影片"><a href="#ActivePresenter-製作影片" class="headerlink" title="ActivePresenter 製作影片"></a>ActivePresenter 製作影片</h2><p>製做影片時，不外乎就是調整影片長度與加字幕，這套ActivePresenter可以很輕鬆的達到這些需求，好操作又免費，讚!<br><img src="https://i.imgur.com/7KLoXkz.png" alt=""></p>
+<h2 id="ReIcon-圖示定位"><a href="#ReIcon-圖示定位" class="headerlink" title="ReIcon 圖示定位"></a>ReIcon 圖示定位</h2><p>如果你也跟我一樣有接雙螢幕的習慣，開會時插拔HDMI/DSub線，排列好的桌布圖示順序跑掉，那就很需要這套軟體了，將排序好的桌布環境使用這套軟體記憶，亂掉的時候點兩下通通歸位~<br><img src="https://i.imgur.com/KxPtiqS.png" alt=""></p>
+<h2 id="NSIS-程式打包"><a href="#NSIS-程式打包" class="headerlink" title="NSIS 程式打包"></a>NSIS 程式打包</h2><p><a href="http://nsis.sourceforge.net/Download" target="_blank" rel="noopener">Download NSIS 3.03</a><br>將寫好的程式碼透過編寫NSIS &gt; compile NSI Scripts / load scripts就會產生安裝檔，這樣可以給其他人安裝妳寫好的程式囉<br><img src="https://i.imgur.com/ku1cqn1.png" alt=""></p>
+<h2 id="rufus-製做可開機硬碟"><a href="#rufus-製做可開機硬碟" class="headerlink" title="rufus 製做可開機硬碟"></a>rufus 製做可開機硬碟</h2><p>前幾篇文章有介紹到如何使用<a href="">如何將Windows安裝到外接硬碟上給Mac使用</a></p>
+<h2 id="clonezilla-製做可開機硬碟"><a href="#clonezilla-製做可開機硬碟" class="headerlink" title="clonezilla 製做可開機硬碟"></a>clonezilla 製做可開機硬碟</h2><p>類似rufus的功能，可以製作還原碟，在開機時什麼都不操作的情況下直接進行還原的動作</p>
+<h2 id="tourtoiseHg-版本控制"><a href="#tourtoiseHg-版本控制" class="headerlink" title="tourtoiseHg 版本控制"></a>tourtoiseHg 版本控制</h2><p>下載<a href="https://tortoisehg.bitbucket.io/" target="_blank" rel="noopener">TortoiseHg</a></p>
+<h3 id="TortoiseHg-vs-git"><a href="#TortoiseHg-vs-git" class="headerlink" title="TortoiseHg vs git"></a>TortoiseHg vs git</h3><h4 id="優勢"><a href="#優勢" class="headerlink" title="優勢"></a>優勢</h4><ul>
+<li>workbench 功能強大, 可以給revision打tag/bookmark和導出patch和導出archive, 可以對repository做sync/purge操作.</li>
+<li>操作比git簡單多</li>
+<li>和windows版的git相比, 非常小巧</li>
+<li>集成Issue Tracking和Review Board<h4 id="缺點"><a href="#缺點" class="headerlink" title="缺點"></a>缺點</h4></li>
+<li>不支持針對單個文件夾的分支.</li>
+<li>thgw.exe佔用內存較多</li>
 </ul>
-</li>
-<li>風險<ul>
-<li>單例模式在多執行緒的應用下必須小心使用。如果當唯一實例尚未創建時，有兩個執行緒同時調用創建方法，那麼它們同時沒有檢測到唯一實例的存在，從而同時各自創建了一個實例，這樣就有兩個實例被構造出來，從而違反了單例模式中唯一實例的原則。</li>
-<li>解決方案: 可以透過第一時間建立實例或是運用雙重檢查上鎖</li>
-</ul>
-</li>
-<li>會將何者設為單例呢?<ul>
-<li>通常會將Model(管理與儲存資料)的類別設為單例，可以確保資料的一致性也能方便供其他程式使用。</li>
-</ul>
-</li>
-</ul>
-<h2 id="用法一"><a href="#用法一" class="headerlink" title="用法一"></a>用法一</h2><h3 id="h宣告"><a href="#h宣告" class="headerlink" title=".h宣告"></a>.h宣告</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Singleton</span>:</span></span><br><span class="line">&#123; </span><br><span class="line">	Q_OBJECT </span><br><span class="line"><span class="keyword">public</span>: </span><br><span class="line">	<span class="function"><span class="keyword">static</span> Singleton* <span class="title">Inst</span><span class="params">()</span> </span>&#123; <span class="keyword">return</span> &amp;inst; &#125;</span><br><span class="line">	Singleton();</span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">startCamera</span><span class="params">()</span></span>;</span><br><span class="line"><span class="keyword">private</span>: </span><br><span class="line">	<span class="keyword">static</span> Singleton inst;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<h3 id="cpp定義"><a href="#cpp定義" class="headerlink" title=".cpp定義"></a>.cpp定義</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Singleton Singleton::inst; </span><br><span class="line"></span><br><span class="line">Singleton::Singleton() &#123; &#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">void</span> Singleton::startCamera() &#123; </span><br><span class="line">	<span class="keyword">bool</span> CameraStartResult = CameraStart(cameraDevice); </span><br><span class="line">	isStarted = <span class="literal">true</span>; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="調用單例"><a href="#調用單例" class="headerlink" title="調用單例"></a>調用單例</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">void</span> VideoPanel::startCamera() &#123; </span><br><span class="line">	Singleton::Inst()-&gt;startCamera(); </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="用法二"><a href="#用法二" class="headerlink" title="用法二"></a>用法二</h2><h3 id="h宣告-1"><a href="#h宣告-1" class="headerlink" title=".h宣告"></a>.h宣告</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Singleton</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">	TCHAR *m_strUserName;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">	<span class="function"><span class="keyword">static</span> Singleton* <span class="title">GetInstance</span><span class="params">()</span></span>;</span><br><span class="line"><span class="function">TCHAR <span class="title">GetUserName</span><span class="params">()</span></span>;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<h3 id="cpp定義-1"><a href="#cpp定義-1" class="headerlink" title=".cpp定義"></a>.cpp定義</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Singleton* Singleton::GetInstance()</span><br><span class="line">&#123;</span><br><span class="line">	<span class="keyword">static</span> Singleton *Inst;</span><br><span class="line">	<span class="keyword">return</span> Inst;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="調用單例-1"><a href="#調用單例-1" class="headerlink" title="調用單例"></a>調用單例</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">CString strMemberName = (Singleton::GetInstance())-&gt;GetUserName();</span><br></pre></td></tr></table></figure>
+<h2 id="bitBucket-版本控制"><a href="#bitBucket-版本控制" class="headerlink" title="bitBucket 版本控制"></a>bitBucket 版本控制</h2><p>好用的版本控制</p>
+<h2 id="Cmake"><a href="#Cmake" class="headerlink" title="Cmake"></a>Cmake</h2><p>cmake 目的: 將source資料編譯成sln檔 讓c++可以編譯產生dll與lib</p>
+<p>1.開啟cmake gui<br>2.選擇source(例如:C:/opencv/sources)<br>3.選擇目的資料夾<br>4.configure<br>5.configure完成後(例如opencv選擇build&gt;&gt;opencv_world打勾)<br>6.search找尋prefix(cmake&gt;&gt;cmake_install_prefix) 更改路徑<br>7.generate完成後 點擊open project<br>8.開啟sln後build需要的檔案(例如module內的opencv_world)<br>9.bulid完後再去上方cmaketarget &gt;&gt; Install編譯 將剛剛編譯好的檔案打包到install設定的資料夾中<br>10.至install設定的資料夾即可找到.h  , .dll , .lib<br>11.此時只有debug版所以還要再編一次release版<br>12.切換成release再次build需要的檔案(例如module內的opencv_world)<br>13.bulid完後再去上方cmaketarget &gt;&gt; Install編譯 將剛剛編譯好的檔案打包到install設定的資料夾中<br>14.步驟完成後 就有debug版跟release版了!</p>
+<p><img src="https://i.imgur.com/SvyQStu.png" alt=""></p>
+<p>可參考資料: <a href="https://hk.saowen.com/a/cd02fa3aa2d452856d27734e5a08e21a0e877c95717d10841a8d6340975abde4" target="_blank" rel="noopener">https://hk.saowen.com/a/cd02fa3aa2d452856d27734e5a08e21a0e877c95717d10841a8d6340975abde4</a></p>
 
       
     </div>
@@ -431,9 +430,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/C/" rel="tag"><i class="fa fa-tag"></i> C++</a>
+            <a href="/tags/優質小工具/" rel="tag"><i class="fa fa-tag"></i> 優質小工具</a>
           
-            <a href="/tags/單例模式/" rel="tag"><i class="fa fa-tag"></i> 單例模式</a>
+            <a href="/tags/CMake/" rel="tag"><i class="fa fa-tag"></i> CMake</a>
           
         </div>
       
@@ -446,8 +445,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/10/23/共享資料夾/" rel="next" title="共享資料夾">
-                <i class="fa fa-chevron-left"></i> 共享資料夾
+              <a href="/2018/11/15/梯度計算影像清晰度-gradient/" rel="next" title="梯度計算影像清晰度">
+                <i class="fa fa-chevron-left"></i> 梯度計算影像清晰度
               </a>
             
           </div>
@@ -455,10 +454,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/10/24/C-監聽QEvent並將事件重寫/" rel="prev" title="QEvent攔截事件">
-                QEvent攔截事件 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -489,7 +484,7 @@
 
   
     <div class="comments" id="comments">
-      <div class="fb-comments" data-href="https://teddybearfp.github.io/2018/10/23/C-單例模式/" data-numposts="10" data-width="100%" data-colorscheme="light">
+      <div class="fb-comments" data-href="https://teddybearfp.github.io/2018/11/15/優質小工具/" data-numposts="10" data-width="100%" data-colorscheme="light">
       </div>
     </div>
 
@@ -596,7 +591,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#單例模式"><span class="nav-number">1.</span> <span class="nav-text">單例模式</span></a></li></ol><li class="nav-item nav-level-2"><a class="nav-link" href="#用法一"><span class="nav-number"></span> <span class="nav-text">用法一</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#h宣告"><span class="nav-number">1.</span> <span class="nav-text">.h宣告</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#cpp定義"><span class="nav-number">2.</span> <span class="nav-text">.cpp定義</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#調用單例"><span class="nav-number">3.</span> <span class="nav-text">調用單例</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#用法二"><span class="nav-number"></span> <span class="nav-text">用法二</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#h宣告-1"><span class="nav-number">1.</span> <span class="nav-text">.h宣告</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#cpp定義-1"><span class="nav-number">2.</span> <span class="nav-text">.cpp定義</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#調用單例-1"><span class="nav-number">3.</span> <span class="nav-text">調用單例</span></a></li></ol></li></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#GetColor-取得色碼"><span class="nav-number">2.</span> <span class="nav-text">GetColor 取得色碼</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ActivePresenter-製作影片"><span class="nav-number">3.</span> <span class="nav-text">ActivePresenter 製作影片</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ReIcon-圖示定位"><span class="nav-number">4.</span> <span class="nav-text">ReIcon 圖示定位</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#NSIS-程式打包"><span class="nav-number">5.</span> <span class="nav-text">NSIS 程式打包</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#rufus-製做可開機硬碟"><span class="nav-number">6.</span> <span class="nav-text">rufus 製做可開機硬碟</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#clonezilla-製做可開機硬碟"><span class="nav-number">7.</span> <span class="nav-text">clonezilla 製做可開機硬碟</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#tourtoiseHg-版本控制"><span class="nav-number">8.</span> <span class="nav-text">tourtoiseHg 版本控制</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#TortoiseHg-vs-git"><span class="nav-number">8.1.</span> <span class="nav-text">TortoiseHg vs git</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#優勢"><span class="nav-number">8.1.1.</span> <span class="nav-text">優勢</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#缺點"><span class="nav-number">8.1.2.</span> <span class="nav-text">缺點</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#bitBucket-版本控制"><span class="nav-number">9.</span> <span class="nav-text">bitBucket 版本控制</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Cmake"><span class="nav-number">10.</span> <span class="nav-text">Cmake</span></a></li></ol></div>
             
 
           </div>
@@ -788,9 +783,9 @@
     
       <script type="text/javascript">
         var disqus_config = function () {
-          this.page.url = 'https://teddybearfp.github.io/2018/10/23/C-單例模式/';
-          this.page.identifier = '2018/10/23/C-單例模式/';
-          this.page.title = 'C++ 單例模式(Singleton)';
+          this.page.url = 'https://teddybearfp.github.io/2018/11/15/優質小工具/';
+          this.page.identifier = '2018/11/15/優質小工具/';
+          this.page.title = '優質小工具';
         };
         var d = document, s = d.createElement('script');
         s.src = 'https://teddybearfp.disqus.com/embed.js';
