@@ -93,7 +93,7 @@
 <meta property="og:image" content="https://i.imgur.com/tiCvwGg.png">
 <meta property="og:image" content="https://i.imgur.com/8ZVExbm.png">
 <meta property="og:image" content="https://i.imgur.com/m3hqHZr.png">
-<meta property="og:updated_time" content="2018-11-15T08:55:07.136Z">
+<meta property="og:updated_time" content="2018-11-15T08:59:47.515Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Python 爬蟲幫你掌握氣象!(動態網頁爬取)">
 <meta name="twitter:description" content="前言上一篇Python 爬蟲幫你精選PTT文章!(靜態頁面爬取)寫的是如何擷取靜態網頁內容，只能單純爬取HTML內容，但是如果網頁是用JS渲染的我們透過F12 select element是看不到內容的，像是下方這張圖選擇了元素，但看不到內容(今天(15日)桃園市天氣晴時多雲，平均溫度…)因為這段代碼是由JS渲染，所以我們需要用PhantomJS來幫助我們爬取中央氣象局今天的天氣訊息 Phanto">
@@ -400,9 +400,9 @@
 <p>檢視beautifulSoup解析HTML代碼後的內容並觀察欲爬取位置<br><img src="https://i.imgur.com/tiCvwGg.png" alt=""><br>將id為ftext的內容找出(#ftext)</p>
 <ul>
 <li>#id</li>
-<li>.class<br><img src="https://i.imgur.com/8ZVExbm.png" alt=""><h3 id="呼叫函式"><a href="#呼叫函式" class="headerlink" title="呼叫函式"></a>呼叫函式</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(Taoyuan())</span><br></pre></td></tr></table></figure>
-</li>
+<li>.class<br><img src="https://i.imgur.com/8ZVExbm.png" alt=""></li>
 </ul>
+<h3 id="呼叫函式"><a href="#呼叫函式" class="headerlink" title="呼叫函式"></a>呼叫函式</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(Taoyuan())</span><br></pre></td></tr></table></figure>
 <p>成功爬取今日天氣概述<br><img src="https://i.imgur.com/m3hqHZr.png" alt=""></p>
 <h2 id="結論"><a href="#結論" class="headerlink" title="結論"></a>結論</h2><p>PhantomJS還蠻多問題的例如:使用Multi-thread，讓多個網頁能同時 Loading，可是 PhantomJS 同時開很容易就會陣亡。掛掉後會變成一個 Zombie Process。<br>Headless Google 的出現，能取代 PhantomJS 功能且更快更穩，讓 PhantomJS 作者決定停止辛苦的獨力維護工作，PhantomJS 的Github 專案也已封存，改用 Headless Chrome 已成定局。改天來玩看看Google Chrome Headless，到時候再來寫一篇Headless Chrome的爬取</p>
 <h2 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h2><p><a href="https://hiskio.com/courses/76/lectures/1883" target="_blank" rel="noopener">PhantomJS的用法</a><br><a href="https://jerrynest.io/phantomjs-screenshot/" target="_blank" rel="noopener">使用PhantomJS 抓取網頁截圖- 傑瑞窩在這</a><br><a href="https://blog.darkthread.net/blog/headless-chrome/" target="_blank" rel="noopener">使用 Headless Chrome 擷圖、轉存PDF、爬資料</a></p>
