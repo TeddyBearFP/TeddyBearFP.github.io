@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://teddybearfp.github.io/"/>
-  <updated>2018-11-15T06:34:40.172Z</updated>
+  <updated>2018-11-15T08:55:07.136Z</updated>
   <id>https://teddybearfp.github.io/</id>
   
   <author>
@@ -17,31 +17,29 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>如何將Windows安裝到外接硬碟給Mac使用</title>
-    <link href="https://teddybearfp.github.io/2018/11/15/%E5%A6%82%E4%BD%95%E5%B0%87Windows%E5%AE%89%E8%A3%9D%E5%88%B0%E5%A4%96%E6%8E%A5%E7%A1%AC%E7%A2%9F%E7%B5%A6Mac%E4%BD%BF%E7%94%A8/"/>
-    <id>https://teddybearfp.github.io/2018/11/15/如何將Windows安裝到外接硬碟給Mac使用/</id>
-    <published>2018-11-15T05:05:16.000Z</published>
-    <updated>2018-11-15T06:34:40.172Z</updated>
+    <title>Python 爬蟲幫你掌握氣象!(動態網頁爬取)</title>
+    <link href="https://teddybearfp.github.io/2018/11/16/%E5%8B%95%E6%85%8B%E7%B6%B2%E9%A0%81%E7%88%AC%E5%8F%96/"/>
+    <id>https://teddybearfp.github.io/2018/11/16/動態網頁爬取/</id>
+    <published>2018-11-16T02:05:16.000Z</published>
+    <updated>2018-11-15T08:55:07.136Z</updated>
     
-    <content type="html"><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>雖然Mac十分好用也非常流暢，但是有些程式在Mac上是無法使用或是還沒支援的，於是懷念起我們熟悉的Windows，除了bootcamp方式外，透過rufus這套軟體置作windows外接硬碟，可以很輕鬆的能在Mac裝置上看到Windows的身影</p><h2 id="rufus"><a href="#rufus" class="headerlink" title="rufus"></a>rufus</h2><p>可開機USB製作軟體 - Rufus，將一般的USB格式化，並製作成可以用於電腦重灌的可開機USB，支援各式ISO光碟映像檔及MS-DOS、FreeDOS的匯入，映像檔的匯入支援Windows 8/7/XP/Vista/2003R2等作業系統光碟、Hiren’s Boot CD等多功能開機片、CentOS等Linux作業系統光碟、LiveXP等Live CD。<br>可以至<a href="https://www.azofreeware.com/2013/12/rufus-141-usb.html" target="_blank" rel="noopener">阿榮福利味</a>下載</p><h2 id="製作步驟"><a href="#製作步驟" class="headerlink" title="製作步驟"></a>製作步驟</h2><h3 id="下載Windows-iso檔"><a href="#下載Windows-iso檔" class="headerlink" title="下載Windows iso檔"></a>下載Windows iso檔</h3><p>首先先取得Windows的映像檔(Windows 10 Pro/Windows 10 Home…)</p><h3 id="製做Windows環境外接硬碟"><a href="#製做Windows環境外接硬碟" class="headerlink" title="製做Windows環境外接硬碟"></a>製做Windows環境外接硬碟</h3><p>執行rufus將第一步驟的Windows.iso寫入外接硬碟(建議為SSD效能有時甚至可差距到十倍以上)</p><h3 id="Mac執行外接硬碟"><a href="#Mac執行外接硬碟" class="headerlink" title="Mac執行外接硬碟"></a>Mac執行外接硬碟</h3><p>將Mac開機(option + 開機)，然後選擇EFI boot進入安裝介面安裝，此時需準備滑鼠跟鍵盤，因為還沒安裝驅動mac的軌跡版與鍵盤將會無法使用</p><h3 id="安裝完後回到Mac-OS"><a href="#安裝完後回到Mac-OS" class="headerlink" title="安裝完後回到Mac OS"></a>安裝完後回到Mac OS</h3><p>回到Mac OS開啟boot camp選擇動作並下載Windows支援軟體(mac driver)，放到外接硬碟中</p><h3 id="設定Windows並安裝支援軟體"><a href="#設定Windows並安裝支援軟體" class="headerlink" title="設定Windows並安裝支援軟體"></a>設定Windows並安裝支援軟體</h3><p>將Mac開機(option + 開機)，然後選擇EFI boot進入已經安裝好的Windows，此時會跑一些Windows基本設定，設定完後就進入Windows介面了，但是有些功能尚未齊全，像是充電功能或是聲音、fn鍵等功能…，把剛剛從bootcamp下載到的driver執行，安裝成功後，跟一般的Windows沒什麼兩樣了!</p><h2 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h2><p><a href="https://applealmond.com/posts/15795" target="_blank" rel="noopener">如何將Windows安裝到外接硬碟上給Mac使用（非Bootcamp/虛擬 …</a></p>]]></content>
+    <content type="html"><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>上一篇<a href="https://teddybearfp.github.io/2018/11/07/Ptt%E7%88%AC%E8%9F%B2/#more">Python 爬蟲幫你精選PTT文章!(靜態頁面爬取)</a>寫的是如何擷取靜態網頁內容，只能單純爬取HTML內容，但是如果網頁是用JS渲染的我們透過F12 select element是看不到內容的，像是下方這張圖<br><img src="https://i.imgur.com/I3DYim8.png" alt=""><br>選擇了元素，但看不到內容(今天(15日)桃園市天氣晴時多雲，平均溫度…)<br>因為這段代碼是由JS渲染，所以我們需要用PhantomJS來幫助我們爬取中央氣象局今天的天氣訊息</p><h2 id="PhantomJS"><a href="#PhantomJS" class="headerlink" title="PhantomJS"></a>PhantomJS</h2><p>PhantomJS是無介面瀏覽器(Headless browser)，背後的渲染引擎為 WebKit，適合進行自動化測試、捕捉截圖或監測網頁效能。因為沒有圖形介面，很容易整合至現有的測試框架，另一個特點是他能直接控制 DOM，方便你提取網頁中的元素內容</p><p>下載PhantomJS(<a href="http://phantomjs.org/download.html" target="_blank" rel="noopener">Download PhantomJS</a>)</p><h2 id="實作爬取氣象"><a href="#實作爬取氣象" class="headerlink" title="實作爬取氣象"></a>實作爬取氣象</h2><h3 id="導入函式庫"><a href="#導入函式庫" class="headerlink" title="導入函式庫"></a>導入函式庫</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"><span class="keyword">from</span> bs4 <span class="keyword">import</span> BeautifulSoup</span><br><span class="line"><span class="keyword">from</span> flask <span class="keyword">import</span> Flask, request, abort</span><br><span class="line"><span class="keyword">from</span> selenium <span class="keyword">import</span> webdriver</span><br></pre></td></tr></table></figure><h3 id="編寫爬取桃園天氣函式"><a href="#編寫爬取桃園天氣函式" class="headerlink" title="編寫爬取桃園天氣函式"></a>編寫爬取桃園天氣函式</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">Taoyuan</span><span class="params">()</span>:</span></span><br><span class="line">    target_url = <span class="string">'https://www.cwb.gov.tw/V7/forecast/taiwan/Taoyuan_City.htm'</span></span><br><span class="line">    driver = webdriver.PhantomJS(executable_path=<span class="string">r'D:\phantomjs\bin\phantomjs.exe'</span>)<span class="comment">#導入PhantomJS路徑</span></span><br><span class="line">    driver.get(target_url)</span><br><span class="line">    soup = BeautifulSoup(driver.page_source, <span class="string">'html.parser'</span>)</span><br><span class="line">    content = <span class="string">""</span></span><br><span class="line">    <span class="keyword">for</span> data <span class="keyword">in</span> soup.select(<span class="string">'#ftext'</span>):</span><br><span class="line">        title = str(data)</span><br><span class="line">        content = title.split(<span class="string">"&lt;br/&gt;&lt;br/&gt;"</span>)[<span class="number">2</span>]</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> content</span><br></pre></td></tr></table></figure><p>檢視beautifulSoup解析HTML代碼後的內容並觀察欲爬取位置<br><img src="https://i.imgur.com/tiCvwGg.png" alt=""><br>將id為ftext的內容找出(#ftext)</p><ul><li>#id</li><li>.class<br><img src="https://i.imgur.com/8ZVExbm.png" alt=""><h3 id="呼叫函式"><a href="#呼叫函式" class="headerlink" title="呼叫函式"></a>呼叫函式</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(Taoyuan())</span><br></pre></td></tr></table></figure></li></ul><p>成功爬取今日天氣概述<br><img src="https://i.imgur.com/m3hqHZr.png" alt=""></p><h2 id="結論"><a href="#結論" class="headerlink" title="結論"></a>結論</h2><p>PhantomJS還蠻多問題的例如:使用Multi-thread，讓多個網頁能同時 Loading，可是 PhantomJS 同時開很容易就會陣亡。掛掉後會變成一個 Zombie Process。<br>Headless Google 的出現，能取代 PhantomJS 功能且更快更穩，讓 PhantomJS 作者決定停止辛苦的獨力維護工作，PhantomJS 的Github 專案也已封存，改用 Headless Chrome 已成定局。改天來玩看看Google Chrome Headless，到時候再來寫一篇Headless Chrome的爬取</p><h2 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h2><p><a href="https://hiskio.com/courses/76/lectures/1883" target="_blank" rel="noopener">PhantomJS的用法</a><br><a href="https://jerrynest.io/phantomjs-screenshot/" target="_blank" rel="noopener">使用PhantomJS 抓取網頁截圖- 傑瑞窩在這</a><br><a href="https://blog.darkthread.net/blog/headless-chrome/" target="_blank" rel="noopener">使用 Headless Chrome 擷圖、轉存PDF、爬資料</a></p>]]></content>
     
     <summary type="html">
     
       
       
-        &lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;雖然Mac十分好用也非常流暢，但是有些程式在Mac上是無法使用或是還沒支援的，於是懷念起我們熟悉的Windows，除了bootcamp方式外
+        &lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;上一篇&lt;a href=&quot;https://teddybearfp.github.io/2018/11/07/Ptt%E7%88%AC%E8%9
       
     
     </summary>
     
-      <category term="其他" scheme="https://teddybearfp.github.io/categories/%E5%85%B6%E4%BB%96/"/>
+      <category term="Python" scheme="https://teddybearfp.github.io/categories/Python/"/>
     
     
-      <category term="Mac" scheme="https://teddybearfp.github.io/tags/Mac/"/>
+      <category term="動態網頁爬取" scheme="https://teddybearfp.github.io/tags/%E5%8B%95%E6%85%8B%E7%B6%B2%E9%A0%81%E7%88%AC%E5%8F%96/"/>
     
-      <category term="rufus" scheme="https://teddybearfp.github.io/tags/rufus/"/>
-    
-      <category term="WinToGo" scheme="https://teddybearfp.github.io/tags/WinToGo/"/>
+      <category term="網頁爬蟲" scheme="https://teddybearfp.github.io/tags/%E7%B6%B2%E9%A0%81%E7%88%AC%E8%9F%B2/"/>
     
   </entry>
   
@@ -69,6 +67,35 @@
       <category term="優質小工具" scheme="https://teddybearfp.github.io/tags/%E5%84%AA%E8%B3%AA%E5%B0%8F%E5%B7%A5%E5%85%B7/"/>
     
       <category term="CMake" scheme="https://teddybearfp.github.io/tags/CMake/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>如何將Windows安裝到外接硬碟給Mac使用</title>
+    <link href="https://teddybearfp.github.io/2018/11/15/%E5%A6%82%E4%BD%95%E5%B0%87Windows%E5%AE%89%E8%A3%9D%E5%88%B0%E5%A4%96%E6%8E%A5%E7%A1%AC%E7%A2%9F%E7%B5%A6Mac%E4%BD%BF%E7%94%A8/"/>
+    <id>https://teddybearfp.github.io/2018/11/15/如何將Windows安裝到外接硬碟給Mac使用/</id>
+    <published>2018-11-15T05:05:16.000Z</published>
+    <updated>2018-11-15T06:34:40.172Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>雖然Mac十分好用也非常流暢，但是有些程式在Mac上是無法使用或是還沒支援的，於是懷念起我們熟悉的Windows，除了bootcamp方式外，透過rufus這套軟體置作windows外接硬碟，可以很輕鬆的能在Mac裝置上看到Windows的身影</p><h2 id="rufus"><a href="#rufus" class="headerlink" title="rufus"></a>rufus</h2><p>可開機USB製作軟體 - Rufus，將一般的USB格式化，並製作成可以用於電腦重灌的可開機USB，支援各式ISO光碟映像檔及MS-DOS、FreeDOS的匯入，映像檔的匯入支援Windows 8/7/XP/Vista/2003R2等作業系統光碟、Hiren’s Boot CD等多功能開機片、CentOS等Linux作業系統光碟、LiveXP等Live CD。<br>可以至<a href="https://www.azofreeware.com/2013/12/rufus-141-usb.html" target="_blank" rel="noopener">阿榮福利味</a>下載</p><h2 id="製作步驟"><a href="#製作步驟" class="headerlink" title="製作步驟"></a>製作步驟</h2><h3 id="下載Windows-iso檔"><a href="#下載Windows-iso檔" class="headerlink" title="下載Windows iso檔"></a>下載Windows iso檔</h3><p>首先先取得Windows的映像檔(Windows 10 Pro/Windows 10 Home…)</p><h3 id="製做Windows環境外接硬碟"><a href="#製做Windows環境外接硬碟" class="headerlink" title="製做Windows環境外接硬碟"></a>製做Windows環境外接硬碟</h3><p>執行rufus將第一步驟的Windows.iso寫入外接硬碟(建議為SSD效能有時甚至可差距到十倍以上)</p><h3 id="Mac執行外接硬碟"><a href="#Mac執行外接硬碟" class="headerlink" title="Mac執行外接硬碟"></a>Mac執行外接硬碟</h3><p>將Mac開機(option + 開機)，然後選擇EFI boot進入安裝介面安裝，此時需準備滑鼠跟鍵盤，因為還沒安裝驅動mac的軌跡版與鍵盤將會無法使用</p><h3 id="安裝完後回到Mac-OS"><a href="#安裝完後回到Mac-OS" class="headerlink" title="安裝完後回到Mac OS"></a>安裝完後回到Mac OS</h3><p>回到Mac OS開啟boot camp選擇動作並下載Windows支援軟體(mac driver)，放到外接硬碟中</p><h3 id="設定Windows並安裝支援軟體"><a href="#設定Windows並安裝支援軟體" class="headerlink" title="設定Windows並安裝支援軟體"></a>設定Windows並安裝支援軟體</h3><p>將Mac開機(option + 開機)，然後選擇EFI boot進入已經安裝好的Windows，此時會跑一些Windows基本設定，設定完後就進入Windows介面了，但是有些功能尚未齊全，像是充電功能或是聲音、fn鍵等功能…，把剛剛從bootcamp下載到的driver執行，安裝成功後，跟一般的Windows沒什麼兩樣了!</p><h2 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h2><p><a href="https://applealmond.com/posts/15795" target="_blank" rel="noopener">如何將Windows安裝到外接硬碟上給Mac使用（非Bootcamp/虛擬 …</a></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;雖然Mac十分好用也非常流暢，但是有些程式在Mac上是無法使用或是還沒支援的，於是懷念起我們熟悉的Windows，除了bootcamp方式外
+      
+    
+    </summary>
+    
+      <category term="其他" scheme="https://teddybearfp.github.io/categories/%E5%85%B6%E4%BB%96/"/>
+    
+    
+      <category term="Mac" scheme="https://teddybearfp.github.io/tags/Mac/"/>
+    
+      <category term="rufus" scheme="https://teddybearfp.github.io/tags/rufus/"/>
+    
+      <category term="WinToGo" scheme="https://teddybearfp.github.io/tags/WinToGo/"/>
     
   </entry>
   
@@ -561,34 +588,6 @@
       <category term="環境架設" scheme="https://teddybearfp.github.io/tags/%E7%92%B0%E5%A2%83%E6%9E%B6%E8%A8%AD/"/>
     
       <category term="共享資料夾" scheme="https://teddybearfp.github.io/tags/%E5%85%B1%E4%BA%AB%E8%B3%87%E6%96%99%E5%A4%BE/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Qt 一句指令提升至系統管理員權限</title>
-    <link href="https://teddybearfp.github.io/2018/10/22/Qt-%E5%A6%82%E4%BD%95%E6%8F%90%E5%8D%87%E7%B3%BB%E7%B5%B1%E7%AE%A1%E7%90%86%E5%93%A1%E6%AC%8A%E9%99%90/"/>
-    <id>https://teddybearfp.github.io/2018/10/22/Qt-如何提升系統管理員權限/</id>
-    <published>2018-10-22T13:05:16.000Z</published>
-    <updated>2018-10-24T14:28:21.787Z</updated>
-    
-    <content type="html"><![CDATA[<blockquote><p>本篇環境使用版本:<br><a href="https://download.qt.io/official_releases/qt/5.10/5.10.1/" target="_blank" rel="noopener">QT 5.10.1</a><br>Visual Studio 2015<br><a href="https://developer.microsoft.com/zh-tw/windows/downloads/windows-10-sdk" target="_blank" rel="noopener">windows 10 SDK</a></p></blockquote><h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><ul><li>有些程序需要管理員權限User Account Control(UAC)</li><li>例如:要<strong>更改系統時間</strong>或是做一些需要權限存取的行為，若是沒有使用MANIFESTUAC則會以為程式沒有動作，其實是權限不夠。</li><li>提升系統管理員權限有幾種方法，此篇紀錄的是我覺得最簡單最快速的方式</li></ul><h3 id="目標-執行檔獲得小盾牌"><a href="#目標-執行檔獲得小盾牌" class="headerlink" title="目標: 執行檔獲得小盾牌"></a>目標: 執行檔獲得<code>小盾牌</code></h3><p><img src="https://i.imgur.com/GccgSDh.png" alt="" title="UAC"></p><h3 id="QMAKE-LFLAGS設置UAC權限"><a href="#QMAKE-LFLAGS設置UAC權限" class="headerlink" title="QMAKE_LFLAGS設置UAC權限"></a>QMAKE_LFLAGS設置UAC權限</h3><p>在pro檔中加入下面指令<br><figure class="highlight qt"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">QMAKE_LFLAGS+=<span class="regexp">/MANIFESTUAC:\"level=\'requireAdministrator\' uiAccess=\'false\'\"</span></span><br></pre></td></tr></table></figure></p><h3 id="Qt-Creator重新rebuild"><a href="#Qt-Creator重新rebuild" class="headerlink" title="Qt Creator重新rebuild"></a>Qt Creator重新rebuild</h3><p>若還是沒產出<strong>有盾牌</strong>的exe則刪掉執行檔再rebuild一次<br>這樣就可以產出有小盾牌的執行檔囉!</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;blockquote&gt;
-&lt;p&gt;本篇環境使用版本:&lt;br&gt;&lt;a href=&quot;https://download.qt.io/official_releases/qt/5.10/5.10.1/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;QT 5.10.1&lt;/a&gt;
-      
-    
-    </summary>
-    
-      <category term="Qt" scheme="https://teddybearfp.github.io/categories/Qt/"/>
-    
-    
-      <category term="Qt" scheme="https://teddybearfp.github.io/tags/Qt/"/>
-    
-      <category term="UAC" scheme="https://teddybearfp.github.io/tags/UAC/"/>
     
   </entry>
   

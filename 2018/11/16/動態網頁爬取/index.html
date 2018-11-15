@@ -70,7 +70,7 @@
 
 
 
-  <meta name="keywords" content="Qt,Qt 安裝與Hello World,Qt 安裝,Qt 環境建置">
+  <meta name="keywords" content="動態網頁爬取,網頁爬蟲">
 
 
 
@@ -81,28 +81,23 @@
 
 
 
-<meta name="description" content="本篇環境使用版本:QT 5.10.1Visual Studio 2015windows 10 SDK  安裝QT 5.10.1 安裝Visual Studio 2015 選擇程式工具(c++) 安裝windows 10 SDK 注意標題Windows後面數字此處為10.0.17763.1稍後若是編譯有問題可從此處找尋rc.exe檔案修正   開啟Qt Creator安裝完windows 10 S">
-<meta name="keywords" content="Qt,Qt 安裝與Hello World,Qt 安裝,Qt 環境建置">
+<meta name="description" content="前言上一篇Python 爬蟲幫你精選PTT文章!(靜態頁面爬取)寫的是如何擷取靜態網頁內容，只能單純爬取HTML內容，但是如果網頁是用JS渲染的我們透過F12 select element是看不到內容的，像是下方這張圖選擇了元素，但看不到內容(今天(15日)桃園市天氣晴時多雲，平均溫度…)因為這段代碼是由JS渲染，所以我們需要用PhantomJS來幫助我們爬取中央氣象局今天的天氣訊息 Phanto">
+<meta name="keywords" content="動態網頁爬取,網頁爬蟲">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Qt 安裝與Hello World!">
-<meta property="og:url" content="https://teddybearfp.github.io/2018/10/22/Qt-Setup/index.html">
+<meta property="og:title" content="Python 爬蟲幫你掌握氣象!(動態網頁爬取)">
+<meta property="og:url" content="https://teddybearfp.github.io/2018/11/16/動態網頁爬取/index.html">
 <meta property="og:site_name" content="泰迪熊的程式足跡">
-<meta property="og:description" content="本篇環境使用版本:QT 5.10.1Visual Studio 2015windows 10 SDK  安裝QT 5.10.1 安裝Visual Studio 2015 選擇程式工具(c++) 安裝windows 10 SDK 注意標題Windows後面數字此處為10.0.17763.1稍後若是編譯有問題可從此處找尋rc.exe檔案修正   開啟Qt Creator安裝完windows 10 S">
+<meta property="og:description" content="前言上一篇Python 爬蟲幫你精選PTT文章!(靜態頁面爬取)寫的是如何擷取靜態網頁內容，只能單純爬取HTML內容，但是如果網頁是用JS渲染的我們透過F12 select element是看不到內容的，像是下方這張圖選擇了元素，但看不到內容(今天(15日)桃園市天氣晴時多雲，平均溫度…)因為這段代碼是由JS渲染，所以我們需要用PhantomJS來幫助我們爬取中央氣象局今天的天氣訊息 Phanto">
 <meta property="og:locale" content="zh-tw">
-<meta property="og:image" content="https://i.imgur.com/9z5p73c.png">
-<meta property="og:image" content="https://i.imgur.com/FJDj2Qu.png">
-<meta property="og:image" content="https://i.imgur.com/lCYjlZl.png">
-<meta property="og:image" content="https://i.imgur.com/lETusDR.png">
-<meta property="og:image" content="https://i.imgur.com/H6kfxr3.png">
-<meta property="og:image" content="https://i.imgur.com/h9uJYZx.png">
-<meta property="og:image" content="https://i.imgur.com/eZdjZD2.png">
-<meta property="og:image" content="https://i.imgur.com/R5lu7cC.png">
-<meta property="og:image" content="https://i.imgur.com/w50mjXK.png">
-<meta property="og:updated_time" content="2018-10-24T14:02:27.593Z">
+<meta property="og:image" content="https://i.imgur.com/I3DYim8.png">
+<meta property="og:image" content="https://i.imgur.com/tiCvwGg.png">
+<meta property="og:image" content="https://i.imgur.com/8ZVExbm.png">
+<meta property="og:image" content="https://i.imgur.com/m3hqHZr.png">
+<meta property="og:updated_time" content="2018-11-15T08:55:07.136Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Qt 安裝與Hello World!">
-<meta name="twitter:description" content="本篇環境使用版本:QT 5.10.1Visual Studio 2015windows 10 SDK  安裝QT 5.10.1 安裝Visual Studio 2015 選擇程式工具(c++) 安裝windows 10 SDK 注意標題Windows後面數字此處為10.0.17763.1稍後若是編譯有問題可從此處找尋rc.exe檔案修正   開啟Qt Creator安裝完windows 10 S">
-<meta name="twitter:image" content="https://i.imgur.com/9z5p73c.png">
+<meta name="twitter:title" content="Python 爬蟲幫你掌握氣象!(動態網頁爬取)">
+<meta name="twitter:description" content="前言上一篇Python 爬蟲幫你精選PTT文章!(靜態頁面爬取)寫的是如何擷取靜態網頁內容，只能單純爬取HTML內容，但是如果網頁是用JS渲染的我們透過F12 select element是看不到內容的，像是下方這張圖選擇了元素，但看不到內容(今天(15日)桃園市天氣晴時多雲，平均溫度…)因為這段代碼是由JS渲染，所以我們需要用PhantomJS來幫助我們爬取中央氣象局今天的天氣訊息 Phanto">
+<meta name="twitter:image" content="https://i.imgur.com/I3DYim8.png">
 
 
 
@@ -132,13 +127,13 @@
 
 
 
-  <link rel="canonical" href="https://teddybearfp.github.io/2018/10/22/Qt-Setup/">
+  <link rel="canonical" href="https://teddybearfp.github.io/2018/11/16/動態網頁爬取/">
 
 
 
 
 
-  <title>Qt 安裝與Hello World! | 泰迪熊的程式足跡</title>
+  <title>Python 爬蟲幫你掌握氣象!(動態網頁爬取) | 泰迪熊的程式足跡</title>
   
 <script>
   window.fbAsyncInit = function() {
@@ -293,7 +288,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://teddybearfp.github.io/2018/10/22/Qt-Setup/">
+    <link itemprop="mainEntityOfPage" href="https://teddybearfp.github.io/2018/11/16/動態網頁爬取/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="G.C.L.">
@@ -310,7 +305,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Qt 安裝與Hello World!</h1>
+          <h1 class="post-title" itemprop="name headline">Python 爬蟲幫你掌握氣象!(動態網頁爬取)</h1>
         
 
         <div class="post-meta">
@@ -322,8 +317,8 @@
               
                 <span class="post-meta-item-text">發表於</span>
               
-              <time title="創建於" itemprop="dateCreated datePublished" datetime="2018-10-22T15:30:16+08:00">
-                2018-10-22
+              <time title="創建於" itemprop="dateCreated datePublished" datetime="2018-11-16T10:05:16+08:00">
+                2018-11-16
               </time>
             
 
@@ -345,8 +340,8 @@
               
               
                 <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/Qt/" itemprop="url" rel="index">
-                    <span itemprop="name">Qt</span>
+                  <a href="/categories/Python/" itemprop="url" rel="index">
+                    <span itemprop="name">Python</span>
                   </a>
                 </span>
 
@@ -363,8 +358,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2018/10/22/Qt-Setup/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count fb-comments-count" data-href="https://teddybearfp.github.io/2018/10/22/Qt-Setup/" itemprop="commentCount">0</span> comments
+                <a href="/2018/11/16/動態網頁爬取/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count fb-comments-count" data-href="https://teddybearfp.github.io/2018/11/16/動態網頁爬取/" itemprop="commentCount">0</span> comments
                 </a>
               </span>
             
@@ -397,34 +392,20 @@
       
 
       
-        <blockquote>
-<p>本篇環境使用版本:<br><a href="https://download.qt.io/official_releases/qt/5.10/5.10.1/" target="_blank" rel="noopener">QT 5.10.1</a><br>Visual Studio 2015<br><a href="https://developer.microsoft.com/zh-tw/windows/downloads/windows-10-sdk" target="_blank" rel="noopener">windows 10 SDK</a></p>
-</blockquote>
-<h3 id="安裝QT-5-10-1"><a href="#安裝QT-5-10-1" class="headerlink" title="安裝QT 5.10.1"></a>安裝QT 5.10.1</h3><p><img src="https://i.imgur.com/9z5p73c.png" alt="" title="選擇MSVC 2015"><br><img src="https://i.imgur.com/FJDj2Qu.png" alt="" title="安裝Qt相關插件"></p>
-<h3 id="安裝Visual-Studio-2015-選擇程式工具-c"><a href="#安裝Visual-Studio-2015-選擇程式工具-c" class="headerlink" title="安裝Visual Studio 2015 選擇程式工具(c++)"></a>安裝Visual Studio 2015 選擇程式工具(c++)</h3><p><img src="https://i.imgur.com/lCYjlZl.png" alt="" title="勾選整個Visual C++"></p>
-<h3 id="安裝windows-10-SDK"><a href="#安裝windows-10-SDK" class="headerlink" title="安裝windows 10 SDK"></a>安裝windows 10 SDK</h3><blockquote>
-<p>注意標題Windows後面數字<br>此處為10.0.17763.1<br>稍後若是編譯有問題可從此處找尋rc.exe檔案修正</p>
-</blockquote>
-<p><img src="https://i.imgur.com/lETusDR.png" alt="" title="install windows 10 SDK"></p>
-<h3 id="開啟Qt-Creator"><a href="#開啟Qt-Creator" class="headerlink" title="開啟Qt Creator"></a>開啟Qt Creator</h3><h2 id="安裝完windows-10-SDK後"><a href="#安裝完windows-10-SDK後" class="headerlink" title="安裝完windows 10 SDK後 "></a><code>安裝完windows 10 SDK後</code> </h2><blockquote>
-<p>projects &gt; Kits &gt; cdb會自動偵測</p>
-</blockquote>
-<p>手動選擇compiler</p>
-<blockquote>
-<p>projects &gt; Kits &gt; MSVC 2015 32bit<br>C: amd64_X86<br>C++: amd64_X86<br>Debugger: X86\cdb.exe</p>
-</blockquote>
-<p><img src="https://i.imgur.com/H6kfxr3.png" alt="" title="MSVC 2015 32bit"></p>
-<pre><code>&gt; projects &gt; Kits &gt; MSVC 2015 64bit
-C: X86_amd64
-C++: X86_amd64
-Debugger: X64\cdb.exe
-</code></pre><p><img src="https://i.imgur.com/h9uJYZx.png" alt="" title="MSVC 2015 64bit"></p>
-<h3 id="若是發生link-error-Qt-lnk1158-無法運行-rc-exe"><a href="#若是發生link-error-Qt-lnk1158-無法運行-rc-exe" class="headerlink" title="若是發生link error(Qt lnk1158 無法運行 rc.exe)"></a>若是發生link error(Qt lnk1158 無法運行 rc.exe)</h3><blockquote>
-<p>將C:\Program Files (x86)\Windows Kits\10\bin\10.0.17763.0\x86裡的 <strong>rc.exe</strong> 和 <strong>rcdll.dll</strong><br>兩個檔案複製到<br>C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin</p>
-</blockquote>
-<p><img src="https://i.imgur.com/eZdjZD2.png" alt="" title="C:\Program Files (x86)\Windows Kits\10\bin\10.0.17763.0\x86"></p>
-<p><img src="https://i.imgur.com/R5lu7cC.png" alt="" title="C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin"></p>
-<h3 id="大功告成-開始Qt的世界"><a href="#大功告成-開始Qt的世界" class="headerlink" title="大功告成! 開始Qt的世界"></a>大功告成! 開始Qt的世界</h3><p><img src="https://i.imgur.com/w50mjXK.png" alt="" title="Hello World!"></p>
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>上一篇<a href="https://teddybearfp.github.io/2018/11/07/Ptt%E7%88%AC%E8%9F%B2/#more">Python 爬蟲幫你精選PTT文章!(靜態頁面爬取)</a>寫的是如何擷取靜態網頁內容，只能單純爬取HTML內容，但是如果網頁是用JS渲染的我們透過F12 select element是看不到內容的，像是下方這張圖<br><img src="https://i.imgur.com/I3DYim8.png" alt=""><br>選擇了元素，但看不到內容(今天(15日)桃園市天氣晴時多雲，平均溫度…)<br>因為這段代碼是由JS渲染，所以我們需要用PhantomJS來幫助我們爬取中央氣象局今天的天氣訊息</p>
+<h2 id="PhantomJS"><a href="#PhantomJS" class="headerlink" title="PhantomJS"></a>PhantomJS</h2><p>PhantomJS是無介面瀏覽器(Headless browser)，背後的渲染引擎為 WebKit，適合進行自動化測試、捕捉截圖或監測網頁效能。因為沒有圖形介面，很容易整合至現有的測試框架，另一個特點是他能直接控制 DOM，方便你提取網頁中的元素內容</p>
+<p>下載PhantomJS(<a href="http://phantomjs.org/download.html" target="_blank" rel="noopener">Download PhantomJS</a>)</p>
+<h2 id="實作爬取氣象"><a href="#實作爬取氣象" class="headerlink" title="實作爬取氣象"></a>實作爬取氣象</h2><h3 id="導入函式庫"><a href="#導入函式庫" class="headerlink" title="導入函式庫"></a>導入函式庫</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"><span class="keyword">from</span> bs4 <span class="keyword">import</span> BeautifulSoup</span><br><span class="line"><span class="keyword">from</span> flask <span class="keyword">import</span> Flask, request, abort</span><br><span class="line"><span class="keyword">from</span> selenium <span class="keyword">import</span> webdriver</span><br></pre></td></tr></table></figure>
+<h3 id="編寫爬取桃園天氣函式"><a href="#編寫爬取桃園天氣函式" class="headerlink" title="編寫爬取桃園天氣函式"></a>編寫爬取桃園天氣函式</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">Taoyuan</span><span class="params">()</span>:</span></span><br><span class="line">    target_url = <span class="string">'https://www.cwb.gov.tw/V7/forecast/taiwan/Taoyuan_City.htm'</span></span><br><span class="line">    driver = webdriver.PhantomJS(executable_path=<span class="string">r'D:\phantomjs\bin\phantomjs.exe'</span>)<span class="comment">#導入PhantomJS路徑</span></span><br><span class="line">    driver.get(target_url)</span><br><span class="line">    soup = BeautifulSoup(driver.page_source, <span class="string">'html.parser'</span>)</span><br><span class="line">    content = <span class="string">""</span></span><br><span class="line">    <span class="keyword">for</span> data <span class="keyword">in</span> soup.select(<span class="string">'#ftext'</span>):</span><br><span class="line">        title = str(data)</span><br><span class="line">        content = title.split(<span class="string">"&lt;br/&gt;&lt;br/&gt;"</span>)[<span class="number">2</span>]</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> content</span><br></pre></td></tr></table></figure>
+<p>檢視beautifulSoup解析HTML代碼後的內容並觀察欲爬取位置<br><img src="https://i.imgur.com/tiCvwGg.png" alt=""><br>將id為ftext的內容找出(#ftext)</p>
+<ul>
+<li>#id</li>
+<li>.class<br><img src="https://i.imgur.com/8ZVExbm.png" alt=""><h3 id="呼叫函式"><a href="#呼叫函式" class="headerlink" title="呼叫函式"></a>呼叫函式</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(Taoyuan())</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>成功爬取今日天氣概述<br><img src="https://i.imgur.com/m3hqHZr.png" alt=""></p>
+<h2 id="結論"><a href="#結論" class="headerlink" title="結論"></a>結論</h2><p>PhantomJS還蠻多問題的例如:使用Multi-thread，讓多個網頁能同時 Loading，可是 PhantomJS 同時開很容易就會陣亡。掛掉後會變成一個 Zombie Process。<br>Headless Google 的出現，能取代 PhantomJS 功能且更快更穩，讓 PhantomJS 作者決定停止辛苦的獨力維護工作，PhantomJS 的Github 專案也已封存，改用 Headless Chrome 已成定局。改天來玩看看Google Chrome Headless，到時候再來寫一篇Headless Chrome的爬取</p>
+<h2 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h2><p><a href="https://hiskio.com/courses/76/lectures/1883" target="_blank" rel="noopener">PhantomJS的用法</a><br><a href="https://jerrynest.io/phantomjs-screenshot/" target="_blank" rel="noopener">使用PhantomJS 抓取網頁截圖- 傑瑞窩在這</a><br><a href="https://blog.darkthread.net/blog/headless-chrome/" target="_blank" rel="noopener">使用 Headless Chrome 擷圖、轉存PDF、爬資料</a></p>
 
       
     </div>
@@ -442,9 +423,9 @@ Debugger: X64\cdb.exe
       
         <div class="post-tags">
           
-            <a href="/tags/Qt/" rel="tag"><i class="fa fa-tag"></i> Qt</a>
+            <a href="/tags/動態網頁爬取/" rel="tag"><i class="fa fa-tag"></i> 動態網頁爬取</a>
           
-            <a href="/tags/環境架設/" rel="tag"><i class="fa fa-tag"></i> 環境架設</a>
+            <a href="/tags/網頁爬蟲/" rel="tag"><i class="fa fa-tag"></i> 網頁爬蟲</a>
           
         </div>
       
@@ -457,15 +438,15 @@ Debugger: X64\cdb.exe
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2018/11/15/優質小工具/" rel="next" title="優質小工具">
+                <i class="fa fa-chevron-left"></i> 優質小工具
+              </a>
+            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/10/22/Qt-Canvas畫圖/" rel="prev" title="Qt Canvas畫圖">
-                Qt Canvas畫圖 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -496,7 +477,7 @@ Debugger: X64\cdb.exe
 
   
     <div class="comments" id="comments">
-      <div class="fb-comments" data-href="https://teddybearfp.github.io/2018/10/22/Qt-Setup/" data-numposts="10" data-width="100%" data-colorscheme="light">
+      <div class="fb-comments" data-href="https://teddybearfp.github.io/2018/11/16/動態網頁爬取/" data-numposts="10" data-width="100%" data-colorscheme="light">
       </div>
     </div>
 
@@ -603,7 +584,7 @@ Debugger: X64\cdb.exe
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#安裝QT-5-10-1"><span class="nav-number">1.</span> <span class="nav-text">安裝QT 5.10.1</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安裝Visual-Studio-2015-選擇程式工具-c"><span class="nav-number">2.</span> <span class="nav-text">安裝Visual Studio 2015 選擇程式工具(c++)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安裝windows-10-SDK"><span class="nav-number">3.</span> <span class="nav-text">安裝windows 10 SDK</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#開啟Qt-Creator"><span class="nav-number">4.</span> <span class="nav-text">開啟Qt Creator</span></a></li></ol><li class="nav-item nav-level-2"><a class="nav-link" href="#安裝完windows-10-SDK後"><span class="nav-number"></span> <span class="nav-text">安裝完windows 10 SDK後 </span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#若是發生link-error-Qt-lnk1158-無法運行-rc-exe"><span class="nav-number">1.</span> <span class="nav-text">若是發生link error(Qt lnk1158 無法運行 rc.exe)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#大功告成-開始Qt的世界"><span class="nav-number">2.</span> <span class="nav-text">大功告成! 開始Qt的世界</span></a></li></ol></li></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#PhantomJS"><span class="nav-number">2.</span> <span class="nav-text">PhantomJS</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#實作爬取氣象"><span class="nav-number">3.</span> <span class="nav-text">實作爬取氣象</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#導入函式庫"><span class="nav-number">3.1.</span> <span class="nav-text">導入函式庫</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#編寫爬取桃園天氣函式"><span class="nav-number">3.2.</span> <span class="nav-text">編寫爬取桃園天氣函式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#呼叫函式"><span class="nav-number">3.3.</span> <span class="nav-text">呼叫函式</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#結論"><span class="nav-number">4.</span> <span class="nav-text">結論</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#參考資料"><span class="nav-number">5.</span> <span class="nav-text">參考資料</span></a></li></ol></div>
             
 
           </div>
@@ -795,9 +776,9 @@ Debugger: X64\cdb.exe
     
       <script type="text/javascript">
         var disqus_config = function () {
-          this.page.url = 'https://teddybearfp.github.io/2018/10/22/Qt-Setup/';
-          this.page.identifier = '2018/10/22/Qt-Setup/';
-          this.page.title = 'Qt 安裝與Hello World!';
+          this.page.url = 'https://teddybearfp.github.io/2018/11/16/動態網頁爬取/';
+          this.page.identifier = '2018/11/16/動態網頁爬取/';
+          this.page.title = 'Python 爬蟲幫你掌握氣象!(動態網頁爬取)';
         };
         var d = document, s = d.createElement('script');
         s.src = 'https://teddybearfp.disqus.com/embed.js';
