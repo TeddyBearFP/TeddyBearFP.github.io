@@ -97,7 +97,7 @@
 <meta property="og:image" content="https://i.imgur.com/SGqaund.png">
 <meta property="og:image" content="https://i.imgur.com/SAt0L7e.png">
 <meta property="og:image" content="https://i.imgur.com/NmbpLFB.png">
-<meta property="og:updated_time" content="2018-12-22T02:03:01.984Z">
+<meta property="og:updated_time" content="2018-12-22T02:05:49.462Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="OpenGL GLSL著色器">
 <meta name="twitter:description" content="前言畫畫除了知道圖案大小與對應的顏色之外，正確的著色在該有的位置是很重要的，透過著色器我們就可以把現有的每點位置與該點像素顏色精準的繪製在其中，接下來我們就來了解一下GLSL這語言，其變數型態與傳遞方式需要先有所了解才能跟c++端資料互相傳遞，此篇文章將會記錄如何使用這兩種著色器處理字串集傳送到驅動中。 GLSL(OpenGL Shading Language) OpenGL繪製圖形是透過GLSL">
@@ -462,7 +462,7 @@
 <h4 id="設定默認精度"><a href="#設定默認精度" class="headerlink" title="設定默認精度"></a>設定默認精度</h4><p>可以直接統一設定，在片段著色器最開始時，直接加上precision mediump float;這樣就默認了所有精度，若是變數沒特別聲明則會以默認精度來處理。</p>
 <h4 id="精度套用"><a href="#精度套用" class="headerlink" title="精度套用"></a>精度套用</h4><p>在運算時會套用已知最高的精度參數為運算精度，若沒有已知最高的則會套用默認精度或是更高的精度。</p>
 <h4 id="example-6"><a href="#example-6" class="headerlink" title="example"></a>example</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">lowp <span class="keyword">float</span> color;</span><br><span class="line">uniform mediump mat4 model;</span><br><span class="line">uniform mediump mat4 view;</span><br><span class="line">uniform mediump mat4 proj;</span><br><span class="line">varying highp vec4 texc;</span><br></pre></td></tr></table></figure>
-<h2 id="矩陣"><a href="#矩陣" class="headerlink" title="矩陣"></a>矩陣</h2><p>矩陣運算A <em> B != B </em> A<br>所以先後順序很重要</p>
+<h2 id="矩陣"><a href="#矩陣" class="headerlink" title="矩陣"></a>矩陣</h2><p>矩陣運算A /<em> B != B /</em> A<br>所以先後順序很重要</p>
 <h3 id="example-7"><a href="#example-7" class="headerlink" title="example"></a>example</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">transformedVector = translateMatrix * rotationMatrix * scaleMatrix * originalVector;</span><br></pre></td></tr></table></figure>
 <p>上述的程式碼會先執行縮放再執行旋轉最後才執行平移，這就是矩陣乘法的運算方式</p>
 <h2 id="GLSL好用的函式"><a href="#GLSL好用的函式" class="headerlink" title="GLSL好用的函式"></a>GLSL好用的函式</h2><h3 id="Step"><a href="#Step" class="headerlink" title="Step"></a>Step</h3><p>step() 插值函數需要輸入兩個參數。第一個是極限或閥值，第二個是我們想要檢測或通過的值。<br>對任何小於閥值的值，返回 0.0，大於閥值，則返回 1.0。</p>
