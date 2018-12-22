@@ -81,13 +81,13 @@
 
 
 
-<meta name="description" content="前言畫畫除了知道圖案大小與對應的顏色之外，正確的著色在該有的位置是很重要的，透過著色器我們就可以把現有的每點位置與該點像素顏色精準的繪製在其中，接下來我們就來了解一下GLSL這語言，其變數型態與傳遞方式需要先有所了解才能跟c++端資料互相傳遞，此篇文章將會記錄如何使用這兩種著色器處理字串集傳送到驅動中。 GLSL(OpenGL Shading Language) OpenGL繪製圖形是透過GLSL">
+<meta name="description" content="前言3D是結合容器與紋理呈現在畫面上，透過著色器我們就可以把現有的每點位置與該點像素顏色精準的繪製在其中，接下來我們就來了解一下GLSL這語言，其變數型態與傳遞方式需要先有所了解才能跟c++端資料互相傳遞，此篇文章將會記錄如何使用這兩種著色器處理字串集傳送到驅動中。 GLSL(OpenGL Shading Language) OpenGL繪製圖形是透過GLSL(OpenGL Shading Lan">
 <meta name="keywords" content="OpenGL著色器,shader">
 <meta property="og:type" content="article">
 <meta property="og:title" content="OpenGL GLSL著色器">
 <meta property="og:url" content="https://teddybearfp.github.io/2018/12/22/OpenGL-GLSL著色器/index.html">
 <meta property="og:site_name" content="泰迪熊的程式足跡">
-<meta property="og:description" content="前言畫畫除了知道圖案大小與對應的顏色之外，正確的著色在該有的位置是很重要的，透過著色器我們就可以把現有的每點位置與該點像素顏色精準的繪製在其中，接下來我們就來了解一下GLSL這語言，其變數型態與傳遞方式需要先有所了解才能跟c++端資料互相傳遞，此篇文章將會記錄如何使用這兩種著色器處理字串集傳送到驅動中。 GLSL(OpenGL Shading Language) OpenGL繪製圖形是透過GLSL">
+<meta property="og:description" content="前言3D是結合容器與紋理呈現在畫面上，透過著色器我們就可以把現有的每點位置與該點像素顏色精準的繪製在其中，接下來我們就來了解一下GLSL這語言，其變數型態與傳遞方式需要先有所了解才能跟c++端資料互相傳遞，此篇文章將會記錄如何使用這兩種著色器處理字串集傳送到驅動中。 GLSL(OpenGL Shading Language) OpenGL繪製圖形是透過GLSL(OpenGL Shading Lan">
 <meta property="og:locale" content="zh-tw">
 <meta property="og:image" content="https://i.imgur.com/ZInohLH.jpg">
 <meta property="og:image" content="https://i.imgur.com/dLfGjj1.png">
@@ -98,10 +98,10 @@
 <meta property="og:image" content="https://i.imgur.com/SAt0L7e.png">
 <meta property="og:image" content="https://i.imgur.com/NmbpLFB.png">
 <meta property="og:image" content="https://i.imgur.com/sxi4ZpN.png">
-<meta property="og:updated_time" content="2018-12-22T03:03:38.346Z">
+<meta property="og:updated_time" content="2018-12-22T03:07:38.045Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="OpenGL GLSL著色器">
-<meta name="twitter:description" content="前言畫畫除了知道圖案大小與對應的顏色之外，正確的著色在該有的位置是很重要的，透過著色器我們就可以把現有的每點位置與該點像素顏色精準的繪製在其中，接下來我們就來了解一下GLSL這語言，其變數型態與傳遞方式需要先有所了解才能跟c++端資料互相傳遞，此篇文章將會記錄如何使用這兩種著色器處理字串集傳送到驅動中。 GLSL(OpenGL Shading Language) OpenGL繪製圖形是透過GLSL">
+<meta name="twitter:description" content="前言3D是結合容器與紋理呈現在畫面上，透過著色器我們就可以把現有的每點位置與該點像素顏色精準的繪製在其中，接下來我們就來了解一下GLSL這語言，其變數型態與傳遞方式需要先有所了解才能跟c++端資料互相傳遞，此篇文章將會記錄如何使用這兩種著色器處理字串集傳送到驅動中。 GLSL(OpenGL Shading Language) OpenGL繪製圖形是透過GLSL(OpenGL Shading Lan">
 <meta name="twitter:image" content="https://i.imgur.com/ZInohLH.jpg">
 
 
@@ -397,7 +397,7 @@
       
 
       
-        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>畫畫除了知道圖案大小與對應的顏色之外，正確的著色在該有的位置是很重要的，透過著色器我們就可以把現有的每點位置與該點像素顏色精準的繪製在其中，接下來我們就來了解一下GLSL這語言，其變數型態與傳遞方式需要先有所了解才能跟c++端資料互相傳遞，此篇文章將會記錄如何使用這兩種著色器處理字串集傳送到驅動中。</p>
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>3D是結合容器與紋理呈現在畫面上，透過著色器我們就可以把現有的每點位置與該點像素顏色精準的繪製在其中，接下來我們就來了解一下GLSL這語言，其變數型態與傳遞方式需要先有所了解才能跟c++端資料互相傳遞，此篇文章將會記錄如何使用這兩種著色器處理字串集傳送到驅動中。</p>
 <h2 id="GLSL-OpenGL-Shading-Language"><a href="#GLSL-OpenGL-Shading-Language" class="headerlink" title="GLSL(OpenGL Shading Language)"></a>GLSL(OpenGL Shading Language)</h2><ul>
 <li>OpenGL繪製圖形是透過GLSL(OpenGL Shading Language)也稱作 GLslang，是一個以C語言為基礎的高階著色語言。</li>
 <li>GLSL 著色器不是獨立的應用程式；其需要使用 OpenGL API 的應用程式。C、C++、C#、Delphi 和 Java 皆支援 OpenGL API，且支援 OpenGL 著色語言。</li>
