@@ -97,8 +97,9 @@
 <meta property="og:image" content="https://i.imgur.com/SGqaund.png">
 <meta property="og:image" content="https://i.imgur.com/SAt0L7e.png">
 <meta property="og:image" content="https://i.imgur.com/NmbpLFB.png">
+<meta property="og:image" content="https://i.imgur.com/NWf4c7J.png">
 <meta property="og:image" content="https://i.imgur.com/sxi4ZpN.png">
-<meta property="og:updated_time" content="2018-12-22T03:19:32.732Z">
+<meta property="og:updated_time" content="2018-12-22T03:25:22.843Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="OpenGL GLSL著色器">
 <meta name="twitter:description" content="前言3D是結合容器與紋理呈現在畫面上，透過著色器我們就可以把現有的每點位置與該點像素顏色精準的繪製在其中，接下來我們就來了解一下GLSL這語言，其變數型態與傳遞方式需要先有所了解才能跟c++端資料互相傳遞，此篇文章將會記錄如何使用這兩種著色器處理字串集傳送到驅動中。 GLSL(OpenGL Shading Language) OpenGL繪製圖形是透過GLSL(OpenGL Shading Lan">
@@ -426,7 +427,8 @@
 <blockquote>
 <p>proj <em>(view </em>(model <em>(toMatrix </em> vertex)))<br>equal to<br>(proj <em> view </em> model) * vertex</p>
 </blockquote>
-<h3 id="片段著色器-fragment-shader"><a href="#片段著色器-fragment-shader" class="headerlink" title="片段著色器(fragment shader)"></a>片段著色器(fragment shader)</h3><p>片段著色器最主要的return值為原生變數gl_FragColor來決定最終的像素顏色，而gl_FragColor會把值傳去做透明度(Alpha test)跟混合(Blending)<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    gl_FragColor = vec4(<span class="number">1.0</span>, <span class="number">0.0</span>, <span class="number">0.0</span>, <span class="number">1.0</span>);<span class="comment">//把輸出變量設置為紅色</span></span><br><span class="line">&#125;</span><br><span class="line">![](https:<span class="comment">//i.imgur.com/NWf4c7J.png)</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="片段著色器-fragment-shader"><a href="#片段著色器-fragment-shader" class="headerlink" title="片段著色器(fragment shader)"></a>片段著色器(fragment shader)</h3><p>片段著色器最主要的return值為原生變數gl_FragColor來決定最終的像素顏色，而gl_FragColor會把值傳去做透明度(Alpha test)跟混合(Blending)<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    gl_FragColor = vec4(<span class="number">1.0</span>, <span class="number">0.0</span>, <span class="number">0.0</span>, <span class="number">1.0</span>);<span class="comment">//把輸出變量設置為紅色</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p><img src="https://i.imgur.com/NWf4c7J.png" alt=""></p>
 <h2 id="變數型態"><a href="#變數型態" class="headerlink" title="變數型態"></a>變數型態</h2><p>較常使用到的有以下幾種變數型態</p>
 <ul>
 <li>attribute</li>
