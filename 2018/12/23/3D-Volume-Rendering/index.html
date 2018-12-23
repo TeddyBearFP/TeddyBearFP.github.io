@@ -70,7 +70,7 @@
 
 
 
-  <meta name="keywords" content="單例模式,C++ Singleton,Singleton">
+  <meta name="keywords" content="OpenGL,Volume Rendering,3D">
 
 
 
@@ -81,18 +81,26 @@
 
 
 
-<meta name="description" content="本篇環境使用版本:QT 5.10.1Visual Studio 2015windows 10 SDK  單例模式 保證一個class只有一個實體(Instance) 在宣告的同時直接new這個類別的實例(instance)，並且將建構子宣告為private， 這樣其他程式就無法再new這個類別的實例，保證這個類別只存在一個實例 優點 單例實作了它的唯一實例,便於團隊共享與開發 在系統中僅存在一個">
-<meta name="keywords" content="單例模式,C++ Singleton,Singleton">
+<meta name="description" content="前言前陣子使用的QImage都是處理二維圖形，最近研究起3D的領域，透過OpenGL來實作立體渲染(Volume Rendering)，立體渲染簡單來說，就是將2D圖形數張疊成一個3D立體圖形，這立體渲染的技術可以運用在醫學上的CT、OCT與MRI斷層掃描中。這篇所寫的頂點與紋理處理搭配上一篇所編寫的OpenGL GLSL著色器就可以達到下圖3D立體渲染效果囉!  名詞概述Volume Rende">
+<meta name="keywords" content="OpenGL,Volume Rendering,3D">
 <meta property="og:type" content="article">
-<meta property="og:title" content="C++ 單例模式(Singleton)">
-<meta property="og:url" content="https://teddybearfp.github.io/2018/10/23/C-單例模式/index.html">
+<meta property="og:title" content="OpenGL 3D 立體渲染">
+<meta property="og:url" content="https://teddybearfp.github.io/2018/12/23/3D-Volume-Rendering/index.html">
 <meta property="og:site_name" content="泰迪熊的程式足跡">
-<meta property="og:description" content="本篇環境使用版本:QT 5.10.1Visual Studio 2015windows 10 SDK  單例模式 保證一個class只有一個實體(Instance) 在宣告的同時直接new這個類別的實例(instance)，並且將建構子宣告為private， 這樣其他程式就無法再new這個類別的實例，保證這個類別只存在一個實例 優點 單例實作了它的唯一實例,便於團隊共享與開發 在系統中僅存在一個">
+<meta property="og:description" content="前言前陣子使用的QImage都是處理二維圖形，最近研究起3D的領域，透過OpenGL來實作立體渲染(Volume Rendering)，立體渲染簡單來說，就是將2D圖形數張疊成一個3D立體圖形，這立體渲染的技術可以運用在醫學上的CT、OCT與MRI斷層掃描中。這篇所寫的頂點與紋理處理搭配上一篇所編寫的OpenGL GLSL著色器就可以達到下圖3D立體渲染效果囉!  名詞概述Volume Rende">
 <meta property="og:locale" content="zh-tw">
-<meta property="og:updated_time" content="2018-10-24T14:28:01.607Z">
+<meta property="og:image" content="https://i.imgur.com/sxi4ZpN.png">
+<meta property="og:image" content="https://i.imgur.com/888pOxo.png">
+<meta property="og:image" content="https://i.imgur.com/vD7BsCL.png">
+<meta property="og:image" content="https://i.imgur.com/opzvhX4.png">
+<meta property="og:image" content="https://i.imgur.com/XWHvtot.png">
+<meta property="og:image" content="https://i.imgur.com/fI2erxE.png">
+<meta property="og:image" content="https://i.imgur.com/19PQu4z.png">
+<meta property="og:updated_time" content="2018-12-23T07:17:20.995Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="C++ 單例模式(Singleton)">
-<meta name="twitter:description" content="本篇環境使用版本:QT 5.10.1Visual Studio 2015windows 10 SDK  單例模式 保證一個class只有一個實體(Instance) 在宣告的同時直接new這個類別的實例(instance)，並且將建構子宣告為private， 這樣其他程式就無法再new這個類別的實例，保證這個類別只存在一個實例 優點 單例實作了它的唯一實例,便於團隊共享與開發 在系統中僅存在一個">
+<meta name="twitter:title" content="OpenGL 3D 立體渲染">
+<meta name="twitter:description" content="前言前陣子使用的QImage都是處理二維圖形，最近研究起3D的領域，透過OpenGL來實作立體渲染(Volume Rendering)，立體渲染簡單來說，就是將2D圖形數張疊成一個3D立體圖形，這立體渲染的技術可以運用在醫學上的CT、OCT與MRI斷層掃描中。這篇所寫的頂點與紋理處理搭配上一篇所編寫的OpenGL GLSL著色器就可以達到下圖3D立體渲染效果囉!  名詞概述Volume Rende">
+<meta name="twitter:image" content="https://i.imgur.com/sxi4ZpN.png">
 
 
 
@@ -122,13 +130,13 @@
 
 
 
-  <link rel="canonical" href="https://teddybearfp.github.io/2018/10/23/C-單例模式/">
+  <link rel="canonical" href="https://teddybearfp.github.io/2018/12/23/3D-Volume-Rendering/">
 
 
 
 
 
-  <title>C++ 單例模式(Singleton) | 泰迪熊的程式足跡</title>
+  <title>OpenGL 3D 立體渲染 | 泰迪熊的程式足跡</title>
   
 <script>
   window.fbAsyncInit = function() {
@@ -283,7 +291,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://teddybearfp.github.io/2018/10/23/C-單例模式/">
+    <link itemprop="mainEntityOfPage" href="https://teddybearfp.github.io/2018/12/23/3D-Volume-Rendering/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="G.C.L.">
@@ -300,7 +308,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">C++ 單例模式(Singleton)</h1>
+          <h1 class="post-title" itemprop="name headline">OpenGL 3D 立體渲染</h1>
         
 
         <div class="post-meta">
@@ -312,8 +320,8 @@
               
                 <span class="post-meta-item-text">發表於</span>
               
-              <time title="創建於" itemprop="dateCreated datePublished" datetime="2018-10-23T20:30:16+08:00">
-                2018-10-23
+              <time title="創建於" itemprop="dateCreated datePublished" datetime="2018-12-23T10:05:16+08:00">
+                2018-12-23
               </time>
             
 
@@ -335,8 +343,8 @@
               
               
                 <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/C/" itemprop="url" rel="index">
-                    <span itemprop="name">C++</span>
+                  <a href="/categories/OpenGL/" itemprop="url" rel="index">
+                    <span itemprop="name">OpenGL</span>
                   </a>
                 </span>
 
@@ -353,8 +361,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2018/10/23/C-單例模式/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count fb-comments-count" data-href="https://teddybearfp.github.io/2018/10/23/C-單例模式/" itemprop="commentCount">0</span> comments
+                <a href="/2018/12/23/3D-Volume-Rendering/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count fb-comments-count" data-href="https://teddybearfp.github.io/2018/12/23/3D-Volume-Rendering/" itemprop="commentCount">0</span> comments
                 </a>
               </span>
             
@@ -387,33 +395,24 @@
       
 
       
-        <blockquote>
-<p>本篇環境使用版本:<br><a href="https://download.qt.io/official_releases/qt/5.10/5.10.1/" target="_blank" rel="noopener">QT 5.10.1</a><br>Visual Studio 2015<br><a href="https://developer.microsoft.com/zh-tw/windows/downloads/windows-10-sdk" target="_blank" rel="noopener">windows 10 SDK</a></p>
-</blockquote>
-<h3 id="單例模式"><a href="#單例模式" class="headerlink" title="單例模式"></a>單例模式</h3><ul>
-<li>保證一個class只有一個實體(Instance)</li>
-<li>在宣告的同時直接new這個類別的實例(instance)，並且將建構子宣告為private， 這樣其他程式就無法再new這個類別的實例，保證這個類別只存在一個實例</li>
-<li>優點<ul>
-<li>單例實作了它的唯一實例,便於團隊共享與開發</li>
-<li>在系統中僅存在一個對象,因此可以節省系統資源,對於頻繁創建與銷毀對象,單例可以提高系統性能</li>
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>前陣子使用的QImage都是處理二維圖形，最近研究起3D的領域，透過OpenGL來實作立體渲染(Volume Rendering)，立體渲染簡單來說，就是將2D圖形數張疊成一個3D立體圖形，這立體渲染的技術可以運用在醫學上的CT、OCT與MRI斷層掃描中。這篇所寫的頂點與紋理處理搭配上一篇所編寫的<a href="https://teddybearfp.github.io/2018/12/22/OpenGL-GLSL%E8%91%97%E8%89%B2%E5%99%A8/#more">OpenGL GLSL著色器</a>就可以達到下圖3D立體渲染效果囉!</p>
+<p><img src="https://i.imgur.com/sxi4ZpN.png" alt=""></p>
+<h2 id="名詞概述"><a href="#名詞概述" class="headerlink" title="名詞概述"></a>名詞概述</h2><h3 id="Volume-Rendering"><a href="#Volume-Rendering" class="headerlink" title="Volume Rendering"></a>Volume Rendering</h3><p>立體渲染是一種用於顯示離散三維採樣數據集的二維投影的技術。一個典型的三維數據集是CT、OCT或者MRI採集的一組二維切面圖像。通常這些數據是按照一定規則如每毫米一個切面，並且通常有一定數目的圖像像素。為了渲染三維數據集的二維投影，首先需要定義相機相對於幾何體的空間位置。另外，需要定義每個點即體素的不透明性以及顏色，這通常使用RGBA（red, green, blue, alpha）傳遞函數定義每個體素可能值對應的RGBA值。</p>
+<h3 id="OCT"><a href="#OCT" class="headerlink" title="OCT"></a>OCT</h3><p>OCT英文全名為Optical Coherence TomoGraphy，俗稱俗稱視網膜光學斷層掃描儀，雖然名稱有斷層掃描的字眼，但它是利用紅外線波長的雷射光對視網膜做掃描，不是X光，與一般的電腦斷層不一樣。它的原理是，光線發出後，分成兩道光，一道光打進眼底，一道光打到參考的鏡面上，兩道光再反射回來，形成干涉現象，形成光譜，儀器收集到訊號即可進行分析。</p>
+<h2 id="Volume-Rendering原理"><a href="#Volume-Rendering原理" class="headerlink" title="Volume Rendering原理"></a>Volume Rendering原理</h2><p>目前已知有兩種方式達到Volume Rendering</p>
+<ul>
+<li>2D Array</li>
+<li>3D Texture</li>
 </ul>
-</li>
-<li>風險<ul>
-<li>單例模式在多執行緒的應用下必須小心使用。如果當唯一實例尚未創建時，有兩個執行緒同時調用創建方法，那麼它們同時沒有檢測到唯一實例的存在，從而同時各自創建了一個實例，這樣就有兩個實例被構造出來，從而違反了單例模式中唯一實例的原則。</li>
-<li>解決方案: 可以透過第一時間建立實例或是運用雙重檢查上鎖</li>
-</ul>
-</li>
-<li>會將何者設為單例呢?<ul>
-<li>通常會將Model(管理與儲存資料)的類別設為單例，可以確保資料的一致性也能方便供其他程式使用。</li>
-</ul>
-</li>
-</ul>
-<h2 id="用法一"><a href="#用法一" class="headerlink" title="用法一"></a>用法一</h2><h3 id="h宣告"><a href="#h宣告" class="headerlink" title=".h宣告"></a>.h宣告</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Singleton</span>:</span></span><br><span class="line">&#123; </span><br><span class="line">	Q_OBJECT </span><br><span class="line"><span class="keyword">public</span>: </span><br><span class="line">	<span class="function"><span class="keyword">static</span> Singleton* <span class="title">Inst</span><span class="params">()</span> </span>&#123; <span class="keyword">return</span> &amp;inst; &#125;</span><br><span class="line">	Singleton();</span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">startCamera</span><span class="params">()</span></span>;</span><br><span class="line"><span class="keyword">private</span>: </span><br><span class="line">	<span class="keyword">static</span> Singleton inst;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<h3 id="cpp定義"><a href="#cpp定義" class="headerlink" title=".cpp定義"></a>.cpp定義</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Singleton Singleton::inst; </span><br><span class="line"></span><br><span class="line">Singleton::Singleton() &#123; &#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">void</span> Singleton::startCamera() &#123; </span><br><span class="line">	<span class="keyword">bool</span> CameraStartResult = CameraStart(cameraDevice); </span><br><span class="line">	isStarted = <span class="literal">true</span>; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="調用單例"><a href="#調用單例" class="headerlink" title="調用單例"></a>調用單例</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">void</span> VideoPanel::startCamera() &#123; </span><br><span class="line">	Singleton::Inst()-&gt;startCamera(); </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="用法二"><a href="#用法二" class="headerlink" title="用法二"></a>用法二</h2><h3 id="h宣告-1"><a href="#h宣告-1" class="headerlink" title=".h宣告"></a>.h宣告</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Singleton</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">	TCHAR *m_strUserName;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">	<span class="function"><span class="keyword">static</span> Singleton* <span class="title">GetInstance</span><span class="params">()</span></span>;</span><br><span class="line"><span class="function">TCHAR <span class="title">GetUserName</span><span class="params">()</span></span>;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<h3 id="cpp定義-1"><a href="#cpp定義-1" class="headerlink" title=".cpp定義"></a>.cpp定義</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Singleton* Singleton::GetInstance()</span><br><span class="line">&#123;</span><br><span class="line">	<span class="keyword">static</span> Singleton *Inst;</span><br><span class="line">	<span class="keyword">return</span> Inst;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="調用單例-1"><a href="#調用單例-1" class="headerlink" title="調用單例"></a>調用單例</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">CString strMemberName = (Singleton::GetInstance())-&gt;GetUserName();</span><br></pre></td></tr></table></figure>
+<h3 id="2D-Array"><a href="#2D-Array" class="headerlink" title="2D Array"></a>2D Array</h3><h4 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h4><p>用一組2D QImage紋理數與頂點組伴隨著z軸的變化達到疊圖效果</p>
+<p><img src="https://i.imgur.com/888pOxo.png" alt=""></p>
+<h4 id="問題"><a href="#問題" class="headerlink" title="問題"></a>問題</h4><p>用2D Array疊成的3D模型會有個問題，就是在模型轉到90度與180度時從側面來看會是有間隙的甚至直接穿透看不到畫面，原因是這種畫法在yz軸上並沒有繪製圖形<br><img src="https://i.imgur.com/vD7BsCL.png" alt=""></p>
+<h4 id="解決辦法"><a href="#解決辦法" class="headerlink" title="解決辦法"></a>解決辦法</h4><p>為了解決上述的YZ軸未繪製圖形，導致側邊觀看會沒有畫面甚至穿透，我們的解決辦法是使用3組的2D array去做立體渲染，<br><img src="https://i.imgur.com/opzvhX4.png" alt=""><br>準備好以上三組2D Array做出來的3D圖形在XY平面、YZ平面與XZ平面上都有像素資料，這樣解決了90度與180度沒畫面或是穿透的問題了，但是我們怎麼知道在哪種角度時顯示顯示哪組2D Array呢?<br><img src="https://i.imgur.com/XWHvtot.png" alt=""><br>透過上述方式可以切換平面，正確顯示數據但是在側面時會發生Popping Effect所以更正確的是在旋轉時就以當下面向我們的當作切面是最好的辦法!<br><img src="https://i.imgur.com/fI2erxE.png" alt=""></p>
+<h3 id="3D-Texture"><a href="#3D-Texture" class="headerlink" title="3D Texture"></a>3D Texture</h3><h4 id="原理-1"><a href="#原理-1" class="headerlink" title="原理"></a>原理</h4><p>接下來講述的就是這篇繪製Volume Rendering的方式，將數組2D QImage以Buffer的方式放到3D Texture中進行處理，首先先將2D QImage的陣列存成一個buffer，迴圈執行共幾張QImage然後內容取RGBA存放，得到一個3D紋理，接下來準備個3D容器來準備放進這個3D紋理</p>
+<p><img src="https://i.imgur.com/19PQu4z.png" alt="" title="3D容器貼上3D紋理示意圖"></p>
+<p>最後是最重要的環節，當旋轉時我們旋轉的不是容器，而是3D紋理!<br>這樣的話我們容器永遠是XY平面面對攝影機，而選轉的3D紋理不像2D紋理有側邊透視問題，並且是做過Alpha test跟Blending的紋理。</p>
+<h2 id="Volume-Rendering實作"><a href="#Volume-Rendering實作" class="headerlink" title="Volume Rendering實作"></a>Volume Rendering實作</h2><h2 id="總結"><a href="#總結" class="headerlink" title="總結"></a>總結</h2><p>透過這次的3D Volume Rendering對於圖形上的處理與3D觀念有了更深刻的理解，像是3D世界中物體的移動通常並非是物體真的在移動而是攝影機的移動使觀察畫面有變化，還有頂點與紋理傳遞給著色器Shader處理的運作，更特別是容器不動紋理去做旋轉這個想法也是讓我有新的思維。</p>
+<h2 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h2><p><a href="https://zh.wikipedia.org/wiki/%E7%AB%8B%E4%BD%93%E6%B8%B2%E6%9F%93" target="_blank" rel="noopener">立體渲染- 維基百科，自由的百科全書 - Wikipedia</a><br><a href="https://tw.news.yahoo.com/%E7%9C%BC%E7%A7%91%E6%AA%A2%E6%9F%A5%E5%88%A9%E5%99%A8%E3%80%8Coct%E3%80%8D%E8%A7%A3%E6%9E%90%E5%BA%A6%E8%B6%85%E9%AB%98%E3%80%80%E6%8F%AA%E5%87%BA%E7%9C%BC%E7%96%BE%E5%8F%AA%E9%9C%803%E7%A7%92-070029677.html" target="_blank" rel="noopener">眼科檢查利器「OCT」解析度超高</a> OCT文獻參考<br><a href="https://www.codeproject.com/Articles/352270/%2FArticles%2F352270%2FGetting-started-with-Volume-Rendering" target="_blank" rel="noopener">Getting started with Volume Rendering using OpenGL</a> 主要觀念與程式邏輯參考處</p>
 
       
     </div>
@@ -431,9 +430,11 @@
       
         <div class="post-tags">
           
-            <a href="/tags/C/" rel="tag"><i class="fa fa-tag"></i> C++</a>
+            <a href="/tags/OpenGL/" rel="tag"><i class="fa fa-tag"></i> OpenGL</a>
           
-            <a href="/tags/單例模式/" rel="tag"><i class="fa fa-tag"></i> 單例模式</a>
+            <a href="/tags/Volume-Rendering/" rel="tag"><i class="fa fa-tag"></i> Volume Rendering</a>
+          
+            <a href="/tags/3D/" rel="tag"><i class="fa fa-tag"></i> 3D</a>
           
         </div>
       
@@ -446,8 +447,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/10/23/共享資料夾/" rel="next" title="共享資料夾">
-                <i class="fa fa-chevron-left"></i> 共享資料夾
+              <a href="/2018/12/22/OpenGL-GLSL著色器/" rel="next" title="OpenGL GLSL著色器">
+                <i class="fa fa-chevron-left"></i> OpenGL GLSL著色器
               </a>
             
           </div>
@@ -455,10 +456,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/10/24/C-監聽QEvent並將事件重寫/" rel="prev" title="QEvent攔截事件">
-                QEvent攔截事件 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -489,7 +486,7 @@
 
   
     <div class="comments" id="comments">
-      <div class="fb-comments" data-href="https://teddybearfp.github.io/2018/10/23/C-單例模式/" data-numposts="10" data-width="100%" data-colorscheme="light">
+      <div class="fb-comments" data-href="https://teddybearfp.github.io/2018/12/23/3D-Volume-Rendering/" data-numposts="10" data-width="100%" data-colorscheme="light">
       </div>
     </div>
 
@@ -596,7 +593,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#單例模式"><span class="nav-number">1.</span> <span class="nav-text">單例模式</span></a></li></ol><li class="nav-item nav-level-2"><a class="nav-link" href="#用法一"><span class="nav-number"></span> <span class="nav-text">用法一</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#h宣告"><span class="nav-number">1.</span> <span class="nav-text">.h宣告</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#cpp定義"><span class="nav-number">2.</span> <span class="nav-text">.cpp定義</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#調用單例"><span class="nav-number">3.</span> <span class="nav-text">調用單例</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#用法二"><span class="nav-number"></span> <span class="nav-text">用法二</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#h宣告-1"><span class="nav-number">1.</span> <span class="nav-text">.h宣告</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#cpp定義-1"><span class="nav-number">2.</span> <span class="nav-text">.cpp定義</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#調用單例-1"><span class="nav-number">3.</span> <span class="nav-text">調用單例</span></a></li></ol></li></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#名詞概述"><span class="nav-number">2.</span> <span class="nav-text">名詞概述</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Volume-Rendering"><span class="nav-number">2.1.</span> <span class="nav-text">Volume Rendering</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#OCT"><span class="nav-number">2.2.</span> <span class="nav-text">OCT</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Volume-Rendering原理"><span class="nav-number">3.</span> <span class="nav-text">Volume Rendering原理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2D-Array"><span class="nav-number">3.1.</span> <span class="nav-text">2D Array</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#原理"><span class="nav-number">3.1.1.</span> <span class="nav-text">原理</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#問題"><span class="nav-number">3.1.2.</span> <span class="nav-text">問題</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#解決辦法"><span class="nav-number">3.1.3.</span> <span class="nav-text">解決辦法</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3D-Texture"><span class="nav-number">3.2.</span> <span class="nav-text">3D Texture</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#原理-1"><span class="nav-number">3.2.1.</span> <span class="nav-text">原理</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Volume-Rendering實作"><span class="nav-number">4.</span> <span class="nav-text">Volume Rendering實作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#總結"><span class="nav-number">5.</span> <span class="nav-text">總結</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#參考資料"><span class="nav-number">6.</span> <span class="nav-text">參考資料</span></a></li></ol></div>
             
 
           </div>
@@ -788,9 +785,9 @@
     
       <script type="text/javascript">
         var disqus_config = function () {
-          this.page.url = 'https://teddybearfp.github.io/2018/10/23/C-單例模式/';
-          this.page.identifier = '2018/10/23/C-單例模式/';
-          this.page.title = 'C++ 單例模式(Singleton)';
+          this.page.url = 'https://teddybearfp.github.io/2018/12/23/3D-Volume-Rendering/';
+          this.page.identifier = '2018/12/23/3D-Volume-Rendering/';
+          this.page.title = 'OpenGL 3D 立體渲染';
         };
         var d = document, s = d.createElement('script');
         s.src = 'https://teddybearfp.disqus.com/embed.js';
