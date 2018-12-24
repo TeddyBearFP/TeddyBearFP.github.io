@@ -89,18 +89,18 @@
 <meta property="og:site_name" content="泰迪熊的程式足跡">
 <meta property="og:description" content="前言前陣子使用的QImage都是處理二維圖形，最近研究起3D的領域，透過OpenGL來實作立體渲染(Volume Rendering)，立體渲染簡單來說，就是將2D圖形數張疊成一個3D立體圖形，這立體渲染的技術可以運用在醫學上的CT、OCT與MRI斷層掃描中。這篇所寫的頂點與紋理處理搭配上一篇所編寫的OpenGL GLSL著色器就可以達到下圖3D立體渲染效果囉!  名詞概述Volume Rende">
 <meta property="og:locale" content="zh-tw">
-<meta property="og:image" content="https://i.imgur.com/a5YV2ge.mp4">
+<meta property="og:image" content="https://media.giphy.com/media/fxCrCjSXyJBR83AFPb/giphy.gif">
 <meta property="og:image" content="https://i.imgur.com/888pOxo.png">
 <meta property="og:image" content="https://i.imgur.com/vD7BsCL.png">
 <meta property="og:image" content="https://i.imgur.com/opzvhX4.png">
 <meta property="og:image" content="https://i.imgur.com/XWHvtot.png">
 <meta property="og:image" content="https://i.imgur.com/fI2erxE.png">
 <meta property="og:image" content="https://i.imgur.com/19PQu4z.png">
-<meta property="og:updated_time" content="2018-12-24T02:31:36.767Z">
+<meta property="og:updated_time" content="2018-12-24T02:36:44.757Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="OpenGL 3D 立體渲染">
 <meta name="twitter:description" content="前言前陣子使用的QImage都是處理二維圖形，最近研究起3D的領域，透過OpenGL來實作立體渲染(Volume Rendering)，立體渲染簡單來說，就是將2D圖形數張疊成一個3D立體圖形，這立體渲染的技術可以運用在醫學上的CT、OCT與MRI斷層掃描中。這篇所寫的頂點與紋理處理搭配上一篇所編寫的OpenGL GLSL著色器就可以達到下圖3D立體渲染效果囉!  名詞概述Volume Rende">
-<meta name="twitter:image" content="https://i.imgur.com/a5YV2ge.mp4">
+<meta name="twitter:image" content="https://media.giphy.com/media/fxCrCjSXyJBR83AFPb/giphy.gif">
 
 
 
@@ -396,7 +396,7 @@
 
       
         <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>前陣子使用的QImage都是處理二維圖形，最近研究起3D的領域，透過OpenGL來實作立體渲染(Volume Rendering)，立體渲染簡單來說，就是將2D圖形數張疊成一個3D立體圖形，這立體渲染的技術可以運用在醫學上的CT、OCT與MRI斷層掃描中。這篇所寫的頂點與紋理處理搭配上一篇所編寫的<a href="https://teddybearfp.github.io/2018/12/22/OpenGL-GLSL%E8%91%97%E8%89%B2%E5%99%A8/#more">OpenGL GLSL著色器</a>就可以達到下圖3D立體渲染效果囉!</p>
-<p><img src="https://i.imgur.com/a5YV2ge.mp4" alt=""></p>
+<p><img src="https://media.giphy.com/media/fxCrCjSXyJBR83AFPb/giphy.gif" alt=""></p>
 <h2 id="名詞概述"><a href="#名詞概述" class="headerlink" title="名詞概述"></a>名詞概述</h2><h3 id="Volume-Rendering"><a href="#Volume-Rendering" class="headerlink" title="Volume Rendering"></a>Volume Rendering</h3><p>立體渲染是一種用於顯示離散三維採樣數據集的二維投影的技術。一個典型的三維數據集是CT、OCT或者MRI採集的一組二維切面圖像。通常這些數據是按照一定規則如每毫米一個切面，並且通常有一定數目的圖像像素。為了渲染三維數據集的二維投影，首先需要定義相機相對於幾何體的空間位置。另外，需要定義每個點即體素的不透明性以及顏色，這通常使用RGBA（red, green, blue, alpha）傳遞函數定義每個體素可能值對應的RGBA值。</p>
 <h3 id="OCT"><a href="#OCT" class="headerlink" title="OCT"></a>OCT</h3><p>OCT英文全名為Optical Coherence TomoGraphy，俗稱俗稱視網膜光學斷層掃描儀，雖然名稱有斷層掃描的字眼，但它是利用紅外線波長的雷射光對視網膜做掃描，不是X光，與一般的電腦斷層不一樣。它的原理是，光線發出後，分成兩道光，一道光打進眼底，一道光打到參考的鏡面上，兩道光再反射回來，形成干涉現象，形成光譜，儀器收集到訊號即可進行分析。</p>
 <h2 id="Volume-Rendering原理"><a href="#Volume-Rendering原理" class="headerlink" title="Volume Rendering原理"></a>Volume Rendering原理</h2><p>目前已知有兩種方式達到Volume Rendering</p>
