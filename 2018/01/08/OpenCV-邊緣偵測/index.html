@@ -70,7 +70,7 @@
 
 
 
-  <meta name="keywords" content="清晰度,梯度,gradient">
+  <meta name="keywords" content="OpenCV,邊緣偵測">
 
 
 
@@ -81,20 +81,18 @@
 
 
 
-<meta name="description" content="前言相機提供的訊息影響接下來對圖的運算，所以對焦有沒有清楚很重要，藉由梯度計算出來的數值，簡易的判別出是否屬於良好的對焦 梯度計算像素與右方、下方的差累加，可以得出一組梯度值(gradient)，對焦清晰的圖像相比對焦模糊的圖像，它的數據之間的灰度差異應該更大，即它的方差應該較大，可以通過圖像灰度數據的方差來衡量圖像的清晰度，方差越大，表示清晰度越好。  RGB圖用綠色的像素去做，因為綠色對光的反">
-<meta name="keywords" content="清晰度,梯度,gradient">
+<meta name="description" content="前言有些圖片數據需要將多餘的值去除或是透明化，需要先把邊緣偵測出來，這樣才能掌握圖形 步驟載入圖片(imread) -&amp;gt; 高斯模糊(GaussianBlur) -&amp;gt; 計算梯度(gradient) -&amp;gt; 找出邊緣後影像處理(imgProc) -&amp;gt; 存取圖片(imwrite) 高斯模糊 src：輸入可以為多通道圖，會單獨處理各通道，但是通常使用單通道灰階圖，例如CV_8U或CV">
+<meta name="keywords" content="OpenCV,邊緣偵測">
 <meta property="og:type" content="article">
-<meta property="og:title" content="梯度計算影像清晰度">
-<meta property="og:url" content="https://teddybearfp.github.io/2018/11/15/梯度計算影像清晰度-gradient/index.html">
+<meta property="og:title" content="OpenCV 邊緣偵測">
+<meta property="og:url" content="https://teddybearfp.github.io/2018/01/08/OpenCV-邊緣偵測/index.html">
 <meta property="og:site_name" content="泰迪熊的程式足跡">
-<meta property="og:description" content="前言相機提供的訊息影響接下來對圖的運算，所以對焦有沒有清楚很重要，藉由梯度計算出來的數值，簡易的判別出是否屬於良好的對焦 梯度計算像素與右方、下方的差累加，可以得出一組梯度值(gradient)，對焦清晰的圖像相比對焦模糊的圖像，它的數據之間的灰度差異應該更大，即它的方差應該較大，可以通過圖像灰度數據的方差來衡量圖像的清晰度，方差越大，表示清晰度越好。  RGB圖用綠色的像素去做，因為綠色對光的反">
+<meta property="og:description" content="前言有些圖片數據需要將多餘的值去除或是透明化，需要先把邊緣偵測出來，這樣才能掌握圖形 步驟載入圖片(imread) -&amp;gt; 高斯模糊(GaussianBlur) -&amp;gt; 計算梯度(gradient) -&amp;gt; 找出邊緣後影像處理(imgProc) -&amp;gt; 存取圖片(imwrite) 高斯模糊 src：輸入可以為多通道圖，會單獨處理各通道，但是通常使用單通道灰階圖，例如CV_8U或CV">
 <meta property="og:locale" content="zh-tw">
-<meta property="og:image" content="https://i.imgur.com/iFQjM7v.png">
-<meta property="og:updated_time" content="2018-11-15T03:41:22.982Z">
+<meta property="og:updated_time" content="2019-01-08T13:54:22.319Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="梯度計算影像清晰度">
-<meta name="twitter:description" content="前言相機提供的訊息影響接下來對圖的運算，所以對焦有沒有清楚很重要，藉由梯度計算出來的數值，簡易的判別出是否屬於良好的對焦 梯度計算像素與右方、下方的差累加，可以得出一組梯度值(gradient)，對焦清晰的圖像相比對焦模糊的圖像，它的數據之間的灰度差異應該更大，即它的方差應該較大，可以通過圖像灰度數據的方差來衡量圖像的清晰度，方差越大，表示清晰度越好。  RGB圖用綠色的像素去做，因為綠色對光的反">
-<meta name="twitter:image" content="https://i.imgur.com/iFQjM7v.png">
+<meta name="twitter:title" content="OpenCV 邊緣偵測">
+<meta name="twitter:description" content="前言有些圖片數據需要將多餘的值去除或是透明化，需要先把邊緣偵測出來，這樣才能掌握圖形 步驟載入圖片(imread) -&amp;gt; 高斯模糊(GaussianBlur) -&amp;gt; 計算梯度(gradient) -&amp;gt; 找出邊緣後影像處理(imgProc) -&amp;gt; 存取圖片(imwrite) 高斯模糊 src：輸入可以為多通道圖，會單獨處理各通道，但是通常使用單通道灰階圖，例如CV_8U或CV">
 
 
 
@@ -124,13 +122,13 @@
 
 
 
-  <link rel="canonical" href="https://teddybearfp.github.io/2018/11/15/梯度計算影像清晰度-gradient/">
+  <link rel="canonical" href="https://teddybearfp.github.io/2018/01/08/OpenCV-邊緣偵測/">
 
 
 
 
 
-  <title>梯度計算影像清晰度 | 泰迪熊的程式足跡</title>
+  <title>OpenCV 邊緣偵測 | 泰迪熊的程式足跡</title>
   
 <script>
   window.fbAsyncInit = function() {
@@ -285,7 +283,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://teddybearfp.github.io/2018/11/15/梯度計算影像清晰度-gradient/">
+    <link itemprop="mainEntityOfPage" href="https://teddybearfp.github.io/2018/01/08/OpenCV-邊緣偵測/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="G.C.L.">
@@ -302,7 +300,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">梯度計算影像清晰度</h1>
+          <h1 class="post-title" itemprop="name headline">OpenCV 邊緣偵測</h1>
         
 
         <div class="post-meta">
@@ -314,8 +312,8 @@
               
                 <span class="post-meta-item-text">發表於</span>
               
-              <time title="創建於" itemprop="dateCreated datePublished" datetime="2018-11-15T10:05:16+08:00">
-                2018-11-15
+              <time title="創建於" itemprop="dateCreated datePublished" datetime="2018-01-08T21:05:16+08:00">
+                2018-01-08
               </time>
             
 
@@ -337,8 +335,8 @@
               
               
                 <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/C/" itemprop="url" rel="index">
-                    <span itemprop="name">C++</span>
+                  <a href="/categories/OpenCV/" itemprop="url" rel="index">
+                    <span itemprop="name">OpenCV</span>
                   </a>
                 </span>
 
@@ -355,8 +353,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2018/11/15/梯度計算影像清晰度-gradient/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count fb-comments-count" data-href="https://teddybearfp.github.io/2018/11/15/梯度計算影像清晰度-gradient/" itemprop="commentCount">0</span> comments
+                <a href="/2018/01/08/OpenCV-邊緣偵測/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count fb-comments-count" data-href="https://teddybearfp.github.io/2018/01/08/OpenCV-邊緣偵測/" itemprop="commentCount">0</span> comments
                 </a>
               </span>
             
@@ -389,22 +387,18 @@
       
 
       
-        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>相機提供的訊息影響接下來對圖的運算，所以對焦有沒有清楚很重要，藉由梯度計算出來的數值，簡易的判別出是否屬於良好的對焦</p>
-<h2 id="梯度計算"><a href="#梯度計算" class="headerlink" title="梯度計算"></a>梯度計算</h2><p>像素與右方、下方的差累加，可以得出一組梯度值(gradient)，<br>對焦清晰的圖像相比對焦模糊的圖像，它的數據之間的灰度差異應該更大，即它的方差應該較大，可以通過圖像灰度數據的方差來衡量圖像的清晰度，方差越大，表示清晰度越好。</p>
-<ul>
-<li>RGB圖用綠色的像素去做，因為綠色對光的反應是最靈敏的</li>
-<li>每個G跟右邊、下方的比較</li>
-<li>最右排跟最下排不做</li>
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>有些圖片數據需要將多餘的值去除或是透明化，需要先把邊緣偵測出來，這樣才能掌握圖形</p>
+<h2 id="步驟"><a href="#步驟" class="headerlink" title="步驟"></a>步驟</h2><p>載入圖片(imread) -&gt; 高斯模糊(GaussianBlur) -&gt; 計算梯度(gradient) -&gt; 找出邊緣後影像處理(imgProc) -&gt; 存取圖片(imwrite)</p>
+<h2 id="高斯模糊"><a href="#高斯模糊" class="headerlink" title="高斯模糊"></a>高斯模糊</h2><ul>
+<li>src：輸入可以為多通道圖，會單獨處理各通道，但是通常使用單通道灰階圖，例如CV_8U或CV_16U。</li>
+<li>dst：輸出圖會和輸入圖尺寸、型態相同。</li>
+<li>ksize：模板大小，長寬可以不同，但是都必須為正的奇數。</li>
+<li>sigmaX：x方向的標準差。</li>
+<li>sigmaY：y方向的標準差。<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">GaussianBlur(src, gaussianBlurImg, Size(<span class="number">25</span>,<span class="number">25</span>) ,<span class="number">0</span> ,<span class="number">0</span>);</span><br></pre></td></tr></table></figure>
+</li>
 </ul>
-<p>由左上至右下</p>
-<p><img src="https://i.imgur.com/iFQjM7v.png" alt="" title="左上到右下計算"></p>
-<blockquote>
-<p>梯度 = ((G1-G2)+(G1-G4))+((G2-G3)+(G2-G5))+…<br>數值越大代表清晰度越好</p>
-</blockquote>
-<h2 id="算法"><a href="#算法" class="headerlink" title="算法"></a>算法</h2><p>640 x 480的圖梯度計算處理<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">double</span> gradient = <span class="number">0</span>;</span><br><span class="line">uchar* buf = canvas.bits()</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">639</span>; i++) &#123;<span class="comment">//略過最右排</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; <span class="number">479</span>; j++) &#123;<span class="comment">//略過最下排</span></span><br><span class="line">        <span class="keyword">int</span> idx = i * <span class="number">3</span> + j * canvas.bytePerline();</span><br><span class="line">        <span class="keyword">int</span> idxRight = (i + <span class="number">1</span>) * <span class="number">3</span> + j * bytePerLine();</span><br><span class="line">        <span class="keyword">int</span> idxBottom = i * <span class="number">3</span> + (j + <span class="number">1</span>) * canvas.bytePerLine();</span><br><span class="line">        gradient += <span class="built_in">abs</span>(buf[idx + <span class="number">1</span>] - buf[idxRight + <span class="number">1</span>]) + <span class="built_in">abs</span>(buf[idx +<span class="number">1</span>] - buf[idxBottom +<span class="number">1</span>])<span class="comment">//梯度等於綠色像素跟右方與下方比較</span></span><br><span class="line">    &#125;    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<h2 id="水波紋現象"><a href="#水波紋現象" class="headerlink" title="水波紋現象"></a>水波紋現象</h2><p>頻率不一致造成水波紋，室內拍攝時會造成水波紋，主要的原因是日光燈的閃爍頻率所致。一般常見的T9日光燈管是種氣體電燈，燈管內有低壓氬氣或氬氖混合氣體及水銀蒸氣，燈管的光線與色溫會隨著交流電的頻率（60Hz）變化，也就造成閃爍的現象。但因為閃爍的頻率很高，因此肉眼難以辨識，會覺得燈管放出的是連續光。但對於電子儀器來說，日光燈的閃爍頻率並不算高。因此造成手機、相機在拍攝上的波紋現象，關鍵就在於光源、快門、感光元件的頻率不一所致。</p>
-<h2 id="結論"><a href="#結論" class="headerlink" title="結論"></a>結論</h2><p>在工業應用中，最清晰的對焦拍攝出來的圖像不一定是最好的，有可能出現摩爾紋（水波紋）現象，一般需要在最清晰對焦位置做微調。</p>
-<h2 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h2><p><a href="https://blog.csdn.net/dcrmg/article/details/53543341" target="_blank" rel="noopener">OpenCV 图像清晰度评价（相机自动对焦） - 牧野的博客- CSDN博客</a><br><a href="https://www.techbang.com/posts/17861-principle-analysis-of-cell-phone-camera-water-ripples-all-fluorescent-lamp-frequency-labranche" target="_blank" rel="noopener">解決手機、相機水波紋現象，全是日光燈頻率在搞鬼| T客邦</a></p>
+<h2 id="範例"><a href="#範例" class="headerlink" title="範例"></a>範例</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">gradientImg = QImage(imgWidth, imgHeight, QImage::Format_RGB888);</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> currentNumber = <span class="number">0</span>; currentNumber &lt; <span class="number">10</span>; currentNumber++) &#123;</span><br><span class="line">    Mat src = imread(<span class="string">"D:/Frame/Test_"</span> + QString::number(currentNumber).toStdString() +<span class="string">".jpg"</span>);<span class="comment">//以迴圈讀取多張(其中必須把int轉成QString再轉乘stdString)</span></span><br><span class="line">    <span class="keyword">if</span> (src.empty()) &#123;</span><br><span class="line">        <span class="built_in">cout</span> &lt;&lt; <span class="string">"Load file failed!"</span>;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    Mat gaussianBlurImg;</span><br><span class="line">    cvtColor(src, gaussianBlurImg,CV_BGR2RGB); <span class="comment">//將讀取出來的圖片轉成RGB</span></span><br><span class="line">    GaussianBlur(src, gaussianBlurImg, Size(<span class="number">25</span>,<span class="number">25</span>) ,<span class="number">0</span> ,<span class="number">0</span>);<span class="comment">//ksize：模板大小，長寬可以不同，但是都必須為正的奇數。</span></span><br><span class="line">    <span class="function">QImage <span class="title">gradientImg</span><span class="params">((uchar *) gaussianBlurImg.data, <span class="number">512</span>, <span class="number">512</span>, QImage::Format_RGB888)</span></span>;</span><br><span class="line">    gradient(gradientImg);<span class="comment">//做梯度跟其他處理...</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h2><p><a href="http://monkeycoding.com/?p=570" target="_blank" rel="noopener">影像平滑(blur、GaussianBlur) | 阿洲的程式教學</a></p>
 
       
     </div>
@@ -422,13 +416,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/清晰度/" rel="tag"><i class="fa fa-tag"></i> 清晰度</a>
+            <a href="/tags/OpenCV/" rel="tag"><i class="fa fa-tag"></i> OpenCV</a>
           
-            <a href="/tags/Focus/" rel="tag"><i class="fa fa-tag"></i> Focus</a>
-          
-            <a href="/tags/梯度/" rel="tag"><i class="fa fa-tag"></i> 梯度</a>
-          
-            <a href="/tags/gradient/" rel="tag"><i class="fa fa-tag"></i> gradient</a>
+            <a href="/tags/邊緣偵測/" rel="tag"><i class="fa fa-tag"></i> 邊緣偵測</a>
           
         </div>
       
@@ -441,8 +431,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/11/12/執行緒/" rel="next" title="執行緒">
-                <i class="fa fa-chevron-left"></i> 執行緒
+              <a href="/2018/01/08/normalize/" rel="next" title="Normalize">
+                <i class="fa fa-chevron-left"></i> Normalize
               </a>
             
           </div>
@@ -451,8 +441,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/11/15/如何將Windows安裝到外接硬碟給Mac使用/" rel="prev" title="如何將Windows安裝到外接硬碟給Mac使用">
-                如何將Windows安裝到外接硬碟給Mac使用 <i class="fa fa-chevron-right"></i>
+              <a href="/2018/10/22/Qt-Setup/" rel="prev" title="Qt 安裝與Hello World!">
+                Qt 安裝與Hello World! <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -484,7 +474,7 @@
 
   
     <div class="comments" id="comments">
-      <div class="fb-comments" data-href="https://teddybearfp.github.io/2018/11/15/梯度計算影像清晰度-gradient/" data-numposts="10" data-width="100%" data-colorscheme="light">
+      <div class="fb-comments" data-href="https://teddybearfp.github.io/2018/01/08/OpenCV-邊緣偵測/" data-numposts="10" data-width="100%" data-colorscheme="light">
       </div>
     </div>
 
@@ -591,7 +581,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#梯度計算"><span class="nav-number">2.</span> <span class="nav-text">梯度計算</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#算法"><span class="nav-number">3.</span> <span class="nav-text">算法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#水波紋現象"><span class="nav-number">4.</span> <span class="nav-text">水波紋現象</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#結論"><span class="nav-number">5.</span> <span class="nav-text">結論</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#參考資料"><span class="nav-number">6.</span> <span class="nav-text">參考資料</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#步驟"><span class="nav-number">2.</span> <span class="nav-text">步驟</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#高斯模糊"><span class="nav-number">3.</span> <span class="nav-text">高斯模糊</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#範例"><span class="nav-number">4.</span> <span class="nav-text">範例</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#參考資料"><span class="nav-number">5.</span> <span class="nav-text">參考資料</span></a></li></ol></div>
             
 
           </div>
@@ -783,9 +773,9 @@
     
       <script type="text/javascript">
         var disqus_config = function () {
-          this.page.url = 'https://teddybearfp.github.io/2018/11/15/梯度計算影像清晰度-gradient/';
-          this.page.identifier = '2018/11/15/梯度計算影像清晰度-gradient/';
-          this.page.title = '梯度計算影像清晰度';
+          this.page.url = 'https://teddybearfp.github.io/2018/01/08/OpenCV-邊緣偵測/';
+          this.page.identifier = '2018/01/08/OpenCV-邊緣偵測/';
+          this.page.title = 'OpenCV 邊緣偵測';
         };
         var d = document, s = d.createElement('script');
         s.src = 'https://teddybearfp.disqus.com/embed.js';
