@@ -81,18 +81,24 @@
 
 
 
-<meta name="description" content="前言有些圖片數據需要將多餘的值去除或是透明化，需要先把邊緣偵測出來，這樣才能掌握圖形 步驟載入圖片(imread) -&amp;gt; 高斯模糊(GaussianBlur) -&amp;gt; 計算梯度(gradient) -&amp;gt; 找出邊緣後影像處理(imgProc) -&amp;gt; 存取圖片(imwrite) 高斯模糊 src：輸入可以為多通道圖，會單獨處理各通道，但是通常使用單通道灰階圖，例如CV_8U或CV">
+<meta name="description" content="前言有些圖片數據需要將多餘的值去除或是透明化，需要先把邊緣人偵測出來，這樣才能掌握圖形此篇文章記錄如何找出下方圖片的第一條曲線的上方邊緣 步驟載入圖片(imread) -&amp;gt; 高斯模糊(GaussianBlur) -&amp;gt; 計算梯度(gradient) -&amp;gt; 找出邊緣後影像處理(imgProc) -&amp;gt; 存取圖片(imwrite) 高斯模糊 src：輸入可以為多通道圖，會單獨處理各">
 <meta name="keywords" content="OpenCV,邊緣偵測">
 <meta property="og:type" content="article">
 <meta property="og:title" content="OpenCV 邊緣偵測">
-<meta property="og:url" content="https://teddybearfp.github.io/2019/01/08/OpenCV-邊緣偵測/index.html">
+<meta property="og:url" content="https://teddybearfp.github.io/2018/01/08/OpenCV-邊緣偵測/index.html">
 <meta property="og:site_name" content="泰迪熊的程式足跡">
-<meta property="og:description" content="前言有些圖片數據需要將多餘的值去除或是透明化，需要先把邊緣偵測出來，這樣才能掌握圖形 步驟載入圖片(imread) -&amp;gt; 高斯模糊(GaussianBlur) -&amp;gt; 計算梯度(gradient) -&amp;gt; 找出邊緣後影像處理(imgProc) -&amp;gt; 存取圖片(imwrite) 高斯模糊 src：輸入可以為多通道圖，會單獨處理各通道，但是通常使用單通道灰階圖，例如CV_8U或CV">
+<meta property="og:description" content="前言有些圖片數據需要將多餘的值去除或是透明化，需要先把邊緣人偵測出來，這樣才能掌握圖形此篇文章記錄如何找出下方圖片的第一條曲線的上方邊緣 步驟載入圖片(imread) -&amp;gt; 高斯模糊(GaussianBlur) -&amp;gt; 計算梯度(gradient) -&amp;gt; 找出邊緣後影像處理(imgProc) -&amp;gt; 存取圖片(imwrite) 高斯模糊 src：輸入可以為多通道圖，會單獨處理各">
 <meta property="og:locale" content="zh-tw">
-<meta property="og:updated_time" content="2019-01-08T13:56:48.226Z">
+<meta property="og:image" content="https://i.imgur.com/24wvSeX.jpg">
+<meta property="og:image" content="https://i.imgur.com/E1YNnpD.jpg">
+<meta property="og:image" content="https://i.imgur.com/Bem5VkX.png">
+<meta property="og:image" content="https://i.imgur.com/2OsF6p5.png">
+<meta property="og:image" content="https://i.imgur.com/fazRSAo.jpg">
+<meta property="og:updated_time" content="2019-01-09T14:02:57.371Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="OpenCV 邊緣偵測">
-<meta name="twitter:description" content="前言有些圖片數據需要將多餘的值去除或是透明化，需要先把邊緣偵測出來，這樣才能掌握圖形 步驟載入圖片(imread) -&amp;gt; 高斯模糊(GaussianBlur) -&amp;gt; 計算梯度(gradient) -&amp;gt; 找出邊緣後影像處理(imgProc) -&amp;gt; 存取圖片(imwrite) 高斯模糊 src：輸入可以為多通道圖，會單獨處理各通道，但是通常使用單通道灰階圖，例如CV_8U或CV">
+<meta name="twitter:description" content="前言有些圖片數據需要將多餘的值去除或是透明化，需要先把邊緣人偵測出來，這樣才能掌握圖形此篇文章記錄如何找出下方圖片的第一條曲線的上方邊緣 步驟載入圖片(imread) -&amp;gt; 高斯模糊(GaussianBlur) -&amp;gt; 計算梯度(gradient) -&amp;gt; 找出邊緣後影像處理(imgProc) -&amp;gt; 存取圖片(imwrite) 高斯模糊 src：輸入可以為多通道圖，會單獨處理各">
+<meta name="twitter:image" content="https://i.imgur.com/24wvSeX.jpg">
 
 
 
@@ -122,7 +128,7 @@
 
 
 
-  <link rel="canonical" href="https://teddybearfp.github.io/2019/01/08/OpenCV-邊緣偵測/">
+  <link rel="canonical" href="https://teddybearfp.github.io/2018/01/08/OpenCV-邊緣偵測/">
 
 
 
@@ -283,7 +289,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://teddybearfp.github.io/2019/01/08/OpenCV-邊緣偵測/">
+    <link itemprop="mainEntityOfPage" href="https://teddybearfp.github.io/2018/01/08/OpenCV-邊緣偵測/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="G.C.L.">
@@ -312,8 +318,8 @@
               
                 <span class="post-meta-item-text">發表於</span>
               
-              <time title="創建於" itemprop="dateCreated datePublished" datetime="2019-01-08T21:05:16+08:00">
-                2019-01-08
+              <time title="創建於" itemprop="dateCreated datePublished" datetime="2018-01-08T21:05:16+08:00">
+                2018-01-08
               </time>
             
 
@@ -353,8 +359,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2019/01/08/OpenCV-邊緣偵測/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count fb-comments-count" data-href="https://teddybearfp.github.io/2019/01/08/OpenCV-邊緣偵測/" itemprop="commentCount">0</span> comments
+                <a href="/2018/01/08/OpenCV-邊緣偵測/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count fb-comments-count" data-href="https://teddybearfp.github.io/2018/01/08/OpenCV-邊緣偵測/" itemprop="commentCount">0</span> comments
                 </a>
               </span>
             
@@ -387,17 +393,32 @@
       
 
       
-        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>有些圖片數據需要將多餘的值去除或是透明化，需要先把邊緣偵測出來，這樣才能掌握圖形</p>
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>有些圖片數據需要將多餘的值去除或是透明化，需要先把邊緣<del>人</del>偵測出來，這樣才能掌握圖形<br>此篇文章記錄如何找出下方圖片的第一條曲線的上方邊緣<br><img src="https://i.imgur.com/24wvSeX.jpg" alt=""></p>
 <h2 id="步驟"><a href="#步驟" class="headerlink" title="步驟"></a>步驟</h2><p>載入圖片(imread) -&gt; 高斯模糊(GaussianBlur) -&gt; 計算梯度(gradient) -&gt; 找出邊緣後影像處理(imgProc) -&gt; 存取圖片(imwrite)</p>
 <h2 id="高斯模糊"><a href="#高斯模糊" class="headerlink" title="高斯模糊"></a>高斯模糊</h2><ul>
 <li>src：輸入可以為多通道圖，會單獨處理各通道，但是通常使用單通道灰階圖，例如CV_8U或CV_16U。</li>
 <li>dst：輸出圖會和輸入圖尺寸、型態相同。</li>
-<li>ksize：模板大小，長寬可以不同，但是都必須為正的奇數。</li>
+<li>ksize：模板大小，長寬可以不同，但是都必須為正的奇數。(幾個長寬分別幾個pixel去做平均)</li>
 <li>sigmaX：x方向的標準差。</li>
-<li>sigmaY：y方向的標準差。</li>
+<li>sigmaY：y方向的標準差。<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//寬做25個pixel平均、高做25個pixel平均</span></span><br><span class="line">GaussianBlur(src, gaussianBlurImg, Size(<span class="number">25</span>,<span class="number">25</span>) ,<span class="number">0</span> ,<span class="number">0</span>);</span><br></pre></td></tr></table></figure>
+</li>
 </ul>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">GaussianBlur(src, gaussianBlurImg, Size(<span class="number">25</span>,<span class="number">25</span>) ,<span class="number">0</span> ,<span class="number">0</span>);</span><br></pre></td></tr></table></figure>
-<h2 id="範例"><a href="#範例" class="headerlink" title="範例"></a>範例</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">gradientImg = QImage(imgWidth, imgHeight, QImage::Format_RGB888);</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> currentNumber = <span class="number">0</span>; currentNumber &lt; <span class="number">10</span>; currentNumber++) &#123;</span><br><span class="line">    <span class="comment">//以迴圈讀取多張(其中必須把int轉成QString再轉乘stdString)</span></span><br><span class="line">    Mat src = imread(<span class="string">"D:/Frame/Test_"</span> + QString::number(currentNumber).toStdString() +<span class="string">".jpg"</span>);</span><br><span class="line">    <span class="keyword">if</span> (src.empty()) &#123;</span><br><span class="line">        <span class="built_in">cout</span> &lt;&lt; <span class="string">"Load file failed!"</span>;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    Mat gaussianBlurImg;</span><br><span class="line">    cvtColor(src, gaussianBlurImg,CV_BGR2RGB); <span class="comment">//將讀取出來的圖片轉成RGB</span></span><br><span class="line">    GaussianBlur(src, gaussianBlurImg, Size(<span class="number">25</span>,<span class="number">25</span>) ,<span class="number">0</span> ,<span class="number">0</span>);<span class="comment">//ksize：模板大小，長寬可以不同，但是都必須為正的奇數。</span></span><br><span class="line">    <span class="function">QImage <span class="title">gradientImg</span><span class="params">((uchar *) gaussianBlurImg.data, <span class="number">512</span>, <span class="number">512</span>, QImage::Format_RGB888)</span></span>;</span><br><span class="line">    gradient(gradientImg);<span class="comment">//做梯度跟其他處理...</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><img src="https://i.imgur.com/E1YNnpD.jpg" alt="高斯模糊後的圖形"></p>
+<h2 id="範例"><a href="#範例" class="headerlink" title="範例"></a>範例</h2><p>將一個512 * 512的影像垂直從上往下找到的第一條直線邊緣記錄起來</p>
+<h3 id="讀取影像-gt-高斯模糊"><a href="#讀取影像-gt-高斯模糊" class="headerlink" title="讀取影像 -&gt; 高斯模糊"></a>讀取影像 -&gt; 高斯模糊</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">gradientImg = QImage(imgWidth, imgHeight, QImage::Format_RGB888);</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> currentNumber = <span class="number">0</span>; currentNumber &lt; <span class="number">10</span>; currentNumber++) &#123;</span><br><span class="line">    Mat src = imread(<span class="string">"D:/Frame/Test_"</span> + QString::number(currentNumber).toStdString() +<span class="string">".jpg"</span>);<span class="comment">//以迴圈讀取多張(其中必須把int轉成QString再轉乘stdString)</span></span><br><span class="line">    <span class="keyword">if</span> (src.empty()) &#123;</span><br><span class="line">        <span class="built_in">cout</span> &lt;&lt; <span class="string">"Load file failed!"</span>;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    Mat gaussianBlurImg;</span><br><span class="line">    cvtColor(src, gaussianBlurImg,CV_BGR2RGB); <span class="comment">//將讀取出來的圖片轉成RGB</span></span><br><span class="line">    GaussianBlur(src, gaussianBlurImg, Size(<span class="number">25</span>,<span class="number">25</span>) ,<span class="number">0</span> ,<span class="number">0</span>);<span class="comment">//ksize：模板大小，長寬可以不同，但是都必須為正的奇數。</span></span><br><span class="line">    <span class="function">QImage <span class="title">gradientImg</span><span class="params">((uchar *) gaussianBlurImg.data, <span class="number">512</span>, <span class="number">512</span>, QImage::Format_RGB888)</span></span>;</span><br><span class="line">    gradient(gradientImg);<span class="comment">//做梯度跟其他處理...</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="梯度"><a href="#梯度" class="headerlink" title="梯度"></a>梯度</h3><p>以這次範例來說是以垂直的方式去找變化量大的地方，找到並存入陣列中，這個陣列所存的是512個邊緣的Y座標</p>
+<h4 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h4><p>下一個pixel減掉上一個pixel得到梯度變化量，最後一個數給0不比較</p>
+<p><img src="https://i.imgur.com/Bem5VkX.png" alt=""><br>取得512個變化量，而這個範例來說會有兩次變化量較大的正數值與兩次較小的負數值</p>
+<blockquote>
+<p>取得單獨的每筆梯度可以知道變化量(這個範例就是找到第一次變化最大的地方)<br>梯度 = (G2-G1) </p>
+</blockquote>
+<blockquote>
+<p>(全部的梯度相加，可以簡易判斷影像清晰度)<br>梯度 = ((G1-G2)+(G1-G4))+((G2-G3)+(G2-G5))+… </p>
+</blockquote>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">void</span> FindBoundary::gradient(QImage gradientImg) &#123;</span><br><span class="line">    <span class="keyword">int</span> imgWidth = <span class="number">512</span>;</span><br><span class="line">    <span class="keyword">int</span> imgHeight = <span class="number">512</span>;</span><br><span class="line">    gradientBits = <span class="keyword">new</span> <span class="keyword">int</span>[imgWidth * imgHeight];</span><br><span class="line">    uchar *bits = gradientImg.bits();<span class="comment">//從上方高斯模糊後傳入的圖</span></span><br><span class="line">    <span class="keyword">int</span> count = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span> ; i &lt; imgWidth; i++) &#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; imgHeight; j++) &#123;</span><br><span class="line">            <span class="keyword">int</span> idx = i*<span class="number">3</span> + j * imgWidth * <span class="number">3</span>;</span><br><span class="line">            <span class="keyword">int</span> idx2 = i*<span class="number">3</span> + (j + <span class="number">1</span>)* imgWidth * <span class="number">3</span>;</span><br><span class="line">            <span class="keyword">if</span>(j == imgHeight - <span class="number">1</span>)</span><br><span class="line">                gradientBits[count] = <span class="number">0</span>;</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">                gradientBits[count] = (<span class="keyword">int</span>)(bits[idx2] - bits[idx]);</span><br><span class="line">            <span class="comment">//verify</span></span><br><span class="line"><span class="comment">//            if(i == 254) &#123;</span></span><br><span class="line"><span class="comment">//                //cout&lt;&lt;"gradientBits["&lt;&lt;i&lt;&lt;"]["&lt;&lt;j&lt;&lt;"]:"&lt;&lt;gradientBits[count]&lt;&lt;endl;</span></span><br><span class="line"><span class="comment">//                cout&lt;&lt;gradientBits[count]&lt;&lt;endl;</span></span><br><span class="line"><span class="comment">//            &#125;</span></span><br><span class="line">        &#125;</span><br><span class="line">        count++;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>透過上面方式得到512組(從X = 0開始掃512次一直到X = 511掃512次)的Y變化量，而我們要取的是第一個變化量最大的地方<br><img src="https://i.imgur.com/2OsF6p5.png" alt="第一組(X=0)的Y(0~511)變化量折線圖"></p>
+<p>找到第一次最大變化量後將其記錄起來，再將它改pixel顏色或是其他處理得到下面的完成圖<br><img src="https://i.imgur.com/fazRSAo.jpg" alt="找到邊緣人啦!!"></p>
+<h2 id="總結"><a href="#總結" class="headerlink" title="總結"></a>總結</h2><p>針對圖片邊緣的操作可以讓光學取得的資料轉換成有效數據，例如:將已知道小的銅幣透過光學拍照，再用邊緣偵測取得到數據與真實大小去做scale，即可做光學校正，另外在3D疊圖時，先將2D圖做些邊緣偵測並處理後再拿去疊圖，可以讓可讀性更高，所以邊緣偵測是個重要的技巧</p>
 <h2 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h2><p><a href="http://monkeycoding.com/?p=570" target="_blank" rel="noopener">影像平滑(blur、GaussianBlur) | 阿洲的程式教學</a></p>
 
       
@@ -431,15 +452,15 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/01/08/normalize/" rel="next" title="標準化(Normalize)">
-                <i class="fa fa-chevron-left"></i> 標準化(Normalize)
-              </a>
-            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/10/22/Qt-Setup/" rel="prev" title="Qt 安裝與Hello World!">
+                Qt 安裝與Hello World! <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -470,7 +491,7 @@
 
   
     <div class="comments" id="comments">
-      <div class="fb-comments" data-href="https://teddybearfp.github.io/2019/01/08/OpenCV-邊緣偵測/" data-numposts="10" data-width="100%" data-colorscheme="light">
+      <div class="fb-comments" data-href="https://teddybearfp.github.io/2018/01/08/OpenCV-邊緣偵測/" data-numposts="10" data-width="100%" data-colorscheme="light">
       </div>
     </div>
 
@@ -577,7 +598,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#步驟"><span class="nav-number">2.</span> <span class="nav-text">步驟</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#高斯模糊"><span class="nav-number">3.</span> <span class="nav-text">高斯模糊</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#範例"><span class="nav-number">4.</span> <span class="nav-text">範例</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#參考資料"><span class="nav-number">5.</span> <span class="nav-text">參考資料</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#步驟"><span class="nav-number">2.</span> <span class="nav-text">步驟</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#高斯模糊"><span class="nav-number">3.</span> <span class="nav-text">高斯模糊</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#範例"><span class="nav-number">4.</span> <span class="nav-text">範例</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#讀取影像-gt-高斯模糊"><span class="nav-number">4.1.</span> <span class="nav-text">讀取影像 -&gt; 高斯模糊</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#梯度"><span class="nav-number">4.2.</span> <span class="nav-text">梯度</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#原理"><span class="nav-number">4.2.1.</span> <span class="nav-text">原理</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#總結"><span class="nav-number">5.</span> <span class="nav-text">總結</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#參考資料"><span class="nav-number">6.</span> <span class="nav-text">參考資料</span></a></li></ol></div>
             
 
           </div>
@@ -769,8 +790,8 @@
     
       <script type="text/javascript">
         var disqus_config = function () {
-          this.page.url = 'https://teddybearfp.github.io/2019/01/08/OpenCV-邊緣偵測/';
-          this.page.identifier = '2019/01/08/OpenCV-邊緣偵測/';
+          this.page.url = 'https://teddybearfp.github.io/2018/01/08/OpenCV-邊緣偵測/';
+          this.page.identifier = '2018/01/08/OpenCV-邊緣偵測/';
           this.page.title = 'OpenCV 邊緣偵測';
         };
         var d = document, s = d.createElement('script');
