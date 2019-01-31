@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://teddybearfp.github.io/"/>
-  <updated>2019-01-31T13:19:15.658Z</updated>
+  <updated>2019-01-31T14:39:49.964Z</updated>
   <id>https://teddybearfp.github.io/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Python 爬取學術網頁PDF</title>
+    <link href="https://teddybearfp.github.io/2019/01/31/Python-%E7%88%AC%E5%8F%96%E5%AD%B8%E8%A1%93%E7%B6%B2%E9%A0%81PDF/"/>
+    <id>https://teddybearfp.github.io/2019/01/31/Python-爬取學術網頁PDF/</id>
+    <published>2019-01-31T14:05:16.000Z</published>
+    <updated>2019-01-31T14:39:49.964Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>最近身邊朋友有爬取Google 學術搜尋需求，燃起我心中想挑戰這次的爬蟲任務，他的需求是要搜尋某個學術論文然後把所有搜尋到的PDF載下，這一篇紀錄開啟網頁自動爬取並換頁直到爬取完成所有搜尋，後續使用</p><p><img src="https://i.imgur.com/5o1CHte.mp4" alt="自動搜尋爬取"></p><h2 id="爬取流程"><a href="#爬取流程" class="headerlink" title="爬取流程"></a>爬取流程</h2><p>透過selenium webdriver <a href="https://chromedriver.storage.googleapis.com/index.html?path=2.45/" target="_blank" rel="noopener">ChromeDriver</a>的方式爬取動態目標，首先設定Chromedriver跟user agent、session id偽裝，開啟網頁並自動搜尋目標，需要的檔案網址放進List中，自動換頁直到頁尾，爬取完所有檔案網址後，檢查是否有目標資料夾，再利用多進程(multiprocessing)分散式爬蟲，加速下載。<br>爬取完成後，使用textract剖析PDF快速地分析內容。</p><h2 id="創建資料夾"><a href="#創建資料夾" class="headerlink" title="創建資料夾"></a>創建資料夾</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">mkdir</span><span class="params">(path)</span>:</span></span><br><span class="line">    folder = os.path.exists(path)</span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> folder:                   </span><br><span class="line">        os.makedirs(path)            </span><br><span class="line">        <span class="keyword">print</span> (<span class="string">"---  created Scholar folder...  ---"</span>)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="keyword">print</span> (<span class="string">"---  Scholar folder has already exist!  ---"</span>)</span><br></pre></td></tr></table></figure><h2 id="建立Chromedriver"><a href="#建立Chromedriver" class="headerlink" title="建立Chromedriver"></a>建立Chromedriver</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">search_scholar = <span class="string">"Teece"</span></span><br><span class="line">chrome_driver_path = <span class="string">"D:\chromedriver\chromedriver.exe"</span></span><br><span class="line">google_scholar = <span class="string">"https://scholar.google.com.tw/schhp?hl=zh-TW&amp;as_sdt=0,5"</span></span><br><span class="line">option = webdriver.ChromeOptions()</span><br><span class="line">prefs = &#123;<span class="string">'profile.default_content_settings.popups'</span>: <span class="number">0</span>, <span class="string">'download.default_directory'</span>: path&#125;</span><br><span class="line">option.add_experimental_option(<span class="string">'prefs'</span>, prefs)</span><br><span class="line">option.add_argument(<span class="string">'headless'</span>)</span><br><span class="line"><span class="comment">#driver = webdriver.Chrome(chrome_driver_path,chrome_options=option) </span></span><br><span class="line">driver = webdriver.Chrome(<span class="string">'D:\chromedriver\chromedriver.exe'</span>)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">OpenSearchIndex</span><span class="params">()</span>:</span></span><br><span class="line">    driver.get(google_scholar)</span><br><span class="line">    session_id = driver.session_id</span><br><span class="line">    print(<span class="string">'session_id:'</span>,session_id)</span><br></pre></td></tr></table></figure><h2 id="自動輸入"><a href="#自動輸入" class="headerlink" title="自動輸入"></a>自動輸入</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">SearchScolar</span><span class="params">(searchTarget)</span>:</span></span><br><span class="line">    target = searchTarget</span><br><span class="line">    q = driver.find_element_by_name(<span class="string">'q'</span>)</span><br><span class="line">    q.send_keys(target)</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">from</span> selenium.webdriver.common.keys <span class="keyword">import</span> Keys</span><br><span class="line">    q.send_keys(Keys.RETURN)</span><br></pre></td></tr></table></figure><h2 id="剖析"><a href="#剖析" class="headerlink" title="剖析"></a>剖析</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">Parse</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="keyword">from</span> bs4 <span class="keyword">import</span> BeautifulSoup</span><br><span class="line">    soup = BeautifulSoup(driver.page_source,<span class="string">'html.parser'</span>)</span><br><span class="line">    lis = []</span><br><span class="line">    dic = &#123;&#125;</span><br><span class="line">    <span class="keyword">for</span> item <span class="keyword">in</span> soup.select(<span class="string">'.gs_or_ggsm a'</span>):</span><br><span class="line">        <span class="comment">#title = item.select('gs_rt a').text</span></span><br><span class="line">        ref = item.text</span><br><span class="line">        ref_href = item.get(<span class="string">'href'</span>)</span><br><span class="line">        dic = &#123;<span class="string">'ref'</span>:ref,<span class="string">'ref_href'</span>:ref_href&#125;</span><br><span class="line">        lis.append(dic)</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span> c <span class="keyword">in</span> lis:</span><br><span class="line">        <span class="keyword">if</span>(c[<span class="string">'ref_href'</span>].endswith(<span class="string">'.pdf'</span>)):</span><br><span class="line">            file_name = c[<span class="string">'ref'</span>].strip(<span class="string">"[PDF]"</span>).strip(<span class="string">" "</span>)</span><br><span class="line">            Download(file_name, c[<span class="string">'ref_href'</span>])</span><br><span class="line">    </span><br><span class="line">    time.sleep(<span class="number">1</span>)</span><br></pre></td></tr></table></figure><h2 id="下載"><a href="#下載" class="headerlink" title="下載"></a>下載</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">Download</span><span class="params">(file_name, url)</span>:</span></span><br><span class="line">    <span class="keyword">try</span> :</span><br><span class="line">        ssl._create_default_https_context = ssl._create_unverified_context</span><br><span class="line">        d = urllib.request.URLopener()</span><br><span class="line">        d.retrieve(url, <span class="string">"D://Scholar/"</span> + file_name + <span class="string">".pdf"</span>)</span><br><span class="line">        print(file_name , url)</span><br><span class="line">    <span class="keyword">except</span> urllib.error.HTTPError <span class="keyword">as</span> e:</span><br><span class="line">        print(<span class="string">"HTTPError"</span>,e.code,url)</span><br></pre></td></tr></table></figure><h2 id="自動換頁"><a href="#自動換頁" class="headerlink" title="自動換頁"></a>自動換頁</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">NextPage</span><span class="params">()</span>:</span></span><br><span class="line">    driver.find_element_by_link_text(<span class="string">"下一頁"</span>).click()</span><br></pre></td></tr></table></figure><p><img src="https://i.imgur.com/5o1CHte.mp4" alt="自動換頁爬取"></p><h2 id="關閉Chromedriver"><a href="#關閉Chromedriver" class="headerlink" title="關閉Chromedriver"></a>關閉Chromedriver</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">End</span><span class="params">()</span>:</span></span><br><span class="line">    driver.close()</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;最近身邊朋友有爬取Google 學術搜尋需求，燃起我心中想挑戰這次的爬蟲任務，他的需求是要搜尋某個學術論文然後把所有搜尋到的PDF載下，這一
+      
+    
+    </summary>
+    
+      <category term="Python" scheme="https://teddybearfp.github.io/categories/Python/"/>
+    
+    
+      <category term="分散式爬蟲" scheme="https://teddybearfp.github.io/tags/%E5%88%86%E6%95%A3%E5%BC%8F%E7%88%AC%E8%9F%B2/"/>
+    
+      <category term="換頁爬取" scheme="https://teddybearfp.github.io/tags/%E6%8F%9B%E9%A0%81%E7%88%AC%E5%8F%96/"/>
+    
+  </entry>
   
   <entry>
     <title>步進馬達</title>
@@ -537,40 +564,6 @@
     
     
       <category term="編譯流程" scheme="https://teddybearfp.github.io/tags/%E7%B7%A8%E8%AD%AF%E6%B5%81%E7%A8%8B/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Python 如何打造專屬的LineBot呢</title>
-    <link href="https://teddybearfp.github.io/2018/10/26/Python-LineBot/"/>
-    <id>https://teddybearfp.github.io/2018/10/26/Python-LineBot/</id>
-    <published>2018-10-26T06:05:16.000Z</published>
-    <updated>2018-11-15T06:36:39.424Z</updated>
-    
-    <content type="html"><![CDATA[<blockquote><p><strong> 此為個人練習非商業用途</strong></p></blockquote><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><blockquote><p>服役期間很喜歡寫爬蟲程式，取得各種資料加以處理很有趣，但都在當地端運用，有天突然發現有趣的LineBot程式可以把爬蟲搭載在其中，在這人人都有Line的時代透過LineBot可以使親朋好友不用刻意裝別的app即可使用，更能融入生活中</p></blockquote><h2 id="整體流程"><a href="#整體流程" class="headerlink" title="整體流程"></a>整體流程</h2><ul><li>運用Python編寫LineBot透過一些LineApi實現介面</li><li>運用爬蟲技術將網路上的資源爬取下來供機器人使用</li><li>優化: 編寫排程定時去抓取線上資料存取在資料庫</li><li>將編寫好的程式佈署在heroku上面</li></ul><h2 id="LineApi-Layout簡介"><a href="#LineApi-Layout簡介" class="headerlink" title="LineApi Layout簡介"></a>LineApi Layout簡介</h2><h2 id="泰迪熊展示"><a href="#泰迪熊展示" class="headerlink" title="泰迪熊展示"></a>泰迪熊展示</h2><h3 id="如何使用泰迪熊"><a href="#如何使用泰迪熊" class="headerlink" title="如何使用泰迪熊"></a>如何使用泰迪熊</h3><h4 id="可以輸入關鍵字或是專有名詞"><a href="#可以輸入關鍵字或是專有名詞" class="headerlink" title="可以輸入關鍵字或是專有名詞"></a>可以輸入關鍵字或是專有名詞</h4><p><img src="https://i.imgur.com/09cQMKq.jpg" alt="link text" title="自我介紹"></p><h4 id="也可以用精選功能快捷鍵"><a href="#也可以用精選功能快捷鍵" class="headerlink" title="也可以用精選功能快捷鍵"></a>也可以用精選功能快捷鍵</h4><p><img src="https://i.imgur.com/UKalujF.jpg" alt="link text" title="除了輸入外還有精選功能快捷鍵使用"></p><h3 id="天氣"><a href="#天氣" class="headerlink" title="天氣"></a>天氣</h3><p>出門前隨手一按，不用下班當水手<br><img src="https://i.imgur.com/Khi9Uxs.jpg" alt="link text" title="呼叫天氣"></p><p><img src="https://i.imgur.com/YvJyuiV.jpg" alt="link text" title="貼心小提醒天氣概況"></p><h3 id="餐廳"><a href="#餐廳" class="headerlink" title="餐廳"></a>餐廳</h3><p>還在煩惱出門不知道吃甚麼嗎?<br>這時候打開泰迪熊無論你身處何地一搜馬上有推薦餐廳(保證不雷!?)<br><img src="https://i.imgur.com/RuNTOYT.jpg" alt="link text" title="傳送位置"></p><p><img src="https://i.imgur.com/xAOoq4o.jpg" alt="link text" title="發送位置"></p><p><img src="https://i.imgur.com/FTl6XYV.jpg" alt="link text" title="將評分4分以上的附近餐廳傳送給您"></p><h3 id="電影"><a href="#電影" class="headerlink" title="電影"></a>電影</h3><p>隨時留意電影話題，不怕跟人沒話題<br><img src="https://i.imgur.com/keHL76D.jpg" alt="link text" title="電影選單"></p><p><img src="https://i.imgur.com/u1PAyo6.jpg" alt="link text" title="近期上映的電影上映日期與期待度"></p><p><img src="https://i.imgur.com/cPsEItj.jpg" alt="link text" title="現正熱映的電影上映日期與評分"></p><h3 id="新聞"><a href="#新聞" class="headerlink" title="新聞"></a>新聞</h3><p><img src="https://i.imgur.com/jU8RZBb.jpg" alt="link text" title="新聞選單"></p><p><img src="https://i.imgur.com/ESHFKvM.jpg" alt="link text" title="即時新聞 了解時事"></p><p><img src="https://i.imgur.com/5FsoaVh.jpg" alt="link text" title="科技新聞"></p><h3 id="PTT"><a href="#PTT" class="headerlink" title="PTT"></a>PTT</h3><p>輸入各大板泰迪熊幫你找文章節省時間與觀看精選好文<br>例如:Joke,八卦,NBA,表特…<br><img src="https://i.imgur.com/rod9w4R.jpg" alt="link text" title="鄉民爬文囉"></p><p>可以爬PTT各大板的最近10頁的熱門文章(由人氣排序)<br>這樣就可以不用花時間自己看文，泰迪熊嚴選文章給您<br><img src="https://i.imgur.com/ZCudKvf.jpg" alt="link text" title="人氣前15篇"></p><h3 id="對話"><a href="#對話" class="headerlink" title="對話"></a>對話</h3><p>除了聊天之外，遇到不懂得事情可以問泰迪熊，只要輸入專有名詞，給你專業的回答<br><img src="https://i.imgur.com/vMGA8Qj.jpg" alt="link text" title="互動功能"></p><p><img src="https://i.imgur.com/d65dMyf.jpg" alt="link text" title="輸入專有名詞會告訴你相關知識"></p><h3 id="貼圖"><a href="#貼圖" class="headerlink" title="貼圖"></a>貼圖</h3><p><img src="https://i.imgur.com/HBQ4roE.jpg" alt="link text" title="還可以跟她玩圖戰喔!"></p><h2 id="Python編寫"><a href="#Python編寫" class="headerlink" title="Python編寫"></a>Python編寫</h2><h2 id="爬蟲概述"><a href="#爬蟲概述" class="headerlink" title="爬蟲概述"></a>爬蟲概述</h2><p>我在<a href="https://teddybearfp.github.io/2018/11/07/Ptt%E7%88%AC%E8%9F%B2/">Python 爬蟲幫你精選PTT文章!(靜態頁面爬取)</a>有編寫靜態網頁爬取的相關內容</p><h2 id="heroku佈署"><a href="#heroku佈署" class="headerlink" title="heroku佈署"></a>heroku佈署</h2><h2 id="快來試試我們的機器人吧"><a href="#快來試試我們的機器人吧" class="headerlink" title="快來試試我們的機器人吧"></a>快來試試我們的機器人吧</h2><h2 id="注意事項"><a href="#注意事項" class="headerlink" title="注意事項"></a>注意事項</h2><ul><li>在編輯Python時 <strong>四格空格不等於一個Tab</strong> ，如果使用的是Notepad++在編輯檔案時，千萬要把Tab轉換成空白鍵，不然會肉眼怎麼看都找不到錯誤</li></ul><pre><code>可以至設定 &gt; 使用者自訂 &gt; 程式語言 &gt; 以空格取代打勾</code></pre>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;blockquote&gt;
-&lt;p&gt;&lt;strong&gt; 此為個人練習非商業用途&lt;/strong&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;blockquo
-      
-    
-    </summary>
-    
-      <category term="Python" scheme="https://teddybearfp.github.io/categories/Python/"/>
-    
-    
-      <category term="Python" scheme="https://teddybearfp.github.io/tags/Python/"/>
-    
-      <category term="heroku" scheme="https://teddybearfp.github.io/tags/heroku/"/>
-    
-      <category term="LineBot" scheme="https://teddybearfp.github.io/tags/LineBot/"/>
-    
-      <category term="爬蟲" scheme="https://teddybearfp.github.io/tags/%E7%88%AC%E8%9F%B2/"/>
     
   </entry>
   
