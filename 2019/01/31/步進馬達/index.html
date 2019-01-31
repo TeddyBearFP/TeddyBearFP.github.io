@@ -89,12 +89,13 @@
 <meta property="og:site_name" content="泰迪熊的程式足跡">
 <meta property="og:description" content="步進馬達步進馬達步級角構造，黃色部分為每次脈波行走量步進馬達（Stepper motor; Step motor）是直流無刷馬達的一種，為具有如齒輪狀突起（小齒）相鍥合的定子和轉子，可藉由切換流向定子線圈中的電流，以一定角度逐步轉動的馬達。 步進馬達的特徵是採用開迴路控制（Open-loop control）處理，不需要運轉量檢知器（sensor）或編碼器，且切換電流觸發器的是脈波信號，不需要位置">
 <meta property="og:locale" content="zh-tw">
+<meta property="og:image" content="https://imgur.com/9nUaYW5">
 <meta property="og:image" content="https://imgur.com/1B64Gn5">
-<meta property="og:updated_time" content="2019-01-31T13:17:11.528Z">
+<meta property="og:updated_time" content="2019-01-31T13:18:14.554Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="步進馬達">
 <meta name="twitter:description" content="步進馬達步進馬達步級角構造，黃色部分為每次脈波行走量步進馬達（Stepper motor; Step motor）是直流無刷馬達的一種，為具有如齒輪狀突起（小齒）相鍥合的定子和轉子，可藉由切換流向定子線圈中的電流，以一定角度逐步轉動的馬達。 步進馬達的特徵是採用開迴路控制（Open-loop control）處理，不需要運轉量檢知器（sensor）或編碼器，且切換電流觸發器的是脈波信號，不需要位置">
-<meta name="twitter:image" content="https://imgur.com/1B64Gn5">
+<meta name="twitter:image" content="https://imgur.com/9nUaYW5">
 
 
 
@@ -393,7 +394,7 @@
 <p>步進馬達的特徵是採用開迴路控制（Open-loop control）處理，不需要運轉量檢知器（sensor）或編碼器，且切換電流觸發器的是脈波信號，不需要位置檢出和速度檢出的回授裝置，所以步進馬達可正確地依比例追隨脈波信號而轉動，因此就能達成精確的位置和速度控制，且穩定性佳。</p>
 <h2 id="移動指令-Write"><a href="#移動指令-Write" class="headerlink" title="移動指令(Write)"></a>移動指令(Write)</h2><h3 id="Hz"><a href="#Hz" class="headerlink" title="Hz"></a>Hz</h3><p>影響移動速度</p>
 <h3 id="Step-Method"><a href="#Step-Method" class="headerlink" title="Step Method"></a>Step Method</h3><p>微步進方式(Full,二分之一,四分之一,八分之一…)影響移動流暢度</p>
-<h3 id="計算方式"><a href="#計算方式" class="headerlink" title="計算方式"></a>計算方式</h3><p>假如預設馬達轉一圈為200 Step<br>以四分之一微步進如下列表格<br>|馬達轉一圈軸的移動量|可移動範圍|可移動極限值(微步進四分之一)|移動速度mm/s(400HZ)(微步進四分之一)<br>| — | — | — | — |<br>X軸:約42mm      |            極限值45mm~48mm | 857step~914step           |      “200step * 4 / 400hz = 2 <br>42mm / 2s = 21mm/s”|</p>
+<h3 id="計算方式"><a href="#計算方式" class="headerlink" title="計算方式"></a>計算方式</h3><p>假如預設馬達轉一圈為200 Step<br><img src="https://imgur.com/9nUaYW5" alt="以四分之一微步如上面表格"></p>
 <h2 id="檢測狀態-Read-Status"><a href="#檢測狀態-Read-Status" class="headerlink" title="檢測狀態(Read Status)"></a>檢測狀態(Read Status)</h2><h3 id="運作方式"><a href="#運作方式" class="headerlink" title="運作方式"></a>運作方式</h3><p>看當前設計以下為舉例<br>第一個bit表示是否在Home<br>第三個bit表示Task是否完成</p>
 <p><img src="https://imgur.com/1B64Gn5" alt=""></p>
 <p>馬達在Home且還沒下任何指令時，讀取時值應該為5(0101)<br>移動時有未完成任務並且不在Home，讀取值應該為0(0000)<br>完成移動並且不在Home，讀取值應為4(0100)</p>
