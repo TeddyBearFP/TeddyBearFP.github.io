@@ -81,20 +81,20 @@
 
 
 
-<meta name="description" content="前言最近身邊朋友有爬取Google 學術搜尋需求，燃起我心中想挑戰這次的爬蟲任務，他的需求是要搜尋某個學術論文然後把所有搜尋到的PDF載下，這一篇紀錄開啟網頁自動爬取並換頁直到爬取完成所有搜尋，後續使用  爬取流程透過selenium webdriver ChromeDriver的方式爬取動態目標，首先設定Chromedriver跟user agent、session id偽裝，開啟網頁並自動搜尋">
+<meta name="description" content="前言最近身邊朋友有爬取Google 學術搜尋需求，燃起我心中想挑戰這次的爬蟲任務，他的需求是要搜尋某個學術論文然後把所有搜尋到的PDF載下，這一篇紀錄開啟網頁自動爬取並換頁直到爬取完成所有搜尋，後續使用textract剖析PDF快速地分析內容。  爬取流程透過selenium webdriver ChromeDriver的方式爬取動態目標，首先設定Chromedriver跟user agent、s">
 <meta name="keywords" content="分散式爬蟲,換頁爬取">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Python 爬取Google學術網頁PDF">
 <meta property="og:url" content="https://teddybearfp.github.io/2019/01/31/Python-爬取學術網頁PDF/index.html">
 <meta property="og:site_name" content="泰迪熊的程式足跡">
-<meta property="og:description" content="前言最近身邊朋友有爬取Google 學術搜尋需求，燃起我心中想挑戰這次的爬蟲任務，他的需求是要搜尋某個學術論文然後把所有搜尋到的PDF載下，這一篇紀錄開啟網頁自動爬取並換頁直到爬取完成所有搜尋，後續使用  爬取流程透過selenium webdriver ChromeDriver的方式爬取動態目標，首先設定Chromedriver跟user agent、session id偽裝，開啟網頁並自動搜尋">
+<meta property="og:description" content="前言最近身邊朋友有爬取Google 學術搜尋需求，燃起我心中想挑戰這次的爬蟲任務，他的需求是要搜尋某個學術論文然後把所有搜尋到的PDF載下，這一篇紀錄開啟網頁自動爬取並換頁直到爬取完成所有搜尋，後續使用textract剖析PDF快速地分析內容。  爬取流程透過selenium webdriver ChromeDriver的方式爬取動態目標，首先設定Chromedriver跟user agent、s">
 <meta property="og:locale" content="zh-tw">
 <meta property="og:image" content="https://i.imgur.com/3mFKgvk.gif">
 <meta property="og:image" content="https://i.imgur.com/h98rpM1.gif">
-<meta property="og:updated_time" content="2019-01-31T15:02:55.957Z">
+<meta property="og:updated_time" content="2019-01-31T15:05:12.748Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Python 爬取Google學術網頁PDF">
-<meta name="twitter:description" content="前言最近身邊朋友有爬取Google 學術搜尋需求，燃起我心中想挑戰這次的爬蟲任務，他的需求是要搜尋某個學術論文然後把所有搜尋到的PDF載下，這一篇紀錄開啟網頁自動爬取並換頁直到爬取完成所有搜尋，後續使用  爬取流程透過selenium webdriver ChromeDriver的方式爬取動態目標，首先設定Chromedriver跟user agent、session id偽裝，開啟網頁並自動搜尋">
+<meta name="twitter:description" content="前言最近身邊朋友有爬取Google 學術搜尋需求，燃起我心中想挑戰這次的爬蟲任務，他的需求是要搜尋某個學術論文然後把所有搜尋到的PDF載下，這一篇紀錄開啟網頁自動爬取並換頁直到爬取完成所有搜尋，後續使用textract剖析PDF快速地分析內容。  爬取流程透過selenium webdriver ChromeDriver的方式爬取動態目標，首先設定Chromedriver跟user agent、s">
 <meta name="twitter:image" content="https://i.imgur.com/3mFKgvk.gif">
 
 
@@ -390,7 +390,7 @@
       
 
       
-        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>最近身邊朋友有爬取Google 學術搜尋需求，燃起我心中想挑戰這次的爬蟲任務，他的需求是要搜尋某個學術論文然後把所有搜尋到的PDF載下，這一篇紀錄開啟網頁自動爬取並換頁直到爬取完成所有搜尋，後續使用</p>
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>最近身邊朋友有爬取Google 學術搜尋需求，燃起我心中想挑戰這次的爬蟲任務，他的需求是要搜尋某個學術論文然後把所有搜尋到的PDF載下，這一篇紀錄開啟網頁自動爬取並換頁直到爬取完成所有搜尋，後續使用textract剖析PDF快速地分析內容。</p>
 <p><img src="https://i.imgur.com/3mFKgvk.gif" alt="" title="自動搜尋爬取"></p>
 <h2 id="爬取流程"><a href="#爬取流程" class="headerlink" title="爬取流程"></a>爬取流程</h2><p>透過selenium webdriver <a href="https://chromedriver.storage.googleapis.com/index.html?path=2.45/" target="_blank" rel="noopener">ChromeDriver</a>的方式爬取動態目標，首先設定Chromedriver跟user agent、session id偽裝，開啟網頁並自動搜尋目標，需要的檔案網址放進List中，自動換頁直到頁尾，爬取完所有檔案網址後，檢查是否有目標資料夾，再利用多進程(multiprocessing)分散式爬蟲，加速下載。<br>爬取完成後，使用textract剖析PDF快速地分析內容。</p>
 <h2 id="創建資料夾"><a href="#創建資料夾" class="headerlink" title="創建資料夾"></a>創建資料夾</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">mkdir</span><span class="params">(path)</span>:</span></span><br><span class="line">    folder = os.path.exists(path)</span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> folder:                   </span><br><span class="line">        os.makedirs(path)            </span><br><span class="line">        <span class="keyword">print</span> (<span class="string">"---  created Scholar folder...  ---"</span>)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="keyword">print</span> (<span class="string">"---  Scholar folder has already exist!  ---"</span>)</span><br></pre></td></tr></table></figure>
