@@ -92,7 +92,7 @@
 <meta property="og:image" content="https://i.imgur.com/9nUaYW5.png">
 <meta property="og:image" content="https://i.imgur.com/1B64Gn5.png">
 <meta property="og:image" content="https://i.imgur.com/Qlg2GOq.png">
-<meta property="og:updated_time" content="2019-02-23T07:22:41.118Z">
+<meta property="og:updated_time" content="2019-02-23T07:34:11.737Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="步進馬達">
 <meta name="twitter:description" content="步進馬達步進馬達步級角構造，黃色部分為每次脈波行走量步進馬達（Stepper motor; Step motor）是直流無刷馬達的一種，為具有如齒輪狀突起（小齒）相鍥合的定子和轉子，可藉由切換流向定子線圈中的電流，以一定角度逐步轉動的馬達。 步進馬達的特徵是採用開迴路控制（Open-loop control）處理，不需要運轉量檢知器（sensor）或編碼器，且切換電流觸發器的是脈波信號，不需要位置">
@@ -400,7 +400,7 @@
 <p><img src="https://i.imgur.com/1B64Gn5.png" alt=""></p>
 <p>馬達在Home且還沒下任何指令時，讀取時值應該為5(0101)<br>移動時有未完成任務並且不在Home，讀取值應該為0(0000)<br>完成移動並且不在Home，讀取值應為4(0100)</p>
 <p>一個在Home的馬達移動的過程為<br><img src="https://i.imgur.com/Qlg2GOq.png" alt=""></p>
-<h2 id="資料傳遞方式"><a href="#資料傳遞方式" class="headerlink" title="資料傳遞方式"></a>資料傳遞方式</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1b</span>yte = <span class="number">8b</span>its</span><br><span class="line">若是<span class="number">2</span> byte的<span class="number">16</span>進制資料傳遞(Max = <span class="number">65535</span>)</span><br><span class="line"><span class="keyword">int</span> buffer = reg;</span><br><span class="line"><span class="keyword">int</span> loByte = buffer % <span class="number">256</span>;</span><br><span class="line"><span class="keyword">int</span> hiByte = buffer / <span class="number">256</span>;</span><br></pre></td></tr></table></figure>
+<h2 id="資料傳遞方式"><a href="#資料傳遞方式" class="headerlink" title="資料傳遞方式"></a>資料傳遞方式</h2><p>1byte = 8bits<br>若是2 byte的16進制資料傳遞(Max = 二進制: 1111 1111 1111 1111  十進制: 65535  十六進制: FFFF)<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> buffer = reg;</span><br><span class="line"><span class="keyword">int</span> loByte = buffer % <span class="number">256</span>;</span><br><span class="line"><span class="keyword">int</span> hiByte = buffer / <span class="number">256</span>;</span><br></pre></td></tr></table></figure></p>
 <h3 id="檢測16進制資料"><a href="#檢測16進制資料" class="headerlink" title="檢測16進制資料"></a>檢測16進制資料</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">char</span> hexLoByte[<span class="number">33</span>];</span><br><span class="line">itoa(loByte, hexLoByte, <span class="number">16</span>);</span><br></pre></td></tr></table></figure>
 <p>這樣印出的hexLoByte就會以16進制顯示</p>
 <ul>
