@@ -92,7 +92,7 @@
 <meta property="og:image" content="https://i.imgur.com/9nUaYW5.png">
 <meta property="og:image" content="https://i.imgur.com/1B64Gn5.png">
 <meta property="og:image" content="https://i.imgur.com/Qlg2GOq.png">
-<meta property="og:updated_time" content="2019-02-23T07:02:11.563Z">
+<meta property="og:updated_time" content="2019-02-23T07:16:57.193Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="步進馬達">
 <meta name="twitter:description" content="步進馬達步進馬達步級角構造，黃色部分為每次脈波行走量步進馬達（Stepper motor; Step motor）是直流無刷馬達的一種，為具有如齒輪狀突起（小齒）相鍥合的定子和轉子，可藉由切換流向定子線圈中的電流，以一定角度逐步轉動的馬達。 步進馬達的特徵是採用開迴路控制（Open-loop control）處理，不需要運轉量檢知器（sensor）或編碼器，且切換電流觸發器的是脈波信號，不需要位置">
@@ -407,7 +407,21 @@
 <ul>
 <li>注意:以上方式只是改變<strong>顯示方式</strong>，事實上直接把原本所看到的10進制的數字傳入運算即可，因為電腦終究是以2進制去做運算</li>
 </ul>
-<h2 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h2><p><a href="https://zh.wikipedia.org/wiki/%E6%AD%A5%E9%80%B2%E9%A6%AC%E9%81%94" target="_blank" rel="noopener">步進馬達- 维基百科</a></p>
+<h2 id="USB傳輸型態-USB-Data-Transfer-Types"><a href="#USB傳輸型態-USB-Data-Transfer-Types" class="headerlink" title="USB傳輸型態 (USB Data Transfer Types)"></a>USB傳輸型態 (USB Data Transfer Types)</h2><p>由於USB最初在設計時，為了傳輸率，響應時間以及錯誤偵錯等特性之許多不同的週邊類型來加以考量的。而其中，四種資料傳輸的每一個能夠掌握不同的需求。因應不同的周邊裝置的類型與應用，訂定了以下四種傳輸類型</p>
+<ul>
+<li>控制型傳輸(Control Transfer)</li>
+<li>中斷型傳輸(Interrupt Transfer)</li>
+<li>巨量型傳輸(Bulk Transfer)</li>
+<li>同步型傳輸(Isochronous Transfer)<br>注意:低速裝置僅支援控制型傳輸與中斷型傳輸而已</li>
+</ul>
+<h3 id="控制型傳輸-Control-Transfer"><a href="#控制型傳輸-Control-Transfer" class="headerlink" title="控制型傳輸(Control Transfer)"></a>控制型傳輸(Control Transfer)</h3><p>是USB傳輸中最重要的傳輸類型，唯有正確的執行完控制傳輸，才能進一步地執行其他的傳輸模式。這種傳輸是用來提供給主機與裝置之間的配置</p>
+<ul>
+<li>注意:所有的USB裝置必須支援控制傳輸。</li>
+</ul>
+<h3 id="中斷型傳輸-Interrupt-Transfer"><a href="#中斷型傳輸-Interrupt-Transfer" class="headerlink" title="中斷型傳輸(Interrupt Transfer)"></a>中斷型傳輸(Interrupt Transfer)</h3><p>原本是屬於單向傳輸，並且僅從裝置輸入到PC主機，作輸入的傳送模式，現在已改為雙向傳輸，增加了輸出的傳送模式<br>早期是因為資料僅需輸入所以為單向例如:滑鼠、鍵盤</p>
+<h3 id="巨量型傳輸-Bulk-Transfer"><a href="#巨量型傳輸-Bulk-Transfer" class="headerlink" title="巨量型傳輸(Bulk Transfer)"></a>巨量型傳輸(Bulk Transfer)</h3><p>是屬於單向或雙向的傳輸。這類型的傳輸是用來傳送大量的資料。由於這些大量的資料必須準確地傳輸，但相對的卻無傳輸速度上的限制(即沒有固定傳輸的速率)。</p>
+<h3 id="同步型傳輸-Isochronous-Transfer"><a href="#同步型傳輸-Isochronous-Transfer" class="headerlink" title="同步型傳輸(Isochronous Transfer)"></a>同步型傳輸(Isochronous Transfer)</h3><p>可以是單向或雙向的傳輸。此種傳輸需要維持一定的傳輸速度，因此相對的就需犧牲些微錯誤的發生，就算發生了傳輸上的錯誤，也不會重新傳送。<br>應用這類型的傳輸裝置有：USB麥克風、喇叭</p>
+<h2 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h2><p><a href="https://zh.wikipedia.org/wiki/%E6%AD%A5%E9%80%B2%E9%A6%AC%E9%81%94" target="_blank" rel="noopener">步進馬達- 维基百科</a><br><a href="http://blog.sina.com.tw/william_liao/article.php?entryid=659545" target="_blank" rel="noopener">USB傳輸型態(USB Data Transfer Types) - 阿威阿獠のNotepad</a></p>
 
       
     </div>
@@ -588,7 +602,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#步進馬達"><span class="nav-number">1.</span> <span class="nav-text">步進馬達</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#移動指令-Write"><span class="nav-number">2.</span> <span class="nav-text">移動指令(Write)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Hz"><span class="nav-number">2.1.</span> <span class="nav-text">Hz</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Step-Method"><span class="nav-number">2.2.</span> <span class="nav-text">Step Method</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#計算方式"><span class="nav-number">2.3.</span> <span class="nav-text">計算方式</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#檢測狀態-Read-Status"><span class="nav-number">3.</span> <span class="nav-text">檢測狀態(Read Status)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#運作方式"><span class="nav-number">3.1.</span> <span class="nav-text">運作方式</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#資料傳遞方式"><span class="nav-number">4.</span> <span class="nav-text">資料傳遞方式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#檢測16進制資料"><span class="nav-number">4.1.</span> <span class="nav-text">檢測16進制資料</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#參考資料"><span class="nav-number">5.</span> <span class="nav-text">參考資料</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#步進馬達"><span class="nav-number">1.</span> <span class="nav-text">步進馬達</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#移動指令-Write"><span class="nav-number">2.</span> <span class="nav-text">移動指令(Write)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Hz"><span class="nav-number">2.1.</span> <span class="nav-text">Hz</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Step-Method"><span class="nav-number">2.2.</span> <span class="nav-text">Step Method</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#計算方式"><span class="nav-number">2.3.</span> <span class="nav-text">計算方式</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#檢測狀態-Read-Status"><span class="nav-number">3.</span> <span class="nav-text">檢測狀態(Read Status)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#運作方式"><span class="nav-number">3.1.</span> <span class="nav-text">運作方式</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#資料傳遞方式"><span class="nav-number">4.</span> <span class="nav-text">資料傳遞方式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#檢測16進制資料"><span class="nav-number">4.1.</span> <span class="nav-text">檢測16進制資料</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#USB傳輸型態-USB-Data-Transfer-Types"><span class="nav-number">5.</span> <span class="nav-text">USB傳輸型態 (USB Data Transfer Types)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#控制型傳輸-Control-Transfer"><span class="nav-number">5.1.</span> <span class="nav-text">控制型傳輸(Control Transfer)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#中斷型傳輸-Interrupt-Transfer"><span class="nav-number">5.2.</span> <span class="nav-text">中斷型傳輸(Interrupt Transfer)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#巨量型傳輸-Bulk-Transfer"><span class="nav-number">5.3.</span> <span class="nav-text">巨量型傳輸(Bulk Transfer)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#同步型傳輸-Isochronous-Transfer"><span class="nav-number">5.4.</span> <span class="nav-text">同步型傳輸(Isochronous Transfer)</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#參考資料"><span class="nav-number">6.</span> <span class="nav-text">參考資料</span></a></li></ol></div>
             
 
           </div>
