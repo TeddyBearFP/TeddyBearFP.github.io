@@ -1,0 +1,836 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-tw">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+<meta name="google-site-verification" content="6FSPL7W8VK5_r7N9kUUjs091G70s4tIlG_BfxOmVa9U">
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+  <meta name="google-site-verification" content="google1efc50360bd796c6.html">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Signal,Slot">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="前言這次編寫State Machine的時候遇到一個問題，如果先呼叫QState的函式再呼叫主執行緒的函式，得到的結果會是主執行緒得先完成跟預期順序不一致，因為QState本身也是一條執行緒所以導致這結果，所以我們運用Signal跟Slot機制傳遞事件完成信號，讓主執行緒知道QState內的函式完成函式內容了 問題描述檔案簡介A檔案: 狀態機某狀態(ex: Class MotorMoveState">
+<meta name="keywords" content="Signal,Slot">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Signal &amp; Slot">
+<meta property="og:url" content="https://teddybearfp.github.io/2019/02/23/Signal-Slot/index.html">
+<meta property="og:site_name" content="泰迪熊的程式足跡">
+<meta property="og:description" content="前言這次編寫State Machine的時候遇到一個問題，如果先呼叫QState的函式再呼叫主執行緒的函式，得到的結果會是主執行緒得先完成跟預期順序不一致，因為QState本身也是一條執行緒所以導致這結果，所以我們運用Signal跟Slot機制傳遞事件完成信號，讓主執行緒知道QState內的函式完成函式內容了 問題描述檔案簡介A檔案: 狀態機某狀態(ex: Class MotorMoveState">
+<meta property="og:locale" content="zh-tw">
+<meta property="og:updated_time" content="2019-02-23T04:46:44.207Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Signal &amp; Slot">
+<meta name="twitter:description" content="前言這次編寫State Machine的時候遇到一個問題，如果先呼叫QState的函式再呼叫主執行緒的函式，得到的結果會是主執行緒得先完成跟預期順序不一致，因為QState本身也是一條執行緒所以導致這結果，所以我們運用Signal跟Slot機制傳遞事件完成信號，讓主執行緒知道QState內的函式完成函式內容了 問題描述檔案簡介A檔案: 狀態機某狀態(ex: Class MotorMoveState">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://teddybearfp.github.io/2019/02/23/Signal-Slot/">
+
+
+
+
+
+  <title>Signal & Slot | 泰迪熊的程式足跡</title>
+  
+<script>
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '',
+      xfbml      : true,
+      version    : 'v2.10'
+    });
+  };
+
+  (function(d, s, id){
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement(s); js.id = id;
+     js.src = "//connect.facebook.net/zh_tw/sdk.js";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));
+</script>
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-tw">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">泰迪熊的程式足跡</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">遊走程式森林的泰迪熊</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首頁
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            關於
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            標籤
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分類
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            歸檔
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://teddybearfp.github.io/2019/02/23/Signal-Slot/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="G.C.L.">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="泰迪熊的程式足跡">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Signal & Slot</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">發表於</span>
+              
+              <time title="創建於" itemprop="dateCreated datePublished" datetime="2019-02-23T12:05:16+08:00">
+                2019-02-23
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分類於</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/Qt/" itemprop="url" rel="index">
+                    <span itemprop="name">Qt</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/02/23/Signal-Slot/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count fb-comments-count" data-href="https://teddybearfp.github.io/2019/02/23/Signal-Slot/" itemprop="commentCount">0</span> comments
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i>
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>這次編寫State Machine的時候遇到一個問題，如果先呼叫QState的函式再呼叫主執行緒的函式，得到的結果會是主執行緒得先完成跟預期順序不一致，因為QState本身也是一條執行緒所以導致這結果，所以我們運用Signal跟Slot機制傳遞事件完成信號，讓主執行緒知道QState內的函式完成函式內容了</p>
+<h2 id="問題描述"><a href="#問題描述" class="headerlink" title="問題描述"></a>問題描述</h2><h3 id="檔案簡介"><a href="#檔案簡介" class="headerlink" title="檔案簡介"></a>檔案簡介</h3><p>A檔案: 狀態機某狀態(ex: Class MotorMoveState)<br>B檔案: 狀態機(Static) (Class StateMachine)<br>C檔案: UI介面cpp (Class FunctionTester)</p>
+<h3 id="錯誤實例"><a href="#錯誤實例" class="headerlink" title="錯誤實例"></a>錯誤實例</h3><p>在C檔案中<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">void</span> FunctionTester::MotorMove(<span class="keyword">float</span> steps, <span class="keyword">float</span> speed)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">int</span> xPosition = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">int</span> yPosition = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">int</span> zPosition = <span class="number">0</span>;</span><br><span class="line">    </span><br><span class="line">    StateMachine::Inst()-&gt;move(steps, speed); <span class="comment">//move為StateMachine內的Signal, prototype為move(float, float);</span></span><br><span class="line">    GetMotorsPosition(&amp;xPosition, &amp;yPosition, &amp;zPosition);</span><br><span class="line">    </span><br><span class="line">    qDebug()&lt;&lt;<span class="string">"xPosition:"</span>&lt;&lt;xPosition;</span><br><span class="line">    qDebug()&lt;&lt;<span class="string">"yPosition:"</span>&lt;&lt;yPosition;</span><br><span class="line">    qDebug()&lt;&lt;<span class="string">"zPosition:"</span>&lt;&lt;zPosition;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>以上程式碼原本期許是馬達移動完後，將三組int記憶體位置傳下去，收到時會得到x,y,z的位置。<br>但是因為StateMachine的編寫是QState透過另一條執行緒達成的，所以會在馬達移動的同時繼續往下執行，先執行了取得馬達位置GetMotorsPosition(int<em>, int</em>, int*)，這樣取得的位置都會是上一次馬達移動完成後的位置，如上x,y,z第一次執行時會得到0,0,0</p>
+<h2 id="解決辦法"><a href="#解決辦法" class="headerlink" title="解決辦法"></a>解決辦法</h2><p>我們要馬達移動完成後，數據自動更新的辦法就是要用，Signal跟Slot，這樣即使StateMachine自身為一條執行緒依舊會在完成時告訴我們上層UI.cpp完成事件</p>
+<h3 id="Signal-amp-Slot"><a href="#Signal-amp-Slot" class="headerlink" title="Signal &amp; Slot"></a>Signal &amp; Slot</h3><p>Qt管理的物件必須繼承QObject類別，以提供Qt物件的Meta訊息，若要實作Signal與Slot機制，則必須包括Q_OBJECT巨集，moc會處理Qt的C++擴充（Meta-Object System），使用moc讀取C++標頭檔案，若發現類別定義中包括Q_OBJECT巨集，就會產生Qt meta-object相關的C++程式碼。</p>
+<p>Signal皆為void型態所以不能回傳值，只能放在參數中傳遞</p>
+<h4 id="命名"><a href="#命名" class="headerlink" title="命名"></a>命名</h4><p>Signal命名: 過去式動詞(ex: captured)<br>Slot命名: on大寫開頭的signal(ex:onCaptured)</p>
+<h4 id="connect"><a href="#connect" class="headerlink" title="connect"></a>connect</h4><p>傳接球的概念</p>
+<p>connect(恰恰, SIGNAL(丟球), 大師兄, SLOT(接球));</p>
+<p>恰恰丟球給大師兄接到後再作後續處理</p>
+<p>接球 {<br>    對接到的球做處理;<br>    }</p>
+<h4 id="disconnect"><a href="#disconnect" class="headerlink" title="disconnect"></a>disconnect</h4><p>有connect就要disconnect才不會讓記憶體釋放的時候有異常</p>
+<p>disconnect(恰恰, SIGNAL(丟球), 大師兄, SLOT(接球));</p>
+<h4 id="簡易傳遞"><a href="#簡易傳遞" class="headerlink" title="簡易傳遞"></a>簡易傳遞</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//A.h</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">A</span> :</span><span class="keyword">public</span> QObject <span class="comment">//Qt管理的物件必須繼承QObject類別</span></span><br><span class="line">&#123;</span><br><span class="line">    Q_OBJECT <span class="comment">//必須包括Q_OBJECT巨集</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    A();</span><br><span class="line">signals:</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">received</span><span class="params">()</span></span>; <span class="comment">//負責送出</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">//A.cpp</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"receiver.h"</span></span></span><br><span class="line"></span><br><span class="line">A::A()</span><br><span class="line">&#123;</span><br><span class="line">    <span class="function">emit <span class="title">received</span><span class="params">()</span></span>; <span class="comment">//建構子完成時送出信號</span></span><br><span class="line">&#125;</span><br><span class="line">------------------------------------------------</span><br><span class="line"><span class="comment">//B.h</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"A.h"</span></span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">B</span> :</span><span class="keyword">public</span> QObject <span class="comment">//Qt管理的物件必須繼承QObject類別</span></span><br><span class="line">&#123;</span><br><span class="line">    Q_OBJECT <span class="comment">//必須包括Q_OBJECT巨集</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    B();</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    A a;</span><br><span class="line"><span class="keyword">public</span> slots:</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">onReceived</span><span class="params">()</span></span>;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">//B.cpp</span></span><br><span class="line">B::B()</span><br><span class="line">&#123;</span><br><span class="line">    connect(&amp;a,SIGNAL(received()),<span class="keyword">this</span>,SLOT(onReceived()), Qt::DirectConnection);  <span class="comment">//DirectConnection指的是用同一條執行緒執行完才繼續</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">void</span> B::onReceived() &#123;</span><br><span class="line">    qDebug()&lt;&lt;<span class="string">"Received!"</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="解決辦法實作"><a href="#解決辦法實作" class="headerlink" title="解決辦法實作"></a>解決辦法實作</h3><p>使用signal跟slot讓QState完成時得到通知<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//A.h</span></span><br><span class="line">signal:</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">moveOk</span><span class="params">()</span></span>;</span><br><span class="line">A.cpp    </span><br><span class="line">    function &#123;</span><br><span class="line">        <span class="comment">//完成時</span></span><br><span class="line">        <span class="function">emit <span class="title">moveOk</span><span class="params">()</span></span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//B.h</span></span><br><span class="line">signal:</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">positionChange</span><span class="params">()</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> slots:</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">onMoveOk</span><span class="params">()</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">//B.cpp    </span></span><br><span class="line">    <span class="comment">//build graph內部寫 (創狀態機時)</span></span><br><span class="line">    connect(&amp;A, moveOk(), <span class="keyword">this</span>, OnMoveOk());</span><br><span class="line">    <span class="keyword">void</span> B::onMoveOk &#123;</span><br><span class="line">        <span class="function">emit <span class="title">positionChange</span><span class="params">()</span></span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//C.h</span></span><br><span class="line"><span class="keyword">public</span> slots:</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">onPositionChange</span><span class="params">()</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">//C.cpp    </span></span><br><span class="line">    C::C &#123;</span><br><span class="line">        connect(B::Inst(), positionChange(), <span class="keyword">this</span>, onPositionChange()); </span><br><span class="line">        <span class="comment">//特別注意B::Inst()本身就為記憶體位置所以不用加上&amp;</span></span><br><span class="line">    &#125;</span><br><span class="line">    C::~C &#123;</span><br><span class="line">        disconnect(B::Inst(), positionChange(), <span class="keyword">this</span>, onPositionChange()); </span><br><span class="line">        <span class="comment">//要刪除否則會記憶體有問題</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">void</span> C::onPositionChange &#123;</span><br><span class="line">        <span class="comment">//收到完成狀態 </span></span><br><span class="line">        dosomething;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="參考網址"><a href="#參考網址" class="headerlink" title="參考網址"></a>參考網址</h2><p><a href="https://openhome.cc/Gossip/Qt4Gossip/CustomSignalSlot.html" target="_blank" rel="noopener">自訂Signal 與Slot - OpenHome.cc</a></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Signal/" rel="tag"><i class="fa fa-tag"></i> Signal</a>
+          
+            <a href="/tags/Slot/" rel="tag"><i class="fa fa-tag"></i> Slot</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/02/01/用NSIS製作軟體安裝程式/" rel="next" title="用NSIS製作軟體安裝程式">
+                <i class="fa fa-chevron-left"></i> 用NSIS製作軟體安裝程式
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div class="fb-comments" data-href="https://teddybearfp.github.io/2019/02/23/Signal-Slot/" data-numposts="10" data-width="100%" data-colorscheme="light">
+      </div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目錄
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            本站概覽
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">G.C.L.</p>
+              <p class="site-description motion-element" itemprop="description">在浩瀚的程式領域中，將走過的足跡記錄下來，文章著重在Qt、C++、python</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">33</span>
+                  <span class="site-state-item-name">文章</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-name">分類</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">64</span>
+                  <span class="site-state-item-name">標籤</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#問題描述"><span class="nav-number">2.</span> <span class="nav-text">問題描述</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#檔案簡介"><span class="nav-number">2.1.</span> <span class="nav-text">檔案簡介</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#錯誤實例"><span class="nav-number">2.2.</span> <span class="nav-text">錯誤實例</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#解決辦法"><span class="nav-number">3.</span> <span class="nav-text">解決辦法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Signal-amp-Slot"><span class="nav-number">3.1.</span> <span class="nav-text">Signal &amp; Slot</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#命名"><span class="nav-number">3.1.1.</span> <span class="nav-text">命名</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#connect"><span class="nav-number">3.1.2.</span> <span class="nav-text">connect</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#disconnect"><span class="nav-number">3.1.3.</span> <span class="nav-text">disconnect</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#簡易傳遞"><span class="nav-number">3.1.4.</span> <span class="nav-text">簡易傳遞</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#解決辦法實作"><span class="nav-number">3.2.</span> <span class="nav-text">解決辦法實作</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#參考網址"><span class="nav-number">4.</span> <span class="nav-text">參考網址</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">G.C.L.</span>
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+    
+      <script id="dsq-count-scr" src="https://teddybearfp.disqus.com/count.js" async></script>
+    
+
+    
+      <script type="text/javascript">
+        var disqus_config = function () {
+          this.page.url = 'https://teddybearfp.github.io/2019/02/23/Signal-Slot/';
+          this.page.identifier = '2019/02/23/Signal-Slot/';
+          this.page.title = 'Signal & Slot';
+        };
+        var d = document, s = d.createElement('script');
+        s.src = 'https://teddybearfp.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      </script>
+    
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
