@@ -42,6 +42,31 @@
   </entry>
   
   <entry>
+    <title>Cyconsole</title>
+    <link href="https://teddybearfp.github.io/2019/03/11/Cyconsole/"/>
+    <id>https://teddybearfp.github.io/2019/03/11/Cyconsole/</id>
+    <published>2019-03-11T04:05:16.000Z</published>
+    <updated>2019-03-12T11:03:31.073Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>在研發過程中，軟硬體與韌體都非常重要，某一個的錯誤都會導致異常現象，有時候檢驗不出軟體問題的時候我們就需要檢查韌體與硬體的問題，最近認識這個工具Cyconsole，可以透過Cyconsole下指令給firmware或是硬體，可以驗證Cypress或是FPGA Code正確性，這一篇記錄一下這個我很少用到的工具</p><h2 id="Cyconsole"><a href="#Cyconsole" class="headerlink" title="Cyconsole"></a>Cyconsole</h2><h3 id="簡介"><a href="#簡介" class="headerlink" title="簡介"></a>簡介</h3><p>是Cypress公司釋出的軟體，可以用來下指令到底層，來驅動韌體或是硬體，<br>用來檢測，Cyconsole它的Icon如下圖<br><img src="https://i.imgur.com/D7IIMh2.png" alt=""></p><h3 id="連結"><a href="#連結" class="headerlink" title="連結"></a>連結</h3><p>在連結裝置後，我們開Cyconsole並點選到Misc.可以找到我們的USB連結裝置，接著點選上方Options內的Ez-USB會跳出下方第二張圖<br><img src="https://i.imgur.com/IxVzPKs.png" alt=""></p><h3 id="EZ-USB"><a href="#EZ-USB" class="headerlink" title="EZ-USB"></a>EZ-USB</h3><p><img src="https://i.imgur.com/EyO6IMn.png" alt=""></p><h4 id="逐一輸入的方式-通常是直接下給FPGA"><a href="#逐一輸入的方式-通常是直接下給FPGA" class="headerlink" title="逐一輸入的方式(通常是直接下給FPGA)"></a>逐一輸入的方式(通常是直接下給FPGA)</h4><ul><li>Req輸入request方式</li><li>Value輸入計算出來的16進制值</li><li>Index輸入位置</li></ul><p>一組一組的輸入例如:<br>第一二組輸入的value為十進制4000<br>用兩個Byte表示十六進制為FA0</p><p>第三四組輸入的value為十進制1500<br>用兩個Byte表示十六進制為5DC<br>皆輸入完成後動作</p><p>第一組(HiByte)<br>req: 0x6e<br>value: 0x000f<br>index: 0x0a<br>Vend Req</p><p>第二組(LoByte)<br>req: 0x6e<br>value: 0x00a0<br>index: 0x0b<br>Vend Req</p><p>第三組(HiByte)<br>req: 0x6e<br>value: 0x0005<br>index: 0x0c<br>Vend Req</p><p>第四組(LoByte)<br>req: 0x6e<br>value: 0x00dc<br>index: 0x0d<br>Vend Req</p><h4 id="一整組buffer傳入-通常可能是先傳給Firmware處理"><a href="#一整組buffer傳入-通常可能是先傳給Firmware處理" class="headerlink" title="一整組buffer傳入(通常可能是先傳給Firmware處理)"></a>一整組buffer傳入(通常可能是先傳給Firmware處理)</h4><ul><li>request: Firmware定義的request</li><li>Length: buffer長度</li><li>Dir: 資料的方向性</li><li>Hex Byte: 照順序輸入值</li></ul><p>跟上方的輸入的值一樣但式輸入的request不一樣<br>req: 0x50<br>length: 5<br>dir: 0<br>Hex Byte: 00 0f a0 05 dc<br>Vend Req</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;在研發過程中，軟硬體與韌體都非常重要，某一個的錯誤都會導致異常現象，有時候檢驗不出軟體問題的時候我們就需要檢查韌體與硬體的問題，最近認識這個
+      
+    
+    </summary>
+    
+      <category term="其他" scheme="https://teddybearfp.github.io/categories/%E5%85%B6%E4%BB%96/"/>
+    
+    
+      <category term="Cyconsole" scheme="https://teddybearfp.github.io/tags/Cyconsole/"/>
+    
+  </entry>
+  
+  <entry>
     <title>LeetCode 筆記</title>
     <link href="https://teddybearfp.github.io/2019/03/04/LeetCode/"/>
     <id>https://teddybearfp.github.io/2019/03/04/LeetCode/</id>
@@ -63,31 +88,6 @@
     
     
       <category term="LeetCode" scheme="https://teddybearfp.github.io/tags/LeetCode/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Cyconsole</title>
-    <link href="https://teddybearfp.github.io/2019/03/03/Cyconsole/"/>
-    <id>https://teddybearfp.github.io/2019/03/03/Cyconsole/</id>
-    <published>2019-03-03T04:05:16.000Z</published>
-    <updated>2019-03-12T10:50:49.030Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>在研發過程中，軟硬體與韌體都非常重要，某一個的錯誤都會導致異常現象，有時候檢驗不出軟體問題的時候我們就需要檢查韌體與硬體的問題，最近認識這個工具Cyconsole，可以透過Cyconsole下指令給firmware或是硬體，可以驗證Cypress或是FPGA Code正確性，這一篇記錄一下這個我很少用到的工具</p><h2 id="Cyconsole"><a href="#Cyconsole" class="headerlink" title="Cyconsole"></a>Cyconsole</h2><h3 id="簡介"><a href="#簡介" class="headerlink" title="簡介"></a>簡介</h3><p>是Cypress公司釋出的軟體，可以用來下指令到底層，來驅動韌體或是硬體，<br>用來檢測，Cyconsole它的Icon如下圖<br><img src="https://i.imgur.com/D7IIMh2.png" alt=""></p><h3 id="連結"><a href="#連結" class="headerlink" title="連結"></a>連結</h3><p>在連結裝置後，我們開Cyconsole並點選到Misc.可以找到我們的USB連結裝置，接著點選上方Options內的Ez-USB會跳出下方第二張圖<br><img src="https://i.imgur.com/IxVzPKs.png" alt=""></p><h3 id="EZ-USB"><a href="#EZ-USB" class="headerlink" title="EZ-USB"></a>EZ-USB</h3><p><img src="https://i.imgur.com/EyO6IMn.png" alt=""></p><h4 id="逐一輸入的方式-通常是直接下給FPGA"><a href="#逐一輸入的方式-通常是直接下給FPGA" class="headerlink" title="逐一輸入的方式(通常是直接下給FPGA)"></a>逐一輸入的方式(通常是直接下給FPGA)</h4><ul><li>Req輸入request方式</li><li>Value輸入計算出來的16進制值</li><li>Index輸入位置</li></ul><p>一組一組的輸入例如:<br>第一二組輸入的value為十進制4000<br>用兩個Byte表示十六進制為FA0</p><p>第三四組輸入的value為十進制1500<br>用兩個Byte表示十六進制為5DC<br>皆輸入完成後動作</p><p>第一組(HiByte)<br>req: 0x6e<br>value: 0x000f<br>index: 0x0a<br>Vend Req</p><p>第二組(LoByte)<br>req: 0x6e<br>value: 0x00a0<br>index: 0x0b<br>Vend Req</p><p>第三組(HiByte)<br>req: 0x6e<br>value: 0x0005<br>index: 0x0c<br>Vend Req</p><p>第四組(LoByte)<br>req: 0x6e<br>value: 0x00dc<br>index: 0x0d<br>Vend Req</p><h4 id="一整組buffer傳入-通常可能是先傳給Firmware處理"><a href="#一整組buffer傳入-通常可能是先傳給Firmware處理" class="headerlink" title="一整組buffer傳入(通常可能是先傳給Firmware處理)"></a>一整組buffer傳入(通常可能是先傳給Firmware處理)</h4><ul><li>request: Firmware定義的request</li><li>Length: buffer長度</li><li>Dir: 資料的方向性</li><li>Hex Byte: 照順序輸入值</li></ul><p>跟上方的輸入的值一樣但式輸入的request不一樣<br>req: 0x50<br>length: 5<br>dir: 0<br>Hex Byte: 00 0f a0 05 dc<br>Vend Req</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;在研發過程中，軟硬體與韌體都非常重要，某一個的錯誤都會導致異常現象，有時候檢驗不出軟體問題的時候我們就需要檢查韌體與硬體的問題，最近認識這個
-      
-    
-    </summary>
-    
-      <category term="其他" scheme="https://teddybearfp.github.io/categories/%E5%85%B6%E4%BB%96/"/>
-    
-    
-      <category term="Cyconsole" scheme="https://teddybearfp.github.io/tags/Cyconsole/"/>
     
   </entry>
   
