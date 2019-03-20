@@ -90,7 +90,7 @@
 <meta property="og:description" content="前言一個專案的架構編寫是非常重要的，若是架構不太好，事隔多時回來看程式碼，應該都忘光光了，所以好的架構可以讓維護更方便，並且除錯也比較快速，今天所紀錄的是介面與動態連結檔溝通的架構方法之一，而整個專案架構是遵守Model-View-ViewModel(MVVM) 想法透過上層介面MyProj(project)呼叫MyCore(dll)使用底層函式，這樣做的好處有  可以將前端與底層分開進行開發(開">
 <meta property="og:locale" content="zh-tw">
 <meta property="og:image" content="https://i.imgur.com/NrWFEhc.png">
-<meta property="og:updated_time" content="2019-03-12T10:50:54.183Z">
+<meta property="og:updated_time" content="2019-03-19T14:05:58.434Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="專案_介面與動態連結檔架構">
 <meta name="twitter:description" content="前言一個專案的架構編寫是非常重要的，若是架構不太好，事隔多時回來看程式碼，應該都忘光光了，所以好的架構可以讓維護更方便，並且除錯也比較快速，今天所紀錄的是介面與動態連結檔溝通的架構方法之一，而整個專案架構是遵守Model-View-ViewModel(MVVM) 想法透過上層介面MyProj(project)呼叫MyCore(dll)使用底層函式，這樣做的好處有  可以將前端與底層分開進行開發(開">
@@ -426,7 +426,9 @@
 原文網址：https://read01.com/J6k0yz.html
 </code></pre><h3 id="問題二"><a href="#問題二" class="headerlink" title="問題二"></a>問題二</h3><p>Q     使用別的class中的enum程式不認得，例如Class A中的enum MotorID<br>        在使用時MotorID不被認得</p>
 <p>A       因為使用其他的class中的member需要在前面表示是屬於哪個class<br>        A::MotorID這樣就OK囉!</p>
-<h3 id="問題三"><a href="#問題三" class="headerlink" title="問題三"></a>問題三</h3><p>Q       找不到內部library的 .lib</p>
+<h3 id="問題三"><a href="#問題三" class="headerlink" title="問題三"></a>問題三</h3><p>Q      Qml中不能使用dll中的 enum  例如:enum MotorID</p>
+<p>A      在main.cpp中註冊 qRegisterMetaType<motorid>(“MotorID”);</motorid></p>
+<h3 id="問題四"><a href="#問題四" class="headerlink" title="問題四"></a>問題四</h3><p>Q       找不到內部library的 .lib</p>
 <p>A       將pro的lib路徑檢查導入正確位置</p>
 
       
@@ -479,6 +481,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/03/19/Python-資料比對/" rel="prev" title="Python 資料比對">
+                Python 資料比對 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -561,7 +567,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">38</span>
+                  <span class="site-state-item-count">40</span>
                   <span class="site-state-item-name">文章</span>
                 </a>
               </div>
@@ -583,7 +589,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">65</span>
+                  <span class="site-state-item-count">71</span>
                   <span class="site-state-item-name">標籤</span>
                 </a>
               </div>
@@ -616,7 +622,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#想法"><span class="nav-number">2.</span> <span class="nav-text">想法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#動態連結檔概述"><span class="nav-number">3.</span> <span class="nav-text">動態連結檔概述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#動態連結檔各檔描述"><span class="nav-number">4.</span> <span class="nav-text">動態連結檔各檔描述</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#MyCore-h-MyCore-cpp"><span class="nav-number">4.1.</span> <span class="nav-text">MyCore.h / MyCore.cpp</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Core-h-Core-cpp"><span class="nav-number">4.2.</span> <span class="nav-text">Core.h / Core.cpp</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Controlboard-h-Controlboard-cpp"><span class="nav-number">4.3.</span> <span class="nav-text">Controlboard.h / Controlboard.cpp</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#TBFP03-h-TBFP03-cpp"><span class="nav-number">4.4.</span> <span class="nav-text">TBFP03.h / TBFP03.cpp</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#動態連結檔實作"><span class="nav-number">5.</span> <span class="nav-text">動態連結檔實作</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#MyCore-h-MyCore-cpp-1"><span class="nav-number">5.1.</span> <span class="nav-text">MyCore.h / MyCore.cpp</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Core-h-Core-cpp-1"><span class="nav-number">5.2.</span> <span class="nav-text">Core.h / Core.cpp</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Controlboard-h-Controlboard-cpp-1"><span class="nav-number">5.3.</span> <span class="nav-text">Controlboard.h / Controlboard.cpp</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#TBFP03-h-TBFP03-cpp-1"><span class="nav-number">5.4.</span> <span class="nav-text">TBFP03.h / TBFP03.cpp</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#可能遇到的問題"><span class="nav-number">6.</span> <span class="nav-text">可能遇到的問題</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#問題一"><span class="nav-number">6.1.</span> <span class="nav-text">問題一</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#問題二"><span class="nav-number">6.2.</span> <span class="nav-text">問題二</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#問題三"><span class="nav-number">6.3.</span> <span class="nav-text">問題三</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#想法"><span class="nav-number">2.</span> <span class="nav-text">想法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#動態連結檔概述"><span class="nav-number">3.</span> <span class="nav-text">動態連結檔概述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#動態連結檔各檔描述"><span class="nav-number">4.</span> <span class="nav-text">動態連結檔各檔描述</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#MyCore-h-MyCore-cpp"><span class="nav-number">4.1.</span> <span class="nav-text">MyCore.h / MyCore.cpp</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Core-h-Core-cpp"><span class="nav-number">4.2.</span> <span class="nav-text">Core.h / Core.cpp</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Controlboard-h-Controlboard-cpp"><span class="nav-number">4.3.</span> <span class="nav-text">Controlboard.h / Controlboard.cpp</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#TBFP03-h-TBFP03-cpp"><span class="nav-number">4.4.</span> <span class="nav-text">TBFP03.h / TBFP03.cpp</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#動態連結檔實作"><span class="nav-number">5.</span> <span class="nav-text">動態連結檔實作</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#MyCore-h-MyCore-cpp-1"><span class="nav-number">5.1.</span> <span class="nav-text">MyCore.h / MyCore.cpp</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Core-h-Core-cpp-1"><span class="nav-number">5.2.</span> <span class="nav-text">Core.h / Core.cpp</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Controlboard-h-Controlboard-cpp-1"><span class="nav-number">5.3.</span> <span class="nav-text">Controlboard.h / Controlboard.cpp</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#TBFP03-h-TBFP03-cpp-1"><span class="nav-number">5.4.</span> <span class="nav-text">TBFP03.h / TBFP03.cpp</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#可能遇到的問題"><span class="nav-number">6.</span> <span class="nav-text">可能遇到的問題</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#問題一"><span class="nav-number">6.1.</span> <span class="nav-text">問題一</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#問題二"><span class="nav-number">6.2.</span> <span class="nav-text">問題二</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#問題三"><span class="nav-number">6.3.</span> <span class="nav-text">問題三</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#問題四"><span class="nav-number">6.4.</span> <span class="nav-text">問題四</span></a></li></ol></li></ol></div>
             
 
           </div>
