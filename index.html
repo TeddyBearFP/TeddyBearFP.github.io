@@ -129,24 +129,6 @@
 
   <title>泰迪熊的程式足跡</title>
   
-<script>
-  window.fbAsyncInit = function() {
-    FB.init({
-      appId      : '',
-      xfbml      : true,
-      version    : 'v2.10'
-    });
-  };
-
-  (function(d, s, id){
-     var js, fjs = d.getElementsByTagName(s)[0];
-     if (d.getElementById(id)) {return;}
-     js = d.createElement(s); js.id = id;
-     js.src = "//connect.facebook.net/zh_tw/sdk.js";
-     fjs.parentNode.insertBefore(js, fjs);
-   }(document, 'script', 'facebook-jssdk'));
-</script>
-
 
 
 
@@ -382,16 +364,6 @@
 
           
             
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2019/03/20/Python-資料視覺化/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count fb-comments-count" data-href="https://teddybearfp.github.io/2019/03/20/Python-資料視覺化/" itemprop="commentCount">0</span> comments
-                </a>
-              </span>
-            
           
 
           
@@ -419,7 +391,8 @@
         
           
           前言數字比較不能讓一目了然資料的變化，驗證數據時看這些數字比較無感，所以編寫一個簡易的資料視覺化程式，可以將同層中的csv數據過matplotlib分色畫成折線圖並存成圖檔
-編寫中文Python編碼默
+編寫中文Python編碼默認是ASCII格式，沒修改編碼的情況下無法編寫中文，所以輸入中文會報錯，解決辦法有以下兩種
+第一種方
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -541,16 +514,6 @@
 
           
             
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2019/03/19/Python-資料比對/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count fb-comments-count" data-href="https://teddybearfp.github.io/2019/03/19/Python-資料比對/" itemprop="commentCount">0</span> comments
-                </a>
-              </span>
-            
           
 
           
@@ -577,7 +540,7 @@
       
         
           
-          前言假如我們有兩個大型Excel(各四萬筆)要比對，要做三種資料(A∩B)、(A-A∩B)、(B-A∩B)那麼如果用excel篩選後複製貼上反覆操作後有錯誤風險且速度較慢，透過篩選複製貼上繁瑣且難發現
+          前言假如我們有兩個大型Excel(各四萬筆)要比對，要做三種資料(A∩B)、(A-A∩B)、(B-A∩B)那麼如果用excel篩選後複製貼上反覆操作後有錯誤風險且速度較慢，透過篩選複製貼上繁瑣且難發現有重複資料或是資料不全的項目，這一篇記錄了我去年前幫忙公務員解決的問題，想當初有公務員周期性的每個月
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -699,16 +662,6 @@
 
           
             
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2019/03/12/專案-介面與動態連結檔架構/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count fb-comments-count" data-href="https://teddybearfp.github.io/2019/03/12/專案-介面與動態連結檔架構/" itemprop="commentCount">0</span> comments
-                </a>
-              </span>
-            
           
 
           
@@ -735,7 +688,8 @@
       
         
           
-          前言一個專案的架構編寫是非常重要的，若是架構不太好，事隔多時回來看程式碼，應該都忘光光了，所以好的架構可以讓維護更方便，並且除錯也比較快速，今天所紀錄的是介面與動態連結檔溝通的架構方法之一，而整個專案
+          前言一個專案的架構編寫是非常重要的，若是架構不太好，事隔多時回來看程式碼，應該都忘光光了，所以好的架構可以讓維護更方便，並且除錯也比較快速，今天所紀錄的是介面與動態連結檔溝通的架構方法之一，而整個專案架構是遵守Model-View-ViewModel(MVVM)
+想法透過上層介面MyProj(pro
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -857,16 +811,6 @@
 
           
             
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2019/03/11/Cyconsole/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count fb-comments-count" data-href="https://teddybearfp.github.io/2019/03/11/Cyconsole/" itemprop="commentCount">0</span> comments
-                </a>
-              </span>
-            
           
 
           
@@ -893,7 +837,7 @@
       
         
           
-          前言在研發過程中，軟硬體與韌體都非常重要，某一個的錯誤都會導致異常現象，有時候檢驗不出軟體問題的時候我們就需要檢查韌體與硬體的問題，最近認識這個工具Cyconsole，可以透過Cyconsole下指令
+          前言在研發過程中，軟硬體與韌體都非常重要，某一個的錯誤都會導致異常現象，有時候檢驗不出軟體問題的時候我們就需要檢查韌體與硬體的問題，最近認識這個工具Cyconsole，可以透過Cyconsole下指令給firmware或是硬體，可以驗證Cypress或是FPGA Code正確性，這一篇記錄一下這個我
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -1015,16 +959,6 @@
 
           
             
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2019/03/04/LeetCode/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count fb-comments-count" data-href="https://teddybearfp.github.io/2019/03/04/LeetCode/" itemprop="commentCount">0</span> comments
-                </a>
-              </span>
-            
           
 
           
@@ -1051,7 +985,8 @@
       
         
           
-          前言Leetcode裡面有許多有趣的題目，在作答過程中可以腦力激盪，答題完後還可以參考大家是怎麼來解決問題的，因為會發現程式不僅功能要正確，還要考慮到Runtime與Memory的消耗，所以此篇記錄了
+          前言Leetcode裡面有許多有趣的題目，在作答過程中可以腦力激盪，答題完後還可以參考大家是怎麼來解決問題的，因為會發現程式不僅功能要正確，還要考慮到Runtime與Memory的消耗，所以此篇記錄了一些不錯的解題方法
+136_Single Number這個題目是要從一個元素皆出現兩次的整數陣列中，
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -1173,16 +1108,6 @@
 
           
             
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2019/02/26/StateMachine/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count fb-comments-count" data-href="https://teddybearfp.github.io/2019/02/26/StateMachine/" itemprop="commentCount">0</span> comments
-                </a>
-              </span>
-            
           
 
           
@@ -1209,7 +1134,8 @@
       
         
           
-          前言當我們程式越寫越大型，可呼叫的函式越來越多的時候，就應該來做函式的控管，某些時候不能呼叫某些函式，否則可能導致不可預期的結果，例如:還沒Initial控制面板，卻呼叫函式要求馬達移動，這樣會有錯誤
+          前言當我們程式越寫越大型，可呼叫的函式越來越多的時候，就應該來做函式的控管，某些時候不能呼叫某些函式，否則可能導致不可預期的結果，例如:還沒Initial控制面板，卻呼叫函式要求馬達移動，這樣會有錯誤發生。所以我們可以編寫狀態機來解決這問題。
+狀態機舉例可以透過這一篇有限狀態機 (finite st
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -1331,16 +1257,6 @@
 
           
             
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2019/02/23/Signal-Slot/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count fb-comments-count" data-href="https://teddybearfp.github.io/2019/02/23/Signal-Slot/" itemprop="commentCount">0</span> comments
-                </a>
-              </span>
-            
           
 
           
@@ -1367,7 +1283,7 @@
       
         
           
-          前言這次編寫State Machine的時候遇到一個問題，如果先呼叫QState的函式再呼叫主執行緒的函式，得到的結果會是主執行緒得先完成跟預期順序不一致，因為QState本身也是一條執行緒所以導致這
+          前言這次編寫State Machine的時候遇到一個問題，如果先呼叫QState的函式再呼叫主執行緒的函式，得到的結果會是主執行緒得先完成跟預期順序不一致，因為QState本身也是一條執行緒所以導致這結果，所以我們運用Signal跟Slot機制傳遞事件完成信號，讓主執行緒知道QState內的函式完成
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -1489,16 +1405,6 @@
 
           
             
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2019/02/20/USB傳輸型態-USB-Data-Transfer-Types/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count fb-comments-count" data-href="https://teddybearfp.github.io/2019/02/20/USB傳輸型態-USB-Data-Transfer-Types/" itemprop="commentCount">0</span> comments
-                </a>
-              </span>
-            
           
 
           
@@ -1526,7 +1432,7 @@
         
           
           前言上一篇大致了解步進馬達後，當我們要對步進馬達給予指令時，需要透過USB傳輸資料，而USB傳輸資料的型態有四種，這一篇我們來了解一下這四種型態的功用與相對應的產品
-USB傳輸型態 (USB Data
+USB傳輸型態 (USB Data Transfer Types)由於USB最初在設計時，為了傳輸率，響應時間以及錯誤偵錯等特性之許多
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -1648,16 +1554,6 @@ USB傳輸型態 (USB Data
 
           
             
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2019/02/01/用NSIS製作軟體安裝程式/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count fb-comments-count" data-href="https://teddybearfp.github.io/2019/02/01/用NSIS製作軟體安裝程式/" itemprop="commentCount">0</span> comments
-                </a>
-              </span>
-            
           
 
           
@@ -1685,7 +1581,7 @@ USB傳輸型態 (USB Data
         
           
           前言透過NSIS腳本可以將程式打包成安裝檔，提供給他人使用，這樣就可以把自己寫好的程式碼，給別人安裝與使用，好像很厲害的感覺，接下來了解一下如何看起來好像很厲害吧!
-生成需要的檔案在pro檔中，加上下
+生成需要的檔案在pro檔中，加上下列程式碼，並以Release去編譯。目的是將所有需要的檔案集中到OUT_PWD(資料夾、執行檔、dl
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -1807,16 +1703,6 @@ USB傳輸型態 (USB Data
 
           
             
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2019/01/31/Python-爬取學術網頁PDF/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count fb-comments-count" data-href="https://teddybearfp.github.io/2019/01/31/Python-爬取學術網頁PDF/" itemprop="commentCount">0</span> comments
-                </a>
-              </span>
-            
           
 
           
@@ -1843,7 +1729,9 @@ USB傳輸型態 (USB Data
       
         
           
-          前言最近身邊朋友有爬取Google 學術搜尋需求，燃起我心中想挑戰這次的爬蟲任務，他的需求是要搜尋某個學術論文然後把所有搜尋到的PDF載下，這一篇紀錄開啟網頁自動爬取並換頁直到爬取完成所有搜尋，後續使
+          前言最近身邊朋友有爬取Google 學術搜尋需求，燃起我心中想挑戰這次的爬蟲任務，他的需求是要搜尋某個學術論文然後把所有搜尋到的PDF載下，這一篇紀錄開啟網頁自動爬取並換頁直到爬取完成所有搜尋，後續使用textract剖析PDF快速地分析內容。
+
+爬取流程透過selenium webdriver C
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -2144,14 +2032,6 @@ USB傳輸型態 (USB Data
 
   
 
-
-  
-
-    
-      <script id="dsq-count-scr" src="https://.disqus.com/count.js" async></script>
-    
-
-    
 
   
 

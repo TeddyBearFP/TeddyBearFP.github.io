@@ -129,24 +129,6 @@
 
   <title>泰迪熊的程式足跡</title>
   
-<script>
-  window.fbAsyncInit = function() {
-    FB.init({
-      appId      : '',
-      xfbml      : true,
-      version    : 'v2.10'
-    });
-  };
-
-  (function(d, s, id){
-     var js, fjs = d.getElementsByTagName(s)[0];
-     if (d.getElementById(id)) {return;}
-     js = d.createElement(s); js.id = id;
-     js.src = "//connect.facebook.net/zh_tw/sdk.js";
-     fjs.parentNode.insertBefore(js, fjs);
-   }(document, 'script', 'facebook-jssdk'));
-</script>
-
 
 
 
@@ -382,16 +364,6 @@
 
           
             
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2019/01/31/步進馬達/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count fb-comments-count" data-href="https://teddybearfp.github.io/2019/01/31/步進馬達/" itemprop="commentCount">0</span> comments
-                </a>
-              </span>
-            
           
 
           
@@ -418,7 +390,8 @@
       
         
           
-          步進馬達步進馬達步級角構造，黃色部分為每次脈波行走量步進馬達（Stepper motor; Step motor）是直流無刷馬達的一種，為具有如齒輪狀突起（小齒）相鍥合的定子和轉子，可藉由切換流向定子
+          步進馬達步進馬達步級角構造，黃色部分為每次脈波行走量步進馬達（Stepper motor; Step motor）是直流無刷馬達的一種，為具有如齒輪狀突起（小齒）相鍥合的定子和轉子，可藉由切換流向定子線圈中的電流，以一定角度逐步轉動的馬達。
+步進馬達的特徵是採用開迴路控制（Open-loop con
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -540,16 +513,6 @@
 
           
             
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2019/01/11/Python解析ts檔-XML/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count fb-comments-count" data-href="https://teddybearfp.github.io/2019/01/11/Python解析ts檔-XML/" itemprop="commentCount">0</span> comments
-                </a>
-              </span>
-            
           
 
           
@@ -577,7 +540,8 @@
         
           
           前言用Qt Creator生成多國語言，步驟為生成ts檔，再生成qm檔，最後通過QTranslator類來載入qm文檔，實現多國語言的切換。那我們來看看怎麼處理ts檔呢
-ts filets file內
+ts filets file內容是XML編寫的，我們用python parsing的方式將特定內容取代達到目的
+將默認為英文的應用
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -699,16 +663,6 @@ ts filets file內
 
           
             
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2019/01/09/Qt-滑鼠事件偵測/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count fb-comments-count" data-href="https://teddybearfp.github.io/2019/01/09/Qt-滑鼠事件偵測/" itemprop="commentCount">0</span> comments
-                </a>
-              </span>
-            
           
 
           
@@ -740,7 +694,7 @@ ts filets file內
 滑鼠按鍵點擊與移動達到物體旋轉
 滾輪滾動達到物體縮放效果
 
-滑鼠事件偵測實作.h 標頭檔(宣告)1234567891
+滑鼠事件偵測實作.h 標頭檔(宣告)123456789101112131415161718192021#include &lt;QPoint&gt;#inc
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -862,16 +816,6 @@ ts filets file內
 
           
             
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2019/01/09/OpenCV-邊緣偵測/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count fb-comments-count" data-href="https://teddybearfp.github.io/2019/01/09/OpenCV-邊緣偵測/" itemprop="commentCount">0</span> comments
-                </a>
-              </span>
-            
           
 
           
@@ -899,7 +843,7 @@ ts filets file內
         
           
           前言有些圖片數據需要將多餘的值去除或是透明化，需要先把邊緣人偵測出來，這樣才能掌握圖形此篇文章記錄如何找出下方圖片的第一條曲線的上方邊緣
-步驟載入圖片(imread) -&gt; 高斯模糊(Gauss
+步驟載入圖片(imread) -&gt; 高斯模糊(GaussianBlur) -&gt; 計算梯度(gradient) -&gt; 找出邊緣後影像處理(imgP
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -1021,16 +965,6 @@ ts filets file內
 
           
             
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2019/01/08/normalize/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count fb-comments-count" data-href="https://teddybearfp.github.io/2019/01/08/normalize/" itemprop="commentCount">0</span> comments
-                </a>
-              </span>
-            
           
 
           
@@ -1066,7 +1000,9 @@ newMin
 第二組
 oldMax
 oldMin
-denominator
+denominator = oldMax - oldMin
+
+公式1float output = newMin + ((f
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -1188,16 +1124,6 @@ denominator
 
           
             
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2018/12/23/3D-Volume-Rendering/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count fb-comments-count" data-href="https://teddybearfp.github.io/2018/12/23/3D-Volume-Rendering/" itemprop="commentCount">0</span> comments
-                </a>
-              </span>
-            
           
 
           
@@ -1224,7 +1150,7 @@ denominator
       
         
           
-          前言前陣子使用的QImage都是處理二維圖形，最近研究起3D的領域，透過OpenGL來實作立體渲染(Volume Rendering)，立體渲染簡單來說，就是將2D圖形數張疊成一個3D立體圖形，這立體
+          前言前陣子使用的QImage都是處理二維圖形，最近研究起3D的領域，透過OpenGL來實作立體渲染(Volume Rendering)，立體渲染簡單來說，就是將2D圖形數張疊成一個3D立體圖形，這立體渲染的技術可以運用在醫學上的CT與MRI斷層掃描中。這篇所寫的頂點與紋理處理搭配上一篇所編寫的Ope
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -1346,16 +1272,6 @@ denominator
 
           
             
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2018/12/22/OpenGL-GLSL著色器/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count fb-comments-count" data-href="https://teddybearfp.github.io/2018/12/22/OpenGL-GLSL著色器/" itemprop="commentCount">0</span> comments
-                </a>
-              </span>
-            
           
 
           
@@ -1382,7 +1298,8 @@ denominator
       
         
           
-          前言3D是結合容器與紋理呈現在畫面上，透過著色器我們就可以把現有的每點位置與該點像素顏色精準的繪製在其中，接下來我們就來了解一下GLSL這語言，其變數型態與傳遞方式需要先有所了解才能跟c++端資料互相
+          前言3D是結合容器與紋理呈現在畫面上，透過著色器我們就可以把現有的每點位置與該點像素顏色精準的繪製在其中，接下來我們就來了解一下GLSL這語言，其變數型態與傳遞方式需要先有所了解才能跟c++端資料互相傳遞，此篇文章將會記錄如何使用這兩種著色器處理字串集傳送到驅動中。
+GLSL(OpenGL Shad
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -1504,16 +1421,6 @@ denominator
 
           
             
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2018/11/16/動態網頁爬取/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count fb-comments-count" data-href="https://teddybearfp.github.io/2018/11/16/動態網頁爬取/" itemprop="commentCount">0</span> comments
-                </a>
-              </span>
-            
           
 
           
@@ -1540,7 +1447,7 @@ denominator
       
         
           
-          前言上一篇Python 爬蟲幫你精選PTT文章!(靜態頁面爬取)寫的是如何擷取靜態網頁內容，只能單純爬取HTML內容，但是如果網頁是用JS渲染的我們透過F12 select element是看不到內容
+          前言上一篇Python 爬蟲幫你精選PTT文章!(靜態頁面爬取)寫的是如何擷取靜態網頁內容，只能單純爬取HTML內容，但是如果網頁是用JS渲染的我們透過F12 select element是看不到內容的，像是下方這張圖選擇了元素，但看不到內容(今天(15日)桃園市天氣晴時多雲，平均溫度…)因為這段代
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -1662,16 +1569,6 @@ denominator
 
           
             
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2018/11/15/如何將Windows安裝到外接硬碟給Mac使用/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count fb-comments-count" data-href="https://teddybearfp.github.io/2018/11/15/如何將Windows安裝到外接硬碟給Mac使用/" itemprop="commentCount">0</span> comments
-                </a>
-              </span>
-            
           
 
           
@@ -1698,7 +1595,8 @@ denominator
       
         
           
-          前言雖然Mac十分好用也非常流暢，但是有些程式在Mac上是無法使用或是還沒支援的，於是懷念起我們熟悉的Windows，除了bootcamp方式外，透過rufus這套軟體置作windows外接硬碟，可以
+          前言雖然Mac十分好用也非常流暢，但是有些程式在Mac上是無法使用或是還沒支援的，於是懷念起我們熟悉的Windows，除了bootcamp方式外，透過rufus這套軟體置作windows外接硬碟，可以很輕鬆的能在Mac裝置上看到Windows的身影
+rufus可開機USB製作軟體 - Rufus，將
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -1820,16 +1718,6 @@ denominator
 
           
             
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2018/11/15/優質小工具/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count fb-comments-count" data-href="https://teddybearfp.github.io/2018/11/15/優質小工具/" itemprop="commentCount">0</span> comments
-                </a>
-              </span>
-            
           
 
           
@@ -1856,7 +1744,7 @@ denominator
       
         
           
-          前言俗話說的好，工欲善其事必先利其器，在工作上常常需要一些小工具來輔佐達到目的，可能會製作UI或是拍攝教學影片，或是使用些跟程式相關的軟體，這時候若沒有一組好工具就還要花費時間在搜尋你的工具時間上，尤
+          前言俗話說的好，工欲善其事必先利其器，在工作上常常需要一些小工具來輔佐達到目的，可能會製作UI或是拍攝教學影片，或是使用些跟程式相關的軟體，這時候若沒有一組好工具就還要花費時間在搜尋你的工具時間上，尤其一堆要付費，都出來上班工作了還要用付費軟體太哀傷了，所以記錄了目前覺得不錯的免費軟體收錄在工具箱中
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -2157,14 +2045,6 @@ denominator
 
   
 
-
-  
-
-    
-      <script id="dsq-count-scr" src="https://.disqus.com/count.js" async></script>
-    
-
-    
 
   
 
