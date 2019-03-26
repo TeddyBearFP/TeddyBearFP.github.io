@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://teddybearfp.github.io/"/>
-  <updated>2019-03-26T03:13:08.488Z</updated>
+  <updated>2019-03-26T04:15:48.204Z</updated>
   <id>https://teddybearfp.github.io/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>平行處理用CUDA</title>
+    <link href="https://teddybearfp.github.io/2019/03/26/%E5%B9%B3%E8%A1%8C%E8%99%95%E7%90%86%E7%94%A8CUDA/"/>
+    <id>https://teddybearfp.github.io/2019/03/26/平行處理用CUDA/</id>
+    <published>2019-03-26T10:05:16.000Z</published>
+    <updated>2019-03-26T04:15:48.204Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>今天公司最強學長介紹CUDA的厲害，讓我們了解到透過GPU的方式平行處理加速完成計算的驚人之處，所以編寫一篇來記錄這強大的CUD，現今的手機應用軟體依賴執行 GPU 的雲端伺服器。店家使用 GPU 分析零售和網路數據。網站利用 GPU 以更準確地放置廣告。</p><h2 id="CUDA"><a href="#CUDA" class="headerlink" title="CUDA"></a>CUDA</h2><p>CUDA是由NVIDIA所推出的一種整合技術CUDA核心運算技術不但對遊戲、文書處理或是影音轉檔都幫助甚大，今日的GPU在浮點運算效能上早已超越CPU，不但現在的電腦應用中CPU與GPU是共同存在的，連原本是需要CPU來運算的資料現在都可以藉由GPU來執行，而且還做得更好！<br>現今電影場景許多都是透過CUDA，例如:家喻戶曉的3D阿凡達的電影背景幾乎都是由CUDA運算，拍攝時演員只需要在棚內特製的佈景前擺出動作，然後再和CUDA運算好的虛擬場景結合後，就成為我們在螢光幕前所看到的一切！</p><p>編寫方面CUDA可以相容OpenCL或者自家的C編譯器。無論是CUDA C語言或是OpenCL，指令最終都會被驅動程式轉換成PTX程式碼，交由顯示核心計算</p><h2 id="CPU-vs-GPU"><a href="#CPU-vs-GPU" class="headerlink" title="CPU vs GPU"></a>CPU vs GPU</h2><p>下面GIF比較CPU與GPU繪圖速度<br>CPU<br><img src="https://thumbs.gfycat.com/KnobbyClearDutchshepherddog-max-1mb.gif" alt="" title="圖1"></p><p>GPU<br><img src="https://i.imgur.com/Dgj8EJj.gif" alt="" title="圖2"></p><p><img src="https://img.gifmagazine.net/gifmagazine/images/3407897/original.gif" alt="" title="圖3"></p><h2 id="使用CUDA"><a href="#使用CUDA" class="headerlink" title="使用CUDA"></a>使用CUDA</h2><p>使用CUDA簡單的說就是把GPU當CPU來用，要使用之前我們得先看我們的電腦有沒有支援CUDA，在<a href="https://developer.nvidia.com/cuda-gpus" target="_blank" rel="noopener">CUDA GPUs </a>可以確認顯示是否有支援，接著至<a href="https://developer.nvidia.com/cuda-downloads" target="_blank" rel="noopener">CUDA Toolkit</a>下載相對應版本</p><h2 id="CUDA運算環境"><a href="#CUDA運算環境" class="headerlink" title="CUDA運算環境"></a>CUDA運算環境</h2><p>__host__<br>CPU執行且可使用C/C++一般函數</p><p>__global__<br>CPU/GPU執行但不可使用C/C++一般函數</p><p>__device__<br>GPU執行且不可使用C/C++一般函數<br>在device上執行的副程式，稱為kernel，通常有上百到上千個執行緒(thread)執行同一個kernel。</p><h2 id="CUDA-vs-Stream-Processor"><a href="#CUDA-vs-Stream-Processor" class="headerlink" title="CUDA vs Stream Processor"></a>CUDA vs Stream Processor</h2><ul><li>CUDA 較早開發</li><li>完整性較高</li><li>主流</li><li>TensorFlow 是使用CUDA做Machine learning</li><li>Google 在用</li></ul><h2 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h2><p>公司最強學長的報告<br><a href="https://zh.wikipedia.org/wiki/CUDA" target="_blank" rel="noopener">CUDA - 维基百科，自由的百科全书</a><br><a href="https://www.computerdiy.com.tw/nvidia-cuda/" target="_blank" rel="noopener">硬體加速搞不懂？CUDA讓一切變得更簡單</a><br><a href="https://blogs.nvidia.com.tw/2012/09/what-is-cuda-2/" target="_blank" rel="noopener">什麼是 CUDA?</a></p><h2 id="圖片來源"><a href="#圖片來源" class="headerlink" title="圖片來源"></a>圖片來源</h2>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;今天公司最強學長介紹CUDA的厲害，讓我們了解到透過GPU的方式平行處理加速完成計算的驚人之處，所以編寫一篇來記錄這強大的CUD，現今的手機
+      
+    
+    </summary>
+    
+      <category term="C++" scheme="https://teddybearfp.github.io/categories/C/"/>
+    
+    
+      <category term="平行處理" scheme="https://teddybearfp.github.io/tags/%E5%B9%B3%E8%A1%8C%E8%99%95%E7%90%86/"/>
+    
+      <category term="CUDA" scheme="https://teddybearfp.github.io/tags/CUDA/"/>
+    
+  </entry>
   
   <entry>
     <title>環狀佇列(Circular Queue)</title>
@@ -529,35 +556,6 @@
       <category term="shader" scheme="https://teddybearfp.github.io/tags/shader/"/>
     
       <category term="GLSL" scheme="https://teddybearfp.github.io/tags/GLSL/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Python 爬蟲幫你掌握氣象!(動態網頁爬取)</title>
-    <link href="https://teddybearfp.github.io/2018/11/16/%E5%8B%95%E6%85%8B%E7%B6%B2%E9%A0%81%E7%88%AC%E5%8F%96/"/>
-    <id>https://teddybearfp.github.io/2018/11/16/動態網頁爬取/</id>
-    <published>2018-11-16T02:05:16.000Z</published>
-    <updated>2019-03-24T03:07:37.477Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>上一篇<a href="https://teddybearfp.github.io/2018/11/07/Ptt%E7%88%AC%E8%9F%B2/#more">Python 爬蟲幫你精選PTT文章!(靜態頁面爬取)</a>寫的是如何擷取靜態網頁內容，只能單純爬取HTML內容，但是如果網頁是用JS渲染的我們透過F12 select element是看不到內容的，像是下方這張圖<br><img src="https://i.imgur.com/I3DYim8.png" alt=""><br>選擇了元素，但看不到內容(今天(15日)桃園市天氣晴時多雲，平均溫度…)<br>因為這段代碼是由JS渲染，所以我們需要用PhantomJS來幫助我們爬取中央氣象局今天的天氣訊息</p><h2 id="PhantomJS"><a href="#PhantomJS" class="headerlink" title="PhantomJS"></a>PhantomJS</h2><p>PhantomJS是無介面瀏覽器(Headless browser)，背後的渲染引擎為 WebKit，適合進行自動化測試、捕捉截圖或監測網頁效能。因為沒有圖形介面，很容易整合至現有的測試框架，另一個特點是他能直接控制 DOM，方便你提取網頁中的元素內容</p><p>下載PhantomJS(<a href="http://phantomjs.org/download.html" target="_blank" rel="noopener">Download PhantomJS</a>)</p><h2 id="實作爬取氣象"><a href="#實作爬取氣象" class="headerlink" title="實作爬取氣象"></a>實作爬取氣象</h2><h3 id="導入函式庫"><a href="#導入函式庫" class="headerlink" title="導入函式庫"></a>導入函式庫</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"><span class="keyword">from</span> bs4 <span class="keyword">import</span> BeautifulSoup</span><br><span class="line"><span class="keyword">from</span> flask <span class="keyword">import</span> Flask, request, abort</span><br><span class="line"><span class="keyword">from</span> selenium <span class="keyword">import</span> webdriver</span><br></pre></td></tr></table></figure><h3 id="編寫爬取桃園天氣函式"><a href="#編寫爬取桃園天氣函式" class="headerlink" title="編寫爬取桃園天氣函式"></a>編寫爬取桃園天氣函式</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">Taoyuan</span><span class="params">()</span>:</span></span><br><span class="line">    target_url = <span class="string">'https://www.cwb.gov.tw/V7/forecast/taiwan/Taoyuan_City.htm'</span></span><br><span class="line">    driver = webdriver.PhantomJS(executable_path=<span class="string">r'D:\phantomjs\bin\phantomjs.exe'</span>)<span class="comment">#導入PhantomJS路徑</span></span><br><span class="line">    driver.get(target_url)</span><br><span class="line">    soup = BeautifulSoup(driver.page_source, <span class="string">'html.parser'</span>)</span><br><span class="line">    content = <span class="string">""</span></span><br><span class="line">    <span class="keyword">for</span> data <span class="keyword">in</span> soup.select(<span class="string">'#ftext'</span>):</span><br><span class="line">        title = str(data)</span><br><span class="line">        content = title.split(<span class="string">"&lt;br/&gt;&lt;br/&gt;"</span>)[<span class="number">2</span>]</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> content</span><br></pre></td></tr></table></figure><p>檢視beautifulSoup解析HTML代碼後的內容並觀察欲爬取位置<br><img src="https://i.imgur.com/tiCvwGg.png" alt=""><br>將id為ftext的內容找出(#ftext)</p><ul><li>#id</li><li>.class<br><img src="https://i.imgur.com/8ZVExbm.png" alt=""></li></ul><h3 id="呼叫函式"><a href="#呼叫函式" class="headerlink" title="呼叫函式"></a>呼叫函式</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(Taoyuan())</span><br></pre></td></tr></table></figure><p>成功爬取今日天氣概述<br><img src="https://i.imgur.com/m3hqHZr.png" alt=""></p><h2 id="結論"><a href="#結論" class="headerlink" title="結論"></a>結論</h2><p>PhantomJS還蠻多問題的例如:使用Multi-thread，讓多個網頁能同時 Loading，可是 PhantomJS 同時開很容易就會陣亡。掛掉後會變成一個 Zombie Process。<br>Headless Google 的出現，能取代 PhantomJS 功能且更快更穩，讓 PhantomJS 作者決定停止辛苦的獨力維護工作，PhantomJS 的Github 專案也已封存，改用 Headless Chrome 已成定局。改天來玩看看Google Chrome Headless，到時候再來寫一篇Headless Chrome的爬取</p><h2 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h2><p><a href="https://hiskio.com/courses/76/lectures/1883" target="_blank" rel="noopener">PhantomJS的用法</a><br><a href="https://jerrynest.io/phantomjs-screenshot/" target="_blank" rel="noopener">使用PhantomJS 抓取網頁截圖- 傑瑞窩在這</a><br><a href="https://blog.darkthread.net/blog/headless-chrome/" target="_blank" rel="noopener">使用 Headless Chrome 擷圖、轉存PDF、爬資料</a></p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;上一篇&lt;a href=&quot;https://teddybearfp.github.io/2018/11/07/Ptt%E7%88%AC%E8%9
-      
-    
-    </summary>
-    
-      <category term="Python" scheme="https://teddybearfp.github.io/categories/Python/"/>
-    
-    
-      <category term="動態網頁爬取" scheme="https://teddybearfp.github.io/tags/%E5%8B%95%E6%85%8B%E7%B6%B2%E9%A0%81%E7%88%AC%E5%8F%96/"/>
-    
-      <category term="網頁爬蟲" scheme="https://teddybearfp.github.io/tags/%E7%B6%B2%E9%A0%81%E7%88%AC%E8%9F%B2/"/>
-    
-      <category term="selenium" scheme="https://teddybearfp.github.io/tags/selenium/"/>
     
   </entry>
   

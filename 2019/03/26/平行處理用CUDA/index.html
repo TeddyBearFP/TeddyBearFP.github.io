@@ -70,7 +70,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT">
+  <meta name="keywords" content="平行處理,CUDA">
 
 
 
@@ -81,17 +81,22 @@
 
 
 
-<meta name="description" content="在浩瀚的程式領域中，將走過的足跡記錄下來，文章著重在Qt、C++、python">
-<meta name="keywords" content="Qt,C++,python,泰迪熊,泰迪熊的程式,泰迪熊的程式足跡,GCL">
-<meta property="og:type" content="website">
-<meta property="og:title" content="泰迪熊的程式足跡">
-<meta property="og:url" content="https://teddybearfp.github.io/archives/page/2/index.html">
+<meta name="description" content="前言今天公司最強學長介紹CUDA的厲害，讓我們了解到透過GPU的方式平行處理加速完成計算的驚人之處，所以編寫一篇來記錄這強大的CUD，現今的手機應用軟體依賴執行 GPU 的雲端伺服器。店家使用 GPU 分析零售和網路數據。網站利用 GPU 以更準確地放置廣告。 CUDACUDA是由NVIDIA所推出的一種整合技術CUDA核心運算技術不但對遊戲、文書處理或是影音轉檔都幫助甚大，今日的GPU在浮點運算">
+<meta name="keywords" content="平行處理,CUDA">
+<meta property="og:type" content="article">
+<meta property="og:title" content="平行處理用CUDA">
+<meta property="og:url" content="https://teddybearfp.github.io/2019/03/26/平行處理用CUDA/index.html">
 <meta property="og:site_name" content="泰迪熊的程式足跡">
-<meta property="og:description" content="在浩瀚的程式領域中，將走過的足跡記錄下來，文章著重在Qt、C++、python">
+<meta property="og:description" content="前言今天公司最強學長介紹CUDA的厲害，讓我們了解到透過GPU的方式平行處理加速完成計算的驚人之處，所以編寫一篇來記錄這強大的CUD，現今的手機應用軟體依賴執行 GPU 的雲端伺服器。店家使用 GPU 分析零售和網路數據。網站利用 GPU 以更準確地放置廣告。 CUDACUDA是由NVIDIA所推出的一種整合技術CUDA核心運算技術不但對遊戲、文書處理或是影音轉檔都幫助甚大，今日的GPU在浮點運算">
 <meta property="og:locale" content="zh-tw">
+<meta property="og:image" content="https://thumbs.gfycat.com/KnobbyClearDutchshepherddog-max-1mb.gif">
+<meta property="og:image" content="https://i.imgur.com/Dgj8EJj.gif">
+<meta property="og:image" content="https://img.gifmagazine.net/gifmagazine/images/3407897/original.gif">
+<meta property="og:updated_time" content="2019-03-26T04:15:48.204Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="泰迪熊的程式足跡">
-<meta name="twitter:description" content="在浩瀚的程式領域中，將走過的足跡記錄下來，文章著重在Qt、C++、python">
+<meta name="twitter:title" content="平行處理用CUDA">
+<meta name="twitter:description" content="前言今天公司最強學長介紹CUDA的厲害，讓我們了解到透過GPU的方式平行處理加速完成計算的驚人之處，所以編寫一篇來記錄這強大的CUD，現今的手機應用軟體依賴執行 GPU 的雲端伺服器。店家使用 GPU 分析零售和網路數據。網站利用 GPU 以更準確地放置廣告。 CUDACUDA是由NVIDIA所推出的一種整合技術CUDA核心運算技術不但對遊戲、文書處理或是影音轉檔都幫助甚大，今日的GPU在浮點運算">
+<meta name="twitter:image" content="https://thumbs.gfycat.com/KnobbyClearDutchshepherddog-max-1mb.gif">
 
 
 
@@ -121,13 +126,13 @@
 
 
 
-  <link rel="canonical" href="https://teddybearfp.github.io/archives/page/2/">
+  <link rel="canonical" href="https://teddybearfp.github.io/2019/03/26/平行處理用CUDA/">
 
 
 
 
 
-  <title>歸檔 | 泰迪熊的程式足跡</title>
+  <title>平行處理用CUDA | 泰迪熊的程式足跡</title>
   
 <script>
   window.fbAsyncInit = function() {
@@ -164,7 +169,7 @@
     
   
 
-  <div class="container sidebar-position-left page-archive">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
@@ -268,395 +273,221 @@
           <div id="content" class="content">
             
 
+  <div id="posts" class="posts-expand">
+    
+
+  
+
   
   
   
-  <div class="post-block archive">
-    <div id="posts" class="posts-collapse">
-      <span class="archive-move-on"></span>
 
-      <span class="archive-page-counter">
-        
-        
-         
-        
-        OK! 目前共計 43 篇文章。 繼續努力。
-      </span>
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://teddybearfp.github.io/2019/03/26/平行處理用CUDA/">
 
-      
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="G.C.L.">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="泰迪熊的程式足跡">
+    </span>
+
+    
+      <header class="post-header">
 
         
         
+          <h1 class="post-title" itemprop="name headline">平行處理用CUDA</h1>
         
 
-        
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">發表於</span>
+              
+              <time title="創建於" itemprop="dateCreated datePublished" datetime="2019-03-26T18:05:16+08:00">
+                2019-03-26
+              </time>
+            
+
+            
+
+            
+          </span>
+
           
-          <div class="collection-title">
-            <h1 class="archive-year" id="archive-year-2019">2019</h1>
-          </div>
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2019/02/20/USB傳輸型態-USB-Data-Transfer-Types/" itemprop="url">
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
               
-                <span itemprop="name">USB傳輸型態</span>
+                <span class="post-meta-item-text">分類於</span>
               
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-02-20T12:05:16+08:00" content="2019-02-20">
-          02-20
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2019/02/01/用NSIS製作軟體安裝程式/" itemprop="url">
               
-                <span itemprop="name">用NSIS製作軟體安裝程式</span>
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/C/" itemprop="url" rel="index">
+                    <span itemprop="name">C++</span>
+                  </a>
+                </span>
+
+                
+                
               
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-02-01T14:05:16+08:00" content="2019-02-01">
-          02-01
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2019/01/31/Python-爬取學術網頁PDF/" itemprop="url">
-              
-                <span itemprop="name">Python 爬取Google學術網頁PDF</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-01-31T22:05:16+08:00" content="2019-01-31">
-          01-31
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2019/01/31/步進馬達/" itemprop="url">
-              
-                <span itemprop="name">步進馬達</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-01-31T13:05:16+08:00" content="2019-01-31">
-          01-31
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2019/01/11/Python解析ts檔-XML/" itemprop="url">
-              
-                <span itemprop="name">Python解析ts檔(XML)</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-01-11T13:05:16+08:00" content="2019-01-11">
-          01-11
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2019/01/09/Qt-滑鼠事件偵測/" itemprop="url">
-              
-                <span itemprop="name">Qt 滑鼠事件偵測</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-01-09T22:05:16+08:00" content="2019-01-09">
-          01-09
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2019/01/09/OpenCV-邊緣偵測/" itemprop="url">
-              
-                <span itemprop="name">OpenCV 邊緣偵測</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-01-09T21:05:16+08:00" content="2019-01-09">
-          01-09
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2019/01/08/normalize/" itemprop="url">
-              
-                <span itemprop="name">標準化(Normalize)</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-01-08T20:05:16+08:00" content="2019-01-08">
-          01-08
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
+            </span>
           
-          <div class="collection-title">
-            <h1 class="archive-year" id="archive-year-2018">2018</h1>
-          </div>
-        
-        
 
-        
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/03/26/平行處理用CUDA/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count fb-comments-count" data-href="https://teddybearfp.github.io/2019/03/26/平行處理用CUDA/" itemprop="commentCount">0</span> comments
+                </a>
+              </span>
+            
+          
 
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-    <header class="post-header">
+          
+          
+             <span id="/2019/03/26/平行處理用CUDA/" class="leancloud_visitors" data-flag-title="平行處理用CUDA">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">閱讀次數&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
 
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2018/12/23/3D-Volume-Rendering/" itemprop="url">
-              
-                <span itemprop="name">OpenGL 3D 立體渲染</span>
-              
-            </a>
-        
-      </h2>
+          
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2018-12-23T10:05:16+08:00" content="2018-12-23">
-          12-23
-        </time>
-      </div>
+          
 
-    </header>
-  </article>
+          
 
+        </div>
+      </header>
+    
 
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2018/12/22/OpenGL-GLSL著色器/" itemprop="url">
-              
-                <span itemprop="name">OpenGL GLSL著色器</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2018-12-22T15:05:16+08:00" content="2018-12-22">
-          12-22
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
+      
 
+      
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>今天公司最強學長介紹CUDA的厲害，讓我們了解到透過GPU的方式平行處理加速完成計算的驚人之處，所以編寫一篇來記錄這強大的CUD，現今的手機應用軟體依賴執行 GPU 的雲端伺服器。店家使用 GPU 分析零售和網路數據。網站利用 GPU 以更準確地放置廣告。</p>
+<h2 id="CUDA"><a href="#CUDA" class="headerlink" title="CUDA"></a>CUDA</h2><p>CUDA是由NVIDIA所推出的一種整合技術CUDA核心運算技術不但對遊戲、文書處理或是影音轉檔都幫助甚大，今日的GPU在浮點運算效能上早已超越CPU，不但現在的電腦應用中CPU與GPU是共同存在的，連原本是需要CPU來運算的資料現在都可以藉由GPU來執行，而且還做得更好！<br>現今電影場景許多都是透過CUDA，例如:家喻戶曉的3D阿凡達的電影背景幾乎都是由CUDA運算，拍攝時演員只需要在棚內特製的佈景前擺出動作，然後再和CUDA運算好的虛擬場景結合後，就成為我們在螢光幕前所看到的一切！</p>
+<p>編寫方面CUDA可以相容OpenCL或者自家的C編譯器。無論是CUDA C語言或是OpenCL，指令最終都會被驅動程式轉換成PTX程式碼，交由顯示核心計算</p>
+<h2 id="CPU-vs-GPU"><a href="#CPU-vs-GPU" class="headerlink" title="CPU vs GPU"></a>CPU vs GPU</h2><p>下面GIF比較CPU與GPU繪圖速度<br>CPU<br><img src="https://thumbs.gfycat.com/KnobbyClearDutchshepherddog-max-1mb.gif" alt="" title="圖1"></p>
+<p>GPU<br><img src="https://i.imgur.com/Dgj8EJj.gif" alt="" title="圖2"></p>
+<p><img src="https://img.gifmagazine.net/gifmagazine/images/3407897/original.gif" alt="" title="圖3"></p>
+<h2 id="使用CUDA"><a href="#使用CUDA" class="headerlink" title="使用CUDA"></a>使用CUDA</h2><p>使用CUDA簡單的說就是把GPU當CPU來用，要使用之前我們得先看我們的電腦有沒有支援CUDA，在<a href="https://developer.nvidia.com/cuda-gpus" target="_blank" rel="noopener">CUDA GPUs </a>可以確認顯示是否有支援，接著至<a href="https://developer.nvidia.com/cuda-downloads" target="_blank" rel="noopener">CUDA Toolkit</a>下載相對應版本</p>
+<h2 id="CUDA運算環境"><a href="#CUDA運算環境" class="headerlink" title="CUDA運算環境"></a>CUDA運算環境</h2><p>__host__<br>CPU執行且可使用C/C++一般函數</p>
+<p>__global__<br>CPU/GPU執行但不可使用C/C++一般函數</p>
+<p>__device__<br>GPU執行且不可使用C/C++一般函數<br>在device上執行的副程式，稱為kernel，通常有上百到上千個執行緒(thread)執行同一個kernel。</p>
+<h2 id="CUDA-vs-Stream-Processor"><a href="#CUDA-vs-Stream-Processor" class="headerlink" title="CUDA vs Stream Processor"></a>CUDA vs Stream Processor</h2><ul>
+<li>CUDA 較早開發</li>
+<li>完整性較高</li>
+<li>主流</li>
+<li>TensorFlow 是使用CUDA做Machine learning</li>
+<li>Google 在用</li>
+</ul>
+<h2 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h2><p>公司最強學長的報告<br><a href="https://zh.wikipedia.org/wiki/CUDA" target="_blank" rel="noopener">CUDA - 维基百科，自由的百科全书</a><br><a href="https://www.computerdiy.com.tw/nvidia-cuda/" target="_blank" rel="noopener">硬體加速搞不懂？CUDA讓一切變得更簡單</a><br><a href="https://blogs.nvidia.com.tw/2012/09/what-is-cuda-2/" target="_blank" rel="noopener">什麼是 CUDA?</a></p>
+<h2 id="圖片來源"><a href="#圖片來源" class="headerlink" title="圖片來源"></a>圖片來源</h2>
+      
     </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/平行處理/" rel="tag"># 平行處理</a>
+          
+            <a href="/tags/CUDA/" rel="tag"># CUDA</a>
+          
+        </div>
+      
+
+      
+      
+        <div class="post-widgets">
+        
+          <div class="wp_rating">
+            <div id="wpac-rating"></div>
+          </div>
+        
+
+        
+
+        
+        </div>
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/03/26/環狀佇列-Circular-Queue/" rel="next" title="環狀佇列(Circular Queue)">
+                <i class="fa fa-chevron-left"></i> 環狀佇列(Circular Queue)
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
-
-  
-  <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/archives/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/archives/">1</a><span class="page-number current">2</span><a class="page-number" href="/archives/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/archives/page/5/">5</a><a class="extend next" rel="next" href="/archives/page/3/"><i class="fa fa-angle-right"></i></a>
-  </nav>
+  </article>
 
 
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -664,6 +495,16 @@
 
 
           
+
+  
+    <div class="comments" id="comments">
+      <div class="fb-comments" data-href="https://teddybearfp.github.io/2019/03/26/平行處理用CUDA/" data-numposts="10" data-width="100%" data-colorscheme="light">
+      </div>
+    </div>
+
+  
+
+
 
         </div>
         
@@ -684,8 +525,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目錄
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            本站概覽
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
@@ -745,6 +595,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CUDA"><span class="nav-number">2.</span> <span class="nav-text">CUDA</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CPU-vs-GPU"><span class="nav-number">3.</span> <span class="nav-text">CPU vs GPU</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用CUDA"><span class="nav-number">4.</span> <span class="nav-text">使用CUDA</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CUDA運算環境"><span class="nav-number">5.</span> <span class="nav-text">CUDA運算環境</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CUDA-vs-Stream-Processor"><span class="nav-number">6.</span> <span class="nav-text">CUDA vs Stream Processor</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#參考資料"><span class="nav-number">7.</span> <span class="nav-text">參考資料</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#圖片來源"><span class="nav-number">8.</span> <span class="nav-text">圖片來源</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -901,6 +767,10 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 
@@ -1063,6 +933,23 @@
 
   
   
+  <script type="text/javascript">
+  wpac_init = window.wpac_init || [];
+  wpac_init.push({widget: 'Rating', id: ,
+    el: 'wpac-rating',
+    color: 'fc6423'
+  });
+  (function() {
+    if ('WIDGETPACK_LOADED' in window) return;
+    WIDGETPACK_LOADED = true;
+    var mc = document.createElement('script');
+    mc.type = 'text/javascript';
+    mc.async = true;
+    mc.src = '//embed.widgetpack.com/widget.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(mc, s.nextSibling);
+  })();
+  </script>
+
 
   
 
