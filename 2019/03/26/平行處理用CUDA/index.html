@@ -81,21 +81,21 @@
 
 
 
-<meta name="description" content="前言今天公司最強學長介紹CUDA的厲害，讓我們了解到透過GPU的方式平行處理加速完成計算的驚人之處，所以編寫一篇來記錄這強大的CUD，現今的手機應用軟體依賴執行 GPU 的雲端伺服器。店家使用 GPU 分析零售和網路數據。網站利用 GPU 以更準確地放置廣告。 CUDACUDA是由NVIDIA所推出的一種整合技術CUDA核心運算技術不但對遊戲、文書處理或是影音轉檔都幫助甚大，今日的GPU在浮點運算">
+<meta name="description" content="前言今天公司最強學長介紹CUDA的厲害，讓我們了解到透過GPU的方式平行處理加速完成計算的驚人之處，所以編寫一篇來記錄這強大的CUD，現今的手機應用軟體依賴執行 GPU 的雲端伺服器。店家使用 GPU 分析零售和網路數據。網站利用 GPU 以更準確地放置廣告。 C/C++ 平行處理CPU上我們要用平行處理可以透過OpenMP的函式來完成，OpenMP 是一種能透過高階指令，很簡單地將程式平行化、多">
 <meta name="keywords" content="平行處理,CUDA">
 <meta property="og:type" content="article">
 <meta property="og:title" content="平行處理用CUDA">
 <meta property="og:url" content="https://teddybearfp.github.io/2019/03/26/平行處理用CUDA/index.html">
 <meta property="og:site_name" content="泰迪熊的程式足跡">
-<meta property="og:description" content="前言今天公司最強學長介紹CUDA的厲害，讓我們了解到透過GPU的方式平行處理加速完成計算的驚人之處，所以編寫一篇來記錄這強大的CUD，現今的手機應用軟體依賴執行 GPU 的雲端伺服器。店家使用 GPU 分析零售和網路數據。網站利用 GPU 以更準確地放置廣告。 CUDACUDA是由NVIDIA所推出的一種整合技術CUDA核心運算技術不但對遊戲、文書處理或是影音轉檔都幫助甚大，今日的GPU在浮點運算">
+<meta property="og:description" content="前言今天公司最強學長介紹CUDA的厲害，讓我們了解到透過GPU的方式平行處理加速完成計算的驚人之處，所以編寫一篇來記錄這強大的CUD，現今的手機應用軟體依賴執行 GPU 的雲端伺服器。店家使用 GPU 分析零售和網路數據。網站利用 GPU 以更準確地放置廣告。 C/C++ 平行處理CPU上我們要用平行處理可以透過OpenMP的函式來完成，OpenMP 是一種能透過高階指令，很簡單地將程式平行化、多">
 <meta property="og:locale" content="zh-tw">
 <meta property="og:image" content="https://thumbs.gfycat.com/KnobbyClearDutchshepherddog-max-1mb.gif">
 <meta property="og:image" content="https://i.imgur.com/Dgj8EJj.gif">
 <meta property="og:image" content="https://img.gifmagazine.net/gifmagazine/images/3407897/original.gif">
-<meta property="og:updated_time" content="2019-03-26T04:19:19.505Z">
+<meta property="og:updated_time" content="2019-03-27T13:29:58.884Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="平行處理用CUDA">
-<meta name="twitter:description" content="前言今天公司最強學長介紹CUDA的厲害，讓我們了解到透過GPU的方式平行處理加速完成計算的驚人之處，所以編寫一篇來記錄這強大的CUD，現今的手機應用軟體依賴執行 GPU 的雲端伺服器。店家使用 GPU 分析零售和網路數據。網站利用 GPU 以更準確地放置廣告。 CUDACUDA是由NVIDIA所推出的一種整合技術CUDA核心運算技術不但對遊戲、文書處理或是影音轉檔都幫助甚大，今日的GPU在浮點運算">
+<meta name="twitter:description" content="前言今天公司最強學長介紹CUDA的厲害，讓我們了解到透過GPU的方式平行處理加速完成計算的驚人之處，所以編寫一篇來記錄這強大的CUD，現今的手機應用軟體依賴執行 GPU 的雲端伺服器。店家使用 GPU 分析零售和網路數據。網站利用 GPU 以更準確地放置廣告。 C/C++ 平行處理CPU上我們要用平行處理可以透過OpenMP的函式來完成，OpenMP 是一種能透過高階指令，很簡單地將程式平行化、多">
 <meta name="twitter:image" content="https://thumbs.gfycat.com/KnobbyClearDutchshepherddog-max-1mb.gif">
 
 
@@ -398,6 +398,7 @@
 
       
         <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>今天公司最強學長介紹CUDA的厲害，讓我們了解到透過GPU的方式平行處理加速完成計算的驚人之處，所以編寫一篇來記錄這強大的CUD，現今的手機應用軟體依賴執行 GPU 的雲端伺服器。店家使用 GPU 分析零售和網路數據。網站利用 GPU 以更準確地放置廣告。</p>
+<h2 id="C-C-平行處理"><a href="#C-C-平行處理" class="headerlink" title="C/C++ 平行處理"></a>C/C++ 平行處理</h2><p>CPU上我們要用平行處理可以透過OpenMP的函式來完成，OpenMP 是一種能透過高階指令，很簡單地將程式平行化、多執行緒化的 API；在最簡單的情形，甚至可以只加一行指令，就可以將迴圈內的程式平行化處理了！<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;omp.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">pragma</span> omp parallel for <span class="comment">//只要將這句加在耗時的迴圈之前即可變成平行處理</span></span></span><br><span class="line"><span class="keyword">for</span>( <span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">100000</span>; ++ i )</span><br><span class="line">    <span class="comment">//dosomething;</span></span><br></pre></td></tr></table></figure></p>
 <h2 id="CUDA"><a href="#CUDA" class="headerlink" title="CUDA"></a>CUDA</h2><p>CUDA是由NVIDIA所推出的一種整合技術CUDA核心運算技術不但對遊戲、文書處理或是影音轉檔都幫助甚大，今日的GPU在浮點運算效能上早已超越CPU，不但現在的電腦應用中CPU與GPU是共同存在的，連原本是需要CPU來運算的資料現在都可以藉由GPU來執行，而且還做得更好！<br>現今電影場景許多都是透過CUDA，例如:家喻戶曉的3D阿凡達的電影背景幾乎都是由CUDA運算，拍攝時演員只需要在棚內特製的佈景前擺出動作，然後再和CUDA運算好的虛擬場景結合後，就成為我們在螢光幕前所看到的一切！</p>
 <p>編寫方面CUDA可以相容OpenCL或者自家的C編譯器。無論是CUDA C語言或是OpenCL，指令最終都會被驅動程式轉換成PTX程式碼，交由顯示核心計算</p>
 <h2 id="CPU-vs-GPU"><a href="#CPU-vs-GPU" class="headerlink" title="CPU vs GPU"></a>CPU vs GPU</h2><p>下面GIF比較CPU與GPU繪圖速度<br>CPU<br><img src="https://thumbs.gfycat.com/KnobbyClearDutchshepherddog-max-1mb.gif" alt="" title="圖1"></p>
@@ -414,7 +415,7 @@
 <li>TensorFlow 是使用CUDA做Machine learning</li>
 <li>Google 在用</li>
 </ul>
-<h2 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h2><p>公司最強學長的報告<br><a href="https://zh.wikipedia.org/wiki/CUDA" target="_blank" rel="noopener">CUDA - 维基百科，自由的百科全书</a><br><a href="https://www.computerdiy.com.tw/nvidia-cuda/" target="_blank" rel="noopener">硬體加速搞不懂？CUDA讓一切變得更簡單</a><br><a href="https://blogs.nvidia.com.tw/2012/09/what-is-cuda-2/" target="_blank" rel="noopener">什麼是 CUDA?</a></p>
+<h2 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h2><p>公司最強學長的報告<br><a href="https://zh.wikipedia.org/wiki/CUDA" target="_blank" rel="noopener">CUDA - 维基百科，自由的百科全书</a><br><a href="https://www.computerdiy.com.tw/nvidia-cuda/" target="_blank" rel="noopener">硬體加速搞不懂？CUDA讓一切變得更簡單</a><br><a href="https://blogs.nvidia.com.tw/2012/09/what-is-cuda-2/" target="_blank" rel="noopener">什麼是 CUDA?</a><br><a href="https://kheresy.wordpress.com/2006/06/09/%E7%B0%A1%E6%98%93%E7%9A%84%E7%A8%8B%E5%BC%8F%E5%B9%B3%E8%A1%8C%E5%8C%96%E6%96%B9%E6%B3%95%EF%BC%8Dopenmp%EF%BC%88%E4%B8%80%EF%BC%89%E7%B0%A1%E4%BB%8B/" target="_blank" rel="noopener"></a></p>
 <h2 id="圖片來源"><a href="#圖片來源" class="headerlink" title="圖片來源"></a>圖片來源</h2><p>圖1:<a href="https://thumbs.gfycat.com/KnobbyClearDutchshepherddog-max-1mb.gif" target="_blank" rel="noopener">https://thumbs.gfycat.com/KnobbyClearDutchshepherddog-max-1mb.gif</a><br>圖2:<a href="https://i.imgur.com/Dgj8EJj.gif" target="_blank" rel="noopener">https://i.imgur.com/Dgj8EJj.gif</a><br>圖3:<a href="https://img.gifmagazine.net/gifmagazine/images/3407897/original.gif" target="_blank" rel="noopener">https://img.gifmagazine.net/gifmagazine/images/3407897/original.gif</a></p>
 
       
@@ -606,7 +607,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CUDA"><span class="nav-number">2.</span> <span class="nav-text">CUDA</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CPU-vs-GPU"><span class="nav-number">3.</span> <span class="nav-text">CPU vs GPU</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用CUDA"><span class="nav-number">4.</span> <span class="nav-text">使用CUDA</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CUDA運算環境"><span class="nav-number">5.</span> <span class="nav-text">CUDA運算環境</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CUDA-vs-Stream-Processor"><span class="nav-number">6.</span> <span class="nav-text">CUDA vs Stream Processor</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#參考資料"><span class="nav-number">7.</span> <span class="nav-text">參考資料</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#圖片來源"><span class="nav-number">8.</span> <span class="nav-text">圖片來源</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#C-C-平行處理"><span class="nav-number">2.</span> <span class="nav-text">C/C++ 平行處理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CUDA"><span class="nav-number">3.</span> <span class="nav-text">CUDA</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CPU-vs-GPU"><span class="nav-number">4.</span> <span class="nav-text">CPU vs GPU</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用CUDA"><span class="nav-number">5.</span> <span class="nav-text">使用CUDA</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CUDA運算環境"><span class="nav-number">6.</span> <span class="nav-text">CUDA運算環境</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CUDA-vs-Stream-Processor"><span class="nav-number">7.</span> <span class="nav-text">CUDA vs Stream Processor</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#參考資料"><span class="nav-number">8.</span> <span class="nav-text">參考資料</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#圖片來源"><span class="nav-number">9.</span> <span class="nav-text">圖片來源</span></a></li></ol></div>
             
 
           </div>
