@@ -12,4 +12,3 @@ Disallow: /vendors/
 Disallow: /fancybox/
 
 Sitemap: https://teddybearfp.github.io/sitemap.xml
-Sitemap: https://teddybearfp.github.io/baidusitemap.xml
