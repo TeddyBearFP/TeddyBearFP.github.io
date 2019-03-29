@@ -90,7 +90,7 @@
 <meta property="og:description" content="前言 最近有台平板引進，要測試是否適合搭載在機器上，這時候就要測試看看這台平板的能耐拉，就由小新肝我負責編寫一個簡易的程式讓他四核心滿載時時刻刻處於 CPU 100% (趨近)的狀況，持續一陣子之後檢測溫度看合不合格  運作原理 利用四條多進程 multiprocessing 寫無窮迴圈讓四顆核心滿載 一開始有嘗試用多執行緒multithreading但是python的先天限制保護得很好，讓CPU">
 <meta property="og:locale" content="zh-tw">
 <meta property="og:image" content="https://i.imgur.com/opDwDQm.png">
-<meta property="og:updated_time" content="2019-03-24T04:23:32.200Z">
+<meta property="og:updated_time" content="2019-03-29T15:57:21.181Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Python 如何編寫簡單的壓力測試程式">
 <meta name="twitter:description" content="前言 最近有台平板引進，要測試是否適合搭載在機器上，這時候就要測試看看這台平板的能耐拉，就由小新肝我負責編寫一個簡易的程式讓他四核心滿載時時刻刻處於 CPU 100% (趨近)的狀況，持續一陣子之後檢測溫度看合不合格  運作原理 利用四條多進程 multiprocessing 寫無窮迴圈讓四顆核心滿載 一開始有嘗試用多執行緒multithreading但是python的先天限制保護得很好，讓CPU">
@@ -418,6 +418,7 @@
 <li>如果是用64位元去編執行檔則只能在64位元上使用</li>
 <li>而32位元編譯的執行檔可以在64位元跟32位元下使用</li>
 </ul>
+<h2 id="延伸閱讀"><a href="#延伸閱讀" class="headerlink" title="延伸閱讀"></a>延伸閱讀</h2><p><a href="https://teddybearfp.github.io/2019/03/20/Python-%E8%B3%87%E6%96%99%E8%A6%96%E8%A6%BA%E5%8C%96/">Python 資料視覺化(Data Visualization)</a><br><a href="https://teddybearfp.github.io/2019/01/31/Python-%E7%88%AC%E5%8F%96%E5%AD%B8%E8%A1%93%E7%B6%B2%E9%A0%81PDF/">Python 爬取Google學術網頁PDF</a><br><a href="https://teddybearfp.github.io/2018/11/16/%E5%8B%95%E6%85%8B%E7%B6%B2%E9%A0%81%E7%88%AC%E5%8F%96/">Python 爬蟲幫你掌握氣象!(動態網頁爬取)</a><br><a href="https://teddybearfp.github.io/2018/11/07/Ptt%E7%88%AC%E8%9F%B2/">Python 爬蟲幫你精選PTT文章!(靜態頁面爬取)</a><br><a href="https://teddybearfp.github.io/2018/10/26/Python-LineBot/">Python 如何打造專屬的LineBot呢</a><br><a href="https://teddybearfp.github.io/2019/01/11/Python%E8%A7%A3%E6%9E%90ts%E6%AA%94-XML/">Python解析ts檔(XML)</a></p>
 
       
     </div>
@@ -616,7 +617,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#運作原理"><span class="nav-number">2.</span> <span class="nav-text">運作原理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#KillCPU步驟"><span class="nav-number">3.</span> <span class="nav-text">KillCPU步驟</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Python-如何打包程式"><span class="nav-number">4.</span> <span class="nav-text">Python 如何打包程式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#利用pyinstaller就能輕鬆達到打包成exe的效果囉"><span class="nav-number">4.1.</span> <span class="nav-text">利用pyinstaller就能輕鬆達到打包成exe的效果囉~</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#注意事項"><span class="nav-number">4.2.</span> <span class="nav-text">注意事項</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#運作原理"><span class="nav-number">2.</span> <span class="nav-text">運作原理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#KillCPU步驟"><span class="nav-number">3.</span> <span class="nav-text">KillCPU步驟</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Python-如何打包程式"><span class="nav-number">4.</span> <span class="nav-text">Python 如何打包程式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#利用pyinstaller就能輕鬆達到打包成exe的效果囉"><span class="nav-number">4.1.</span> <span class="nav-text">利用pyinstaller就能輕鬆達到打包成exe的效果囉~</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#注意事項"><span class="nav-number">4.2.</span> <span class="nav-text">注意事項</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#延伸閱讀"><span class="nav-number">5.</span> <span class="nav-text">延伸閱讀</span></a></li></ol></div>
             
 
           </div>
