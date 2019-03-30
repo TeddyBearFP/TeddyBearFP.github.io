@@ -13,11 +13,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="theme-color" content="#222">
 
-$.ajaxSetup ({
-
-
-cache: false //關閉AJAX相應的快取 
-});
 
 
 
@@ -655,8 +650,7 @@ cache: false //關閉AJAX相應的快取
 <!-- 不蒜子计数初始值纠正 -->
 <script src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
 <script>
-    $(document).on("pageshow","#pagetwo",function() {
-    alert("pageshow 事件触发 - 展示页面二");
+    $(function() {
         var int = setInterval(fixCount, 100);
         var busuanziSiteOffset = parseInt( 550 );
         function fixCount() {
