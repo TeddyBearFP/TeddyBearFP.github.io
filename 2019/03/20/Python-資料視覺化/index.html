@@ -1,0 +1,1012 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-tw">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta name="google-site-verification" content="6FSPL7W8VK5_r7N9kUUjs091G70s4tIlG_BfxOmVa9U">
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+  <meta name="google-site-verification" content="google1efc50360bd796c6.html">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Python 資料視覺化,Python 折線圖,Python Data Visualization,Python csv,matplotlib,Python matplotlib,PID控制器">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="前言數字比較不能讓一目了然資料的變化，驗證數據時看這些數字比較無感，雖然excel就可以畫圖形了，最近有大量數據圖需要觀察，一個一個excel點進去設定繪製與截圖實在耗時，所以我們編寫一個資料視覺化程式更方便更快速達成多個圖表繪製，可以將同層中的csv數據透過matplotlib分色畫成折線圖並存成圖檔，也可以畫成柱狀圖、圓餅圖、散佈圖與其他更高階的視覺化圖形，這篇我們紀錄折線圖的使用方式 編寫中">
+<meta name="keywords" content="Python 資料視覺化,Python 折線圖,Python Data Visualization,Python csv,matplotlib,Python matplotlib,PID控制器">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Python 資料視覺化(Data Visualization)">
+<meta property="og:url" content="https://teddybearfp.github.io/2019/03/20/Python-資料視覺化/index.html">
+<meta property="og:site_name" content="泰迪熊的程式足跡">
+<meta property="og:description" content="前言數字比較不能讓一目了然資料的變化，驗證數據時看這些數字比較無感，雖然excel就可以畫圖形了，最近有大量數據圖需要觀察，一個一個excel點進去設定繪製與截圖實在耗時，所以我們編寫一個資料視覺化程式更方便更快速達成多個圖表繪製，可以將同層中的csv數據透過matplotlib分色畫成折線圖並存成圖檔，也可以畫成柱狀圖、圓餅圖、散佈圖與其他更高階的視覺化圖形，這篇我們紀錄折線圖的使用方式 編寫中">
+<meta property="og:locale" content="zh-tw">
+<meta property="og:image" content="https://i.imgur.com/UxYN8pR.png">
+<meta property="og:image" content="https://i.imgur.com/uOnyP1Z.png">
+<meta property="og:image" content="https://i.imgur.com/VYcYMR0.png">
+<meta property="og:image" content="https://i.imgur.com/ZibqG9k.png">
+<meta property="og:updated_time" content="2019-03-29T15:53:45.891Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Python 資料視覺化(Data Visualization)">
+<meta name="twitter:description" content="前言數字比較不能讓一目了然資料的變化，驗證數據時看這些數字比較無感，雖然excel就可以畫圖形了，最近有大量數據圖需要觀察，一個一個excel點進去設定繪製與截圖實在耗時，所以我們編寫一個資料視覺化程式更方便更快速達成多個圖表繪製，可以將同層中的csv數據透過matplotlib分色畫成折線圖並存成圖檔，也可以畫成柱狀圖、圓餅圖、散佈圖與其他更高階的視覺化圖形，這篇我們紀錄折線圖的使用方式 編寫中">
+<meta name="twitter:image" content="https://i.imgur.com/UxYN8pR.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://teddybearfp.github.io/2019/03/20/Python-資料視覺化/">
+
+
+
+
+
+  <title>Python 資料視覺化(Data Visualization) | 泰迪熊的程式足跡</title>
+  
+<script>
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '',
+      xfbml      : true,
+      version    : 'v2.10'
+    });
+  };
+
+  (function(d, s, id){
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement(s); js.id = id;
+     js.src = "//connect.facebook.net/zh_tw/sdk.js";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));
+</script>
+
+
+
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-137198611-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+
+
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-tw">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">泰迪熊的程式足跡</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">遊走程式森林的泰迪熊</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首頁
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            關於
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            標籤
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分類
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            歸檔
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://teddybearfp.github.io/2019/03/20/Python-資料視覺化/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="G.C.L.">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="泰迪熊的程式足跡">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Python 資料視覺化(Data Visualization)</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">發表於</span>
+              
+              <time title="創建於" itemprop="dateCreated datePublished" datetime="2019-03-20T12:05:16+08:00">
+                2019-03-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分類於</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/Python/" itemprop="url" rel="index">
+                    <span itemprop="name">Python</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/03/20/Python-資料視覺化/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/03/20/Python-資料視覺化/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2019/03/20/Python-資料視覺化/" class="leancloud_visitors" data-flag-title="Python 資料視覺化(Data Visualization)">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">閱讀次數&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>數字比較不能讓一目了然資料的變化，驗證數據時看這些數字比較無感，雖然excel就可以畫圖形了，最近有大量數據圖需要觀察，一個一個excel點進去設定繪製與截圖實在耗時，所以我們編寫一個資料視覺化程式更方便更快速達成多個圖表繪製，可以將同層中的csv數據透過matplotlib分色畫成折線圖並存成圖檔，也可以畫成柱狀圖、圓餅圖、散佈圖與其他更高階的視覺化圖形，這篇我們紀錄折線圖的使用方式<br><img src="https://i.imgur.com/UxYN8pR.png" alt=""></p>
+<h2 id="編寫中文"><a href="#編寫中文" class="headerlink" title="編寫中文"></a>編寫中文</h2><p>Python編碼默認是ASCII格式，沒修改編碼的情況下無法編寫中文，所以輸入中文會報錯，解決辦法有以下兩種</p>
+<p>第一種方式<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#-*- coding:utf-8 -*-</span></span><br></pre></td></tr></table></figure></p>
+<p>第二種方式<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#coding=utf-8</span></span><br></pre></td></tr></table></figure></p>
+<h2 id="glob讀取-csv"><a href="#glob讀取-csv" class="headerlink" title="glob讀取.csv"></a>glob讀取.csv</h2><p>glob.iglob(pathname), 一次只獲取一個匹配路徑<br>glob.glob（pathname), 獲取所有的匹配路徑<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> glob </span><br><span class="line"></span><br><span class="line">f = glob.iglob(<span class="string">r'.\*.csv'</span>)</span><br><span class="line">input_files = glob.glob(<span class="string">r'*.csv'</span>) </span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> input_file <span class="keyword">in</span> input_files: <span class="comment">#檢視取得到的內容</span></span><br><span class="line">    print(input_file)</span><br></pre></td></tr></table></figure></p>
+<h2 id="讀取CSV內容"><a href="#讀取CSV內容" class="headerlink" title="讀取CSV內容"></a>讀取CSV內容</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> csv</span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"></span><br><span class="line">input_files = <span class="string">"Teddybearfp.csv"</span></span><br><span class="line">file = pd.read_csv(input_file,encoding = <span class="string">'utf8'</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 開啟 CSV 檔案</span></span><br><span class="line"><span class="keyword">with</span> open(input_file,<span class="string">'r'</span>,newline = <span class="string">''</span>,encoding =<span class="string">'utf8'</span>) <span class="keyword">as</span> rFile:</span><br><span class="line"></span><br><span class="line"><span class="comment">#讀取 CSV 檔案內容</span></span><br><span class="line">filereader = csv.reader(rFile)</span><br><span class="line"></span><br><span class="line"><span class="comment">#filereader.next() 返回即为第一行的内容(通常為標題)</span></span><br><span class="line">header = next(filereader)</span><br><span class="line"></span><br><span class="line"><span class="comment">#剖析header得到title標題與count_header總數</span></span><br><span class="line">title = [ n <span class="keyword">for</span> n <span class="keyword">in</span> header <span class="keyword">if</span> n != <span class="string">''</span> ]</span><br><span class="line">count_header = len(title)</span><br></pre></td></tr></table></figure>
+<h2 id="Matplotlib"><a href="#Matplotlib" class="headerlink" title="Matplotlib"></a>Matplotlib</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">plotData</span><span class="params">(plt, data)</span>:</span></span><br><span class="line">    x = [p[<span class="number">0</span>] <span class="keyword">for</span> p <span class="keyword">in</span> data]</span><br><span class="line">    y = [p[<span class="number">1</span>] <span class="keyword">for</span> p <span class="keyword">in</span> data]</span><br><span class="line">    <span class="comment">#調整圖形大小</span></span><br><span class="line">    <span class="comment">#默認像素：[6.0,4.0]，分辨率100，圖形大小 600X400</span></span><br><span class="line">    <span class="comment"># 指定dpi=200，圖片大小為 1200*800, dpi=300，圖片大小為 1800*1200</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">#畫出圖形</span></span><br><span class="line">    plt.xlabel(<span class="string">'Seconds'</span>) <span class="comment">#X軸</span></span><br><span class="line">    plt.ylabel(<span class="string">'Temperature'</span>) <span class="comment">#Y軸</span></span><br><span class="line">    <span class="comment">#plt.ylim((1, 8)) 可以設置極限值改變顯示區域</span></span><br><span class="line">    plt.plot(x, y,color = <span class="string">"red"</span>, label = <span class="string">"A"</span>, linewidth = <span class="number">1</span>) <span class="comment">#畫線並設置顏色與標籤和線寬</span></span><br><span class="line">    plt.legend(loc = <span class="string">'best'</span>,prop=&#123;<span class="string">'size'</span>:<span class="number">6</span>&#125;) <span class="comment">#將標籤找到數據較少的地方放置(盡可能不會遮蔽到數據),prop調整圖示大小</span></span><br><span class="line">    plt.savefig(filename + <span class="string">".png"</span>, dpi=<span class="number">300</span>)<span class="comment"># 指定dpi=200，圖片大小為 1200*800, dpi=300，圖片大小為 1800*1200</span></span><br><span class="line">    </span><br><span class="line"><span class="comment">#plt.plot(x, y) 線(預設)</span></span><br><span class="line"><span class="comment">#plt.plot(x, y, 'o') 點</span></span><br><span class="line"><span class="comment">#plt.plot(x, y, '-o') 線與點</span></span><br><span class="line"><span class="comment">#plt.plot(x, y, '--o') 虛線與點</span></span><br><span class="line"></span><br><span class="line">data = [ (<span class="number">1</span>,<span class="number">2</span>), (<span class="number">2</span>,<span class="number">8</span>), (<span class="number">5</span>,<span class="number">2</span>), (<span class="number">7</span>,<span class="number">6</span>), (<span class="number">9</span>,<span class="number">10</span>) ]</span><br><span class="line"><span class="comment">#呼叫畫圖函式</span></span><br><span class="line">plotData(plt, data)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+<p><img src="https://i.imgur.com/uOnyP1Z.png" alt=""></p>
+<h2 id="實作csv資料視覺化"><a href="#實作csv資料視覺化" class="headerlink" title="實作csv資料視覺化"></a>實作csv資料視覺化</h2><p>以下實作是將同層的csv資料畫成折線圖(例如:溫度變化圖)讓我們繼續看下去<br><img src="https://i.imgur.com/VYcYMR0.png" alt="" title="眼花撩亂的csv數據"></p>
+<p>不要懷疑上面的圖真的是模糊過的不是眼睛出問題</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#-*- coding:utf-8 -*-</span></span><br><span class="line"><span class="keyword">import</span> csv</span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> glob </span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">plotData</span><span class="params">(plt, data, color, filename, label)</span>:</span></span><br><span class="line">    x = [p[<span class="number">0</span>] <span class="keyword">for</span> p <span class="keyword">in</span> data]</span><br><span class="line">    y = [p[<span class="number">1</span>] <span class="keyword">for</span> p <span class="keyword">in</span> data]</span><br><span class="line">    plt.xlabel(<span class="string">'Seconds'</span>)</span><br><span class="line">    plt.ylabel(<span class="string">'Temperature'</span>)</span><br><span class="line">    plt.rcParams[<span class="string">'savefig.dpi'</span>] = <span class="number">800</span></span><br><span class="line">    plt.plot(x, y, <span class="string">'-'</span>, color = color, label = label)</span><br><span class="line">    plt.legend(loc = <span class="string">'best'</span>,prop=&#123;<span class="string">'size'</span>:<span class="number">6</span>&#125;)<span class="comment">#prop調整圖示大小</span></span><br><span class="line">    plt.savefig(filename + <span class="string">".png"</span>, dpi=<span class="number">300</span>)<span class="comment"># 指定dpi=200，圖片大小為 1200*800, dpi=300，圖片大小為 1800*1200</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#讀檔取得標題</span></span><br><span class="line">input_files = glob.glob(<span class="string">r'*.csv'</span>)</span><br><span class="line"><span class="keyword">for</span> input_file <span class="keyword">in</span> input_files:</span><br><span class="line">    result_data = []</span><br><span class="line">    expect = []</span><br><span class="line">    file = pd.read_csv(input_file,encoding = <span class="string">'utf8'</span>)</span><br><span class="line">    <span class="keyword">with</span> open(input_file,<span class="string">'r'</span>,newline = <span class="string">''</span>,encoding =<span class="string">'utf8'</span>) <span class="keyword">as</span> rFile:</span><br><span class="line">        filereader = csv.reader(rFile)</span><br><span class="line">        header = next(filereader)</span><br><span class="line"></span><br><span class="line">    <span class="comment">#剖析header得到title標題與count_header總數</span></span><br><span class="line">    title = [ n <span class="keyword">for</span> n <span class="keyword">in</span> header <span class="keyword">if</span> n != <span class="string">''</span> ]</span><br><span class="line">    count_header = len(title)  </span><br><span class="line"></span><br><span class="line">    color = [<span class="string">"green"</span>, <span class="string">"skyblue"</span>, <span class="string">"orange"</span>, <span class="string">"gray"</span>, <span class="string">"blue"</span>, </span><br><span class="line">             <span class="string">"burlywood"</span>, <span class="string">"magenta"</span>, <span class="string">"cyan"</span>, <span class="string">"black"</span>, <span class="string">"red"</span>,</span><br><span class="line">             <span class="string">"purple"</span>, <span class="string">"brown"</span>, <span class="string">"forestgreen"</span>, <span class="string">"slateblue"</span>, <span class="string">"teal"</span>,</span><br><span class="line">             <span class="string">"mintcream"</span>, <span class="string">"navy"</span>, <span class="string">"gold"</span>, <span class="string">"bisque"</span>, <span class="string">"aqua"</span>]</span><br><span class="line"> </span><br><span class="line">    <span class="comment">#讀取每一行的資料並放到list中</span></span><br><span class="line">    <span class="keyword">for</span> number, title_ <span class="keyword">in</span> enumerate(title):</span><br><span class="line">        data = []</span><br><span class="line">        <span class="keyword">for</span> content <span class="keyword">in</span> enumerate(file[title_]):</span><br><span class="line">            data.append(content)</span><br><span class="line">        </span><br><span class="line">        result_data.append(data)</span><br><span class="line">    </span><br><span class="line">    <span class="comment">#畫目標曲線(若不需要這段可以拿掉)</span></span><br><span class="line">    data = []</span><br><span class="line">    dataLength = len(file[title[<span class="number">0</span>]])</span><br><span class="line">    <span class="keyword">for</span> e <span class="keyword">in</span> range(dataLength):</span><br><span class="line">        data.append(<span class="number">110</span>)</span><br><span class="line">    data = list(enumerate(data))</span><br><span class="line">    result_data.append(data)</span><br><span class="line">    title.append(<span class="string">"target"</span>)</span><br><span class="line">    </span><br><span class="line">    <span class="comment">#繪製圖形</span></span><br><span class="line">    <span class="keyword">for</span> n <span class="keyword">in</span> range(len(result_data)):</span><br><span class="line">        plotData(plt, result_data[n], color[n], input_file.strip(<span class="string">".csv"</span>),title[n])</span><br><span class="line">    plt.show()</span><br></pre></td></tr></table></figure>
+<p><img src="https://i.imgur.com/ZibqG9k.png" alt="" title="完成溫度變化折線圖"></p>
+<h2 id="PID控制器"><a href="#PID控制器" class="headerlink" title="PID控制器"></a>PID控制器</h2><p>關於溫度如何收斂呢?我們可以透過用PID控制器的方式達到數據收斂，PID控制器（比例-積分-微分控制器），由比例單元（P）、積分單元（I）和微分單元（D）組成。可以透過調整這三個單元的增益Kp，Ki和Kd來調定其特性。PID控制器主要適用於基本上線性，且動態特性不隨時間變化的系統。<br>P控制器: Kp * Error(誤差)<br>PI控制器: Kp * Error(誤差) + Ki * SumOfError(N組)<br>​PID 的​參數​調整​指​的是​通過​設定 P、​I 與 D 的​最佳​增益來達成<br>這穩定的控制方式在​業界​受到​廣泛​使用，這項​演算法​彈性​十足，​能夠​在​各式各樣​的​應用​中​能有良好的​結果<br>還可以運用在股票運算K線呢!不說了趕快繼續練習猜測與檢查找到最佳的PID</p>
+<h2 id="網路笑話一則"><a href="#網路笑話一則" class="headerlink" title="網路笑話一則"></a>網路笑話一則</h2><p>上面既然提到了股票那麼來一則關於股票的笑話吧!</p>
+<p>Q:猜猜誰不需要股票??</p>
+<p>A:東尼史塔克</p>
+<p>因為(don’t need stock)</p>
+<h2 id="延伸閱讀"><a href="#延伸閱讀" class="headerlink" title="延伸閱讀"></a>延伸閱讀</h2><p><a href="https://teddybearfp.github.io/2019/01/31/Python-%E7%88%AC%E5%8F%96%E5%AD%B8%E8%A1%93%E7%B6%B2%E9%A0%81PDF/">Python 爬取Google學術網頁PDF</a><br><a href="https://teddybearfp.github.io/2018/11/16/%E5%8B%95%E6%85%8B%E7%B6%B2%E9%A0%81%E7%88%AC%E5%8F%96/">Python 爬蟲幫你掌握氣象!(動態網頁爬取)</a><br><a href="https://teddybearfp.github.io/2018/11/07/Ptt%E7%88%AC%E8%9F%B2/">Python 爬蟲幫你精選PTT文章!(靜態頁面爬取)</a><br><a href="https://teddybearfp.github.io/2018/10/26/Python-LineBot/">Python 如何打造專屬的LineBot呢</a><br><a href="https://teddybearfp.github.io/2019/01/11/Python%E8%A7%A3%E6%9E%90ts%E6%AA%94-XML/">Python解析ts檔(XML)</a></p>
+<h2 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h2><p><a href="https://www.itread01.com/articles/1476166832.html" target="_blank" rel="noopener">簡單掌握Python中glob模塊查找文件路徑的用法</a><br><a href="https://tree.rocks/python/python-matplotlib-simple-linechart/" target="_blank" rel="noopener">Python Matplotlib 簡單繪制圖表教學 ( 折線圖 )</a><br><a href="https://zh.wikipedia.org/zh-tw/PID%E6%8E%A7%E5%88%B6%E5%99%A8" target="_blank" rel="noopener">PID控制器- 维基百科，自由的百科全书</a><br><a href="http://www.ni.com/zh-tw/innovations/white-papers/06/pid-theory-explained.html" target="_blank" rel="noopener">PID 控制原理教學- National Instruments</a></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Python/" rel="tag"># Python</a>
+          
+            <a href="/tags/csv/" rel="tag"># csv</a>
+          
+            <a href="/tags/資料視覺化/" rel="tag"># 資料視覺化</a>
+          
+            <a href="/tags/Data-Visualization/" rel="tag"># Data Visualization</a>
+          
+            <a href="/tags/折線圖/" rel="tag"># 折線圖</a>
+          
+            <a href="/tags/matplotlib/" rel="tag"># matplotlib</a>
+          
+            <a href="/tags/PID控制器/" rel="tag"># PID控制器</a>
+          
+        </div>
+      
+
+      
+      
+        <div class="post-widgets">
+        
+          <div class="wp_rating">
+            <div id="wpac-rating"></div>
+          </div>
+        
+
+        
+
+        
+        </div>
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/03/19/Python-資料比對/" rel="next" title="Python 資料比對">
+                <i class="fa fa-chevron-left"></i> Python 資料比對
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/03/25/看門狗計時器-Watchdog-Timer/" rel="prev" title="看門狗計時器(Watchdog Timer)">
+                看門狗計時器(Watchdog Timer) <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目錄
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            本站概覽
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">G.C.L.</p>
+              <p class="site-description motion-element" itemprop="description">在浩瀚的程式領域中，將走過的足跡記錄下來，文章著重在Qt、C++、python</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">46</span>
+                  <span class="site-state-item-name">文章</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-name">分類</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">90</span>
+                  <span class="site-state-item-name">標籤</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          <script type="text/javascript" src="//js1.bloggerads.net/ShowBanner.aspx?blogid=20190324000004" async></script>
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#編寫中文"><span class="nav-number">2.</span> <span class="nav-text">編寫中文</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#glob讀取-csv"><span class="nav-number">3.</span> <span class="nav-text">glob讀取.csv</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#讀取CSV內容"><span class="nav-number">4.</span> <span class="nav-text">讀取CSV內容</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Matplotlib"><span class="nav-number">5.</span> <span class="nav-text">Matplotlib</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#實作csv資料視覺化"><span class="nav-number">6.</span> <span class="nav-text">實作csv資料視覺化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#PID控制器"><span class="nav-number">7.</span> <span class="nav-text">PID控制器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#網路笑話一則"><span class="nav-number">8.</span> <span class="nav-text">網路笑話一則</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#延伸閱讀"><span class="nav-number">9.</span> <span class="nav-text">延伸閱讀</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#參考資料"><span class="nav-number">10.</span> <span class="nav-text">參考資料</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">G.C.L.</span>
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      訪客數
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      人
+    </span>
+        <script src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+
+  
+  
+
+  
+    <span class="site-pv">
+      總訪問次數
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      次
+    </span>
+  
+  
+
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+    
+      <script id="dsq-count-scr" src="https://TeddyBearFP.disqus.com/count.js" async></script>
+    
+
+    
+      <script type="text/javascript">
+        var disqus_config = function () {
+          this.page.url = 'https://teddybearfp.github.io/2019/03/20/Python-資料視覺化/';
+          this.page.identifier = '2019/03/20/Python-資料視覺化/';
+          this.page.title = 'Python 資料視覺化(Data Visualization)';
+        };
+        var d = document, s = d.createElement('script');
+        s.src = 'https://TeddyBearFP.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      </script>
+    
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("bDcJ07lb17xLnJp4usXdCdBa-gzGzoHsz", "KI9S9GpncakybyNyQcVhRCNe");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+  
+  <script type="text/javascript">
+  wpac_init = window.wpac_init || [];
+  wpac_init.push({widget: 'Rating', id: ,
+    el: 'wpac-rating',
+    color: 'fc6423'
+  });
+  (function() {
+    if ('WIDGETPACK_LOADED' in window) return;
+    WIDGETPACK_LOADED = true;
+    var mc = document.createElement('script');
+    mc.type = 'text/javascript';
+    mc.async = true;
+    mc.src = '//embed.widgetpack.com/widget.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(mc, s.nextSibling);
+  })();
+  </script>
+
+
+  
+
+  
+
+  
+
+</body>
+</html>
