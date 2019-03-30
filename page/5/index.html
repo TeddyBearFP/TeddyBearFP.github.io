@@ -1482,6 +1482,7 @@ qml前景繪圖:canvas (
 <script src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
 <script>
     $(document).on("pageshow","#pagetwo",function() {
+    alert("pageshow 事件触发 - 展示页面二");
         var int = setInterval(fixCount, 100);
         var busuanziSiteOffset = parseInt( 550 );
         function fixCount() {
