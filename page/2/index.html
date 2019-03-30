@@ -2108,7 +2108,6 @@ ts filets file內容是XML編寫的，我們用python parsing的方式將特定�
         var int = setInterval(fixCount, 100);
         var busuanziSiteOffset = parseInt( 550 );
         function fixCount() {
-                if ($("#busuanzi_container_site_uv").css("display") != "none") {
                 clearInterval(int);
                 $("#busuanzi_value_site_uv").html(parseInt($("#busuanzi_value_site_uv").html()) + busuanziSiteOffset);
         }
