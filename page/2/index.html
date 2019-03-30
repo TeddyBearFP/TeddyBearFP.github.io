@@ -2107,6 +2107,7 @@ ts filets file內容是XML編寫的，我們用python parsing的方式將特定�
 <!-- 不蒜子计数初始值纠正 -->
 <script src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
 <script>
+    $(document).ready(function() {
         var int = setInterval(fixCount, 100);
         var busuanziSiteOffset = parseInt( 550 );
         function fixCount() {
@@ -2115,6 +2116,7 @@ ts filets file內容是XML編寫的，我們用python parsing的方式將特定�
                 $("#busuanzi_value_site_uv").html(parseInt($("#busuanzi_value_site_uv").html()) + busuanziSiteOffset);
             }
         }
+    });
 </script>
 
 
