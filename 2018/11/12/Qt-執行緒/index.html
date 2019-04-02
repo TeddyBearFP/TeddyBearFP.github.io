@@ -72,7 +72,7 @@
 
 
 
-  <meta name="keywords" content="Normalize,標準化">
+  <meta name="keywords" content="Qt 執行緒,Qt 執行緒(QThread),QThread">
 
 
 
@@ -83,18 +83,18 @@
 
 
 
-<meta name="description" content="前言在將數據轉換至RGB時，時常會用到標準化的方式讓數值落在0~255之中 標準化公式需要以下幾組資料 第一組 newMax newMin  第二組 oldMax oldMin denominator = oldMax - oldMin  公式1float output = newMin + ((float)(value - oldMin)/(float)denominator) * (newMa">
-<meta name="keywords" content="Normalize,標準化">
+<meta name="description" content="前言繼上一篇C 執行緒我們來看看Qt怎麼編寫執行緒，在Qt中能很方便的使用QThread達到執行緒功能，這一篇我們來記錄一下怎麼使用QThread QThread因為Qt中所有界面都是在UI執行緒中(也被稱為主執行緒，就是執行QApplication::exec()的線程)，在這個線程中執行耗時的操作，UI就會阻塞，而讓介面停止回應，為了避免這一問題，我們改寫程式，使用QThread開啟一個新的執">
+<meta name="keywords" content="Qt 執行緒,Qt 執行緒(QThread),QThread">
 <meta property="og:type" content="article">
-<meta property="og:title" content="標準化(Normalize)">
-<meta property="og:url" content="https://teddybearfp.github.io/2019/01/08/normalize/index.html">
+<meta property="og:title" content="Qt 執行緒(QThread)">
+<meta property="og:url" content="https://teddybearfp.github.io/2018/11/12/Qt-執行緒/index.html">
 <meta property="og:site_name" content="泰迪熊的程式足跡">
-<meta property="og:description" content="前言在將數據轉換至RGB時，時常會用到標準化的方式讓數值落在0~255之中 標準化公式需要以下幾組資料 第一組 newMax newMin  第二組 oldMax oldMin denominator = oldMax - oldMin  公式1float output = newMin + ((float)(value - oldMin)/(float)denominator) * (newMa">
+<meta property="og:description" content="前言繼上一篇C 執行緒我們來看看Qt怎麼編寫執行緒，在Qt中能很方便的使用QThread達到執行緒功能，這一篇我們來記錄一下怎麼使用QThread QThread因為Qt中所有界面都是在UI執行緒中(也被稱為主執行緒，就是執行QApplication::exec()的線程)，在這個線程中執行耗時的操作，UI就會阻塞，而讓介面停止回應，為了避免這一問題，我們改寫程式，使用QThread開啟一個新的執">
 <meta property="og:locale" content="zh-tw">
-<meta property="og:updated_time" content="2019-03-24T04:17:28.568Z">
+<meta property="og:updated_time" content="2019-04-02T15:17:26.460Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="標準化(Normalize)">
-<meta name="twitter:description" content="前言在將數據轉換至RGB時，時常會用到標準化的方式讓數值落在0~255之中 標準化公式需要以下幾組資料 第一組 newMax newMin  第二組 oldMax oldMin denominator = oldMax - oldMin  公式1float output = newMin + ((float)(value - oldMin)/(float)denominator) * (newMa">
+<meta name="twitter:title" content="Qt 執行緒(QThread)">
+<meta name="twitter:description" content="前言繼上一篇C 執行緒我們來看看Qt怎麼編寫執行緒，在Qt中能很方便的使用QThread達到執行緒功能，這一篇我們來記錄一下怎麼使用QThread QThread因為Qt中所有界面都是在UI執行緒中(也被稱為主執行緒，就是執行QApplication::exec()的線程)，在這個線程中執行耗時的操作，UI就會阻塞，而讓介面停止回應，為了避免這一問題，我們改寫程式，使用QThread開啟一個新的執">
 
 
 
@@ -124,13 +124,13 @@
 
 
 
-  <link rel="canonical" href="https://teddybearfp.github.io/2019/01/08/normalize/">
+  <link rel="canonical" href="https://teddybearfp.github.io/2018/11/12/Qt-執行緒/">
 
 
 
 
 
-  <title>標準化(Normalize) | 泰迪熊的程式足跡</title>
+  <title>Qt 執行緒(QThread) | 泰迪熊的程式足跡</title>
   
 <script>
   window.fbAsyncInit = function() {
@@ -294,7 +294,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://teddybearfp.github.io/2019/01/08/normalize/">
+    <link itemprop="mainEntityOfPage" href="https://teddybearfp.github.io/2018/11/12/Qt-執行緒/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="G.C.L.">
@@ -311,7 +311,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">標準化(Normalize)</h1>
+          <h1 class="post-title" itemprop="name headline">Qt 執行緒(QThread)</h1>
         
 
         <div class="post-meta">
@@ -323,8 +323,8 @@
               
                 <span class="post-meta-item-text">發表於</span>
               
-              <time title="創建於" itemprop="dateCreated datePublished" datetime="2019-01-08T20:05:16+08:00">
-                2019-01-08
+              <time title="創建於" itemprop="dateCreated datePublished" datetime="2018-11-12T19:05:16+08:00">
+                2018-11-12
               </time>
             
 
@@ -346,8 +346,8 @@
               
               
                 <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/其他/" itemprop="url" rel="index">
-                    <span itemprop="name">其他</span>
+                  <a href="/categories/Qt/" itemprop="url" rel="index">
+                    <span itemprop="name">Qt</span>
                   </a>
                 </span>
 
@@ -364,8 +364,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2019/01/08/normalize/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/01/08/normalize/" itemprop="commentCount"></span>
+                <a href="/2018/11/12/Qt-執行緒/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2018/11/12/Qt-執行緒/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -373,7 +373,7 @@
 
           
           
-             <span id="/2019/01/08/normalize/" class="leancloud_visitors" data-flag-title="標準化(Normalize)">
+             <span id="/2018/11/12/Qt-執行緒/" class="leancloud_visitors" data-flag-title="Qt 執行緒(QThread)">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -404,21 +404,10 @@
       
 
       
-        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>在將數據轉換至RGB時，時常會用到標準化的方式讓數值落在0~255之中</p>
-<h2 id="標準化公式"><a href="#標準化公式" class="headerlink" title="標準化公式"></a>標準化公式</h2><p>需要以下幾組資料</p>
-<h3 id="第一組"><a href="#第一組" class="headerlink" title="第一組"></a>第一組</h3><ul>
-<li>newMax</li>
-<li>newMin</li>
-</ul>
-<h3 id="第二組"><a href="#第二組" class="headerlink" title="第二組"></a>第二組</h3><ul>
-<li>oldMax</li>
-<li>oldMin</li>
-<li>denominator = oldMax - oldMin</li>
-</ul>
-<h3 id="公式"><a href="#公式" class="headerlink" title="公式"></a>公式</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">float</span> output = newMin + ((<span class="keyword">float</span>)(value - oldMin)/(<span class="keyword">float</span>)denominator) * (newMax - newMin)</span><br></pre></td></tr></table></figure>
-<h2 id="example"><a href="#example" class="headerlink" title="example"></a>example</h2><p>下面的例子將傳入的數值標準化成100~255<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">normalize</span><span class="params">(<span class="keyword">int</span> value)</span> </span>&#123; <span class="comment">//value 是介於oldMax與oldMin之間的值</span></span><br><span class="line">    <span class="keyword">int</span> newMax = <span class="number">255</span>;</span><br><span class="line">    <span class="keyword">int</span> newMin = <span class="number">100</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">int</span> oldMax = <span class="number">219</span>;</span><br><span class="line">    <span class="keyword">int</span> oldMin = <span class="number">127</span>;</span><br><span class="line">    <span class="keyword">int</span> denominator = oldMax - oldMin</span><br><span class="line">    <span class="keyword">float</span> output = newMin + ((<span class="keyword">float</span>)(value - oldMin)/(<span class="keyword">float</span>)denominator) * (newMax - newMin)</span><br><span class="line">    <span class="keyword">return</span>  output;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>上述例子傳入211的話輸出為241.5<br>透過上面公式可以將數值標準化到某一區間</p>
-
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>繼上一篇<a href="https://teddybearfp.github.io/2018/11/12/%E5%9F%B7%E8%A1%8C%E7%B7%92/#more">C 執行緒</a>我們來看看Qt怎麼編寫執行緒，在Qt中能很方便的使用QThread達到執行緒功能，這一篇我們來記錄一下怎麼使用QThread</p>
+<h2 id="QThread"><a href="#QThread" class="headerlink" title="QThread"></a>QThread</h2><p>因為Qt中所有界面都是在UI執行緒中(也被稱為主執行緒，就是執行QApplication::exec()的線程)，在這個線程中執行耗時的操作，UI就會阻塞，而讓介面停止回應，為了避免這一問題，我們改寫程式，使用QThread開啟一個新的執行緒，由這新的執行緒進行耗時的工作，而主執行緒可繼續進行使用者介面的響應</p>
+<h2 id="QThread實作"><a href="#QThread實作" class="headerlink" title="QThread實作"></a>QThread實作</h2><h3 id="編寫WorkThread-class"><a href="#編寫WorkThread-class" class="headerlink" title="編寫WorkThread class"></a>編寫WorkThread class</h3><p>我們將QThread功能包裝成Function呼叫<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//.h</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">pragma</span> once</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;QObject&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;QThread&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">WorkThread</span> :</span> <span class="keyword">public</span> QThread</span><br><span class="line">&#123;</span><br><span class="line">    Q_OBJECT</span><br><span class="line"> <span class="keyword">public</span>:</span><br><span class="line">     WorkThread();</span><br><span class="line">     <span class="function"><span class="keyword">void</span> <span class="title">StartThread</span><span class="params">( <span class="keyword">const</span> QObject *receiver, <span class="keyword">const</span> <span class="keyword">char</span> *member )</span></span>;</span><br><span class="line">     <span class="function"><span class="keyword">bool</span> <span class="title">Stop</span><span class="params">()</span></span>;</span><br><span class="line">     <span class="function"><span class="keyword">bool</span> <span class="title">IsAlive</span><span class="params">()</span></span>;</span><br><span class="line"> <span class="keyword">public</span> slots:</span><br><span class="line">     <span class="function"><span class="keyword">bool</span> <span class="title">SetThreadEnd</span><span class="params">()</span></span>;</span><br><span class="line"> <span class="keyword">protected</span>:</span><br><span class="line">     <span class="function"><span class="keyword">void</span> <span class="title">run</span><span class="params">()</span></span>;</span><br><span class="line"> <span class="keyword">private</span>:</span><br><span class="line">     <span class="keyword">bool</span> bIsThreadAlive;</span><br><span class="line"> signals:</span><br><span class="line">     <span class="function"><span class="keyword">void</span> <span class="title">DoSomething</span><span class="params">()</span></span>;</span><br><span class="line">     <span class="function"><span class="keyword">void</span> <span class="title">EndPoint</span><span class="params">()</span></span>;</span><br><span class="line">&#125;;</span><br><span class="line">```cpp</span><br><span class="line"><span class="comment">//WorkThread.cpp</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"workthread.h"</span></span></span><br><span class="line"></span><br><span class="line">WorkThread::WorkThread()</span><br><span class="line">&#123;</span><br><span class="line">    bIsThreadAlive = <span class="literal">false</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">void</span> WorkThread::StartThread(<span class="keyword">const</span> QObject *receiver, <span class="keyword">const</span> <span class="keyword">char</span> *member)</span><br><span class="line">&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span>( !bIsThreadAlive )</span><br><span class="line">    &#123;</span><br><span class="line">        bIsThreadAlive = <span class="literal">true</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">this</span>-&gt;disconnect();</span><br><span class="line"></span><br><span class="line">        connect( <span class="keyword">this</span>,SIGNAL( DoSomething() ),receiver,member,Qt::DirectConnection );</span><br><span class="line">        connect( <span class="keyword">this</span>,SIGNAL( EndPoint() ),<span class="keyword">this</span>,SLOT( quit() ));</span><br><span class="line">        <span class="keyword">this</span>-&gt;start();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">void</span> WorkThread::run()</span><br><span class="line">&#123;</span><br><span class="line">    <span class="function">emit <span class="title">DoSomething</span><span class="params">()</span></span>;</span><br><span class="line"></span><br><span class="line">    bIsThreadAlive = <span class="literal">false</span>;</span><br><span class="line">    <span class="function">emit <span class="title">EndPoint</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">bool</span> WorkThread::Stop()</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">if</span>( bIsThreadAlive )</span><br><span class="line">    &#123;</span><br><span class="line">        SetThreadEnd();</span><br><span class="line">        <span class="keyword">this</span>-&gt;wait();</span><br><span class="line"></span><br><span class="line">        QThread::quit();</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> !bIsThreadAlive;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">bool</span> WorkThread::SetThreadEnd()</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">if</span>( bIsThreadAlive )</span><br><span class="line">    &#123;</span><br><span class="line">        bIsThreadAlive = <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> !bIsThreadAlive;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">bool</span> WorkThread::IsAlive()</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">return</span> bIsThreadAlive;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="使用WorkThread"><a href="#使用WorkThread" class="headerlink" title="使用WorkThread"></a>使用WorkThread</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//使用端.h</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"workthread.h"</span></span></span><br><span class="line">WorkThread thd4Rander;</span><br><span class="line"></span><br><span class="line"><span class="comment">//使用端.cpp</span></span><br><span class="line"><span class="keyword">void</span> DataProc::~DataProc() &#123;</span><br><span class="line">    thd4Rander.Stop();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">void</span> DataProc::FrameProcess() &#123;</span><br><span class="line">    <span class="keyword">while</span>(thd4Rander.IsAlive()) &#123;</span><br><span class="line">        <span class="keyword">if</span>(!GetCameraData(rawData, &amp;width, &amp;height)) &#123;</span><br><span class="line">            thd4Rander.Stop();</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">/*</span></span><br><span class="line"><span class="comment">            dosomething...</span></span><br><span class="line"><span class="comment">        */</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">void</span> DataProc::startRender() <span class="comment">//可以製作成button來切換</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">if</span>(thd4Rander.IsAlive())</span><br><span class="line">    &#123;</span><br><span class="line">        thd4Rander.Stop();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">    &#123;</span><br><span class="line">        thd4Rander.StartThread(<span class="keyword">this</span>, SLOT(FrameProcess()));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
       
     </div>
     
@@ -445,7 +434,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Normalize/" rel="tag"># Normalize</a>
+            <a href="/tags/執行緒/" rel="tag"># 執行緒</a>
+          
+            <a href="/tags/QThread/" rel="tag"># QThread</a>
           
         </div>
       
@@ -470,8 +461,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/12/23/3D-Volume-Rendering/" rel="next" title="OpenGL 3D 立體渲染">
-                <i class="fa fa-chevron-left"></i> OpenGL 3D 立體渲染
+              <a href="/2018/11/12/執行緒/" rel="next" title="C 執行緒">
+                <i class="fa fa-chevron-left"></i> C 執行緒
               </a>
             
           </div>
@@ -480,8 +471,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/01/09/OpenCV-邊緣偵測/" rel="prev" title="OpenCV 邊緣偵測">
-                OpenCV 邊緣偵測 <i class="fa fa-chevron-right"></i>
+              <a href="/2018/11/15/梯度計算影像清晰度-gradient/" rel="prev" title="梯度計算影像清晰度">
+                梯度計算影像清晰度 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -624,7 +615,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#標準化公式"><span class="nav-number">2.</span> <span class="nav-text">標準化公式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#第一組"><span class="nav-number">2.1.</span> <span class="nav-text">第一組</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第二組"><span class="nav-number">2.2.</span> <span class="nav-text">第二組</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#公式"><span class="nav-number">2.3.</span> <span class="nav-text">公式</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#example"><span class="nav-number">3.</span> <span class="nav-text">example</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#QThread"><span class="nav-number">2.</span> <span class="nav-text">QThread</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#QThread實作"><span class="nav-number">3.</span> <span class="nav-text">QThread實作</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#編寫WorkThread-class"><span class="nav-number">3.1.</span> <span class="nav-text">編寫WorkThread class</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用WorkThread"><span class="nav-number">3.2.</span> <span class="nav-text">使用WorkThread</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -830,9 +821,9 @@
     
       <script type="text/javascript">
         var disqus_config = function () {
-          this.page.url = 'https://teddybearfp.github.io/2019/01/08/normalize/';
-          this.page.identifier = '2019/01/08/normalize/';
-          this.page.title = '標準化(Normalize)';
+          this.page.url = 'https://teddybearfp.github.io/2018/11/12/Qt-執行緒/';
+          this.page.identifier = '2018/11/12/Qt-執行緒/';
+          this.page.title = 'Qt 執行緒(QThread)';
         };
         var d = document, s = d.createElement('script');
         s.src = 'https://TeddyBearFP.disqus.com/embed.js';
