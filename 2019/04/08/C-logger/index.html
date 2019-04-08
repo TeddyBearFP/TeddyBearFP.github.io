@@ -1,0 +1,1020 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-tw">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta name="google-site-verification" content="6FSPL7W8VK5_r7N9kUUjs091G70s4tIlG_BfxOmVa9U">
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+  <meta name="google-site-verification" content="google1efc50360bd796c6.html">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="C logger,C logging library,C vprintf Log,C Log file,C Log,C va_list vprintf,C stdarg.h">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="前言編寫專案時，除了直接印出訊息來驗證與除錯之外，我們還需要LOG幫助我們維護程式，這一篇完整記錄了我編寫的LOG動態函式庫寫法與使用方式，LOG會顯示時間戳記(毫秒)、LOG層級、LOG訊息，讓我們來看看實作流程吧! 顯示內容//時間戳記               LOG層級 LOG訊息 2019-04-08 17:15:11.703,[INFO],Hello my name is Teddy">
+<meta name="keywords" content="C logger,C logging library,C vprintf Log,C Log file,C Log,C va_list vprintf,C stdarg.h">
+<meta property="og:type" content="article">
+<meta property="og:title" content="C logger">
+<meta property="og:url" content="https://teddybearfp.github.io/2019/04/08/C-logger/index.html">
+<meta property="og:site_name" content="泰迪熊的程式足跡">
+<meta property="og:description" content="前言編寫專案時，除了直接印出訊息來驗證與除錯之外，我們還需要LOG幫助我們維護程式，這一篇完整記錄了我編寫的LOG動態函式庫寫法與使用方式，LOG會顯示時間戳記(毫秒)、LOG層級、LOG訊息，讓我們來看看實作流程吧! 顯示內容//時間戳記               LOG層級 LOG訊息 2019-04-08 17:15:11.703,[INFO],Hello my name is Teddy">
+<meta property="og:locale" content="zh-tw">
+<meta property="og:updated_time" content="2019-04-08T13:26:37.655Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="C logger">
+<meta name="twitter:description" content="前言編寫專案時，除了直接印出訊息來驗證與除錯之外，我們還需要LOG幫助我們維護程式，這一篇完整記錄了我編寫的LOG動態函式庫寫法與使用方式，LOG會顯示時間戳記(毫秒)、LOG層級、LOG訊息，讓我們來看看實作流程吧! 顯示內容//時間戳記               LOG層級 LOG訊息 2019-04-08 17:15:11.703,[INFO],Hello my name is Teddy">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://teddybearfp.github.io/2019/04/08/C-logger/">
+
+
+
+
+
+  <title>C logger | 泰迪熊的程式足跡</title>
+  
+<script>
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '',
+      xfbml      : true,
+      version    : 'v2.10'
+    });
+  };
+
+  (function(d, s, id){
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement(s); js.id = id;
+     js.src = "//connect.facebook.net/zh_tw/sdk.js";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));
+</script>
+
+
+
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-137198611-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+
+
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-tw">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">泰迪熊的程式足跡</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">遊走程式森林的泰迪熊</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首頁
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            關於
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            標籤
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分類
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            歸檔
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://teddybearfp.github.io/2019/04/08/C-logger/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="G.C.L.">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="泰迪熊的程式足跡">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">C logger</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">發表於</span>
+              
+              <time title="創建於" itemprop="dateCreated datePublished" datetime="2019-04-08T15:05:16+08:00">
+                2019-04-08
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分類於</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/C/" itemprop="url" rel="index">
+                    <span itemprop="name">C</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/04/08/C-logger/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/04/08/C-logger/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2019/04/08/C-logger/" class="leancloud_visitors" data-flag-title="C logger">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">閱讀次數&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>編寫專案時，除了直接印出訊息來驗證與除錯之外，我們還需要LOG幫助我們維護程式，這一篇完整記錄了我編寫的LOG動態函式庫寫法與使用方式，LOG會顯示時間戳記(毫秒)、LOG層級、LOG訊息，讓我們來看看實作流程吧!</p>
+<h2 id="顯示內容"><a href="#顯示內容" class="headerlink" title="顯示內容"></a>顯示內容</h2><pre><code>//時間戳記               LOG層級 LOG訊息
+2019-04-08 17:15:11.703,[INFO],Hello my name is TeddyBear.
+</code></pre><h2 id="stdarg-h"><a href="#stdarg-h" class="headerlink" title="stdarg.h"></a>stdarg.h</h2><p>stdarg.h 是C語言中C標準函式庫的標頭檔<br>我們透過stdarg.h主要目的是讓函式能夠接收不定量參數</p>
+<p>va_list: 宣告一個指標，讓它指向引數串列。<br>va_start: 初始化這個指標，讓它真正指向正確的引數串列開頭。<br>va_arg: 來取得va_list中的資料。<br>va_end: 清除這個指標，把它設為NULL。範例如下：<br>va_copy: 拷貝va_list的內容</p>
+<p>不定參數函式的參數數量是可變動的，它使用省略號來忽略之後的參數。例如printf函式一般。宣告方式如下:<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">Test</span><span class="params">(<span class="keyword">int</span> a, <span class="keyword">const</span> <span class="keyword">char</span> *b, ...)</span></span>;</span><br></pre></td></tr></table></figure></p>
+<h2 id="vprintf"><a href="#vprintf" class="headerlink" title="vprintf"></a>vprintf</h2><p>其他由不定參數函式呼叫的函式<br>透過下面範例了解一下stdarg搭配vprintf的用法<br>參考vprintf - C++ Reference - Cplusplus.com<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* vprintf example */</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdarg.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">WriteFormatted</span> <span class="params">( <span class="keyword">const</span> <span class="keyword">char</span> * format, ... )</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  va_list args;</span><br><span class="line">  va_start (args, format);</span><br><span class="line">  <span class="built_in">vprintf</span> (format, args);</span><br><span class="line">  va_end (args);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span> <span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">   WriteFormatted (<span class="string">"Call with %d variable argument.\n"</span>,<span class="number">1</span>);</span><br><span class="line">   WriteFormatted (<span class="string">"Call with %d variable %s.\n"</span>,<span class="number">2</span>,<span class="string">"arguments"</span>);</span><br><span class="line"></span><br><span class="line">   <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>輸出<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Call with <span class="number">1</span> variable argument.</span><br><span class="line">Call with <span class="number">2</span> variable arguments.</span><br></pre></td></tr></table></figure></p>
+<p>看完上面用法是不是跟printf用法十分相似呢</p>
+<p>沒錯所以我們來編寫一個LOG函式呼叫方式跟printf類似卻能達到我們要的LOG效果</p>
+<h2 id="創建TBLog-dll"><a href="#創建TBLog-dll" class="headerlink" title="創建TBLog.dll"></a>創建TBLog.dll</h2><p>先在專案new subproject中選擇library新增</p>
+<h2 id="TBLog-pro"><a href="#TBLog-pro" class="headerlink" title="TBLog.pro"></a>TBLog.pro</h2><p>可以加入下面兩句指令，讓dll檔產出在與執行檔同一層<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Debug:DESTDIR = ../(你的專案名稱)/debug</span><br><span class="line">Release:DESTDIR = ../(你的專案名稱)/release</span><br></pre></td></tr></table></figure></p>
+<h2 id="TBLog-h"><a href="#TBLog-h" class="headerlink" title="TBLog.h"></a>TBLog.h</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//#pragma once是一個非標準但是被廣泛支援的前置處理符號，會讓所在的檔案在一個單獨的編譯中只被包含一次</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">pragma</span> once </span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">ifndef</span> CVLOG_H</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> CVLOG_H</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">if</span> defined(CVLOG_LIBRARY)</span></span><br><span class="line"><span class="meta">#  <span class="meta-keyword">define</span> CVLOG_API __declspec(dllexport) <span class="comment">//使用 __declspec(dllexport) 從 DLL 匯出</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;guiddef.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">else</span></span></span><br><span class="line"><span class="meta">#  <span class="meta-keyword">define</span> CVLOG_API __declspec(dllexport)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment">//設置LOG層級 將層級分為六級</span></span><br><span class="line"><span class="keyword">enum</span> LogLevels</span><br><span class="line">&#123;</span><br><span class="line">    LOGTRACE,</span><br><span class="line">    LOGDEBUG,</span><br><span class="line">    LOGINFO,</span><br><span class="line">    LOGWARN,</span><br><span class="line">    LOGERROR,</span><br><span class="line">    LOGFATAL</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">//不同要求取得不同時間的格式</span></span><br><span class="line"><span class="keyword">enum</span> RequestType</span><br><span class="line">&#123;</span><br><span class="line">    LogTimeStamp,</span><br><span class="line">    LogFileName</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">extern</span> <span class="string">"C"</span> <span class="function">CVLOG_API <span class="keyword">void</span> <span class="title">SetLogLevel</span><span class="params">(LogLevels level = LOGINFO)</span></span>; <span class="comment">//將LOGLEVEL閥值預設為LOGINFO,表示LOGINFO以上的層級才會顯示與寫檔</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">extern</span> <span class="string">"C"</span> <span class="function">CVLOG_API <span class="keyword">void</span> <span class="title">MyLog</span><span class="params">(LogLevels level, <span class="keyword">const</span> <span class="keyword">char</span>* message, ...)</span></span>; <span class="comment">//不定參數函式</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span> <span class="comment">// CVLOG_H</span></span></span><br></pre></td></tr></table></figure>
+<h2 id="TBLog-cpp"><a href="#TBLog-cpp" class="headerlink" title="TBLog.cpp"></a>TBLog.cpp</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"cvlog.h"</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt; //printf</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;direct.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdarg.h&gt; //va_list, va_arg, va_start, va_end</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;time.h&gt;    //取得時間</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;windows.h&gt; //取得時間</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;io.h&gt; //_access</span></span></span><br><span class="line"></span><br><span class="line">LogLevels logThreshold; <span class="comment">//用來當LOGLEVEL的Filter</span></span><br><span class="line"><span class="keyword">char</span> filePath[<span class="number">200</span>];     <span class="comment">//LOG檔案路徑</span></span><br><span class="line"><span class="keyword">bool</span> isFirst = <span class="literal">true</span>;    <span class="comment">//第一次進來時初始化值</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//LOGLEVEL的Filter</span></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">static</span> <span class="keyword">const</span> <span class="keyword">char</span>* <span class="title">GetLogLevel</span><span class="params">(<span class="keyword">int</span> level)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line"><span class="comment">//inline行內函式只能建議編譯器，也就是說建議並不一定會被採納，這視您的編譯器而定</span></span><br><span class="line"><span class="comment">//如果建議被採納，則該函式會自動在呼叫點展開程式碼</span></span><br><span class="line">    <span class="keyword">switch</span>(level)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">//由輕微到嚴重分級</span></span><br><span class="line">        <span class="keyword">case</span> LogLevels::LOGTRACE: <span class="keyword">return</span> <span class="string">"[TRACE]"</span>;</span><br><span class="line">        <span class="keyword">case</span> LogLevels::LOGDEBUG: <span class="keyword">return</span> <span class="string">"[DEBUG]"</span>;</span><br><span class="line">        <span class="keyword">case</span> LogLevels::LOGINFO:  <span class="keyword">return</span> <span class="string">"[INFO ]"</span>;</span><br><span class="line">        <span class="keyword">case</span> LogLevels::LOGWARN:  <span class="keyword">return</span> <span class="string">"[WARN ]"</span>;</span><br><span class="line">        <span class="keyword">case</span> LogLevels::LOGERROR: <span class="keyword">return</span> <span class="string">"[ERROR]"</span>;</span><br><span class="line">        <span class="keyword">case</span> LogLevels::LOGFATAL: <span class="keyword">return</span> <span class="string">"[FATAL]"</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">""</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//取得時間(依照傳進的參數分別回傳檔案年月或是LOG時間戳記)</span></span><br><span class="line"><span class="function"><span class="keyword">char</span>* <span class="title">GetTime</span><span class="params">(RequestType request)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">//初始化char[]</span></span><br><span class="line">    <span class="keyword">char</span> currentTime[<span class="number">300</span>];</span><br><span class="line">    <span class="built_in">memset</span>(currentTime, <span class="number">0</span>, <span class="keyword">sizeof</span>(currentTime));</span><br><span class="line"></span><br><span class="line">    <span class="comment">//C取得現在時間,但是C的取得時間方式僅能取到秒,並無法得到毫秒</span></span><br><span class="line">    <span class="keyword">time_t</span> now = time(<span class="literal">NULL</span>);</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//毫秒我們用SYSTEMTIME取得</span></span><br><span class="line">    SYSTEMTIME time;</span><br><span class="line">    GetSystemTime(&amp;time);</span><br><span class="line"></span><br><span class="line">    <span class="comment">//取得毫秒</span></span><br><span class="line">    <span class="keyword">char</span> ms[<span class="number">10</span>];</span><br><span class="line">    <span class="keyword">int</span> time_ms = time.wMilliseconds;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//下面這段回傳時間格式為2019-04-08 17:15:11.703</span></span><br><span class="line">    <span class="keyword">if</span>(request == LogTimeStamp)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">//%F 等於 %Y-%m-%d, %T 等於 %H:%M:%S</span></span><br><span class="line">        strftime(currentTime, <span class="number">30</span>, <span class="string">"%F %T"</span>, localtime(&amp;now));</span><br><span class="line">        <span class="comment">//使用 sprintf() 將數字轉成字串 </span></span><br><span class="line">        <span class="built_in">sprintf</span>(ms, <span class="string">"%d"</span>, time_ms);</span><br><span class="line">        <span class="built_in">strcat</span>(currentTime, <span class="string">"."</span>);</span><br><span class="line">        <span class="built_in">strcat</span>(currentTime, ms);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//下面這段回傳時間格式為201904</span></span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        strftime(currentTime, <span class="number">30</span>, <span class="string">"%Y%m"</span>, localtime(&amp;now));</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> currentTime;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Initial</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    isFirst = <span class="literal">false</span>;</span><br><span class="line">    <span class="comment">//取得年月來當LOG檔名</span></span><br><span class="line">    <span class="keyword">char</span> *date = GetTime(LogFileName);</span><br><span class="line">    <span class="built_in">strcat</span>(filePath,<span class="string">"D:\\TBLog\\TBLog_"</span>);</span><br><span class="line">    <span class="built_in">strcat</span>(filePath, date);</span><br><span class="line">    <span class="built_in">strcat</span>(filePath, <span class="string">".txt"</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">extern</span> <span class="string">"C"</span> <span class="function">CVLOG_API <span class="keyword">void</span> <span class="title">SetLogLevel</span><span class="params">(LogLevels level)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">//設定閥值</span></span><br><span class="line">    logThreshold = level;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">extern</span> <span class="string">"C"</span> <span class="function">CVLOG_API <span class="keyword">void</span> <span class="title">MyLog</span><span class="params">(LogLevels level, <span class="keyword">const</span> <span class="keyword">char</span> *fmt, ...)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">//第一次使用時設定些初始值</span></span><br><span class="line">    <span class="keyword">if</span>(isFirst)</span><br><span class="line">        Initial();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">char</span> message[<span class="number">300</span>];</span><br><span class="line">    <span class="built_in">memset</span>(message, <span class="number">0</span>, <span class="keyword">sizeof</span>(message));</span><br><span class="line"></span><br><span class="line">    <span class="keyword">char</span> message2[<span class="number">300</span>];</span><br><span class="line">    <span class="built_in">memset</span>(message2, <span class="number">0</span>, <span class="keyword">sizeof</span>(message2));</span><br><span class="line"></span><br><span class="line">    <span class="comment">//檢測LOG層級,如果同級或是更高級就顯示與寫檔</span></span><br><span class="line">    <span class="keyword">if</span>(level &gt;= logThreshold)</span><br><span class="line">    &#123;</span><br><span class="line">        FILE *fp = <span class="literal">NULL</span>;</span><br><span class="line">        <span class="comment">//C語言用來檢查檔案是否存在的寫法</span></span><br><span class="line">        <span class="keyword">if</span>((_access(<span class="string">"D:\\TBLog"</span>, <span class="number">0</span>)) == <span class="number">-1</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="comment">//如果不存在則創建資料夾</span></span><br><span class="line">            <span class="keyword">if</span>( _mkdir( <span class="string">"D:\\TBLog"</span> ) == <span class="number">0</span> )</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="built_in">printf</span>( <span class="string">"File'D:\\TBLog'add!\n"</span> );</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">                <span class="built_in">printf</span>( <span class="string">"Can't add File'D:\\TBLog'\n"</span> );</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        strcat_s(message, GetTime(LogTimeStamp));</span><br><span class="line">        strcat_s(message, <span class="string">","</span>);</span><br><span class="line">        strcat_s(message, GetLogLevel(level));</span><br><span class="line">        strcat_s(message, <span class="string">","</span>);</span><br><span class="line">        strcat_s(message, fmt);</span><br><span class="line"></span><br><span class="line">        va_list args; <span class="comment">//用來儲存宏va_arg與宏va_end所需資訊</span></span><br><span class="line">        va_start (args, fmt); <span class="comment">//使va_list指向起始的參數</span></span><br><span class="line">        <span class="built_in">vprintf</span> (message, args);    <span class="comment">//Console logging(印在IDE console log顯示)</span></span><br><span class="line">        <span class="built_in">vsprintf</span>(message2, message, args); <span class="comment">//File logging(save message and write file)</span></span><br><span class="line">        va_end (args); <span class="comment">//釋放va_list</span></span><br><span class="line"></span><br><span class="line">        fp=fopen(filePath,<span class="string">"a"</span>);<span class="comment">//"a"表示檔案存在的話直接接續寫檔，"w"表示檔案存在的話覆寫</span></span><br><span class="line">        <span class="built_in">fprintf</span>(fp,<span class="string">"%s"</span>,message2);<span class="comment">//寫檔</span></span><br><span class="line"></span><br><span class="line">        fclose(fp);<span class="comment">//關閉檔案</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="使用端"><a href="#使用端" class="headerlink" title="使用端"></a>使用端</h2><p>先在使用的pro檔中導入TBLog.dll的library<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">win32:CONFIG(release, debug|release): LIBS += -L$$OUT_PWD/release/ -lTBLog</span><br><span class="line"><span class="keyword">else</span>:win32:CONFIG(debug, debug|release): LIBS += -L$$OUT_PWD/debug/ -lTBLog</span><br><span class="line"></span><br><span class="line">INCLUDEPATH += $$PWD/../TBLog</span><br><span class="line">DEPENDPATH += $$PWD/../TBLog</span><br></pre></td></tr></table></figure></p>
+<p>接著導入完成後在使用的檔案中include標頭檔<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"../../TBLog/tblog.h"</span></span></span><br></pre></td></tr></table></figure></p>
+<p>開始使用<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//設定LOGLEVEL閥值若未設定只顯示LOGINFO以上的層級</span></span><br><span class="line">SetLogLevel(LOGINFO);</span><br><span class="line"></span><br><span class="line"><span class="comment">//使用MyLog方法跟printf一樣,層級低於LOGINFO不顯示、不寫入</span></span><br><span class="line">MyLog(LOGDEBUG,<span class="string">"%s\n"</span>, <span class="string">"SONGLAAAA"</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">//使用MyLog方法跟printf一樣,層級大於等於LOGINFO顯示並寫入</span></span><br><span class="line">MyLog(LOGINFO,<span class="string">"Hello, my name is %s.\n"</span>,<span class="string">"TeddyBear"</span>);</span><br></pre></td></tr></table></figure></p>
+<h2 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h2><p><a href="http://www.cplusplus.com/reference/cstdio/vprintf/" target="_blank" rel="noopener">vprintf - C++ Reference - Cplusplus.com</a><br><a href="https://zh.wikipedia.org/wiki/Stdarg.h" target="_blank" rel="noopener">stdarg.h - 维基百科，自由的百科全书</a><br><a href="https://dotblogs.com.tw/simplecestlavie/2013/01/02/86637" target="_blank" rel="noopener">軟體中的黑盒子 (介紹 va_lsit, va_start, va_end… 等)</a><br><a href="https://teddybearfp.github.io/2018/11/02/C-dll/#more">C/C++ 動態連結函式庫| 泰迪熊的程式足跡</a></p>
+
+      
+    </div>
+    
+    
+    
+    
+    <div>
+    
+    <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束 感謝你的閱讀-------------</div>
+    
+</div>
+    
+    </div>
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Logger/" rel="tag"># Logger</a>
+          
+            <a href="/tags/vprintf/" rel="tag"># vprintf</a>
+          
+            <a href="/tags/stdarg-h/" rel="tag"># stdarg.h</a>
+          
+        </div>
+      
+
+      
+      
+        <div class="post-widgets">
+        
+          <div class="wp_rating">
+            <div id="wpac-rating"></div>
+          </div>
+        
+
+        
+
+        
+        </div>
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/03/29/Hexo-Next-人數統計-Busuanzi-LeanCloud/" rel="next" title="Hexo Next 人數統計(Busuanzi & LeanCloud)">
+                <i class="fa fa-chevron-left"></i> Hexo Next 人數統計(Busuanzi & LeanCloud)
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目錄
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            本站概覽
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">G.C.L.</p>
+              <p class="site-description motion-element" itemprop="description">在浩瀚的程式領域中，將走過的足跡記錄下來，文章著重在Qt、C++、python</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">48</span>
+                  <span class="site-state-item-name">文章</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-name">分類</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">94</span>
+                  <span class="site-state-item-name">標籤</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          <script type="text/javascript" src="//js1.bloggerads.net/ShowBanner.aspx?blogid=20190324000004" async></script>
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#顯示內容"><span class="nav-number">2.</span> <span class="nav-text">顯示內容</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#stdarg-h"><span class="nav-number">3.</span> <span class="nav-text">stdarg.h</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#vprintf"><span class="nav-number">4.</span> <span class="nav-text">vprintf</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#創建TBLog-dll"><span class="nav-number">5.</span> <span class="nav-text">創建TBLog.dll</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#TBLog-pro"><span class="nav-number">6.</span> <span class="nav-text">TBLog.pro</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#TBLog-h"><span class="nav-number">7.</span> <span class="nav-text">TBLog.h</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#TBLog-cpp"><span class="nav-number">8.</span> <span class="nav-text">TBLog.cpp</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用端"><span class="nav-number">9.</span> <span class="nav-text">使用端</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#參考資料"><span class="nav-number">10.</span> <span class="nav-text">參考資料</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">G.C.L.</span>
+
+  
+</div>
+
+
+<script async src="//cdn.busuanzi.ibruce.info/cdn/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<!-- 不蒜子计数初始值纠正 -->
+<script src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+<script>
+        var int = setInterval(fixCount, 100);
+        var busuanziSiteOffset = parseInt( 550 );
+        function fixCount() {
+            if ($("#busuanzi_container_site_uv").css("display") != "none") {
+                clearInterval(int);
+                $("#busuanzi_value_site_uv").html(parseInt($("#busuanzi_value_site_uv").html()) + busuanziSiteOffset);
+            }
+        }
+</script>
+
+
+
+
+
+
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      訪客數
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      人
+    </span>
+        <script src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+  
+  
+  
+    <span class="site-pv">
+      總訪問次數
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      次
+    </span>
+  
+  
+
+</div>
+
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+    
+      <script id="dsq-count-scr" src="https://TeddyBearFP.disqus.com/count.js" async></script>
+    
+
+    
+      <script type="text/javascript">
+        var disqus_config = function () {
+          this.page.url = 'https://teddybearfp.github.io/2019/04/08/C-logger/';
+          this.page.identifier = '2019/04/08/C-logger/';
+          this.page.title = 'C logger';
+        };
+        var d = document, s = d.createElement('script');
+        s.src = 'https://TeddyBearFP.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      </script>
+    
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("bDcJ07lb17xLnJp4usXdCdBa-gzGzoHsz", "KI9S9GpncakybyNyQcVhRCNe");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+  
+  <script type="text/javascript">
+  wpac_init = window.wpac_init || [];
+  wpac_init.push({widget: 'Rating', id: ,
+    el: 'wpac-rating',
+    color: 'fc6423'
+  });
+  (function() {
+    if ('WIDGETPACK_LOADED' in window) return;
+    WIDGETPACK_LOADED = true;
+    var mc = document.createElement('script');
+    mc.type = 'text/javascript';
+    mc.async = true;
+    mc.src = '//embed.widgetpack.com/widget.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(mc, s.nextSibling);
+  })();
+  </script>
+
+
+  
+
+  
+
+  
+
+</body>
+</html>
