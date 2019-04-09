@@ -91,7 +91,7 @@
 <meta property="og:site_name" content="泰迪熊的程式足跡">
 <meta property="og:description" content="前言編寫專案時，除了直接印出訊息來驗證與除錯之外，我們還需要LOG幫助我們維護程式，這一篇完整記錄了我編寫的LOG動態函式庫寫法與使用方式，LOG會顯示時間戳記(毫秒)、LOG層級、ThreadID、LOG訊息，讓我們來看看實作流程吧! 顯示內容先來看看成果 //組成方式為(年-月-日 時:分:秒.毫秒),Log層級,ThreadID,類別名稱::函式名稱() 輸出訊息 2019-04-09 10">
 <meta property="og:locale" content="zh-tw">
-<meta property="og:updated_time" content="2019-04-09T14:37:32.935Z">
+<meta property="og:updated_time" content="2019-04-09T14:54:44.239Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="C logger">
 <meta name="twitter:description" content="前言編寫專案時，除了直接印出訊息來驗證與除錯之外，我們還需要LOG幫助我們維護程式，這一篇完整記錄了我編寫的LOG動態函式庫寫法與使用方式，LOG會顯示時間戳記(毫秒)、LOG層級、ThreadID、LOG訊息，讓我們來看看實作流程吧! 顯示內容先來看看成果 //組成方式為(年-月-日 時:分:秒.毫秒),Log層級,ThreadID,類別名稱::函式名稱() 輸出訊息 2019-04-09 10">
@@ -405,14 +405,13 @@
 
       
         <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>編寫專案時，除了直接印出訊息來驗證與除錯之外，我們還需要LOG幫助我們維護程式，這一篇完整記錄了我編寫的LOG動態函式庫寫法與使用方式，LOG會顯示時間戳記(毫秒)、LOG層級、ThreadID、LOG訊息，讓我們來看看實作流程吧!</p>
-<h2 id="顯示內容"><a href="#顯示內容" class="headerlink" title="顯示內容"></a>顯示內容</h2><pre><code>先來看看成果
-//組成方式為(年-月-日 時:分:秒.毫秒),Log層級,ThreadID,類別名稱::函式名稱() 輸出訊息
+<h2 id="顯示內容"><a href="#顯示內容" class="headerlink" title="顯示內容"></a>顯示內容</h2><p>先來看看成果</p>
+<pre><code>//組成方式為(年-月-日 時:分:秒.毫秒),Log層級,ThreadID,類別名稱::函式名稱() 輸出訊息
 2019-04-09 10:08:08.337,[DEBUG],ThreadID:5140,Device::MotorMove() motorYStep:10.5
 2019-04-09 10:08:08.339,[DEBUG],ThreadID:5876,I&apos;m Polling thread!
 2019-04-09 10:08:08.339,[TRACE],ThreadID:5876,Device::SetOffSetValue() SetOffSetValue:7
-
-透過上面記錄的方式可以清楚掌握程式狀況讓我們來看看如何實作Logger吧!
-</code></pre><h2 id="stdarg-h"><a href="#stdarg-h" class="headerlink" title="stdarg.h"></a>stdarg.h</h2><p>stdarg.h 是C語言中C標準函式庫的標頭檔<br>我們透過stdarg.h主要目的是讓函式能夠接收不定量參數</p>
+</code></pre><p>透過上面記錄的方式可以清楚掌握程式狀況讓我們來看看如何實作Logger吧!</p>
+<h2 id="stdarg-h"><a href="#stdarg-h" class="headerlink" title="stdarg.h"></a>stdarg.h</h2><p>stdarg.h 是C語言中C標準函式庫的標頭檔<br>我們透過stdarg.h主要目的是讓函式能夠接收不定量參數</p>
 <p>va_list: 宣告一個指標，讓它指向引數串列。<br>va_start: 初始化這個指標，讓它真正指向正確的引數串列開頭。<br>va_arg: 來取得va_list中的資料。<br>va_end: 清除這個指標，把它設為NULL。範例如下：<br>va_copy: 拷貝va_list的內容</p>
 <p>不定參數函式的參數數量是可變動的，它使用省略號來忽略之後的參數。例如printf函式一般。宣告方式如下:<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">Test</span><span class="params">(<span class="keyword">int</span> a, <span class="keyword">const</span> <span class="keyword">char</span> *b, ...)</span></span>;</span><br></pre></td></tr></table></figure></p>
 <h2 id="vprintf"><a href="#vprintf" class="headerlink" title="vprintf"></a>vprintf</h2><p>其他由不定參數函式呼叫的函式<br>透過下面範例了解一下stdarg搭配vprintf的用法<br>參考vprintf - C++ Reference - Cplusplus.com<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* vprintf example */</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdarg.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">WriteFormatted</span> <span class="params">( <span class="keyword">const</span> <span class="keyword">char</span> * format, ... )</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  va_list args;</span><br><span class="line">  va_start (args, format);</span><br><span class="line">  <span class="built_in">vprintf</span> (format, args);</span><br><span class="line">  va_end (args);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span> <span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">   WriteFormatted (<span class="string">"Call with %d variable argument.\n"</span>,<span class="number">1</span>);</span><br><span class="line">   WriteFormatted (<span class="string">"Call with %d variable %s.\n"</span>,<span class="number">2</span>,<span class="string">"arguments"</span>);</span><br><span class="line"></span><br><span class="line">   <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
