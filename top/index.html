@@ -91,7 +91,7 @@
 <meta property="og:site_name" content="泰迪熊的程式足跡">
 <meta property="og:description" content="AV.initialize(&quot;leancloud_appid&quot;, &quot;leancloud_appkey&quot;);    var time=0   var title=&quot;&quot;   var url=&quot;&quot;   var query = new AV.Query(&apos;Counter&apos;);   query.notEqualTo(&apos;id&apos;,0);   query.descending(&apos;time&apos;);   query">
 <meta property="og:locale" content="zh-tw">
-<meta property="og:updated_time" content="2019-04-18T13:36:55.430Z">
+<meta property="og:updated_time" content="2019-04-18T13:38:57.736Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="top">
 <meta name="twitter:description" content="AV.initialize(&quot;leancloud_appid&quot;, &quot;leancloud_appkey&quot;);    var time=0   var title=&quot;&quot;   var url=&quot;&quot;   var query = new AV.Query(&apos;Counter&apos;);   query.notEqualTo(&apos;id&apos;,0);   query.descending(&apos;time&apos;);   query">
@@ -316,8 +316,8 @@
       time=result.time;
       title=result.title;
       url=result.url;
-      // var content="<a href='"+"https://hoxis.github.io"+url+"'>"+title+"</a>"+"<br>"+"<font color='#fff'>"+"阅读次数："+time+"</font>"+"<br><br>";
-      var content="<p>"+"<font color='#1C1C1C'>"+"【文章热度:"+time+"℃】"+"</font>"+"<a href='"+"https://hoxis.github.io"+url+"'>"+title+"</a>"+"</p>";
+      // var content="<a href='"+"https://hoxis.github.io"+url+"'>"+title+"</a>"+"<br>"+"<font color='#fff'>"+"閱覽次數："+time+"</font>"+"<br><br>";
+      var content="<p>"+"<font color='#1C1C1C'>"+"【文章閱覽數:"+time+"次】"+"</font>"+"<a href='"+"https://hoxis.github.io"+url+"'>"+title+"</a>"+"</p>";
       document.getElementById("top").innerHTML+=content
     }
   }, function (error) {
