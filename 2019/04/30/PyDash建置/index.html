@@ -72,7 +72,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT">
+  <meta name="keywords" content="Python build PyDash,Python PyDash build,Python PyDash">
 
 
 
@@ -83,17 +83,25 @@
 
 
 
-<meta name="description" content="在浩瀚的程式領域中，將走過的足跡記錄下來，文章著重在Qt、C++、python">
-<meta name="keywords" content="Qt,C++,python,泰迪熊,泰迪熊的程式,泰迪熊的程式足跡,GCL">
-<meta property="og:type" content="website">
-<meta property="og:title" content="泰迪熊的程式足跡">
-<meta property="og:url" content="https://teddybearfp.github.io/tags/平行處理/index.html">
+<meta name="description" content="前言pyDash 是一個輕量且 基於 web 的 linux 性能監測工具 ，它是用 python 和 Django 加上 Chart.js 來編寫的。可以使用這個工具來監視你的 Linux 個人電腦/服務器資源，比如 CPU、內存、網絡統計，包括在線用戶的進程以及更多。儀表盤完全由主要的 Python 發行版本所提供的 Python 庫開發所以不需要額外安裝太多的函式庫，這篇文章記錄如何使用Dj">
+<meta name="keywords" content="Python build PyDash,Python PyDash build,Python PyDash">
+<meta property="og:type" content="article">
+<meta property="og:title" content="PyDash建置">
+<meta property="og:url" content="https://teddybearfp.github.io/2019/04/30/PyDash建置/index.html">
 <meta property="og:site_name" content="泰迪熊的程式足跡">
-<meta property="og:description" content="在浩瀚的程式領域中，將走過的足跡記錄下來，文章著重在Qt、C++、python">
+<meta property="og:description" content="前言pyDash 是一個輕量且 基於 web 的 linux 性能監測工具 ，它是用 python 和 Django 加上 Chart.js 來編寫的。可以使用這個工具來監視你的 Linux 個人電腦/服務器資源，比如 CPU、內存、網絡統計，包括在線用戶的進程以及更多。儀表盤完全由主要的 Python 發行版本所提供的 Python 庫開發所以不需要額外安裝太多的函式庫，這篇文章記錄如何使用Dj">
 <meta property="og:locale" content="zh-tw">
+<meta property="og:image" content="https://i.imgur.com/SM7pbwO.png">
+<meta property="og:image" content="https://i.imgur.com/GuSOOrT.png">
+<meta property="og:image" content="https://i.imgur.com/1jkqCTB.png">
+<meta property="og:image" content="https://i.imgur.com/XrgSJba.png">
+<meta property="og:image" content="https://i.imgur.com/6nIDMqW.png">
+<meta property="og:image" content="https://i.imgur.com/TQOUheY.png">
+<meta property="og:updated_time" content="2019-04-30T14:40:04.306Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="泰迪熊的程式足跡">
-<meta name="twitter:description" content="在浩瀚的程式領域中，將走過的足跡記錄下來，文章著重在Qt、C++、python">
+<meta name="twitter:title" content="PyDash建置">
+<meta name="twitter:description" content="前言pyDash 是一個輕量且 基於 web 的 linux 性能監測工具 ，它是用 python 和 Django 加上 Chart.js 來編寫的。可以使用這個工具來監視你的 Linux 個人電腦/服務器資源，比如 CPU、內存、網絡統計，包括在線用戶的進程以及更多。儀表盤完全由主要的 Python 發行版本所提供的 Python 庫開發所以不需要額外安裝太多的函式庫，這篇文章記錄如何使用Dj">
+<meta name="twitter:image" content="https://i.imgur.com/SM7pbwO.png">
 
 
 
@@ -123,13 +131,13 @@
 
 
 
-  <link rel="canonical" href="https://teddybearfp.github.io/tags/平行處理/">
+  <link rel="canonical" href="https://teddybearfp.github.io/2019/04/30/PyDash建置/">
 
 
 
 
 
-  <title>標籤: 平行處理 | 泰迪熊的程式足跡</title>
+  <title>PyDash建置 | 泰迪熊的程式足跡</title>
   
 <script>
   window.fbAsyncInit = function() {
@@ -175,7 +183,7 @@
     
   
 
-  <div class="container sidebar-position-left ">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
@@ -289,52 +297,233 @@
           <div id="content" class="content">
             
 
-  
-  
-  
-  <div class="post-block tag">
+  <div id="posts" class="posts-expand">
+    
 
-    <div id="posts" class="posts-collapse">
-      <div class="collection-title">
-        <h1>平行處理<small>標籤</small>
-        </h1>
-      </div>
+  
 
-      
-        
+  
+  
+  
 
   <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-    <header class="post-header">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://teddybearfp.github.io/2019/04/30/PyDash建置/">
 
-      <h2 class="post-title">
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="G.C.L.">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="泰迪熊的程式足跡">
+    </span>
+
+    
+      <header class="post-header">
+
         
-            <a class="post-title-link" href="/2019/03/26/平行處理用CUDA/" itemprop="url">
-              
-                <span itemprop="name">平行處理用CUDA</span>
-              
-            </a>
         
-      </h2>
+          <h1 class="post-title" itemprop="name headline">PyDash建置</h1>
+        
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-03-26T18:05:16+08:00" content="2019-03-26">
-          03-26
-        </time>
-      </div>
+        <div class="post-meta">
+          <span class="post-time">
+ 
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">發表於</span>
+              
+              <time title="創建於" itemprop="dateCreated datePublished" datetime="2019-04-30T18:05:16+08:00">
+                2019-04-30
+              </time>
+            
+            
+            <span class="post-updated">
+            &nbsp; | &nbsp; 更新於
+            <time itemprop="dateUpdated" datetime="2019-04-30T22:40:04+08:00" content="2019-04-30">
+            2019-04-30
+            </time>
+            </span>
+            
+            
 
-    </header>
-  </article>
+            
+          </span>
 
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分類於</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/Python/" itemprop="url" rel="index">
+                    <span itemprop="name">Python</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+          
+             <span id="/2019/04/30/PyDash建置/" class="leancloud_visitors" data-flag-title="PyDash建置">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">閱讀次數&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>pyDash 是一個輕量且 基於 web 的 linux 性能監測工具 ，它是用 python 和 Django 加上 Chart.js 來編寫的。<br>可以使用這個工具來監視你的 Linux 個人電腦/服務器資源，比如 CPU、內存、網絡統計，包括在線用戶的進程以及更多。儀表盤完全由主要的 Python 發行版本所提供的 Python 庫開發所以不需要額外安裝太多的函式庫，這篇文章記錄如何使用Django建置虛擬環境執行程式碼</p>
+<h2 id="建置流程"><a href="#建置流程" class="headerlink" title="建置流程"></a>建置流程</h2><p>1.首先安裝pip<br>    下載<a href="https://bootstrap.pypa.io/get-pip.py" target="_blank" rel="noopener">https://bootstrap.pypa.io/get-pip.py</a><br>    安裝pip<br>    python get-pip.py</p>
+<p>2.安裝虛擬環境<br>    pip install virtualenv</p>
+<p>3.下載檔案<br>    <a href="https://gitlab.com/k3oni/pydash" target="_blank" rel="noopener">https://gitlab.com/k3oni/pydash</a><br>    下載檔案或是git下來<br>    git clone <a href="https://github.com/k3oni/pydash.git" target="_blank" rel="noopener">https://github.com/k3oni/pydash.git</a><br>    並切換到當層路徑<br>        cd pydash</p>
+<p>4.創建虛擬環境<br>    取名為pydashtest(可任意命名)<br>    virtualenv pydashtest</p>
+<p>5.激活虛擬環境<br>    切換到剛剛創建的虛擬環境pydashtest資料夾中的Scripts啟動<br>    activate<br>    輸入成功會命令提示字元指令最前方會出現虛擬環境名稱例如:(pydashtest)</p>
+<p><img src="https://i.imgur.com/SM7pbwO.png" alt=""></p>
+<p>6.安裝所需函式庫<br>    切換到與requirements.txt同一層中執行以下指令(以這個pydash來說僅需要另外安裝django==1.6.8)<br>    pip install -r requirements.txt</p>
+<p>7.進入pydash資料夾中將settings.py檔案中的SECRET_KEY設定密鑰存取並退出</p>
+<p><img src="https://i.imgur.com/GuSOOrT.png" alt=""></p>
+<p>8.創建資料庫與身分驗證(輸入信箱與密碼)<br>    python manage.py syncdb</p>
+<p><img src="https://i.imgur.com/1jkqCTB.png" alt=""></p>
+<p>9.執行 Django 開發服務器<br>    python manage.py runserver<br>    若出現一些錯誤訊息可能是缺少一些函式庫<br>    那麼我們只要安裝缺少的函式庫即可<br>    例如:pip install keras</p>
+<p>一直重複執行python manage.py runserver直到沒有缺少函式庫</p>
+<pre><code>from django.conf.urls import patterns, url
+ImportError: cannot import name &apos;patterns&apos;
+出現上面這個問題的話解決辦法是呼叫下列指令
+pip install Django==1.8
+</code></pre><p>出現以下畫面代表正確</p>
+<p><img src="https://i.imgur.com/XrgSJba.png" alt=""></p>
+<p>10.登入<br>    接著打開瀏覽器輸入網址<br>    <a href="http://127.0.0.1:8000/" target="_blank" rel="noopener">http://127.0.0.1:8000/</a><br>    (特別注意:第一格是輸入Username不是信箱帳號)</p>
+<p><img src="https://i.imgur.com/6nIDMqW.png" alt=""></p>
+<p>登入成功後觀看數據囉</p>
+<p><img src="https://i.imgur.com/TQOUheY.png" alt=""></p>
+<p>結束runserver<br>    Ctrl+C</p>
+<p>離開虛擬環境<br>    deactivate</p>
+<p>__init__.py 用來告訴Python這個資料夾是一個模組，裡面通常是空的，不過也可以寫一些程式碼在裡面。<br>manage.py 用來操作整個Django專案的小工具，例如啟動伺服器python manage.py runserver，或是同步資料庫python manage.py syncdb<br>settings.py 設定檔<br>urls.py 負責網站的路由。</p>
+<h2 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料:"></a>參考資料:</h2><p><a href="https://kknews.cc/zh-tw/other/92rgx6b.html[]" target="_blank" rel="noopener">pyDash：一個基於 web 的 Linux 性能監測工具</a><br><a href="https://kaochenlong.com/2011/10/18/django-your-first-django-project/" target="_blank" rel="noopener">開始你的第一個專案| 高見龍</a></p>
 
       
     </div>
+    
+    
+    
+    
+    <div>
+    
+    <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束 感謝你的閱讀-------------</div>
+    
+</div>
+    
+    </div>
 
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/PyDash/" rel="tag"># PyDash</a>
+          
+        </div>
+      
+
+      
+      
+        <div class="post-widgets">
+        
+          <div class="wp_rating">
+            <div id="wpac-rating"></div>
+          </div>
+        
+
+        
+
+        
+        </div>
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/04/08/C-logger/" rel="next" title="C logger">
+                <i class="fa fa-chevron-left"></i> C logger
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -342,6 +531,20 @@
 
 
           
+
+  
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    </div>
+
+  
+
+
 
         </div>
         
@@ -362,8 +565,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目錄
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            本站概覽
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
@@ -423,6 +635,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#建置流程"><span class="nav-number">2.</span> <span class="nav-text">建置流程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#參考資料"><span class="nav-number">3.</span> <span class="nav-text">參考資料:</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -584,6 +812,10 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 
@@ -601,6 +833,18 @@
       <script id="dsq-count-scr" src="https://TeddyBearFP.disqus.com/count.js" async></script>
     
 
+    
+      <script type="text/javascript">
+        var disqus_config = function () {
+          this.page.url = 'https://teddybearfp.github.io/2019/04/30/PyDash建置/';
+          this.page.identifier = '2019/04/30/PyDash建置/';
+          this.page.title = 'PyDash建置';
+        };
+        var d = document, s = d.createElement('script');
+        s.src = 'https://TeddyBearFP.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      </script>
     
 
   
@@ -750,6 +994,23 @@
 
   
   
+  <script type="text/javascript">
+  wpac_init = window.wpac_init || [];
+  wpac_init.push({widget: 'Rating', id: ,
+    el: 'wpac-rating',
+    color: 'fc6423'
+  });
+  (function() {
+    if ('WIDGETPACK_LOADED' in window) return;
+    WIDGETPACK_LOADED = true;
+    var mc = document.createElement('script');
+    mc.type = 'text/javascript';
+    mc.async = true;
+    mc.src = '//embed.widgetpack.com/widget.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(mc, s.nextSibling);
+  })();
+  </script>
+
 
   
 
