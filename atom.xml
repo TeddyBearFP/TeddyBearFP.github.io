@@ -290,13 +290,13 @@
     
       <category term="Python" scheme="https://teddybearfp.github.io/tags/Python/"/>
     
-      <category term="csv" scheme="https://teddybearfp.github.io/tags/csv/"/>
-    
       <category term="資料視覺化" scheme="https://teddybearfp.github.io/tags/%E8%B3%87%E6%96%99%E8%A6%96%E8%A6%BA%E5%8C%96/"/>
     
       <category term="Data Visualization" scheme="https://teddybearfp.github.io/tags/Data-Visualization/"/>
     
       <category term="折線圖" scheme="https://teddybearfp.github.io/tags/%E6%8A%98%E7%B7%9A%E5%9C%96/"/>
+    
+      <category term="csv" scheme="https://teddybearfp.github.io/tags/csv/"/>
     
       <category term="matplotlib" scheme="https://teddybearfp.github.io/tags/matplotlib/"/>
     
@@ -327,9 +327,9 @@
     
       <category term="Python" scheme="https://teddybearfp.github.io/tags/Python/"/>
     
-      <category term="資料比對" scheme="https://teddybearfp.github.io/tags/%E8%B3%87%E6%96%99%E6%AF%94%E5%B0%8D/"/>
-    
       <category term="csv" scheme="https://teddybearfp.github.io/tags/csv/"/>
+    
+      <category term="資料比對" scheme="https://teddybearfp.github.io/tags/%E8%B3%87%E6%96%99%E6%AF%94%E5%B0%8D/"/>
     
   </entry>
   
