@@ -101,7 +101,7 @@
 <meta property="og:image" content="https://i.imgur.com/euWEKvY.png">
 <meta property="og:image" content="https://i.imgur.com/zUuq5cW.png">
 <meta property="og:image" content="https://i.imgur.com/Jo8Ertl.png">
-<meta property="og:updated_time" content="2019-04-30T16:26:27.062Z">
+<meta property="og:updated_time" content="2019-04-30T16:32:49.434Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="PyCharm安裝與Anaconda使用">
 <meta name="twitter:description" content="前言安裝編譯環境是個非常重要的環節，好的開始是成功的一半，若是能順利安裝並編譯出自己的第一支程式是個讓人興奮的事情，這邊紀錄一下Python安裝與PyCharm安裝過程與Anaconda使用方式 本篇安裝環境為Python 3.6.7(64bits)PyCharm 2019.01.01Anaconda 2019.03 Python 3.7 version Python 安裝Python 2 vs">
@@ -352,7 +352,7 @@
             
             <span class="post-updated">
             &nbsp; | &nbsp; 更新於
-            <time itemprop="dateUpdated" datetime="2019-05-01T00:26:27+08:00" content="2019-05-01">
+            <time itemprop="dateUpdated" datetime="2019-05-01T00:32:49+08:00" content="2019-05-01">
             2019-05-01
             </time>
             </span>
@@ -458,24 +458,19 @@
 <p><a href="https://www.anaconda.com/distribution/#download-section" target="_blank" rel="noopener">Anaconda下載</a></p>
 <p><img src="https://i.imgur.com/3dbULCV.png" alt=""></p>
 <h3 id="Anaconda用法"><a href="#Anaconda用法" class="headerlink" title="Anaconda用法"></a>Anaconda用法</h3><p>Anaconda用法其實跟python的virtualenv用法類似</p>
-<p>執行Anaconda prompt</p>
-<pre><code>conda create -n myenv python=3.6 packages
+<h4 id="執行Anaconda-prompt"><a href="#執行Anaconda-prompt" class="headerlink" title="執行Anaconda prompt"></a>執行Anaconda prompt</h4><pre><code>conda create -n myenv python=3.6 packages
     #myenv環境名稱可以自己取
     #packages可以自行添增例如numpy=1.7 matplotlib
     #python=3.6是選擇interpreter版本
 conda create -n myenv python=3.6 numpy pandas matplotlib pip
-</code></pre><p>啟動虛擬環境</p>
-<pre><code>activate myenv
+</code></pre><h4 id="啟動虛擬環境"><a href="#啟動虛擬環境" class="headerlink" title="啟動虛擬環境"></a>啟動虛擬環境</h4><pre><code>activate myenv
 </code></pre><p>啟動成功在最前方的()內會變成虛擬環境的名稱<br><img src="https://i.imgur.com/Vk2Gw91.png" alt=""></p>
-<p>檢測環境(用來看目前創建了幾個虛擬環境)</p>
-<pre><code>conda env list
+<h4 id="檢測環境-用來看目前創建了幾個虛擬環境"><a href="#檢測環境-用來看目前創建了幾個虛擬環境" class="headerlink" title="檢測環境(用來看目前創建了幾個虛擬環境)"></a>檢測環境(用來看目前創建了幾個虛擬環境)</h4><pre><code>conda env list
 </code></pre><p><img src="https://i.imgur.com/AVAfkJR.png" alt=""></p>
-<p>檢測當下虛擬環境的packages</p>
-<pre><code>conda list -n myenv
+<h4 id="檢測當下虛擬環境的packages"><a href="#檢測當下虛擬環境的packages" class="headerlink" title="檢測當下虛擬環境的packages"></a>檢測當下虛擬環境的packages</h4><pre><code>conda list -n myenv
 若是activate狀態則
 conda list即可
-</code></pre><p>安裝環境的packages</p>
-<pre><code>conda install -n myenv pip
+</code></pre><h4 id="安裝環境的packages"><a href="#安裝環境的packages" class="headerlink" title="安裝環境的packages"></a>安裝環境的packages</h4><pre><code>conda install -n myenv pip
 activate myenv
 pip install SomePackage
 
@@ -483,8 +478,7 @@ ex:
     conda install -n myenv pip  #在虛擬環境安裝pip裝完後才能裝其他缺少的函式庫(若虛擬環境已有安裝則可以省略)
     activate myenv  #啟動虛擬環境
     pip install numpy pandas tensorflow keras opencv-python 
-</code></pre><p>關閉環境</p>
-<pre><code>deactive
+</code></pre><h4 id="關閉環境"><a href="#關閉環境" class="headerlink" title="關閉環境"></a>關閉環境</h4><pre><code>deactive
 </code></pre><p>那麼完成後PyCharm便可以在Interpreter中找到剛剛設置的虛擬環境達到函式庫的更新與管理</p>
 <pre><code>在Setting &gt; Project Interpreter去做設定
 </code></pre><p><img src="https://i.imgur.com/euWEKvY.png" alt=""></p>
@@ -701,7 +695,7 @@ ex:
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Python-安裝"><span class="nav-number">2.</span> <span class="nav-text">Python 安裝</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Python-2-vs-Python-3"><span class="nav-number">2.1.</span> <span class="nav-text">Python 2 vs Python 3</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Python-3-install"><span class="nav-number">2.2.</span> <span class="nav-text">Python 3 install</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#PyCharm-安裝"><span class="nav-number">3.</span> <span class="nav-text">PyCharm 安裝</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#好用IDE推薦"><span class="nav-number">3.1.</span> <span class="nav-text">好用IDE推薦</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#PyCharm-安裝-1"><span class="nav-number">3.2.</span> <span class="nav-text">PyCharm 安裝</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Anaconda-安裝與使用"><span class="nav-number">4.</span> <span class="nav-text">Anaconda 安裝與使用</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Python專案環境選擇"><span class="nav-number">4.1.</span> <span class="nav-text">Python專案環境選擇</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Anaconda用法"><span class="nav-number">4.2.</span> <span class="nav-text">Anaconda用法</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Python-安裝"><span class="nav-number">2.</span> <span class="nav-text">Python 安裝</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Python-2-vs-Python-3"><span class="nav-number">2.1.</span> <span class="nav-text">Python 2 vs Python 3</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Python-3-install"><span class="nav-number">2.2.</span> <span class="nav-text">Python 3 install</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#PyCharm-安裝"><span class="nav-number">3.</span> <span class="nav-text">PyCharm 安裝</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#好用IDE推薦"><span class="nav-number">3.1.</span> <span class="nav-text">好用IDE推薦</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#PyCharm-安裝-1"><span class="nav-number">3.2.</span> <span class="nav-text">PyCharm 安裝</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Anaconda-安裝與使用"><span class="nav-number">4.</span> <span class="nav-text">Anaconda 安裝與使用</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Python專案環境選擇"><span class="nav-number">4.1.</span> <span class="nav-text">Python專案環境選擇</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Anaconda用法"><span class="nav-number">4.2.</span> <span class="nav-text">Anaconda用法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#執行Anaconda-prompt"><span class="nav-number">4.2.1.</span> <span class="nav-text">執行Anaconda prompt</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#啟動虛擬環境"><span class="nav-number">4.2.2.</span> <span class="nav-text">啟動虛擬環境</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#檢測環境-用來看目前創建了幾個虛擬環境"><span class="nav-number">4.2.3.</span> <span class="nav-text">檢測環境(用來看目前創建了幾個虛擬環境)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#檢測當下虛擬環境的packages"><span class="nav-number">4.2.4.</span> <span class="nav-text">檢測當下虛擬環境的packages</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#安裝環境的packages"><span class="nav-number">4.2.5.</span> <span class="nav-text">安裝環境的packages</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#關閉環境"><span class="nav-number">4.2.6.</span> <span class="nav-text">關閉環境</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
