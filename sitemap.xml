@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://teddybearfp.github.io/about/index.html</loc>
+    
+    <lastmod>2019-05-02T14:34:47.860Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://teddybearfp.github.io/2019/04/26/PyCharm-%E5%AE%89%E8%A3%9D/</loc>
     
     <lastmod>2019-05-01T04:10:15.401Z</lastmod>
@@ -334,13 +341,6 @@
     <loc>https://teddybearfp.github.io/2018/10/22/Qt-Canvas%E7%95%AB%E5%9C%96/</loc>
     
     <lastmod>2018-11-05T05:59:41.659Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://teddybearfp.github.io/about/index.html</loc>
-    
-    <lastmod>2018-10-26T04:13:47.601Z</lastmod>
     
   </url>
   
