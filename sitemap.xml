@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://teddybearfp.github.io/2018/10/22/Qt-Setup/</loc>
+    
+    <lastmod>2019-07-05T15:50:39.163Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://teddybearfp.github.io/2018/10/22/Qt-Canvas%E7%95%AB%E5%9C%96/</loc>
     
     <lastmod>2019-07-05T15:47:22.962Z</lastmod>
@@ -411,13 +418,6 @@
     <loc>https://teddybearfp.github.io/2018/10/24/C-%E7%9B%A3%E8%81%BDQEvent%E4%B8%A6%E5%B0%87%E4%BA%8B%E4%BB%B6%E9%87%8D%E5%AF%AB/</loc>
     
     <lastmod>2018-10-24T14:27:46.181Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://teddybearfp.github.io/2018/10/22/Qt-Setup/</loc>
-    
-    <lastmod>2018-10-24T14:02:27.593Z</lastmod>
     
   </url>
   
