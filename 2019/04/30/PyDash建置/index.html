@@ -91,17 +91,17 @@
 <meta property="og:site_name" content="泰迪熊的程式足跡">
 <meta property="og:description" content="前言pyDash 是一個輕量且 基於 web 的 linux 性能監測工具 ，它是用 python 和 Django 加上 Chart.js 來編寫的。可以使用這個工具來監視你的 Linux 個人電腦/服務器資源，比如 CPU、內存、網絡統計，包括在線用戶的進程以及更多。儀表盤完全由主要的 Python 發行版本所提供的 Python 庫開發所以不需要額外安裝太多的函式庫，這篇文章記錄如何使用Dj">
 <meta property="og:locale" content="zh-tw">
-<meta property="og:image" content="https://i.imgur.com/SM7pbwO.png">
-<meta property="og:image" content="https://i.imgur.com/GuSOOrT.png">
-<meta property="og:image" content="https://i.imgur.com/1jkqCTB.png">
-<meta property="og:image" content="https://i.imgur.com/XrgSJba.png">
-<meta property="og:image" content="https://i.imgur.com/6nIDMqW.png">
-<meta property="og:image" content="https://i.imgur.com/TQOUheY.png">
-<meta property="og:updated_time" content="2019-04-30T14:47:05.162Z">
+<meta property="og:image" content="https://i.imgur.com/jaKo0vb.png">
+<meta property="og:image" content="https://i.imgur.com/olpy66E.png">
+<meta property="og:image" content="https://i.imgur.com/xAWxyv1.png">
+<meta property="og:image" content="https://i.imgur.com/z7uWs6S.png">
+<meta property="og:image" content="https://i.imgur.com/JHlINId.png">
+<meta property="og:image" content="https://i.imgur.com/5mzyqbE.png">
+<meta property="og:updated_time" content="2019-07-05T14:29:31.212Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="PyDash 建置">
 <meta name="twitter:description" content="前言pyDash 是一個輕量且 基於 web 的 linux 性能監測工具 ，它是用 python 和 Django 加上 Chart.js 來編寫的。可以使用這個工具來監視你的 Linux 個人電腦/服務器資源，比如 CPU、內存、網絡統計，包括在線用戶的進程以及更多。儀表盤完全由主要的 Python 發行版本所提供的 Python 庫開發所以不需要額外安裝太多的函式庫，這篇文章記錄如何使用Dj">
-<meta name="twitter:image" content="https://i.imgur.com/SM7pbwO.png">
+<meta name="twitter:image" content="https://i.imgur.com/jaKo0vb.png">
 
 
 
@@ -349,8 +349,8 @@
             
             <span class="post-updated">
             &nbsp; | &nbsp; 更新於
-            <time itemprop="dateUpdated" datetime="2019-04-30T22:47:05+08:00" content="2019-04-30">
-            2019-04-30
+            <time itemprop="dateUpdated" datetime="2019-07-05T22:29:31+08:00" content="2019-07-05">
+            2019-07-05
             </time>
             </span>
             
@@ -430,14 +430,14 @@
 </code></pre><p>5.激活虛擬環境<br>    切換到剛剛創建的虛擬環境pydashtest資料夾中的Scripts啟動</p>
 <pre><code>activate
 </code></pre><p>輸入成功會命令提示字元指令最前方會出現虛擬環境名稱例如:(pydashtest)</p>
-<p><img src="https://i.imgur.com/SM7pbwO.png" alt=""></p>
+<p><img src="https://i.imgur.com/jaKo0vb.png" alt=""></p>
 <p>6.安裝所需函式庫<br>    切換到與requirements.txt同一層中執行以下指令(以這個pydash來說僅需要另外安裝django==1.6.8)</p>
 <pre><code>pip install -r requirements.txt
 </code></pre><p>7.進入pydash資料夾中將settings.py檔案中的SECRET_KEY設定密鑰存取並退出</p>
-<p><img src="https://i.imgur.com/GuSOOrT.png" alt=""></p>
+<p><img src="https://i.imgur.com/olpy66E.png" alt=""></p>
 <p>8.創建資料庫與身分驗證(輸入信箱與密碼)</p>
 <pre><code>python manage.py syncdb
-</code></pre><p><img src="https://i.imgur.com/1jkqCTB.png" alt=""></p>
+</code></pre><p><img src="https://i.imgur.com/xAWxyv1.png" alt=""></p>
 <p>9.執行 Django 開發服務器<br>    python manage.py runserver<br>    若出現一些錯誤訊息可能是缺少一些函式庫<br>    那麼我們只要安裝缺少的函式庫即可</p>
 <pre><code>例如:pip install keras
 </code></pre><p>一直重複執行python manage.py runserver直到沒有缺少函式庫</p>
@@ -446,11 +446,11 @@ ImportError: cannot import name &apos;patterns&apos;
 出現上面這個問題的話解決辦法是呼叫下列指令
 pip install Django==1.8
 </code></pre><p>出現以下畫面代表正確</p>
-<p><img src="https://i.imgur.com/XrgSJba.png" alt=""></p>
+<p><img src="https://i.imgur.com/z7uWs6S.png" alt=""></p>
 <p>10.登入<br>    接著打開瀏覽器輸入網址<br>    <a href="http://127.0.0.1:8000/" target="_blank" rel="noopener">http://127.0.0.1:8000/</a><br>    (特別注意:第一格是輸入Username不是信箱帳號)</p>
-<p><img src="https://i.imgur.com/6nIDMqW.png" alt=""></p>
+<p><img src="https://i.imgur.com/JHlINId.png" alt=""></p>
 <p>登入成功後觀看數據囉</p>
-<p><img src="https://i.imgur.com/TQOUheY.png" alt=""></p>
+<p><img src="https://i.imgur.com/5mzyqbE.png" alt=""></p>
 <p>結束runserver</p>
 <pre><code>Ctrl+C
 </code></pre><p>離開虛擬環境</p>
