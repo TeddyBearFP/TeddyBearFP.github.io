@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://teddybearfp.github.io/2019/06/17/LLVM-Coding-rule%E5%B0%8F%E5%B9%AB%E6%89%8B/</loc>
+    
+    <lastmod>2019-07-05T14:21:01.317Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://teddybearfp.github.io/2019/06/21/Python-%E5%8C%AF%E7%8E%87%E8%A7%B8%E5%83%B9%E9%80%9A%E7%9F%A5%E5%B0%8F%E5%B9%AB%E6%89%8B/</loc>
     
     <lastmod>2019-07-05T14:17:14.310Z</lastmod>
@@ -33,13 +40,6 @@
     <loc>https://teddybearfp.github.io/2019/04/28/Python-logger/</loc>
     
     <lastmod>2019-06-21T15:46:37.805Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://teddybearfp.github.io/2019/06/17/LLVM-Coding-rule%E5%B0%8F%E5%B9%AB%E6%89%8B/</loc>
-    
-    <lastmod>2019-06-17T12:04:31.518Z</lastmod>
     
   </url>
   

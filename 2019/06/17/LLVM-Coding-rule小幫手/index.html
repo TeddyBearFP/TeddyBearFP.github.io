@@ -91,17 +91,17 @@
 <meta property="og:site_name" content="泰迪熊的程式足跡">
 <meta property="og:description" content="前言大家一起共同開發專案時必須遵守團隊的coding rule，但是coding rule那麼多有些又跟平常的編寫習慣不同常常忘記，來看看怎麼用LLVM解決這個問題吧，這一篇記錄LLVM底層虛擬機器（Low Level Virtual Machine），LLVM是一個自由軟體專案，它是一種編譯器基礎設施，以C++寫成，包含一系列模組化的編譯器元件和工具鏈，用來開發編譯器前端和後端。 下載LLVML">
 <meta property="og:locale" content="zh-tw">
-<meta property="og:image" content="https://i.imgur.com/83Nle0I.png">
-<meta property="og:image" content="https://i.imgur.com/QeN9BCZ.png">
-<meta property="og:image" content="https://i.imgur.com/9aGZz0M.png">
-<meta property="og:image" content="https://i.imgur.com/zXPKxF2.png">
-<meta property="og:image" content="https://i.imgur.com/Il0YMZZ.png">
-<meta property="og:image" content="https://i.imgur.com/tSl5lkM.png">
-<meta property="og:updated_time" content="2019-06-17T12:04:31.518Z">
+<meta property="og:image" content="https://i.imgur.com/Yd0CkLy.png">
+<meta property="og:image" content="https://i.imgur.com/T5FckqH.png">
+<meta property="og:image" content="https://i.imgur.com/MdWX3qI.png">
+<meta property="og:image" content="https://i.imgur.com/6G9YEsc.png">
+<meta property="og:image" content="https://i.imgur.com/wjapLkh.png">
+<meta property="og:image" content="https://i.imgur.com/CJzhKfI.png">
+<meta property="og:updated_time" content="2019-07-05T14:21:01.317Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="LLVM Coding rule小幫手">
 <meta name="twitter:description" content="前言大家一起共同開發專案時必須遵守團隊的coding rule，但是coding rule那麼多有些又跟平常的編寫習慣不同常常忘記，來看看怎麼用LLVM解決這個問題吧，這一篇記錄LLVM底層虛擬機器（Low Level Virtual Machine），LLVM是一個自由軟體專案，它是一種編譯器基礎設施，以C++寫成，包含一系列模組化的編譯器元件和工具鏈，用來開發編譯器前端和後端。 下載LLVML">
-<meta name="twitter:image" content="https://i.imgur.com/83Nle0I.png">
+<meta name="twitter:image" content="https://i.imgur.com/Yd0CkLy.png">
 
 
 
@@ -349,8 +349,8 @@
             
             <span class="post-updated">
             &nbsp; | &nbsp; 更新於
-            <time itemprop="dateUpdated" datetime="2019-06-17T20:04:31+08:00" content="2019-06-17">
-            2019-06-17
+            <time itemprop="dateUpdated" datetime="2019-07-05T22:21:01+08:00" content="2019-07-05">
+            2019-07-05
             </time>
             </span>
             
@@ -422,11 +422,11 @@
 <h2 id="安裝LLVM"><a href="#安裝LLVM" class="headerlink" title="安裝LLVM"></a>安裝LLVM</h2><p>開啟LLVM-8.0.0-win64.exe安裝<br>一直按下一步</p>
 <h2 id="設定LLVM"><a href="#設定LLVM" class="headerlink" title="設定LLVM"></a>設定LLVM</h2><p>安裝完成後，開啟Qt Creator<br>接著在上方Navigation bar中找尋</p>
 <pre><code>Help -&gt; About Plugins -&gt; C++中的Beautiful(experimental)打勾Load
-</code></pre><p><img src="https://i.imgur.com/83Nle0I.png" alt=""></p>
+</code></pre><p><img src="https://i.imgur.com/Yd0CkLy.png" alt=""></p>
 <p>勾選完成後重開Qt Creator</p>
 <p>在上方Navigation bar</p>
 <pre><code>Tool -&gt; Options -&gt; Beautifier中 Clang Format設定ClangFormat command選擇&quot;C:\Program Files (x86)\LLVM\bin\clang-format.exe&quot;
-</code></pre><p><img src="https://i.imgur.com/QeN9BCZ.png" alt=""></p>
+</code></pre><p><img src="https://i.imgur.com/T5FckqH.png" alt=""></p>
 <p>接著並在Options中選擇Use customized style, 新增style<br>內容可以為如下</p>
 <pre><code>BasedOnStyle: WebKit
 AlignTrailingComments: true
@@ -445,11 +445,11 @@ PointerAlignment: Right
 MaxEmptyLinesToKeep: 1
 </code></pre><h2 id="觸發LLVM"><a href="#觸發LLVM" class="headerlink" title="觸發LLVM"></a>觸發LLVM</h2><p>觸發LLVM分兩種一種是設為快捷鍵<br>一種是每當儲存時自動執行LLVM</p>
 <h3 id="快捷鍵方式設定"><a href="#快捷鍵方式設定" class="headerlink" title="快捷鍵方式設定"></a>快捷鍵方式設定</h3><p>可以至Keyboard的地方找ClangFormat 設定FormatFile的快捷鍵</p>
-<p><img src="https://i.imgur.com/9aGZz0M.png" alt=""></p>
-<h3 id="儲存時自動執行設定"><a href="#儲存時自動執行設定" class="headerlink" title="儲存時自動執行設定"></a>儲存時自動執行設定</h3><p><img src="https://i.imgur.com/zXPKxF2.png" alt=""></p>
+<p><img src="https://i.imgur.com/MdWX3qI.png" alt=""></p>
+<h3 id="儲存時自動執行設定"><a href="#儲存時自動執行設定" class="headerlink" title="儲存時自動執行設定"></a>儲存時自動執行設定</h3><p><img src="https://i.imgur.com/6G9YEsc.png" alt=""></p>
 <p>以上步驟完成後即使coding rule忘記了，還是可以幫你自動遵守哦!</p>
-<p>牛刀小試一下,不好的coding style經過LLVM後自動展開<br><img src="https://i.imgur.com/Il0YMZZ.png" alt=""></p>
-<p><img src="https://i.imgur.com/tSl5lkM.png" alt=""></p>
+<p>牛刀小試一下,不好的coding style經過LLVM後自動展開<br><img src="https://i.imgur.com/wjapLkh.png" alt=""></p>
+<p><img src="https://i.imgur.com/CJzhKfI.png" alt=""></p>
 
       
     </div>
