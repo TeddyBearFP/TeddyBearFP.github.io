@@ -91,14 +91,14 @@
 <meta property="og:site_name" content="泰迪熊的程式足跡">
 <meta property="og:description" content="前言 如果兩個已經開發完成的程序間需要溝通合作該怎麼進行呢?例如:程式完成某一階段時如何通知另一個程式接續進行今天讓我們來談談如何使兩個獨立的執行檔進行溝通合作  運作原理 兩程式間共享某塊記憶體達到溝通效果  兩個程式 1.Sender 2.Receiver  Sender步驟  Sender先藉由FindWindow(“視窗名”)取得HWND視窗的控制代碼 HWND targetWindow">
 <meta property="og:locale" content="zh-tw">
-<meta property="og:image" content="https://i.imgur.com/iR2bvrD.png">
-<meta property="og:image" content="https://i.imgur.com/zbGuaDL.png">
-<meta property="og:image" content="https://i.imgur.com/xBRcn1v.png">
-<meta property="og:updated_time" content="2019-03-24T04:24:16.427Z">
+<meta property="og:image" content="https://i.imgur.com/mZndIjJ.png">
+<meta property="og:image" content="https://i.imgur.com/J2psHRQ.png">
+<meta property="og:image" content="https://i.imgur.com/7bBTler.png">
+<meta property="og:updated_time" content="2019-07-05T15:44:21.104Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="兩個獨立執行檔溝通">
 <meta name="twitter:description" content="前言 如果兩個已經開發完成的程序間需要溝通合作該怎麼進行呢?例如:程式完成某一階段時如何通知另一個程式接續進行今天讓我們來談談如何使兩個獨立的執行檔進行溝通合作  運作原理 兩程式間共享某塊記憶體達到溝通效果  兩個程式 1.Sender 2.Receiver  Sender步驟  Sender先藉由FindWindow(“視窗名”)取得HWND視窗的控制代碼 HWND targetWindow">
-<meta name="twitter:image" content="https://i.imgur.com/iR2bvrD.png">
+<meta name="twitter:image" content="https://i.imgur.com/mZndIjJ.png">
 
 
 
@@ -346,8 +346,8 @@
             
             <span class="post-updated">
             &nbsp; | &nbsp; 更新於
-            <time itemprop="dateUpdated" datetime="2019-03-24T12:24:16+08:00" content="2019-03-24">
-            2019-03-24
+            <time itemprop="dateUpdated" datetime="2019-07-05T23:44:21+08:00" content="2019-07-05">
+            2019-07-05
             </time>
             </span>
             
@@ -462,9 +462,9 @@
 <h4 id="Receiver-main-cpp"><a href="#Receiver-main-cpp" class="headerlink" title="Receiver_main.cpp"></a>Receiver_main.cpp</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;QGuiApplication&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;QQmlApplicationEngine&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"receiver.h"</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">char</span> *argv[])</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    QCoreApplication::setAttribute(Qt::AA_EnableHighDpiScaling);</span><br><span class="line"></span><br><span class="line">    <span class="function">QGuiApplication <span class="title">app</span><span class="params">(argc, argv)</span></span>;</span><br><span class="line">    QQmlApplicationEngine engine;</span><br><span class="line">    Receiver r;</span><br><span class="line">    app.installNativeEventFilter(&amp;r);  <span class="comment">//註冊篩選器</span></span><br><span class="line">    engine.load(QUrl(QStringLiteral(<span class="string">"qrc:/main.qml"</span>)));</span><br><span class="line">    <span class="keyword">if</span> (engine.rootObjects().isEmpty())</span><br><span class="line">        <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> app.exec();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h4 id="Receiver-main-qml"><a href="#Receiver-main-qml" class="headerlink" title="Receiver_main.qml"></a>Receiver_main.qml</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> QtQuick <span class="number">2.9</span></span><br><span class="line"><span class="keyword">import</span> QtQuick.Window <span class="number">2.2</span></span><br><span class="line"></span><br><span class="line">Window &#123;</span><br><span class="line">    visible: <span class="literal">true</span></span><br><span class="line">    width: <span class="number">640</span></span><br><span class="line">    height: <span class="number">480</span></span><br><span class="line">    title: qsTr(<span class="string">"Receiver"</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h4 id="執行"><a href="#執行" class="headerlink" title="執行"></a>執行</h4><p>先開啟Receiver再執行Sender使其能夠偵測到並傳值</p>
-<p><img src="https://i.imgur.com/iR2bvrD.png" alt="Sender" title="開啟Receiver後再開啟Sender發送"></p>
-<p><img src="https://i.imgur.com/zbGuaDL.png" alt="" title="Sender成功找到Receiver的window"></p>
-<p><img src="https://i.imgur.com/xBRcn1v.png" alt="" title="Receiver成功接收到Sender傳來的值!"></p>
+<p><img src="https://i.imgur.com/mZndIjJ.png" alt="Sender" title="開啟Receiver後再開啟Sender發送"></p>
+<p><img src="https://i.imgur.com/J2psHRQ.png" alt="" title="Sender成功找到Receiver的window"></p>
+<p><img src="https://i.imgur.com/7bBTler.png" alt="" title="Receiver成功接收到Sender傳來的值!"></p>
 
       
     </div>
