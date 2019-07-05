@@ -91,12 +91,12 @@
 <meta property="og:site_name" content="泰迪熊的程式足跡">
 <meta property="og:description" content="前言最近做專案整合的時候，要將他人編寫的程式碼整合在一起，有時會有錯誤發生，這時如果很清楚問題所在，就能將問題迎刃而解，像是清楚的了解是在編譯時就發生錯誤是語法錯誤還是語意錯誤，產生obj檔了嗎?或是DLL導入時才發生錯誤呢?所以我趁這個機會來好好複習一下之前所學的程式語言，將發生的錯誤歸類一下，了解來龍去脈更能有效率的除錯! 簡介建置(build)執行檔的過程包括編譯和連結。編譯器(compil">
 <meta property="og:locale" content="zh-tw">
-<meta property="og:image" content="https://i.imgur.com/A3s5UL9.jpg">
-<meta property="og:updated_time" content="2019-03-24T04:22:02.209Z">
+<meta property="og:image" content="https://i.imgur.com/Sems83E.png">
+<meta property="og:updated_time" content="2019-07-05T15:28:17.266Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="C&#x2F;C++ 編譯流程">
 <meta name="twitter:description" content="前言最近做專案整合的時候，要將他人編寫的程式碼整合在一起，有時會有錯誤發生，這時如果很清楚問題所在，就能將問題迎刃而解，像是清楚的了解是在編譯時就發生錯誤是語法錯誤還是語意錯誤，產生obj檔了嗎?或是DLL導入時才發生錯誤呢?所以我趁這個機會來好好複習一下之前所學的程式語言，將發生的錯誤歸類一下，了解來龍去脈更能有效率的除錯! 簡介建置(build)執行檔的過程包括編譯和連結。編譯器(compil">
-<meta name="twitter:image" content="https://i.imgur.com/A3s5UL9.jpg">
+<meta name="twitter:image" content="https://i.imgur.com/Sems83E.png">
 
 
 
@@ -344,8 +344,8 @@
             
             <span class="post-updated">
             &nbsp; | &nbsp; 更新於
-            <time itemprop="dateUpdated" datetime="2019-03-24T12:22:02+08:00" content="2019-03-24">
-            2019-03-24
+            <time itemprop="dateUpdated" datetime="2019-07-05T23:28:17+08:00" content="2019-07-05">
+            2019-07-05
             </time>
             </span>
             
@@ -413,7 +413,7 @@
       
         <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>最近做專案整合的時候，要將他人編寫的程式碼整合在一起，有時會有錯誤發生，這時如果很清楚問題所在，就能將問題迎刃而解，像是清楚的了解是在編譯時就發生錯誤是語法錯誤還是語意錯誤，產生obj檔了嗎?或是DLL導入時才發生錯誤呢?<br>所以我趁這個機會來好好複習一下之前所學的程式語言，將發生的錯誤歸類一下，了解來龍去脈更能有效率的除錯!</p>
 <h2 id="簡介"><a href="#簡介" class="headerlink" title="簡介"></a>簡介</h2><p>建置(build)執行檔的過程包括編譯和連結。<br>編譯器(compiler)把原始碼變成機械碼。<br>連結器(linker)把多份機械碼合併成執行檔，並更正檔案內的參考位址(address)。<br>程式庫檔案(.lib)是一些機械碼檔案(.obj)的集合體。</p>
-<h2 id="流程圖"><a href="#流程圖" class="headerlink" title="流程圖"></a>流程圖</h2><p><img src="https://i.imgur.com/A3s5UL9.jpg" alt=""></p>
+<h2 id="流程圖"><a href="#流程圖" class="headerlink" title="流程圖"></a>流程圖</h2><p><img src="https://i.imgur.com/Sems83E.png" alt=""></p>
 <h2 id="編譯步驟"><a href="#編譯步驟" class="headerlink" title="編譯步驟"></a>編譯步驟</h2><h3 id="編譯器"><a href="#編譯器" class="headerlink" title="編譯器"></a>編譯器</h3><h4 id="檢查語法錯誤-SyntaxError"><a href="#檢查語法錯誤-SyntaxError" class="headerlink" title="檢查語法錯誤(SyntaxError)"></a>檢查語法錯誤(SyntaxError)</h4><p>例如多打了符號或括號數目不平衡等，那麼編譯器就看不懂你的程式。</p>
 <h4 id="檢查語義錯誤-SemanticError"><a href="#檢查語義錯誤-SemanticError" class="headerlink" title="檢查語義錯誤(SemanticError)"></a>檢查語義錯誤(SemanticError)</h4><p>例如你用了未經宣告的變數，就算編譯器看得懂，但是也不懂得如何編譯你的程式。</p>
 <h4 id="檢查宣告與型態"><a href="#檢查宣告與型態" class="headerlink" title="檢查宣告與型態"></a>檢查宣告與型態</h4><p>如果有變數是透過 include 而來的，在檢查過程中也會去參考其他有 include 到的檔案該變數是否被宣告過或是變數型態錯誤</p>
