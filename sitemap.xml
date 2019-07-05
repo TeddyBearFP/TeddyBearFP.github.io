@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://teddybearfp.github.io/2019/05/25/Qt-SystemTray-implement/</loc>
+    
+    <lastmod>2019-07-05T14:22:25.897Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://teddybearfp.github.io/2019/06/17/LLVM-Coding-rule%E5%B0%8F%E5%B9%AB%E6%89%8B/</loc>
     
     <lastmod>2019-07-05T14:21:01.317Z</lastmod>
@@ -82,13 +89,6 @@
     <loc>https://teddybearfp.github.io/2019/05/27/%E4%BA%92%E6%96%A5%E9%8E%96-Mutex-lock/</loc>
     
     <lastmod>2019-05-27T10:48:00.322Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://teddybearfp.github.io/2019/05/25/Qt-SystemTray-implement/</loc>
-    
-    <lastmod>2019-05-27T10:26:31.097Z</lastmod>
     
   </url>
   
