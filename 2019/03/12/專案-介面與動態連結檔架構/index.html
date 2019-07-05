@@ -91,12 +91,12 @@
 <meta property="og:site_name" content="泰迪熊的程式足跡">
 <meta property="og:description" content="前言一個專案的架構編寫是非常重要的，若是架構不太好，事隔多時回來看程式碼，應該都忘光光了，所以好的架構可以讓維護更方便，並且除錯也比較快速，今天所紀錄的是介面與動態連結檔溝通的架構方法之一，而整個專案架構是遵守Model-View-ViewModel(MVVM) 想法透過上層介面MyProj(project)呼叫MyCore(dll)使用底層函式，這樣做的好處有  可以將前端與底層分開進行開發(開">
 <meta property="og:locale" content="zh-tw">
-<meta property="og:image" content="https://i.imgur.com/NrWFEhc.png">
-<meta property="og:updated_time" content="2019-03-19T14:05:58.434Z">
+<meta property="og:image" content="https://i.imgur.com/nIgtepD.png">
+<meta property="og:updated_time" content="2019-07-05T14:58:25.817Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="專案_介面與動態連結檔架構">
 <meta name="twitter:description" content="前言一個專案的架構編寫是非常重要的，若是架構不太好，事隔多時回來看程式碼，應該都忘光光了，所以好的架構可以讓維護更方便，並且除錯也比較快速，今天所紀錄的是介面與動態連結檔溝通的架構方法之一，而整個專案架構是遵守Model-View-ViewModel(MVVM) 想法透過上層介面MyProj(project)呼叫MyCore(dll)使用底層函式，這樣做的好處有  可以將前端與底層分開進行開發(開">
-<meta name="twitter:image" content="https://i.imgur.com/NrWFEhc.png">
+<meta name="twitter:image" content="https://i.imgur.com/nIgtepD.png">
 
 
 
@@ -344,8 +344,8 @@
             
             <span class="post-updated">
             &nbsp; | &nbsp; 更新於
-            <time itemprop="dateUpdated" datetime="2019-03-19T22:05:58+08:00" content="2019-03-19">
-            2019-03-19
+            <time itemprop="dateUpdated" datetime="2019-07-05T22:58:25+08:00" content="2019-07-05">
+            2019-07-05
             </time>
             </span>
             
@@ -417,7 +417,7 @@
 <li>可以將前端與底層分開進行開發(開發速度快與分工詳細)</li>
 <li>函式呼叫正確與否就知道dll正確性(除錯與責任歸屬快速)</li>
 </ul>
-<h2 id="動態連結檔概述"><a href="#動態連結檔概述" class="headerlink" title="動態連結檔概述"></a>動態連結檔概述</h2><p><img src="https://i.imgur.com/NrWFEhc.png" alt=""></p>
+<h2 id="動態連結檔概述"><a href="#動態連結檔概述" class="headerlink" title="動態連結檔概述"></a>動態連結檔概述</h2><p><img src="https://i.imgur.com/nIgtepD.png" alt=""></p>
 <h2 id="動態連結檔各檔描述"><a href="#動態連結檔各檔描述" class="headerlink" title="動態連結檔各檔描述"></a>動態連結檔各檔描述</h2><h3 id="MyCore-h-MyCore-cpp"><a href="#MyCore-h-MyCore-cpp" class="headerlink" title="MyCore.h / MyCore.cpp"></a>MyCore.h / MyCore.cpp</h3><p>提供純C介面給上層呼叫<br>純C的目的是之後這個動態連結檔的相容性很高</p>
 <p>函式內參數為下方例子<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">extern</span> “C” Initiate(<span class="keyword">void</span> *dev);</span><br></pre></td></tr></table></figure></p>
 <p>在此接收到void *dev只有一個目的就是為了轉成Core呼叫Core內部函式*dev = new Core(獲得Core的Class得予再往下呼叫)<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Core *core = (Core*)*dev;</span><br><span class="line">CoreRetCide ret = core-&gt;initiate(dev,ctx);</span><br></pre></td></tr></table></figure></p>
