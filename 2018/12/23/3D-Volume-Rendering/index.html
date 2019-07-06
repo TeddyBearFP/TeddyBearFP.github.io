@@ -92,13 +92,13 @@
 <meta property="og:description" content="前言前陣子使用的QImage都是處理二維圖形，最近研究起3D的領域，透過OpenGL來實作立體渲染(Volume Rendering)，立體渲染簡單來說，就是將2D圖形數張疊成一個3D立體圖形，這立體渲染的技術可以運用在醫學上的CT與MRI斷層掃描中。這篇所寫的頂點與紋理處理搭配上一篇所編寫的OpenGL GLSL著色器就可以達到下圖3D立體渲染效果囉!  名詞概述Volume Rendering">
 <meta property="og:locale" content="zh-tw">
 <meta property="og:image" content="https://media.giphy.com/media/fxCrCjSXyJBR83AFPb/giphy.gif">
-<meta property="og:image" content="https://i.imgur.com/888pOxo.png">
-<meta property="og:image" content="https://i.imgur.com/vD7BsCL.png">
-<meta property="og:image" content="https://i.imgur.com/opzvhX4.png">
-<meta property="og:image" content="https://i.imgur.com/XWHvtot.png">
-<meta property="og:image" content="https://i.imgur.com/fI2erxE.png">
-<meta property="og:image" content="https://i.imgur.com/19PQu4z.png">
-<meta property="og:updated_time" content="2019-03-24T04:02:52.264Z">
+<meta property="og:image" content="https://i.imgur.com/4oruPUN.png">
+<meta property="og:image" content="https://i.imgur.com/OLIFyss.png">
+<meta property="og:image" content="https://i.imgur.com/RfWnq0N.png">
+<meta property="og:image" content="https://i.imgur.com/7CMSI0T.png">
+<meta property="og:image" content="https://i.imgur.com/XfOt45s.png">
+<meta property="og:image" content="https://i.imgur.com/IOZtLcu.png">
+<meta property="og:updated_time" content="2019-07-06T01:37:09.690Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="OpenGL 3D 立體渲染">
 <meta name="twitter:description" content="前言前陣子使用的QImage都是處理二維圖形，最近研究起3D的領域，透過OpenGL來實作立體渲染(Volume Rendering)，立體渲染簡單來說，就是將2D圖形數張疊成一個3D立體圖形，這立體渲染的技術可以運用在醫學上的CT與MRI斷層掃描中。這篇所寫的頂點與紋理處理搭配上一篇所編寫的OpenGL GLSL著色器就可以達到下圖3D立體渲染效果囉!  名詞概述Volume Rendering">
@@ -350,8 +350,8 @@
             
             <span class="post-updated">
             &nbsp; | &nbsp; 更新於
-            <time itemprop="dateUpdated" datetime="2019-03-24T12:02:52+08:00" content="2019-03-24">
-            2019-03-24
+            <time itemprop="dateUpdated" datetime="2019-07-06T09:37:09+08:00" content="2019-07-06">
+            2019-07-06
             </time>
             </span>
             
@@ -426,11 +426,11 @@
 <li>3D Texture</li>
 </ul>
 <h3 id="2D-Array"><a href="#2D-Array" class="headerlink" title="2D Array"></a>2D Array</h3><h4 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h4><p>用一組2D QImage紋理數與頂點組伴隨著z軸的變化達到疊圖效果</p>
-<p><img src="https://i.imgur.com/888pOxo.png" alt=""></p>
-<h4 id="問題"><a href="#問題" class="headerlink" title="問題"></a>問題</h4><p>用2D Array疊成的3D模型會有個問題，就是在模型轉到90度與180度時從側面來看會是有間隙的甚至直接穿透看不到畫面，原因是這種畫法在yz軸上並沒有繪製圖形<br><img src="https://i.imgur.com/vD7BsCL.png" alt=""></p>
-<h4 id="解決辦法"><a href="#解決辦法" class="headerlink" title="解決辦法"></a>解決辦法</h4><p>為了解決上述的YZ軸未繪製圖形，導致側邊觀看會沒有畫面甚至穿透，我們的解決辦法是使用3組的2D array去做立體渲染，<br><img src="https://i.imgur.com/opzvhX4.png" alt=""><br>準備好以上三組2D Array做出來的3D圖形在XY平面、YZ平面與XZ平面上都有像素資料，這樣解決了90度與180度沒畫面或是穿透的問題了，但是我們怎麼知道在哪種角度時顯示顯示哪組2D Array呢?<br><img src="https://i.imgur.com/XWHvtot.png" alt=""><br>透過上述方式可以切換平面，正確顯示數據但是在側面時會發生Popping Effect所以更正確的是在旋轉時就以當下面向我們的當作切面是最好的辦法!<br><img src="https://i.imgur.com/fI2erxE.png" alt=""></p>
+<p><img src="https://i.imgur.com/4oruPUN.png" alt=""></p>
+<h4 id="問題"><a href="#問題" class="headerlink" title="問題"></a>問題</h4><p>用2D Array疊成的3D模型會有個問題，就是在模型轉到90度與180度時從側面來看會是有間隙的甚至直接穿透看不到畫面，原因是這種畫法在yz軸上並沒有繪製圖形<br><img src="https://i.imgur.com/OLIFyss.png" alt=""></p>
+<h4 id="解決辦法"><a href="#解決辦法" class="headerlink" title="解決辦法"></a>解決辦法</h4><p>為了解決上述的YZ軸未繪製圖形，導致側邊觀看會沒有畫面甚至穿透，我們的解決辦法是使用3組的2D array去做立體渲染，<br><img src="https://i.imgur.com/RfWnq0N.png" alt=""><br>準備好以上三組2D Array做出來的3D圖形在XY平面、YZ平面與XZ平面上都有像素資料，這樣解決了90度與180度沒畫面或是穿透的問題了，但是我們怎麼知道在哪種角度時顯示顯示哪組2D Array呢?<br><img src="https://i.imgur.com/7CMSI0T.png" alt=""><br>透過上述方式可以切換平面，正確顯示數據但是在側面時會發生Popping Effect所以更正確的是在旋轉時就以當下面向我們的當作切面是最好的辦法!<br><img src="https://i.imgur.com/XfOt45s.png" alt=""></p>
 <h3 id="3D-Texture"><a href="#3D-Texture" class="headerlink" title="3D Texture"></a>3D Texture</h3><h4 id="原理-1"><a href="#原理-1" class="headerlink" title="原理"></a>原理</h4><p>接下來講述的就是這篇繪製Volume Rendering的方式，將數組2D QImage以Buffer的方式放到3D Texture中進行處理，首先先將2D QImage的陣列存成一個buffer，迴圈執行共幾張QImage然後內容取RGBA存放，得到一個3D紋理，接下來準備個3D容器來準備放進這個3D紋理</p>
-<p><img src="https://i.imgur.com/19PQu4z.png" alt="" title="3D容器貼上3D紋理示意圖"></p>
+<p><img src="https://i.imgur.com/IOZtLcu.png" alt="" title="3D容器貼上3D紋理示意圖"></p>
 <p>最後是最重要的環節，當旋轉時我們旋轉的不是容器，而是3D紋理!<br>這樣的話我們容器永遠是XY平面面對攝影機，而選轉的3D紋理不像2D紋理有側邊透視問題，並且是做過Alpha test跟Blending的紋理。</p>
 <h2 id="環境"><a href="#環境" class="headerlink" title="環境"></a>環境</h2><p>使用Qt編寫3D相關程式時，我們需要在安裝Qt的時候就要勾選Qt 3D選項透過OpenGL編寫。</p>
 <h3 id="無法使用gl-相關函式"><a href="#無法使用gl-相關函式" class="headerlink" title="無法使用gl_相關函式"></a>無法使用gl_相關函式</h3><p>即使安裝了Qt 3D相關函式庫，在使用時也可能無法呼叫gl_相關函式，這時候我們只要在pro檔中，增加LIBS += -lopengl32</p>
