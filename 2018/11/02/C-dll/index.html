@@ -91,13 +91,13 @@
 <meta property="og:site_name" content="泰迪熊的程式足跡">
 <meta property="og:description" content="前言專案合作上，經常使用到動態連結函式庫，因為它可以將記憶體浪費的情形將可大幅降低，並且很適合協作開發，一直都沒很了解extern “C”真正意義，而且導入的時候或是連結的時候有時候都會發生問題，所以紀錄了這一篇一探究竟並且避免錯誤重複發生。 動態連結函式庫動態連結函式庫Dynamic-link library ，縮寫為DLL所謂動態連結，就是把一些經常會共用的程式碼（靜態連結的OBJ程式庫）製作">
 <meta property="og:locale" content="zh-tw">
-<meta property="og:image" content="https://i.imgur.com/GdgVaj1.png">
-<meta property="og:image" content="https://i.imgur.com/pmZF7pE.png">
-<meta property="og:updated_time" content="2019-04-08T13:37:35.650Z">
+<meta property="og:image" content="https://i.imgur.com/dUHM5uj.png">
+<meta property="og:image" content="https://i.imgur.com/IvpSeee.png">
+<meta property="og:updated_time" content="2019-07-06T01:46:43.612Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="C&#x2F;C++ 動態連結函式庫">
 <meta name="twitter:description" content="前言專案合作上，經常使用到動態連結函式庫，因為它可以將記憶體浪費的情形將可大幅降低，並且很適合協作開發，一直都沒很了解extern “C”真正意義，而且導入的時候或是連結的時候有時候都會發生問題，所以紀錄了這一篇一探究竟並且避免錯誤重複發生。 動態連結函式庫動態連結函式庫Dynamic-link library ，縮寫為DLL所謂動態連結，就是把一些經常會共用的程式碼（靜態連結的OBJ程式庫）製作">
-<meta name="twitter:image" content="https://i.imgur.com/GdgVaj1.png">
+<meta name="twitter:image" content="https://i.imgur.com/dUHM5uj.png">
 
 
 
@@ -345,8 +345,8 @@
             
             <span class="post-updated">
             &nbsp; | &nbsp; 更新於
-            <time itemprop="dateUpdated" datetime="2019-04-08T21:37:35+08:00" content="2019-04-08">
-            2019-04-08
+            <time itemprop="dateUpdated" datetime="2019-07-06T09:46:43+08:00" content="2019-07-06">
+            2019-07-06
             </time>
             </span>
             
@@ -447,7 +447,7 @@
 </blockquote>
 <p>TBLog.cpp<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"tblog.h"</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">extern</span> <span class="string">"C"</span> <span class="function">TBLOG_API <span class="keyword">void</span> <span class="title">SetLogLevel</span><span class="params">(LogLevels level)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">//設定閥值</span></span><br><span class="line">    logThreshold = level;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">extern</span> <span class="string">"C"</span> <span class="function">CVLOG_API <span class="keyword">void</span> <span class="title">MyLog</span><span class="params">(LogLevels level, <span class="keyword">const</span> <span class="keyword">char</span> *fmt, ...)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">//dosomething...</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p>注意<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">若是dll中有使用include其他的第三方檔案，則需在使用端也一併在pro檔中導入這個第三方檔案</span><br><span class="line"></span><br><span class="line">例如:dll中include &lt;opencv2/core.hpp&gt;</span><br><span class="line">在dll專案中需要導入opencv_core2413</span><br><span class="line">在使用dll的專案中也需要在pro檔中導入opencv_core2413否則會說讀不到opencv2/core.hpp</span><br></pre></td></tr></table></figure></p>
-<h2 id="導入dll"><a href="#導入dll" class="headerlink" title="導入dll"></a>導入dll</h2><p><img src="https://i.imgur.com/GdgVaj1.png" alt=""></p>
+<h2 id="導入dll"><a href="#導入dll" class="headerlink" title="導入dll"></a>導入dll</h2><p><img src="https://i.imgur.com/dUHM5uj.png" alt=""></p>
 <blockquote>
 <p>Library file: lib位置<br>INCLUDEPATH: .h檔位置</p>
 </blockquote>
@@ -456,7 +456,7 @@
 <p>搭配上述寫法的話$$OUT_PWD/release/此段要注意不需切換到別層<br>win32:CONFIG(release, debug|release): LIBS += -L$$OUT_PWD/release/ -lfindContours<br>else:win32:CONFIG(debug, debug|release): LIBS += -L$$OUT_PWD/debug/ -lfindContours</p>
 <p>INCLUDEPATH += $$PWD/../findContours<br>DEPENDPATH += $$PWD/../findContours</p>
 <hr>
-<p><img src="https://i.imgur.com/pmZF7pE.png" alt=""></p>
+<p><img src="https://i.imgur.com/IvpSeee.png" alt=""></p>
 <h3 id="外部導入-第三方或協作的dll"><a href="#外部導入-第三方或協作的dll" class="headerlink" title="外部導入(第三方或協作的dll)"></a>外部導入(第三方或協作的dll)</h3><p>一般dll導入 add library &gt;&gt; external library &gt;&gt; 選擇路徑<br>win32: LIBS += -L$$PWD/../CVCamera/ -lCVCamera</p>
 <p>INCLUDEPATH += $$PWD/../CVCamera<br>DEPENDPATH += $$PWD/../CVCamera</p>
 <hr>
