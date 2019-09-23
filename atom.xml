@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://teddybearfp.github.io/"/>
-  <updated>2019-09-23T15:21:31.268Z</updated>
+  <updated>2019-09-23T15:23:34.088Z</updated>
   <id>https://teddybearfp.github.io/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="https://teddybearfp.github.io/2019/09/23/Python-%E6%9F%A5%E8%A9%A2-IP-%E4%BD%8D%E5%9D%80%E6%98%AF%E5%A4%9A%E5%B0%91/"/>
     <id>https://teddybearfp.github.io/2019/09/23/Python-查詢-IP-位址是多少/</id>
     <published>2019-09-23T13:05:16.000Z</published>
-    <updated>2019-09-23T15:21:31.268Z</updated>
+    <updated>2019-09-23T15:23:34.088Z</updated>
     
     <content type="html"><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>有時候我們想知道自己當下電腦使用的網路 IP 位址是多少 ( 連結到的WIFI網路或是有線網路 ) ，常見的IP位址分為IPv4與IPv6兩大類</p><h2 id="取得-IP-位址"><a href="#取得-IP-位址" class="headerlink" title="取得 IP 位址"></a>取得 IP 位址</h2><h3 id="ipconfig"><a href="#ipconfig" class="headerlink" title="ipconfig"></a>ipconfig</h3><p>在 cmd 我們可以透過 ipconfig 得到 IP 位址<br>例如: </p><p>使用 ipconfig /all 得到</p><pre><code>IP Address. . . . . . . . . . . . : 192.168.0.100</code></pre><p>或是用 ipconfig 得到</p><pre><code>IPv4 位址 . . . . . . . . . . . . : 192.168.0.100</code></pre><h2 id="取得對外-IP-位址"><a href="#取得對外-IP-位址" class="headerlink" title="取得對外 IP 位址"></a>取得對外 IP 位址</h2><p>取得對外 IP 位址可以透過很多取得 IP 位址網站得到<br>例如:<br>    <a href="https://www.whatismyip.com.tw/" target="_blank" rel="noopener">我的IP位址查詢</a><a href="https://www.ifreesite.com/ipaddress/" target="_blank" rel="noopener">IP地理位置查詢/域名IP地址查詢 地圖版</a></p><p>那麼如果要用程式取得 IP 位址的話，可以運用一下爬蟲技術達到這個功能<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> requests <span class="keyword">import</span> get</span><br><span class="line"></span><br><span class="line">ip = get(<span class="string">'https://api.ipify.org'</span>).text</span><br></pre></td></tr></table></figure></p><h2 id="取得國家與地理位置"><a href="#取得國家與地理位置" class="headerlink" title="取得國家與地理位置"></a>取得國家與地理位置</h2><p>有了對外 IP 位址我們可以透過以下網址搜尋該對外 IP 位址的國家與地理位置<br><a href="https://www.ez2o.com/App/Net/IP" target="_blank" rel="noopener">IP 查詢- 快速搜尋IP 地理位置- ez2o Studio</a></p><p>假如是遠端遙控不知道在何處的電腦，撇開 IP 位址的方式當然可以用 google map 定位得知裝置究竟是在哪裡囉<br>雖然以上這假設蠻奇怪的，但我還真的遇過這種特殊要求XD</p>]]></content>
     
@@ -37,7 +37,9 @@
       <category term="Python" scheme="https://teddybearfp.github.io/categories/Python/"/>
     
     
-      <category term="pyinstaller" scheme="https://teddybearfp.github.io/tags/pyinstaller/"/>
+      <category term="Python" scheme="https://teddybearfp.github.io/tags/Python/"/>
+    
+      <category term="IP" scheme="https://teddybearfp.github.io/tags/IP/"/>
     
   </entry>
   
