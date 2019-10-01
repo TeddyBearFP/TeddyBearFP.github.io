@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://teddybearfp.github.io/"/>
-  <updated>2019-10-01T14:10:40.824Z</updated>
+  <updated>2019-10-01T15:43:38.139Z</updated>
   <id>https://teddybearfp.github.io/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Qt CreateMutex 確保應用程式不會被重複執行</title>
+    <link href="https://teddybearfp.github.io/2019/10/01/Qt-CreateMutex-%E7%A2%BA%E4%BF%9D%E6%87%89%E7%94%A8%E7%A8%8B%E5%BC%8F%E4%B8%8D%E6%9C%83%E8%A2%AB%E9%87%8D%E8%A4%87%E5%9F%B7%E8%A1%8C/"/>
+    <id>https://teddybearfp.github.io/2019/10/01/Qt-CreateMutex-確保應用程式不會被重複執行/</id>
+    <published>2019-10-01T03:05:16.000Z</published>
+    <updated>2019-10-01T15:43:38.139Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="Qt-CreateMutex-確保應用程式不會被重複執行"><a href="#Qt-CreateMutex-確保應用程式不會被重複執行" class="headerlink" title="Qt CreateMutex 確保應用程式不會被重複執行"></a>Qt CreateMutex 確保應用程式不會被重複執行</h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>編寫好一個應用程式要避免該程式被重複開啟，那麼我這邊紀錄的方式是用 CreateMutex 解決不會有多個行程去使用到同一個資源的問題，其運作方式會等一個行程用完資源後換下一個行程使用，而不會有相互衝突的問題</p><h2 id="CreateMutex-用法"><a href="#CreateMutex-用法" class="headerlink" title="CreateMutex 用法"></a>CreateMutex 用法</h2><p>CreateMutex()函式可以用來創建一個有指定名稱或無指定名稱的互斥對象</p><p>如果執行成功，就會返回互斥對象的 handle ，回傳零則表示有誤<br>若是返回有效的 handle 但是已經有指定名稱的，那麼 GetLastError 會得到 ERROR_ALREADY_EXISTS 已經存在的錯誤</p><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;windows.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function">HANDLE <span class="title">CreateMutexA</span><span class="params">(</span></span></span><br><span class="line"><span class="function"><span class="params">  LPSECURITY_ATTRIBUTES lpMutexAttributes,</span></span></span><br><span class="line"><span class="function"><span class="params">  BOOL                  bInitialOwner, <span class="comment">//初始化互斥對象的擁有者</span></span></span></span><br><span class="line"><span class="function"><span class="params">  LPCSTR                lpName <span class="comment">//指向互斥對象的指標</span></span></span></span><br><span class="line"><span class="function"><span class="params">)</span></span>;</span><br></pre></td></tr></table></figure><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">Handle hMutex = <span class="literal">NULL</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">//第二個參數，TRUE表示建立佔有Mutex使用權，FALSE表示建立者不佔有Mutex使用權</span></span><br><span class="line">hMutex = CreateMutex(<span class="literal">NULL</span>,FALSE,<span class="string">"MyMutex"</span>); <span class="comment">//建立Mutex</span></span><br><span class="line">WaitForSingleObject(hMutex, <span class="number">500</span>); <span class="comment">//取得Mutex使用權限並等待使用被釋放</span></span><br><span class="line"><span class="comment">//等待函式完成通常要給個 Timeout ms時間，特殊情況下才給 INFINITE 直到被手動釋放</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//......Critical section protected code here(臨界區間)</span></span><br><span class="line"></span><br><span class="line">ReleaseMutex(hMutex); <span class="comment">//釋放使用使用權，讓其他執行續或行程進入critical section</span></span><br></pre></td></tr></table></figure><h2 id="實作-CreateMutex-確保應用程式不會被重複執行實作"><a href="#實作-CreateMutex-確保應用程式不會被重複執行實作" class="headerlink" title="實作 CreateMutex 確保應用程式不會被重複執行實作"></a>實作 CreateMutex 確保應用程式不會被重複執行實作</h2><p>了解 CreateMutex 用法的話，我們可以運用創建互斥鎖時指定名稱不重複的特性，達到確保應用程式唯一。</p><p>我們可以在應用程式一開啟的時候，創建一個 Mutex 指定應用程式名稱，並用 GetLastError 判斷是否 ERROR_ALREADY_EXISTS 若新創建成功則正常開啟應用程式，否則關閉該 handle 並把指標指向 NULL 最後回傳 FALSE 讓程式關閉不會繼續執行</p><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;windows.h&gt;</span></span></span><br><span class="line">...... <span class="comment">// main function</span></span><br><span class="line">HANDLE m_hMutex = CreateMutex(<span class="literal">NULL</span>, FALSE, <span class="string">"TeddyBearFP"</span>);<span class="comment">// 检查错误代码</span></span><br><span class="line"><span class="keyword">if</span> (GetLastError() == ERROR_ALREADY_EXISTS)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">// 如果已有互斥量存在則釋放 handle 並將指標指向 NULL　</span></span><br><span class="line">    CloseHandle(m_hMutex);</span><br><span class="line">    m_hMutex = <span class="literal">NULL</span>;</span><br><span class="line">    <span class="comment">// 程式退出</span></span><br><span class="line">    <span class="keyword">return</span> FALSE;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure><h2 id="參考網址"><a href="#參考網址" class="headerlink" title="參考網址"></a>參考網址</h2><p><a href="http://white5168.blogspot.com/2013/03/createmutex.html#.XZNjC0YzY2w" target="_blank" rel="noopener">CreateMutex建立多線程互斥機制—解決行程 … - iInfo 資訊交流</a><br><a href="https://baike.baidu.com/item/CreateMutex" target="_blank" rel="noopener">CreateMutex_百度百科</a></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;Qt-CreateMutex-確保應用程式不會被重複執行&quot;&gt;&lt;a href=&quot;#Qt-CreateMutex-確保應用程式不會被重複執行&quot; class=&quot;headerlink&quot; title=&quot;Qt CreateMutex 確保應用程式不會被重複執行&quot;&gt;&lt;/a&gt;Qt
+      
+    
+    </summary>
+    
+      <category term="Qt" scheme="https://teddybearfp.github.io/categories/Qt/"/>
+    
+    
+      <category term="CreateMutex" scheme="https://teddybearfp.github.io/tags/CreateMutex/"/>
+    
+  </entry>
   
   <entry>
     <title>C++ 與 qml 透過 Q_PROPERTY 資料傳遞</title>
@@ -516,31 +541,6 @@
       <category term="系統托盤" scheme="https://teddybearfp.github.io/tags/%E7%B3%BB%E7%B5%B1%E6%89%98%E7%9B%A4/"/>
     
       <category term="SystemTray" scheme="https://teddybearfp.github.io/tags/SystemTray/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>PyDash 建置</title>
-    <link href="https://teddybearfp.github.io/2019/04/30/PyDash%E5%BB%BA%E7%BD%AE/"/>
-    <id>https://teddybearfp.github.io/2019/04/30/PyDash建置/</id>
-    <published>2019-04-30T10:05:16.000Z</published>
-    <updated>2019-07-05T14:29:31.212Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>pyDash 是一個輕量且 基於 web 的 linux 性能監測工具 ，它是用 python 和 Django 加上 Chart.js 來編寫的。<br>可以使用這個工具來監視你的 Linux 個人電腦/服務器資源，比如 CPU、內存、網絡統計，包括在線用戶的進程以及更多。儀表盤完全由主要的 Python 發行版本所提供的 Python 庫開發所以不需要額外安裝太多的函式庫，這篇文章記錄如何使用Django建置虛擬環境執行程式碼</p><h2 id="建置流程"><a href="#建置流程" class="headerlink" title="建置流程"></a>建置流程</h2><p>1.首先安裝pip<br>    下載<a href="https://bootstrap.pypa.io/get-pip.py" target="_blank" rel="noopener">https://bootstrap.pypa.io/get-pip.py</a><br>    安裝pip</p><pre><code>python get-pip.py</code></pre><p>2.安裝虛擬環境</p><pre><code>pip install virtualenv</code></pre><p>3.下載檔案<br>    <a href="https://gitlab.com/k3oni/pydash" target="_blank" rel="noopener">https://gitlab.com/k3oni/pydash</a><br>    下載檔案或是git下來</p><pre><code>git clone https://github.com/k3oni/pydash.git</code></pre><p>並切換到當層路徑</p><pre><code>cd pydash</code></pre><p>4.創建虛擬環境<br>    取名為pydashtest(可任意命名)</p><pre><code>virtualenv pydashtest</code></pre><p>5.激活虛擬環境<br>    切換到剛剛創建的虛擬環境pydashtest資料夾中的Scripts啟動</p><pre><code>activate</code></pre><p>輸入成功會命令提示字元指令最前方會出現虛擬環境名稱例如:(pydashtest)</p><p><img src="https://i.imgur.com/jaKo0vb.png" alt=""></p><p>6.安裝所需函式庫<br>    切換到與requirements.txt同一層中執行以下指令(以這個pydash來說僅需要另外安裝django==1.6.8)</p><pre><code>pip install -r requirements.txt</code></pre><p>7.進入pydash資料夾中將settings.py檔案中的SECRET_KEY設定密鑰存取並退出</p><p><img src="https://i.imgur.com/olpy66E.png" alt=""></p><p>8.創建資料庫與身分驗證(輸入信箱與密碼)</p><pre><code>python manage.py syncdb</code></pre><p><img src="https://i.imgur.com/xAWxyv1.png" alt=""></p><p>9.執行 Django 開發服務器<br>    python manage.py runserver<br>    若出現一些錯誤訊息可能是缺少一些函式庫<br>    那麼我們只要安裝缺少的函式庫即可</p><pre><code>例如:pip install keras</code></pre><p>一直重複執行python manage.py runserver直到沒有缺少函式庫</p><pre><code>from django.conf.urls import patterns, urlImportError: cannot import name &apos;patterns&apos;出現上面這個問題的話解決辦法是呼叫下列指令pip install Django==1.8</code></pre><p>出現以下畫面代表正確</p><p><img src="https://i.imgur.com/z7uWs6S.png" alt=""></p><p>10.登入<br>    接著打開瀏覽器輸入網址<br>    <a href="http://127.0.0.1:8000/" target="_blank" rel="noopener">http://127.0.0.1:8000/</a><br>    (特別注意:第一格是輸入Username不是信箱帳號)</p><p><img src="https://i.imgur.com/JHlINId.png" alt=""></p><p>登入成功後觀看數據囉</p><p><img src="https://i.imgur.com/5mzyqbE.png" alt=""></p><p>結束runserver</p><pre><code>Ctrl+C</code></pre><p>離開虛擬環境</p><pre><code>deactivate</code></pre><p>__init__.py 用來告訴Python這個資料夾是一個模組，裡面通常是空的，不過也可以寫一些程式碼在裡面。<br>manage.py 用來操作整個Django專案的小工具，例如啟動伺服器python manage.py runserver，或是同步資料庫python manage.py syncdb<br>settings.py 設定檔<br>urls.py 負責網站的路由。</p><h2 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料:"></a>參考資料:</h2><p><a href="https://kknews.cc/zh-tw/other/92rgx6b.html[]" target="_blank" rel="noopener">pyDash：一個基於 web 的 Linux 性能監測工具</a><br><a href="https://kaochenlong.com/2011/10/18/django-your-first-django-project/" target="_blank" rel="noopener">開始你的第一個專案| 高見龍</a></p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;pyDash 是一個輕量且 基於 web 的 linux 性能監測工具 ，它是用 python 和 Django 加上 Chart.js 來
-      
-    
-    </summary>
-    
-      <category term="Python" scheme="https://teddybearfp.github.io/categories/Python/"/>
-    
-    
-      <category term="PyDash" scheme="https://teddybearfp.github.io/tags/PyDash/"/>
     
   </entry>
   
