@@ -1,8 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://teddybearfp.github.io/2019/10/02/Qml-Loader-%E8%BC%89%E5%85%A5%E5%99%A8%E6%87%89%E7%94%A8/</loc>
+    <lastmod>2019-10-02</lastmod>
+  </url>  <url>
+    <loc>https://teddybearfp.github.io/2019/10/02/Qt-%E5%A6%82%E4%BD%95%E5%9C%A8-qml-%E4%B8%AD%E4%BD%BF%E7%94%A8-C-Enum/</loc>
+    <lastmod>2019-10-02</lastmod>
+  </url>  <url>
     <loc>https://teddybearfp.github.io/2019/10/01/Qt-CreateMutex-%E7%A2%BA%E4%BF%9D%E6%87%89%E7%94%A8%E7%A8%8B%E5%BC%8F%E4%B8%8D%E6%9C%83%E8%A2%AB%E9%87%8D%E8%A4%87%E5%9F%B7%E8%A1%8C/</loc>
-    <lastmod>2019-10-01</lastmod>
+    <lastmod>2019-10-02</lastmod>
   </url>  <url>
     <loc>https://teddybearfp.github.io/2019/09/27/C-%E8%88%87-qml-%E9%80%8F%E9%81%8E-Q-PROPERTY-%E8%B3%87%E6%96%99%E5%82%B3%E9%81%9E/</loc>
     <lastmod>2019-10-01</lastmod>
