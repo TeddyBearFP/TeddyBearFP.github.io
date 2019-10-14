@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://teddybearfp.github.io/"/>
-  <updated>2019-10-02T14:43:53.391Z</updated>
+  <updated>2019-10-14T15:36:04.134Z</updated>
   <id>https://teddybearfp.github.io/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Color mapping ( Matlab Jet )</title>
+    <link href="https://teddybearfp.github.io/2019/10/14/Color-mapping-Matlab-Jet/"/>
+    <id>https://teddybearfp.github.io/2019/10/14/Color-mapping-Matlab-Jet/</id>
+    <published>2019-10-14T07:05:16.000Z</published>
+    <updated>2019-10-14T15:36:04.134Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="Color-mapping-Matlab-Jet-in-Qt"><a href="#Color-mapping-Matlab-Jet-in-Qt" class="headerlink" title="Color mapping ( Matlab Jet ) in Qt"></a>Color mapping ( Matlab Jet ) in Qt</h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>今天記錄最近編寫的小工具( ColorMappingJet )，將灰階重新分布為色彩空間( Matlab Jet )，顏色映射( Color mapping )是將一個圖像的顏色映射到另一個圖像的顏色的功能。顏色映射可以被稱為導致映射函數的算法或者變換圖像顏色的算法。</p><h2 id="Matlab-Jet"><a href="#Matlab-Jet" class="headerlink" title="Matlab Jet"></a>Matlab Jet</h2><p>這是種顏色映射的算法，是將灰階值放到 Jet 上進行顏色映射( Color mapping )，值由小到大從深藍到綠到深紅</p><p>如下圖:</p><p><img src="https://i.imgur.com/gUzSwAv.png" alt=""></p><h2 id="Color-mapping-in-Qt"><a href="#Color-mapping-in-Qt" class="headerlink" title="Color mapping in Qt"></a>Color mapping in Qt</h2><p>我編寫的小工具 ( ColorMappingJet ) 是可以輸入任意上下限的灰階值再透過 Slider 調整當下數值，讓下方的方型進行顏色映射</p><p>上下限不一定要是0 ~ 255 或是 -1 ~ 1<br>可以是 0 ~ 300 或是 123 ~ 777</p><p>例如:<br>下限為 0</p><p><img src="https://i.imgur.com/rB75nGX.png" alt=""></p><p>上限為 300<br><img src="https://i.imgur.com/v87ITRr.png" alt=""></p><p>那麼我們要怎麼將灰階值轉換成三通道( RGB )值?</p><p>我的做法是將輸入的灰階值做顏色映射，將單通道的灰階值轉成三通道<br>由深藍色 -&gt; 藍色 -&gt;綠色 -&gt; 紅色 -&gt; 深紅色</p><pre><code>Slider 控制單通道灰階值 valueif value 在小於 0.1242 時: 紅色通道值為 0 ， 綠色通道值為 0 ， 藍色通道值的增加，從 0.504 加到 1else if value 在小於 0.3747 時: 紅色通道值為 0 ， 綠色通道值的增加，從 0 加到 1 ， 藍色通道值維持 1else ifvalue 在小於 0.6253 時: 紅色通道值的增加，從 0 加到 1 ， 綠色通道值維持 1 ， 藍色通道值則從 1 減至 0else ifvalue 在小於 0.8758 時: 紅色通道維持 1 ， 綠色通道值則從 1 減至 0 ， 藍色通道值為 0else其他 value: 紅色通道值則從 1 減至 0.5 ， 綠色通道值為 0 ， 藍色通道值為 0</code></pre><p>運算出來的數值存取至 Q_PROPERTY 的 QColor 中傳遞給 qml<br>透過以上方法就完成啦!</p><p><img src="https://i.imgur.com/FTi7JMC.png" alt=""></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;Color-mapping-Matlab-Jet-in-Qt&quot;&gt;&lt;a href=&quot;#Color-mapping-Matlab-Jet-in-Qt&quot; class=&quot;headerlink&quot; title=&quot;Color mapping ( Matlab Jet ) in 
+      
+    
+    </summary>
+    
+      <category term="Qt" scheme="https://teddybearfp.github.io/categories/Qt/"/>
+    
+    
+      <category term="Color mapping" scheme="https://teddybearfp.github.io/tags/Color-mapping/"/>
+    
+  </entry>
   
   <entry>
     <title>Qml Loader 載入器應用</title>
@@ -38,31 +63,6 @@
     
     
       <category term="Loader" scheme="https://teddybearfp.github.io/tags/Loader/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Color mapping ( Matlab Jet )</title>
-    <link href="https://teddybearfp.github.io/2019/10/02/Color-mapping-Matlab-Jet/"/>
-    <id>https://teddybearfp.github.io/2019/10/02/Color-mapping-Matlab-Jet/</id>
-    <published>2019-10-02T07:05:16.000Z</published>
-    <updated>2019-10-14T15:31:48.724Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="Color-mapping-Matlab-Jet-in-Qt"><a href="#Color-mapping-Matlab-Jet-in-Qt" class="headerlink" title="Color mapping ( Matlab Jet ) in Qt"></a>Color mapping ( Matlab Jet ) in Qt</h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>今天記錄最近編寫的小工具( ColorMappingJet )，將灰階重新分布為色彩空間( Matlab Jet )，顏色映射( Color mapping )是將一個圖像的顏色映射到另一個圖像的顏色的功能。顏色映射可以被稱為導致映射函數的算法或者變換圖像顏色的算法。</p><h2 id="Matlab-Jet"><a href="#Matlab-Jet" class="headerlink" title="Matlab Jet"></a>Matlab Jet</h2><p>這是種顏色映射的算法，是將灰階值放到 Jet 上進行顏色映射( Color mapping )，值由小到大從深藍到綠到深紅</p><p>如下圖:</p><p><img src="https://i.imgur.com/gUzSwAv.png" alt=""></p><h2 id="Color-mapping-in-Qt"><a href="#Color-mapping-in-Qt" class="headerlink" title="Color mapping in Qt"></a>Color mapping in Qt</h2><p>我編寫的小工具 ( ColorMappingJet ) 是可以輸入任意上下限的灰階值再透過 Slider 調整當下數值，讓下方的方型進行顏色映射</p><p>上下限不一定要是0 ~ 255 或是 -1 ~ 1<br>可以是 0 ~ 300 或是 123 ~ 777</p><p>例如:<br>下限為 0</p><p><img src="https://i.imgur.com/rB75nGX.png" alt=""></p><p>上限為 300<br><img src="https://i.imgur.com/v87ITRr.png" alt=""></p><p>那麼我們要怎麼將灰階值轉換成三通道( RGB )值?</p><p>我的做法是將輸入的灰階值做顏色映射，將單通道的灰階值轉成三通道<br>由深藍色 -&gt; 藍色 -&gt;綠色 -&gt; 紅色 -&gt; 深紅色</p><pre><code>Slider 控制單通道灰階值 valueif value 在小於 0.1242 時: 紅色通道值為 0 ， 綠色通道值為 0 ， 藍色通道值的增加，從 0.504 加到 1else if value 在小於 0.3747 時: 紅色通道值為 0 ， 綠色通道值的增加，從 0 加到 1 ， 藍色通道值維持 1else ifvalue 在小於 0.6253 時: 紅色通道值的增加，從 0 加到 1 ， 綠色通道值維持 1 ， 藍色通道值則從 1 減至 0else ifvalue 在小於 0.8758 時: 紅色通道維持 1 ， 綠色通道值則從 1 減至 0 ， 藍色通道值為 0else其他 value: 紅色通道值則從 1 減至 0.5 ， 綠色通道值為 0 ， 藍色通道值為 0</code></pre><p>運算出來的數值存取至 Q_PROPERTY 的 QColor 中傳遞給 qml<br>透過以上方法就完成啦!</p><p><img src="https://i.imgur.com/FTi7JMC.png" alt=""></p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h1 id=&quot;Color-mapping-Matlab-Jet-in-Qt&quot;&gt;&lt;a href=&quot;#Color-mapping-Matlab-Jet-in-Qt&quot; class=&quot;headerlink&quot; title=&quot;Color mapping ( Matlab Jet ) in 
-      
-    
-    </summary>
-    
-      <category term="Qt" scheme="https://teddybearfp.github.io/categories/Qt/"/>
-    
-    
-      <category term="Color mapping" scheme="https://teddybearfp.github.io/tags/Color-mapping/"/>
     
   </entry>
   
