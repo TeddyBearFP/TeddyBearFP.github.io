@@ -2,6 +2,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://teddybearfp.github.io/2019/12/25/Qt-QSqlQuery/</loc>
+    
+    <lastmod>2019-12-25T10:41:34.232Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://teddybearfp.github.io/2019/12/25/Qt-QSql-Transactions/</loc>
+    
+    <lastmod>2019-12-25T10:41:09.181Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://teddybearfp.github.io/2019/12/12/Qt-QQuickImageProvider-%E5%A5%BD%E7%94%A8%E7%9A%84%E5%9C%96%E7%89%87%E6%8F%90%E4%BE%9B%E8%80%85/</loc>
     
     <lastmod>2019-12-24T15:31:13.579Z</lastmod>
