@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://teddybearfp.github.io/2019/12/26/Qt-BusyIndicator/</loc>
+    <lastmod>2019-12-26</lastmod>
+  </url>  <url>
+    <loc>https://teddybearfp.github.io/2019/12/26/Qt-QUrlQuery/</loc>
+    <lastmod>2019-12-26</lastmod>
+  </url>  <url>
     <loc>https://teddybearfp.github.io/2019/12/25/Qt-QSqlQuery/</loc>
     <lastmod>2019-12-25</lastmod>
   </url>  <url>

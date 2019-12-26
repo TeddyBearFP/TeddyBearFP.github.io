@@ -1,0 +1,1043 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-tw">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta name="google-site-verification" content="6FSPL7W8VK5_r7N9kUUjs091G70s4tIlG_BfxOmVa9U">
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+  <meta name="google-site-verification" content="google1efc50360bd796c6.html">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Qt QUrlQuery">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="Qt QUrlQuery前言當我們使用我前幾篇所編寫的 Qt QQuickImageProvider 好用的圖片提供者那麼可以搭配這一篇所介紹的 QUrlQuery ，讓我們跟 ImageProvider 要求圖片的語句更簡易的剖析，讓要求圖片的寫法與 HTTP 的 GET 語句一致 HTTP GET 語法統一資源定位符（英語： Uniform Resource Locator，縮寫：URL；或稱">
+<meta name="keywords" content="Qt QUrlQuery">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Qt QUrlQuery">
+<meta property="og:url" content="https://teddybearfp.github.io/2019/12/26/Qt-QUrlQuery/index.html">
+<meta property="og:site_name" content="泰迪熊的程式足跡">
+<meta property="og:description" content="Qt QUrlQuery前言當我們使用我前幾篇所編寫的 Qt QQuickImageProvider 好用的圖片提供者那麼可以搭配這一篇所介紹的 QUrlQuery ，讓我們跟 ImageProvider 要求圖片的語句更簡易的剖析，讓要求圖片的寫法與 HTTP 的 GET 語句一致 HTTP GET 語法統一資源定位符（英語： Uniform Resource Locator，縮寫：URL；或稱">
+<meta property="og:locale" content="zh-tw">
+<meta property="og:updated_time" content="2019-12-26T14:48:39.802Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Qt QUrlQuery">
+<meta name="twitter:description" content="Qt QUrlQuery前言當我們使用我前幾篇所編寫的 Qt QQuickImageProvider 好用的圖片提供者那麼可以搭配這一篇所介紹的 QUrlQuery ，讓我們跟 ImageProvider 要求圖片的語句更簡易的剖析，讓要求圖片的寫法與 HTTP 的 GET 語句一致 HTTP GET 語法統一資源定位符（英語： Uniform Resource Locator，縮寫：URL；或稱">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://teddybearfp.github.io/2019/12/26/Qt-QUrlQuery/">
+
+
+
+
+
+  <title>Qt QUrlQuery | 泰迪熊的程式足跡</title>
+  
+<script>
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '',
+      xfbml      : true,
+      version    : 'v2.10'
+    });
+  };
+
+  (function(d, s, id){
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement(s); js.id = id;
+     js.src = "//connect.facebook.net/zh_tw/sdk.js";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));
+</script>
+
+
+
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-137198611-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+
+
+
+
+</head>
+
+<body oncontextmenu="return false" onselectstart="return false" oncopy="return false" oncut="return false" itemscope="" itemtype="http://schema.org/WebPage" lang="zh-tw">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">泰迪熊的程式足跡</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">遊走程式森林的泰迪熊</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首頁
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            關於
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            標籤
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分類
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            歸檔
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-top">
+          <a href="/top/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-signal"></i> <br>
+            
+            文章排行榜
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://teddybearfp.github.io/2019/12/26/Qt-QUrlQuery/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="G.C.L.">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="泰迪熊的程式足跡">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Qt QUrlQuery</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+ 
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">發表於</span>
+              
+              <time title="創建於" itemprop="dateCreated datePublished" datetime="2019-12-26T15:05:16+08:00">
+                2019-12-26
+              </time>
+            
+            
+            <span class="post-updated">
+            &nbsp; | &nbsp; 更新於
+            <time itemprop="dateUpdated" datetime="2019-12-26T22:48:39+08:00" content="2019-12-26">
+            2019-12-26
+            </time>
+            </span>
+            
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分類於</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/Qt/" itemprop="url" rel="index">
+                    <span itemprop="name">Qt</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+          
+             <span id="/2019/12/26/Qt-QUrlQuery/" class="leancloud_visitors" data-flag-title="Qt QUrlQuery">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">閱讀次數&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="Qt-QUrlQuery"><a href="#Qt-QUrlQuery" class="headerlink" title="Qt QUrlQuery"></a>Qt QUrlQuery</h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>當我們使用我前幾篇所編寫的 <a href="https://teddybearfp.github.io/2019/12/12/Qt-QQuickImageProvider-%E5%A5%BD%E7%94%A8%E7%9A%84%E5%9C%96%E7%89%87%E6%8F%90%E4%BE%9B%E8%80%85/#more">Qt QQuickImageProvider 好用的圖片提供者</a>那麼可以搭配這一篇所介紹的 QUrlQuery ，讓我們跟 ImageProvider 要求圖片的語句更簡易的剖析，讓要求圖片的寫法與 HTTP 的 GET 語句一致</p>
+<h2 id="HTTP-GET-語法"><a href="#HTTP-GET-語法" class="headerlink" title="HTTP GET 語法"></a>HTTP GET 語法</h2><p>統一資源定位符（英語： Uniform Resource Locator，縮寫：URL；或稱 統一資源定位器、定位位址、 URL 位址 [1]，俗稱 網頁位址或簡稱網址）是網際網路上標準的資源的位址（ Address ），如同在網路上的門牌。</p>
+<p>GET 模式的表單參數，以「?」字元為起點，每個參數以「&amp;」隔開，再以「=」分開參數名稱與資料，通常以 UTF8 的 URL 編碼，避開字元衝突的問題</p>
+<p>例如:</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">"http://www.example.com/TeddyBearFp?date=20191225&amp;festival=Christmas"</span></span><br></pre></td></tr></table></figure>
+<p>上述網址<br>在問號以前: 為網址路徑<br>問號後方: 為 query 語句,並且在多個參數間以 &amp; 隔開</p>
+<p>如果我們直接以字串方式剖析 query 內容並分類成 key , value 較繁瑣，可以用更方便的函式庫 QUrlQuery 來剖析</p>
+<h2 id="QUrlQuery"><a href="#QUrlQuery" class="headerlink" title="QUrlQuery"></a>QUrlQuery</h2><p>剖析 HTTP GET 語法，將問號以前的路徑與 Query 內容分開</p>
+<h3 id="取得-query-語句"><a href="#取得-query-語句" class="headerlink" title="取得 query 語句"></a>取得 query 語句</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//將網址 http://www.example.com/TeddyBearFp?date=20191225&amp;festival=Christmas 剖析出 query 內容</span></span><br><span class="line"><span class="function">QUrl <span class="title">url</span><span class="params">(<span class="string">"http://www.example.com/TeddyBearFp?date=20191225&amp;festival=Christmas"</span>)</span></span>;</span><br><span class="line"><span class="function">QUrlQuery <span class="title">query</span><span class="params">(url.query())</span></span>;</span><br><span class="line">qDebug() &lt;&lt; <span class="string">"query: "</span> &lt;&lt; url.query();</span><br><span class="line"><span class="comment">//印出 "date=20191225&amp;festival=Christmas"</span></span><br></pre></td></tr></table></figure>
+<h3 id="從-query-語句中剖析出-Key-value"><a href="#從-query-語句中剖析出-Key-value" class="headerlink" title="從 query 語句中剖析出 Key, value"></a>從 query 語句中剖析出 Key, value</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//將網址 http://www.example.com/TeddyBearFp?visitDate=20191225&amp;festival=Christmas 剖析出 query 內容</span></span><br><span class="line"><span class="function">QUrl <span class="title">url</span><span class="params">(<span class="string">"http://www.example.com/TeddyBearFp?date=20191225&amp;festival=Christmas"</span>)</span></span>;</span><br><span class="line"><span class="function">QUrlQuery <span class="title">query</span><span class="params">(url.query())</span></span>;</span><br><span class="line">QList&lt;QPair&lt;QString, QString&gt;&gt; <span class="built_in">list</span> = query.queryItems();</span><br><span class="line"><span class="keyword">for</span> ( <span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="built_in">list</span>.length(); i++ )</span><br><span class="line">&#123;</span><br><span class="line">    qDebug() &lt;&lt; <span class="string">"list["</span> &lt;&lt; i &lt;&lt; <span class="string">"]: ("</span> &lt;&lt; <span class="built_in">list</span>[ i ].first &lt;&lt; <span class="string">","</span> &lt;&lt; <span class="built_in">list</span>[ i ].second &lt;&lt; <span class="string">")"</span>;</span><br><span class="line">    <span class="comment">//印出 list[ 0 ]: ( "date" , "20191225" )</span></span><br><span class="line">    <span class="comment">//印出 list[ 1 ]: ( "festival" , "Christmas" )</span></span><br><span class="line">&#125;</span><br><span class="line">qDebug() &lt;&lt; <span class="string">"date: "</span> &lt;&lt; query.queryItemValue( <span class="string">"date"</span> );</span><br><span class="line"><span class="comment">//印出 date: 20191225</span></span><br><span class="line">qDebug() &lt;&lt; <span class="string">"festival: "</span> &lt;&lt; query.queryItemValue( <span class="string">"festival"</span> );</span><br><span class="line"><span class="comment">//印出 festival: Christmas</span></span><br></pre></td></tr></table></figure>
+<h2 id="QUrlQuery-搭配-ImageProvider-的實作"><a href="#QUrlQuery-搭配-ImageProvider-的實作" class="headerlink" title="QUrlQuery 搭配 ImageProvider 的實作"></a>QUrlQuery 搭配 ImageProvider 的實作</h2><p>如果有點忘記 ImageProvider 是什麼可以回顧一下 <a href="https://teddybearfp.github.io/2019/12/12/Qt-QQuickImageProvider-%E5%A5%BD%E7%94%A8%E7%9A%84%E5%9C%96%E7%89%87%E6%8F%90%E4%BE%9B%E8%80%85/#more">Qt QQuickImageProvider 好用的圖片提供者</a></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">QImage ImageProvider::requestImage( <span class="keyword">const</span> QString &amp;id, QSize *size, <span class="keyword">const</span> QSize &amp;requestedSize )</span><br><span class="line">&#123;</span><br><span class="line">    <span class="function">QUrl <span class="title">url</span><span class="params">( id )</span></span>;</span><br><span class="line">    qDebug() &lt;&lt; <span class="string">"id: "</span> &lt;&lt; id; <span class="comment">//output1</span></span><br><span class="line">    </span><br><span class="line">    <span class="function">QUrlQuery <span class="title">query</span><span class="params">( url.query() )</span></span>;</span><br><span class="line">    qDebug() &lt;&lt; <span class="string">"query: "</span> &lt;&lt; url.query(); <span class="comment">//output2</span></span><br><span class="line">    </span><br><span class="line">    QList&lt;QPair&lt;QString, QString&gt;&gt; <span class="built_in">list</span> = query.queryItems();</span><br><span class="line">    <span class="keyword">for</span> ( <span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="built_in">list</span>.length(); i++ )</span><br><span class="line">    &#123;</span><br><span class="line">        qDebug() &lt;&lt; <span class="string">"list["</span> &lt;&lt; i &lt;&lt; <span class="string">"]: ("</span> &lt;&lt; <span class="built_in">list</span>[ i ].first &lt;&lt; <span class="string">","</span> &lt;&lt; <span class="built_in">list</span>[ i ].second &lt;&lt; <span class="string">")"</span>; <span class="comment">//output3</span></span><br><span class="line">    &#125;</span><br><span class="line">    qDebug() &lt;&lt; <span class="string">"contrast: "</span> &lt;&lt; query.queryItemValue( <span class="string">"contrast"</span> ).toInt(); <span class="comment">//output4</span></span><br><span class="line">    qDebug() &lt;&lt; <span class="string">"brightness: "</span> &lt;&lt; query.queryItemValue( <span class="string">"brightness"</span> ).toInt(); <span class="comment">//output5</span></span><br><span class="line">    </span><br><span class="line">    QString imgPath = id.split( <span class="string">'?'</span> )[ <span class="number">0</span> ];</span><br><span class="line">    qDebug() &lt;&lt; <span class="string">"imgPath "</span> &lt;&lt; imgPath; <span class="comment">//output6</span></span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">    QImage img = QImage( imgPath ).convertToFormat( QImage::Format_RGB888 );</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span> ( query.queryItemValue( <span class="string">"contrast"</span> ) != <span class="string">""</span> )</span><br><span class="line">        contrastLevel = query.queryItemValue( <span class="string">"contrast"</span> ).toInt();</span><br><span class="line">    <span class="keyword">if</span> ( query.queryItemValue( <span class="string">"brightness"</span> ) != <span class="string">""</span> )</span><br><span class="line">        brightnessLevel = query.queryItemValue( <span class="string">"brightness"</span> ).toInt();</span><br><span class="line">        </span><br><span class="line">    Brightness( &amp;img, brightnessLevel );</span><br><span class="line">    Contrast( &amp;img, contrastLevel );</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> img;</span><br></pre></td></tr></table></figure>
+<p>輸出檢視</p>
+<pre><code>//output1
+id:  &quot;d:/TeddyBearFp/20191025170005.jpg?contrast=0&amp;brightness=2&quot;
+
+//output2
+query:  &quot;contrast=0&amp;brightness=0&quot;
+
+//output3
+list[ 0 ]: ( &quot;contrast&quot; , &quot;0&quot; )
+list[ 1 ]: ( &quot;brightness&quot; , &quot;2&quot; )
+
+//output4
+contrast:  0
+
+//output5
+brightness:  2
+
+//output6
+imgPath  &quot;d:/TeddyBearFp/20191025170005.jpg&quot;
+</code></pre>
+      
+    </div>
+    
+    
+    
+    
+    <div>
+    
+    <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束 感謝你的閱讀 本部落格之內容嚴禁轉載-------------</div>
+    
+</div>
+    
+    </div>
+
+    
+
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>Post author：</strong>
+    G.C.L.
+  </li>
+  <li class="post-copyright-link">
+    <strong>Post link：</strong>
+    <a href="https://teddybearfp.github.io/2019/12/26/Qt-QUrlQuery/" title="Qt QUrlQuery">https://teddybearfp.github.io/2019/12/26/Qt-QUrlQuery/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>Copyright Notice： </strong>
+    All articles in this blog are licensed under <a href="" rel="external nofollow" target="_blank"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a></a> unless stating additionally.
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Qt/" rel="tag"># Qt</a>
+          
+            <a href="/tags/QUrlQuery/" rel="tag"># QUrlQuery</a>
+          
+        </div>
+      
+
+      
+      
+        <div class="post-widgets">
+        
+          <div class="wp_rating">
+            <div id="wpac-rating"></div>
+          </div>
+        
+
+        
+
+        
+        </div>
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/12/25/Qt-QSqlQuery/" rel="next" title="Qt QSqlQuery">
+                <i class="fa fa-chevron-left"></i> Qt QSqlQuery
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/12/26/Qt-BusyIndicator/" rel="prev" title="Qt BusyIndicator">
+                Qt BusyIndicator <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目錄
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            本站概覽
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">G.C.L.</p>
+              <p class="site-description motion-element" itemprop="description">在浩瀚的程式領域中，將走過的足跡記錄下來，文章著重在Qt、C++、python</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">84</span>
+                  <span class="site-state-item-name">文章</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-name">分類</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">133</span>
+                  <span class="site-state-item-name">標籤</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          <script type="text/javascript" src="//js1.bloggerads.net/ShowBanner.aspx?blogid=20190324000004" async></script>
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Qt-QUrlQuery"><span class="nav-number">1.</span> <span class="nav-text">Qt QUrlQuery</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HTTP-GET-語法"><span class="nav-number">1.2.</span> <span class="nav-text">HTTP GET 語法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#QUrlQuery"><span class="nav-number">1.3.</span> <span class="nav-text">QUrlQuery</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#取得-query-語句"><span class="nav-number">1.3.1.</span> <span class="nav-text">取得 query 語句</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#從-query-語句中剖析出-Key-value"><span class="nav-number">1.3.2.</span> <span class="nav-text">從 query 語句中剖析出 Key, value</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#QUrlQuery-搭配-ImageProvider-的實作"><span class="nav-number">1.4.</span> <span class="nav-text">QUrlQuery 搭配 ImageProvider 的實作</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">G.C.L.</span>
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      訪客數
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      人
+    </span>
+        <script src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+  
+  
+  
+    <span class="site-pv">
+      總訪問次數
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      次
+    </span>
+  
+  
+
+</div>
+
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+    
+      <script id="dsq-count-scr" src="https://TeddyBearFP.disqus.com/count.js" async></script>
+    
+
+    
+      <script type="text/javascript">
+        var disqus_config = function () {
+          this.page.url = 'https://teddybearfp.github.io/2019/12/26/Qt-QUrlQuery/';
+          this.page.identifier = '2019/12/26/Qt-QUrlQuery/';
+          this.page.title = 'Qt QUrlQuery';
+        };
+        var d = document, s = d.createElement('script');
+        s.src = 'https://TeddyBearFP.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      </script>
+    
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("bDcJ07lb17xLnJp4usXdCdBa-gzGzoHsz", "KI9S9GpncakybyNyQcVhRCNe");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+  
+  <script type="text/javascript">
+  wpac_init = window.wpac_init || [];
+  wpac_init.push({widget: 'Rating', id: ,
+    el: 'wpac-rating',
+    color: 'fc6423'
+  });
+  (function() {
+    if ('WIDGETPACK_LOADED' in window) return;
+    WIDGETPACK_LOADED = true;
+    var mc = document.createElement('script');
+    mc.type = 'text/javascript';
+    mc.async = true;
+    mc.src = '//embed.widgetpack.com/widget.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(mc, s.nextSibling);
+  })();
+  </script>
+
+
+  
+
+  
+
+  
+
+</body>
+</html>
