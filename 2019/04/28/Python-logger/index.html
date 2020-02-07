@@ -6,7 +6,7 @@
 
 
 <html class="theme-next pisces use-motion" lang="zh-tw">
-<head><meta name="generator" content="Hexo 3.8.0">
+<head><meta name="generator" content="Hexo 3.9.0">
   <meta name="google-site-verification" content="6FSPL7W8VK5_r7N9kUUjs091G70s4tIlG_BfxOmVa9U">
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -174,7 +174,7 @@
 
 </head>
 
-<body oncontextmenu="return false" onselectstart="return false" oncopy="return false" oncut="return false" itemscope="" itemtype="http://schema.org/WebPage" lang="zh-tw">
+<body oncontextmenu="return false" onselectstart="return false" oncopy="return false" oncut="return false" itemscope itemtype="http://schema.org/WebPage" lang="zh-tw">
 
   
   
@@ -184,7 +184,7 @@
   <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
-    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-wrapper">
   <div class="site-meta ">
     
@@ -304,20 +304,20 @@
   
   
 
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
   
   
   
   <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://teddybearfp.github.io/2019/04/28/Python-logger/">
 
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="G.C.L.">
-      <meta itemprop="description" content="">
+      <meta itemprop="description" content>
       <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="泰迪熊的程式足跡">
     </span>
 
@@ -368,7 +368,7 @@
                 <span class="post-meta-item-text">分類於</span>
               
               
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/Python/" itemprop="url" rel="index">
                     <span itemprop="name">Python</span>
                   </a>
@@ -415,7 +415,7 @@
       
         <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>最近開始要編寫Python程式碼，上一篇<a href="https://teddybearfp.github.io/2019/04/08/C-logger/#more">C Logger</a>幫助我開發與維護程式覺得十分好用，更確定Logger是編寫程式碼的必備品，所以也想要在Python開發時也能有一隻良好的Logger幫忙紀錄日誌，了解使用者的行為，這一篇就來記錄如何做出我們Python版本的Logger吧!</p>
 <p>先來看成果吧</p>
-<p><img src="https://i.imgur.com/WXfItPR.png" alt=""></p>
+<p><img src="https://i.imgur.com/WXfItPR.png" alt></p>
 <p>Log訊息組成:</p>
 <pre><code>年-月-日 時:分:秒,毫秒 [Log層級] 使用者: 函式名稱 Log訊息 [執行緒名稱]
 </code></pre><h2 id="TBLogger"><a href="#TBLogger" class="headerlink" title="TBLogger"></a>TBLogger</h2><p>TBLogger記錄了時間、Log層級、使用者、函式名稱、Log訊息與執行緒名稱同時亦會寫檔儲存</p>
@@ -432,9 +432,9 @@ tbLog.info(&quot;***** Project Started *****&quot;)
 tbLog.info(&quot;***** Project  Closed *****&quot;)
 tbLog.Close()
 </code></pre><p>Python Console</p>
-<p><img src="https://i.imgur.com/QbUelH4.png" alt=""></p>
+<p><img src="https://i.imgur.com/QbUelH4.png" alt></p>
 <p>亦可在程式執行與結束分別編寫Log訊息表示</p>
-<p><img src="https://i.imgur.com/Oou9VAR.png" alt=""></p>
+<p><img src="https://i.imgur.com/Oou9VAR.png" alt></p>
 <p>這就是我要的Logger</p>
 <h2 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h2><p><a href="http://yhhuang1966.blogspot.com/2018/04/python-logging_24.html" target="_blank" rel="noopener">小狐狸事務所Python 學習筆記 : 日誌 (logging) 模組測試</a><br><a href="https://stackoverflow.max-everyday.com/2017/10/python-logging/" target="_blank" rel="noopener">[Python] logging 教學– Max的程式語言筆記</a><br><a href="https://javawithravi.com/how-to-display-thread-id-in-python-logs/" target="_blank" rel="noopener">How to display thread id in python logs</a></p>
 
@@ -471,7 +471,7 @@ tbLog.Close()
   </li>
   <li class="post-copyright-license">
     <strong>Copyright Notice： </strong>
-    All articles in this blog are licensed under <a href="" rel="external nofollow" target="_blank"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a></a> unless stating additionally.
+    All articles in this blog are licensed under <a href rel="external nofollow" target="_blank"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a></a> unless stating additionally.
   </li>
 </ul>
 
@@ -593,7 +593,7 @@ tbLog.Close()
 
       <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
-          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
               <p class="site-author-name" itemprop="name">G.C.L.</p>
               <p class="site-description motion-element" itemprop="description">在浩瀚的程式領域中，將走過的足跡記錄下來，文章著重在Qt、C++、python</p>

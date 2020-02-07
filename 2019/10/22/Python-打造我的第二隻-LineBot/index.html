@@ -6,7 +6,7 @@
 
 
 <html class="theme-next pisces use-motion" lang="zh-tw">
-<head><meta name="generator" content="Hexo 3.8.0">
+<head><meta name="generator" content="Hexo 3.9.0">
   <meta name="google-site-verification" content="6FSPL7W8VK5_r7N9kUUjs091G70s4tIlG_BfxOmVa9U">
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -186,7 +186,7 @@
 
 </head>
 
-<body oncontextmenu="return false" onselectstart="return false" oncopy="return false" oncut="return false" itemscope="" itemtype="http://schema.org/WebPage" lang="zh-tw">
+<body oncontextmenu="return false" onselectstart="return false" oncopy="return false" oncut="return false" itemscope itemtype="http://schema.org/WebPage" lang="zh-tw">
 
   
   
@@ -196,7 +196,7 @@
   <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
-    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-wrapper">
   <div class="site-meta ">
     
@@ -316,20 +316,20 @@
   
   
 
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
   
   
   
   <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://teddybearfp.github.io/2019/10/22/Python-打造我的第二隻-LineBot/">
 
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="G.C.L.">
-      <meta itemprop="description" content="">
+      <meta itemprop="description" content>
       <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="泰迪熊的程式足跡">
     </span>
 
@@ -380,7 +380,7 @@
                 <span class="post-meta-item-text">分類於</span>
               
               
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/Python/" itemprop="url" rel="index">
                     <span itemprop="name">Python</span>
                   </a>
@@ -449,27 +449,27 @@
 </ol>
 <h2 id="創建-LineBot"><a href="#創建-LineBot" class="headerlink" title="創建 LineBot"></a>創建 LineBot</h2><h3 id="申請-Line-帳號"><a href="#申請-Line-帳號" class="headerlink" title="申請 Line 帳號"></a>申請 Line 帳號</h3><p>第一步是先申請 Line 帳號，或用自己的 Line 帳號，才可以創建 LineBot </p>
 <h3 id="LINE-Develop"><a href="#LINE-Develop" class="headerlink" title="LINE Develop"></a>LINE Develop</h3><h4 id="創建頻道"><a href="#創建頻道" class="headerlink" title="創建頻道"></a>創建頻道</h4><p><a href="https://developers.line.biz/en/" target="_blank" rel="noopener">LINE Develop</a> 中登入 Line 帳號後會看到此頁面<br>選擇 Provider List 看到現有頻道</p>
-<p><img src="https://i.imgur.com/lD7kLQD.png" alt=""></p>
+<p><img src="https://i.imgur.com/lD7kLQD.png" alt></p>
 <p>選擇 Create new Channel ，如果要製做 LineBot 請選 Message API</p>
-<p><img src="https://i.imgur.com/C5k8vaO.png" alt=""></p>
+<p><img src="https://i.imgur.com/C5k8vaO.png" alt></p>
 <p>接著填寫 LineBot 基本資料，信箱、概述等等，填寫完畢後送出並同意 Line 相關規章</p>
 <p>完成後會看到 Provider List 新增了剛剛創建的 LineBot</p>
-<p><img src="https://i.imgur.com/9o73ACv.png" alt=""></p>
+<p><img src="https://i.imgur.com/9o73ACv.png" alt></p>
 <h4 id="允許-webhook-傳訊"><a href="#允許-webhook-傳訊" class="headerlink" title="允許 webhook 傳訊"></a>允許 webhook 傳訊</h4><p>點選剛剛創建的 LineBot 會看到該機器人的設置內容，將 webhook enabled 並儲存</p>
-<p><img src="https://i.imgur.com/NHhhuMr.png" alt=""></p>
+<p><img src="https://i.imgur.com/NHhhuMr.png" alt></p>
 <h4 id="取得-Channel-secret、Channel-access-token"><a href="#取得-Channel-secret、Channel-access-token" class="headerlink" title="取得 Channel secret、Channel access token"></a>取得 Channel secret、Channel access token</h4><p>這邊最重要的事情就是取得 Channel secret 跟 Channel access token</p>
 <p>Channel secret</p>
-<p><img src="https://i.imgur.com/nNUUEl0.png" alt=""></p>
+<p><img src="https://i.imgur.com/nNUUEl0.png" alt></p>
 <p>若 Channel access token 是空的，則按右邊 Issue 產生</p>
-<p><img src="https://i.imgur.com/Ot4Qd67.png" alt=""></p>
+<p><img src="https://i.imgur.com/Ot4Qd67.png" alt></p>
 <p>到時候將這兩個值貼在程式碼中</p>
 <pre><code>Channel_Access_Token = YOUR_CHANNEL_SECRET
 Channel_Secret = YOUR_CHANNEL_SECRET
 </code></pre><h3 id="LINE-Official-Account-Manager"><a href="#LINE-Official-Account-Manager" class="headerlink" title="LINE Official Account Manager"></a>LINE Official Account Manager</h3><p>接著我們到 <a href="https://manager.line.biz" target="_blank" rel="noopener">LINE Official Account Manager</a> 對泰迪熊 Super 進行更詳細的設定</p>
-<h4 id="帳號設定頁面"><a href="#帳號設定頁面" class="headerlink" title="帳號設定頁面"></a>帳號設定頁面</h4><p><img src="https://i.imgur.com/Flx16BJ.png" alt=""></p>
-<p>勾選 接受邀請加入群組或多人聊天室 讓泰迪熊 Super 能變群組機器人<br><img src="https://i.imgur.com/hY8gZn4.png" alt=""></p>
+<h4 id="帳號設定頁面"><a href="#帳號設定頁面" class="headerlink" title="帳號設定頁面"></a>帳號設定頁面</h4><p><img src="https://i.imgur.com/Flx16BJ.png" alt></p>
+<p>勾選 接受邀請加入群組或多人聊天室 讓泰迪熊 Super 能變群組機器人<br><img src="https://i.imgur.com/hY8gZn4.png" alt></p>
 <h4 id="回應設定頁面"><a href="#回應設定頁面" class="headerlink" title="回應設定頁面"></a>回應設定頁面</h4><p>可以設置一些基本問後語句，可以在這邊將罐頭訊息關閉</p>
-<p><img src="https://i.imgur.com/J0hw0Ez.png" alt=""></p>
+<p><img src="https://i.imgur.com/J0hw0Ez.png" alt></p>
 <h2 id="部屬-LineBot"><a href="#部屬-LineBot" class="headerlink" title="部屬 LineBot"></a>部屬 LineBot</h2><h3 id="Heroku"><a href="#Heroku" class="headerlink" title="Heroku"></a>Heroku</h3><p>設定完一些基本資料與行為後，要將 LineBot 部屬到 Heroku 上運行， 首先要先申辦 Heroku 帳號</p>
 <h4 id="heroku-cli"><a href="#heroku-cli" class="headerlink" title="heroku-cli"></a>heroku-cli</h4><p>有了帳號後下載 <a href="https://devcenter.heroku.com/articles/heroku-cli" target="_blank" rel="noopener">heroku-cli</a></p>
 <p>注意: Heroku CLI 需要 Git 環境需先安裝完成後再安裝 CLI<br>The Heroku CLI requires Git, the popular version control system. If you don’t already have Git installed, complete the following before installing the CLI:</p>
@@ -478,25 +478,25 @@ Channel_Secret = YOUR_CHANNEL_SECRET
 <p>1.登入 Heroku</p>
 <pre><code>heroku login
 </code></pre><p>輸入 heroku 帳號密碼登入成功會寫 Logged in as “你的信箱” 如下圖</p>
-<p><img src="https://i.imgur.com/PlTUdWl.png" alt=""></p>
+<p><img src="https://i.imgur.com/PlTUdWl.png" alt></p>
 <p>2.創建.git資料夾(初始化 git)<br>僅在第一次使用時要輸入</p>
 <pre><code>git config --global user.name &quot;你的名字&quot;
 git config --global user.email 你的信箱
 
 git init
-</code></pre><p><img src="https://i.imgur.com/uylQ6lp.png" alt=""></p>
+</code></pre><p><img src="https://i.imgur.com/uylQ6lp.png" alt></p>
 <p>可以到該層看是否創建 .git 資料夾</p>
 <p>3.與 Heroku 連線</p>
 <pre><code>heroku git:remote -a HEROKU_APP名稱
-</code></pre><p><img src="https://i.imgur.com/C66dMoq.png" alt=""></p>
-<p>4.偵測變更 與 commit 與 push<br>注意1: git add .中的這個.需要與 add 空一格<br>注意2: 建置時 buildpackages 可以選擇語言 例如: 選擇Python<br><img src="https://i.imgur.com/FL4Wjxc.png" alt=""></p>
+</code></pre><p><img src="https://i.imgur.com/C66dMoq.png" alt></p>
+<p>4.偵測變更 與 commit 與 push<br>注意1: git add .中的這個.需要與 add 空一格<br>注意2: 建置時 buildpackages 可以選擇語言 例如: 選擇Python<br><img src="https://i.imgur.com/FL4Wjxc.png" alt></p>
 <pre><code>git add .
 git commit -m &quot;此次變更說明&quot;
 git push heroku master
 </code></pre><p>成功部屬後，會在 Heroku app 的 overview 中看到 build successed</p>
-<p><img src="https://i.imgur.com/KyzN5FP.png" alt=""></p>
+<p><img src="https://i.imgur.com/KyzN5FP.png" alt></p>
 <p>以上四步驟指令可以在 web app 裡的 deploy 看到</p>
-<p><img src="https://i.imgur.com/bBQIxsE.png" alt=""></p>
+<p><img src="https://i.imgur.com/bBQIxsE.png" alt></p>
 <p>之後有任何變更要套用僅需第一步驟登入 heroku 與第三步驟連線 heroku 並且反覆執行第四步驟即可更新</p>
 <h4 id="Sourcetree"><a href="#Sourcetree" class="headerlink" title="Sourcetree"></a>Sourcetree</h4><p>除了 cmd 指令方式還可以用 git gui 方式上傳程式碼，部屬到 Heroku 上面，我用的是 <a href="https://www.sourcetreeapp.com" target="_blank" rel="noopener">Sourcetree</a> 整體使用上算是容易上手且頁面簡潔，如果覺得用 cmd 部屬太困難那麼就用有使用者介面的 git gui 方式吧</p>
 <h2 id="Webhook-URL"><a href="#Webhook-URL" class="headerlink" title="Webhook URL"></a>Webhook URL</h2><p>最後要把之前尚未填寫的 Webhook URL 給補上，這個值會是你的 Heroku 部屬完成後的網址加上/callback</p>
@@ -536,7 +536,7 @@ git push heroku master
   </li>
   <li class="post-copyright-license">
     <strong>Copyright Notice： </strong>
-    All articles in this blog are licensed under <a href="" rel="external nofollow" target="_blank"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a></a> unless stating additionally.
+    All articles in this blog are licensed under <a href rel="external nofollow" target="_blank"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a></a> unless stating additionally.
   </li>
 </ul>
 
@@ -660,7 +660,7 @@ git push heroku master
 
       <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
-          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
               <p class="site-author-name" itemprop="name">G.C.L.</p>
               <p class="site-description motion-element" itemprop="description">在浩瀚的程式領域中，將走過的足跡記錄下來，文章著重在Qt、C++、python</p>

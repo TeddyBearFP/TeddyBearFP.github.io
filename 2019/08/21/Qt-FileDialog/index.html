@@ -6,7 +6,7 @@
 
 
 <html class="theme-next pisces use-motion" lang="zh-tw">
-<head><meta name="generator" content="Hexo 3.8.0">
+<head><meta name="generator" content="Hexo 3.9.0">
   <meta name="google-site-verification" content="6FSPL7W8VK5_r7N9kUUjs091G70s4tIlG_BfxOmVa9U">
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -172,7 +172,7 @@
 
 </head>
 
-<body oncontextmenu="return false" onselectstart="return false" oncopy="return false" oncut="return false" itemscope="" itemtype="http://schema.org/WebPage" lang="zh-tw">
+<body oncontextmenu="return false" onselectstart="return false" oncopy="return false" oncut="return false" itemscope itemtype="http://schema.org/WebPage" lang="zh-tw">
 
   
   
@@ -182,7 +182,7 @@
   <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
-    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-wrapper">
   <div class="site-meta ">
     
@@ -302,20 +302,20 @@
   
   
 
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
   
   
   
   <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://teddybearfp.github.io/2019/08/21/Qt-FileDialog/">
 
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="G.C.L.">
-      <meta itemprop="description" content="">
+      <meta itemprop="description" content>
       <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="泰迪熊的程式足跡">
     </span>
 
@@ -366,7 +366,7 @@
                 <span class="post-meta-item-text">分類於</span>
               
               
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/Qt/" itemprop="url" rel="index">
                     <span itemprop="name">Qt</span>
                   </a>
@@ -413,7 +413,7 @@
       
         <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>做介面端難免有需要給使用者選擇檔案的時候，那麼這時候使用FileDialog可以開啟檔案選擇介面讓使用者選擇特定類型檔案或是資料夾，這一篇來記錄一下Qt FileDialog的使用吧</p>
 <h2 id="Qt-FileDialog"><a href="#Qt-FileDialog" class="headerlink" title="Qt FileDialog"></a>Qt FileDialog</h2><figure class="highlight qml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> QtQuick <span class="number">2.9</span></span><br><span class="line"><span class="keyword">import</span> QtQuick.Controls <span class="number">2.2</span></span><br><span class="line"><span class="keyword">import</span> QtQuick.Dialogs <span class="number">1.3</span></span><br><span class="line"><span class="title">Item</span> &#123;</span><br><span class="line">    <span class="title">Button</span>&#123; <span class="comment">//透過這個按鍵可以觸發FileDialog</span></span><br><span class="line">        <span class="attribute">id:</span><span class="string">openBtn</span></span><br><span class="line">        <span class="attribute">anchors.left</span>: <span class="built_in">parent</span>.left</span><br><span class="line">        <span class="attribute">anchors.top</span>: <span class="built_in">parent</span>.top</span><br><span class="line">        <span class="attribute">anchors.margins</span>: <span class="number">50</span></span><br><span class="line">        <span class="attribute">text</span>:<span class="string">"Select folder\nto do something"</span></span><br><span class="line">        <span class="attribute">width</span>: <span class="number">250</span></span><br><span class="line">        <span class="attribute">height</span>: <span class="number">150</span></span><br><span class="line">        <span class="attribute">onClicked</span>: fileDialog.open()</span><br><span class="line">    &#125;</span><br><span class="line">   <span class="title">Label</span> &#123;</span><br><span class="line">       <span class="attribute">id:</span><span class="string"> labels</span></span><br><span class="line">       <span class="attribute">text</span>: qsTr(<span class="string">""</span>)</span><br><span class="line">       <span class="attribute">height</span>: <span class="number">25</span></span><br><span class="line">       <span class="attribute">anchors.top</span>: openBtn.verticalCenter</span><br><span class="line">       <span class="attribute">anchors.left</span>:<span class="attribute">openBtn.right</span></span><br><span class="line"><span class="attribute">       anchors.leftMargin</span>: <span class="number">15</span></span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   <span class="title">FileDialog</span> &#123;</span><br><span class="line">       <span class="attribute">id:</span><span class="string">fileDialog</span></span><br><span class="line">       <span class="attribute">title</span>: <span class="string">"Select folder"</span> <span class="comment">//上方顯示的標題</span></span><br><span class="line">       <span class="attribute">folder</span>: shortcuts.desktop <span class="comment">//讓起始位置指向desktop</span></span><br><span class="line">       <span class="attribute">selectExisting</span>: <span class="literal">true</span></span><br><span class="line">       <span class="attribute">selectFolder</span>: <span class="literal">true</span> <span class="comment">//這個屬性為true時,選擇整個資料夾而非檔案</span></span><br><span class="line">       <span class="attribute">selectMultiple</span>: <span class="literal">false</span> <span class="comment">//這個屬性處理是否可以選擇多個檔案</span></span><br><span class="line">       <span class="attribute">onAccepted</span>: &#123; <span class="comment">//選擇檔案的時候做的事情Call function do something...</span></span><br><span class="line">           <span class="comment">//fileDialog.setNameFilter(tr("Images (*.png *.jpg)"));//若selectFolder為false選擇檔案時可以過濾檔案類型,僅顯示給使用者看某類型檔案</span></span><br><span class="line">           labels.text = fileDialog.fileUrl;</span><br><span class="line">           <span class="built_in">console</span>.log(<span class="string">"You chose: "</span> + fileDialog.fileUrl);</span><br><span class="line">           doSomething(fileDialog.fileUrl) <span class="comment">//得到的字串可能為"file:///D:/Sample"</span></span><br><span class="line">       &#125;</span><br><span class="line">       <span class="attribute">onRejected</span>: &#123; <span class="comment">//取消的時候做的行為,例如不做事或是程式關閉Qt.quit()</span></span><br><span class="line">           labels.text = <span class="string">""</span>;</span><br><span class="line">       &#125;</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="FileDialog-Demo"><a href="#FileDialog-Demo" class="headerlink" title="FileDialog Demo"></a>FileDialog Demo</h2><p><img src="https://i.imgur.com/wJsbXQe.png" alt=""></p>
+<h2 id="FileDialog-Demo"><a href="#FileDialog-Demo" class="headerlink" title="FileDialog Demo"></a>FileDialog Demo</h2><p><img src="https://i.imgur.com/wJsbXQe.png" alt></p>
 <h2 id="DoSomething-字串處理"><a href="#DoSomething-字串處理" class="headerlink" title="DoSomething 字串處理"></a>DoSomething 字串處理</h2><h3 id="viewmodel"><a href="#viewmodel" class="headerlink" title="viewmodel"></a>viewmodel</h3><p>收到剛剛從qml端傳來的QString字串後做一些處理再傳至純C lib做事情,所以需要QString轉成Char*</p>
 <p>將QString: </p>
 <pre><code>&quot;file:///D:/Sample&quot;
@@ -454,7 +454,7 @@
   </li>
   <li class="post-copyright-license">
     <strong>Copyright Notice： </strong>
-    All articles in this blog are licensed under <a href="" rel="external nofollow" target="_blank"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a></a> unless stating additionally.
+    All articles in this blog are licensed under <a href rel="external nofollow" target="_blank"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a></a> unless stating additionally.
   </li>
 </ul>
 
@@ -576,7 +576,7 @@
 
       <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
-          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
               <p class="site-author-name" itemprop="name">G.C.L.</p>
               <p class="site-description motion-element" itemprop="description">在浩瀚的程式領域中，將走過的足跡記錄下來，文章著重在Qt、C++、python</p>

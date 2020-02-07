@@ -6,7 +6,7 @@
 
 
 <html class="theme-next pisces use-motion" lang="zh-tw">
-<head><meta name="generator" content="Hexo 3.8.0">
+<head><meta name="generator" content="Hexo 3.9.0">
   <meta name="google-site-verification" content="6FSPL7W8VK5_r7N9kUUjs091G70s4tIlG_BfxOmVa9U">
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -172,7 +172,7 @@
 
 </head>
 
-<body oncontextmenu="return false" onselectstart="return false" oncopy="return false" oncut="return false" itemscope="" itemtype="http://schema.org/WebPage" lang="zh-tw">
+<body oncontextmenu="return false" onselectstart="return false" oncopy="return false" oncut="return false" itemscope itemtype="http://schema.org/WebPage" lang="zh-tw">
 
   
   
@@ -182,7 +182,7 @@
   <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
-    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-wrapper">
   <div class="site-meta ">
     
@@ -302,20 +302,20 @@
   
   
 
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
   
   
   
   <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://teddybearfp.github.io/2019/10/02/Qt-如何在-qml-中使用-C-Enum/">
 
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="G.C.L.">
-      <meta itemprop="description" content="">
+      <meta itemprop="description" content>
       <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="泰迪熊的程式足跡">
     </span>
 
@@ -366,7 +366,7 @@
                 <span class="post-meta-item-text">分類於</span>
               
               
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/Qt/" itemprop="url" rel="index">
                     <span itemprop="name">Qt</span>
                   </a>
@@ -428,7 +428,7 @@
 </code></pre><p>註冊完成後便可以在另一個類別中使用</p>
 <h4 id="h-cpp"><a href="#h-cpp" class="headerlink" title=".h / .cpp"></a>.h / .cpp</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//.h</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"teddybearfp.h"</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;QQuickItem&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">TB2</span> :</span> <span class="keyword">public</span> QQuickItem</span><br><span class="line">&#123;</span><br><span class="line"></span><br><span class="line">    Q_OBJECT</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    TB2();</span><br><span class="line">    <span class="function">Q_INVOKABLE QString <span class="title">test</span><span class="params">( TeddyBearFP::Week week )</span></span>;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">//.cpp</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"tb2.h"</span></span></span><br><span class="line"></span><br><span class="line">TB2::TB2()</span><br><span class="line">&#123;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">QString TB2::test( TeddyBearFP::Week week )</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">if</span> ( week == TeddyBearFP::MONDAY )</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"MONDAY"</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> ( week == TeddyBearFP::FRIDAY )</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"FRIDAY"</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="string">"Others"</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h4 id="qml"><a href="#qml" class="headerlink" title="qml"></a>qml</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> QtQuick <span class="number">2.0</span></span><br><span class="line"><span class="keyword">import</span> tb2 <span class="number">1.0</span></span><br><span class="line">TB2 &#123;</span><br><span class="line">    Column &#123;</span><br><span class="line">        anchors.fill: parent</span><br><span class="line">        anchors.topMargin: <span class="number">5</span></span><br><span class="line">        anchors.leftMargin: <span class="number">5</span></span><br><span class="line">        spacing: <span class="number">20</span></span><br><span class="line">        Text</span><br><span class="line">        &#123;</span><br><span class="line">            width: parent.width</span><br><span class="line">            font.pixelSize : <span class="number">16</span></span><br><span class="line">            text:<span class="string">"TB2"</span></span><br><span class="line">        &#125;</span><br><span class="line">        Column</span><br><span class="line">        &#123;</span><br><span class="line">            width: parent.width</span><br><span class="line">            spacing: <span class="number">2</span></span><br><span class="line">            Text</span><br><span class="line">            &#123;</span><br><span class="line">                width: parent.width</span><br><span class="line">                font.pixelSize : <span class="number">16</span></span><br><span class="line">                text:<span class="string">"Week Name: "</span> + test(TeddyBearFP.FRIDAY);</span><br><span class="line">            &#125;</span><br><span class="line">            Text</span><br><span class="line">            &#123;</span><br><span class="line">                width: parent.width</span><br><span class="line">                font.pixelSize : <span class="number">16</span></span><br><span class="line">                text:<span class="string">"Week Value: "</span> + TeddyBearFP.FRIDAY.toString()</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="完成-查看數值"><a href="#完成-查看數值" class="headerlink" title="完成 查看數值"></a>完成 查看數值</h3><p><img src="https://i.imgur.com/RMTfnvy.png" alt=""></p>
+<h3 id="完成-查看數值"><a href="#完成-查看數值" class="headerlink" title="完成 查看數值"></a>完成 查看數值</h3><p><img src="https://i.imgur.com/RMTfnvy.png" alt></p>
 <h2 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h2><p>公司 M 學長的資料分享</p>
 
       
@@ -464,7 +464,7 @@
   </li>
   <li class="post-copyright-license">
     <strong>Copyright Notice： </strong>
-    All articles in this blog are licensed under <a href="" rel="external nofollow" target="_blank"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a></a> unless stating additionally.
+    All articles in this blog are licensed under <a href rel="external nofollow" target="_blank"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a></a> unless stating additionally.
   </li>
 </ul>
 
@@ -586,7 +586,7 @@
 
       <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
-          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
               <p class="site-author-name" itemprop="name">G.C.L.</p>
               <p class="site-description motion-element" itemprop="description">在浩瀚的程式領域中，將走過的足跡記錄下來，文章著重在Qt、C++、python</p>

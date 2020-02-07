@@ -6,7 +6,7 @@
 
 
 <html class="theme-next pisces use-motion" lang="zh-tw">
-<head><meta name="generator" content="Hexo 3.8.0">
+<head><meta name="generator" content="Hexo 3.9.0">
   <meta name="google-site-verification" content="6FSPL7W8VK5_r7N9kUUjs091G70s4tIlG_BfxOmVa9U">
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -174,7 +174,7 @@
 
 </head>
 
-<body oncontextmenu="return false" onselectstart="return false" oncopy="return false" oncut="return false" itemscope="" itemtype="http://schema.org/WebPage" lang="zh-tw">
+<body oncontextmenu="return false" onselectstart="return false" oncopy="return false" oncut="return false" itemscope itemtype="http://schema.org/WebPage" lang="zh-tw">
 
   
   
@@ -184,7 +184,7 @@
   <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
-    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-wrapper">
   <div class="site-meta ">
     
@@ -304,20 +304,20 @@
   
   
 
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
   
   
   
   <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://teddybearfp.github.io/2019/01/31/步進馬達/">
 
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="G.C.L.">
-      <meta itemprop="description" content="">
+      <meta itemprop="description" content>
       <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="泰迪熊的程式足跡">
     </span>
 
@@ -368,7 +368,7 @@
                 <span class="post-meta-item-text">分類於</span>
               
               
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/其他/" itemprop="url" rel="index">
                     <span itemprop="name">其他</span>
                   </a>
@@ -419,9 +419,9 @@
 <h3 id="Step-Method"><a href="#Step-Method" class="headerlink" title="Step Method"></a>Step Method</h3><p>微步進方式(Full,二分之一,四分之一,八分之一…)影響移動流暢度，更換步進方式時Step與Hz也需一併變化</p>
 <h3 id="計算方式"><a href="#計算方式" class="headerlink" title="計算方式"></a>計算方式</h3><p>假如預設馬達轉一圈為200 Step<br><img src="https://i.imgur.com/ASkUv6Y.png" alt="以四分之一微步如上面表格"></p>
 <h2 id="檢測狀態-Read-Status"><a href="#檢測狀態-Read-Status" class="headerlink" title="檢測狀態(Read Status)"></a>檢測狀態(Read Status)</h2><h3 id="運作方式"><a href="#運作方式" class="headerlink" title="運作方式"></a>運作方式</h3><p>看當前設計以下為舉例<br>第一個bit表示是否在Home<br>第三個bit表示Task是否完成</p>
-<p><img src="https://i.imgur.com/qW2oH3M.png" alt=""></p>
+<p><img src="https://i.imgur.com/qW2oH3M.png" alt></p>
 <p>馬達在Home且還沒下任何指令時，讀取時值應該為5(0101)<br>移動時有未完成任務並且不在Home，讀取值應該為0(0000)<br>完成移動並且不在Home，讀取值應為4(0100)</p>
-<p>一個在Home的馬達移動的過程為<br><img src="https://i.imgur.com/sCW8dPD.png" alt=""></p>
+<p>一個在Home的馬達移動的過程為<br><img src="https://i.imgur.com/sCW8dPD.png" alt></p>
 <h2 id="資料傳遞方式"><a href="#資料傳遞方式" class="headerlink" title="資料傳遞方式"></a>資料傳遞方式</h2><p>1byte = 8bits<br>若是2 byte的16進制資料傳遞(Max = 二進制: 1111 1111 1111 1111  十進制: 65535  十六進制: FFFF)<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> buffer = reg;</span><br><span class="line"><span class="keyword">int</span> loByte = buffer % <span class="number">256</span>;</span><br><span class="line"><span class="keyword">int</span> hiByte = buffer / <span class="number">256</span>;</span><br></pre></td></tr></table></figure></p>
 <h3 id="檢測16進制資料"><a href="#檢測16進制資料" class="headerlink" title="檢測16進制資料"></a>檢測16進制資料</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">char</span> hexLoByte[<span class="number">33</span>];</span><br><span class="line">itoa(loByte, hexLoByte, <span class="number">16</span>);</span><br></pre></td></tr></table></figure>
 <p>這樣印出的hexLoByte就會以16進制顯示</p>
@@ -463,7 +463,7 @@
   </li>
   <li class="post-copyright-license">
     <strong>Copyright Notice： </strong>
-    All articles in this blog are licensed under <a href="" rel="external nofollow" target="_blank"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a></a> unless stating additionally.
+    All articles in this blog are licensed under <a href rel="external nofollow" target="_blank"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a></a> unless stating additionally.
   </li>
 </ul>
 
@@ -585,7 +585,7 @@
 
       <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
-          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
               <p class="site-author-name" itemprop="name">G.C.L.</p>
               <p class="site-description motion-element" itemprop="description">在浩瀚的程式領域中，將走過的足跡記錄下來，文章著重在Qt、C++、python</p>

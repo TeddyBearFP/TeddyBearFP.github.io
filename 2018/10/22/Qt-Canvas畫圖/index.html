@@ -6,7 +6,7 @@
 
 
 <html class="theme-next pisces use-motion" lang="zh-tw">
-<head><meta name="generator" content="Hexo 3.8.0">
+<head><meta name="generator" content="Hexo 3.9.0">
   <meta name="google-site-verification" content="6FSPL7W8VK5_r7N9kUUjs091G70s4tIlG_BfxOmVa9U">
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -174,7 +174,7 @@
 
 </head>
 
-<body oncontextmenu="return false" onselectstart="return false" oncopy="return false" oncut="return false" itemscope="" itemtype="http://schema.org/WebPage" lang="zh-tw">
+<body oncontextmenu="return false" onselectstart="return false" oncopy="return false" oncut="return false" itemscope itemtype="http://schema.org/WebPage" lang="zh-tw">
 
   
   
@@ -184,7 +184,7 @@
   <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
-    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-wrapper">
   <div class="site-meta ">
     
@@ -304,20 +304,20 @@
   
   
 
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
   
   
   
   <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://teddybearfp.github.io/2018/10/22/Qt-Canvas畫圖/">
 
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="G.C.L.">
-      <meta itemprop="description" content="">
+      <meta itemprop="description" content>
       <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="泰迪熊的程式足跡">
     </span>
 
@@ -368,7 +368,7 @@
                 <span class="post-meta-item-text">分類於</span>
               
               
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/Qt/" itemprop="url" rel="index">
                     <span itemprop="name">Qt</span>
                   </a>
@@ -425,12 +425,12 @@
 <h3 id="畫圓"><a href="#畫圓" class="headerlink" title="畫圓"></a>畫圓</h3><figure class="highlight qml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">ctx.arc(<span class="number">320</span>,<span class="number">240</span>,<span class="number">5</span>,<span class="number">0</span>,<span class="built_in">Math</span>.PI*<span class="number">2</span>); <span class="comment">//ctx.arc(x座標,y座標,半徑,起始角度,結束角度)</span></span><br><span class="line">ctx.stroke();                   <span class="comment">//畫圖</span></span><br><span class="line">ctx.fillStyle=‘green<span class="string">'           //設定填充的顏色(預設為不透明黑)</span></span><br><span class="line"><span class="string">ctx.fill();                     //將中間填充顏色</span></span><br></pre></td></tr></table></figure>
 <h3 id="畫矩形"><a href="#畫矩形" class="headerlink" title="畫矩形"></a>畫矩形</h3><figure class="highlight qml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ctx.fillRect(x,y,width,height) <span class="comment">//(x,y)為左上角的點再指定寬高,完成填充矩形</span></span><br></pre></td></tr></table></figure>
 <h3 id="畫正方形"><a href="#畫正方形" class="headerlink" title="畫正方形"></a>畫正方形</h3><p>Offset可以對圖形做位移操作<br><figure class="highlight qml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> ctx = canvas.getContext(<span class="string">'2d'</span>); ctx.moveTo(<span class="number">240</span>,<span class="number">160</span> + yOffset) </span><br><span class="line">ctx.lineTo(<span class="number">400</span>,<span class="number">160</span> + yOffset) </span><br><span class="line">ctx.lineTo(<span class="number">400</span>,<span class="number">320</span> + yOffset) </span><br><span class="line">ctx.lineTo(<span class="number">240</span>,<span class="number">320</span> + yOffset) </span><br><span class="line">ctx.lineTo(<span class="number">240</span>,<span class="number">160</span> + yOffset) </span><br><span class="line">ctx.stroke()</span><br></pre></td></tr></table></figure></p>
-<p><img src="https://i.imgur.com/JbFnig2.png" alt="" title="正方形"></p>
+<p><img src="https://i.imgur.com/JbFnig2.png" alt title="正方形"></p>
 <h3 id="畫線"><a href="#畫線" class="headerlink" title="畫線"></a>畫線</h3><figure class="highlight qml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">ctx.beginPath()     <span class="comment">//開始設定路徑</span></span><br><span class="line">ctx.moveTo(<span class="number">0</span>,<span class="number">240</span>)   <span class="comment">//提起畫筆的動作並移動到(0,240)位置</span></span><br><span class="line">ctx.lineTo(<span class="number">640</span>,<span class="number">240</span>) <span class="comment">//沒有提起畫筆從上一步位置畫線畫至(640,240)位置</span></span><br><span class="line">ctx.stroke()        <span class="comment">//畫圖</span></span><br></pre></td></tr></table></figure>
 <h3 id="畫正圓弧"><a href="#畫正圓弧" class="headerlink" title="畫正圓弧"></a>畫正圓弧</h3><figure class="highlight qml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">ctx.moveTo(x0, y0)            <span class="comment">//移至 (x0, y0)</span></span><br><span class="line">ctx.arcTo(x1,y1,x2,y2,radius) <span class="comment">//arcto(第一點x,第一點y,第二點x,第二點y,圓弧半徑)(x0,y0),(x1,y1),(x2,y2)組成夾角半徑為radius圓與該夾角相切得到一個圓弧</span></span><br><span class="line">	                      <span class="comment">//半徑算法: sqrt(pow(x0-x1)+pow(y0-y1))</span></span><br><span class="line">ctx.strock();                 <span class="comment">//畫圖</span></span><br><span class="line"></span><br><span class="line"><span class="attribute">ex</span>:</span><br><span class="line">ctx.moveTo(<span class="number">360</span> + xOffset,<span class="number">200</span> + yOffset)</span><br><span class="line">ctx.arcTo(<span class="number">400</span> + xOffset,<span class="number">240</span> + yOffset,<span class="number">360</span> + xOffset,<span class="number">280</span> + yOffset,<span class="number">56</span>)</span><br><span class="line"><span class="comment">//ctx.bezierCurveTo(360,200,382,240,360,280);</span></span><br><span class="line">ctx.stroke()</span><br></pre></td></tr></table></figure>
-<p><img src="https://i.imgur.com/dXpJQnx.png" alt="" title="圓弧"></p>
+<p><img src="https://i.imgur.com/dXpJQnx.png" alt title="圓弧"></p>
 <h3 id="特殊圖形-貝塞爾曲線"><a href="#特殊圖形-貝塞爾曲線" class="headerlink" title="特殊圖形(貝塞爾曲線)"></a>特殊圖形(貝塞爾曲線)</h3><p><code>此方法可達到曲線效果</code><br><figure class="highlight qml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">ctx.beginPath()</span><br><span class="line">	<span class="comment">//開始設定路徑</span></span><br><span class="line">ctx.moveTo(<span class="number">225</span>,<span class="number">234</span>) </span><br><span class="line">	<span class="comment">//移動至此位置</span></span><br><span class="line">ctx.bezierCurveTo(<span class="number">225</span>,<span class="number">234</span>,<span class="number">220</span>,<span class="number">240</span>,<span class="number">225</span>,<span class="number">246</span>);</span><br><span class="line">	<span class="comment">//bezierCurveTo(起始點x,起始點y,中途經歷點x,中途經歷點y,終點x,終點y)</span></span><br></pre></td></tr></table></figure></p>
-<p><img src="https://i.imgur.com/cfEBqke.png" alt="" title="利用以上方式達成各種圖形繪製"></p>
+<p><img src="https://i.imgur.com/cfEBqke.png" alt title="利用以上方式達成各種圖形繪製"></p>
 <h3 id="Tips"><a href="#Tips" class="headerlink" title="Tips"></a>Tips</h3><figure class="highlight qml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ctx.moveTo(<span class="number">0</span>,<span class="number">240</span>)   <span class="comment">//有將畫筆提起</span></span><br><span class="line">ctx.lineTo(<span class="number">640</span>,<span class="number">240</span>) <span class="comment">//沒有將畫筆提起</span></span><br><span class="line">ctx.closePath();    <span class="comment">//閉合路徑,填掉缺口如果畫的線沒有閉合,自動補上一條直線從終點至上一個moveto的點</span></span><br></pre></td></tr></table></figure>
 <h3 id="刷新畫布"><a href="#刷新畫布" class="headerlink" title="刷新畫布"></a>刷新畫布</h3><p>需要使用到類似video的呈現或是位移時可以運用下列方法達成<br><figure class="highlight qml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> ctx = canvas.getContext(<span class="string">'2d'</span>); </span><br><span class="line">ctx.reset();		    <span class="comment">//清空</span></span><br><span class="line">canvas.requestPaint();	    <span class="comment">//重畫 類似update()</span></span><br></pre></td></tr></table></figure></p>
 
@@ -467,7 +467,7 @@
   </li>
   <li class="post-copyright-license">
     <strong>Copyright Notice： </strong>
-    All articles in this blog are licensed under <a href="" rel="external nofollow" target="_blank"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a></a> unless stating additionally.
+    All articles in this blog are licensed under <a href rel="external nofollow" target="_blank"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a></a> unless stating additionally.
   </li>
 </ul>
 
@@ -591,7 +591,7 @@
 
       <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
-          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
               <p class="site-author-name" itemprop="name">G.C.L.</p>
               <p class="site-description motion-element" itemprop="description">在浩瀚的程式領域中，將走過的足跡記錄下來，文章著重在Qt、C++、python</p>

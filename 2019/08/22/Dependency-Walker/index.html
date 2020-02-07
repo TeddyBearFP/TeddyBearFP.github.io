@@ -6,7 +6,7 @@
 
 
 <html class="theme-next pisces use-motion" lang="zh-tw">
-<head><meta name="generator" content="Hexo 3.8.0">
+<head><meta name="generator" content="Hexo 3.9.0">
   <meta name="google-site-verification" content="6FSPL7W8VK5_r7N9kUUjs091G70s4tIlG_BfxOmVa9U">
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -173,7 +173,7 @@
 
 </head>
 
-<body oncontextmenu="return false" onselectstart="return false" oncopy="return false" oncut="return false" itemscope="" itemtype="http://schema.org/WebPage" lang="zh-tw">
+<body oncontextmenu="return false" onselectstart="return false" oncopy="return false" oncut="return false" itemscope itemtype="http://schema.org/WebPage" lang="zh-tw">
 
   
   
@@ -183,7 +183,7 @@
   <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
-    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-wrapper">
   <div class="site-meta ">
     
@@ -303,20 +303,20 @@
   
   
 
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
   
   
   
   <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://teddybearfp.github.io/2019/08/22/Dependency-Walker/">
 
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="G.C.L.">
-      <meta itemprop="description" content="">
+      <meta itemprop="description" content>
       <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="泰迪熊的程式足跡">
     </span>
 
@@ -367,7 +367,7 @@
                 <span class="post-meta-item-text">分類於</span>
               
               
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/其他/" itemprop="url" rel="index">
                     <span itemprop="name">其他</span>
                   </a>
@@ -415,9 +415,9 @@
         <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>記得剛進公司的時候，對dll動態連結檔還非常不了解，寫專案的時候缺少哪個dll都不太清楚，導致靜態連結檔正確產出obj檔案但是在執行檔的時候會crash掉，每次解決都需要花不少時間找少哪個動態連結檔dll，今天來記錄一下一個神好用的軟體，Dependency Walker，有了這個神軟體考試都一百分</p>
 <h2 id="Dependency-Walker-概述"><a href="#Dependency-Walker-概述" class="headerlink" title="Dependency Walker 概述"></a>Dependency Walker 概述</h2><p>當程式執行時，有DLL問題時，可以使用Dependency Walker工具做檢查<br>Dependency Walker可以遞迴地檢測程式所使用的所有相依動態連結檔DLL。</p>
 <h2 id="使用-Dependency-Walker"><a href="#使用-Dependency-Walker" class="headerlink" title="使用 Dependency Walker"></a>使用 Dependency Walker</h2><p>要使用Dependency Walker前提須要先產出執行檔，那麼就需要先把Link error之類的連結問題與obj先產出才會有執行檔，有了執行檔後開啟Dependency Walker選擇欲檢查的執行檔，就會出現以下畫面</p>
-<h3 id="顯示缺少的dll"><a href="#顯示缺少的dll" class="headerlink" title="顯示缺少的dll"></a>顯示缺少的dll</h3><p><img src="https://i.imgur.com/y2kWeMt.png" alt=""></p>
+<h3 id="顯示缺少的dll"><a href="#顯示缺少的dll" class="headerlink" title="顯示缺少的dll"></a>顯示缺少的dll</h3><p><img src="https://i.imgur.com/y2kWeMt.png" alt></p>
 <p>從上面的圖可得知缺少3個dll分別為VTKCOMMONCOLOR,VTKCOMMONCOMPUTATIONALGEOMETRY,VTKCOMMONCORE<br>三個動態連結檔dll那麼將它們放至執行檔旁一切就解決拉</p>
-<h3 id="補上後的畫面"><a href="#補上後的畫面" class="headerlink" title="補上後的畫面"></a>補上後的畫面</h3><p><img src="https://i.imgur.com/IuMT3uH.png" alt=""></p>
+<h3 id="補上後的畫面"><a href="#補上後的畫面" class="headerlink" title="補上後的畫面"></a>補上後的畫面</h3><p><img src="https://i.imgur.com/IuMT3uH.png" alt></p>
 <p>圖中可以看到剛剛缺少的dll已經補上了<br>那麼這時候如果原本的問題僅是缺少dll問題的化基本上就能執行囉</p>
 
       
@@ -453,7 +453,7 @@
   </li>
   <li class="post-copyright-license">
     <strong>Copyright Notice： </strong>
-    All articles in this blog are licensed under <a href="" rel="external nofollow" target="_blank"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a></a> unless stating additionally.
+    All articles in this blog are licensed under <a href rel="external nofollow" target="_blank"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a></a> unless stating additionally.
   </li>
 </ul>
 
@@ -575,7 +575,7 @@
 
       <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
-          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
               <p class="site-author-name" itemprop="name">G.C.L.</p>
               <p class="site-description motion-element" itemprop="description">在浩瀚的程式領域中，將走過的足跡記錄下來，文章著重在Qt、C++、python</p>

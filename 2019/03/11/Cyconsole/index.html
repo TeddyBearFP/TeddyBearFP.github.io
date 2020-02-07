@@ -6,7 +6,7 @@
 
 
 <html class="theme-next pisces use-motion" lang="zh-tw">
-<head><meta name="generator" content="Hexo 3.8.0">
+<head><meta name="generator" content="Hexo 3.9.0">
   <meta name="google-site-verification" content="6FSPL7W8VK5_r7N9kUUjs091G70s4tIlG_BfxOmVa9U">
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -174,7 +174,7 @@
 
 </head>
 
-<body oncontextmenu="return false" onselectstart="return false" oncopy="return false" oncut="return false" itemscope="" itemtype="http://schema.org/WebPage" lang="zh-tw">
+<body oncontextmenu="return false" onselectstart="return false" oncopy="return false" oncut="return false" itemscope itemtype="http://schema.org/WebPage" lang="zh-tw">
 
   
   
@@ -184,7 +184,7 @@
   <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
-    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-wrapper">
   <div class="site-meta ">
     
@@ -304,20 +304,20 @@
   
   
 
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
   
   
   
   <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://teddybearfp.github.io/2019/03/11/Cyconsole/">
 
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="G.C.L.">
-      <meta itemprop="description" content="">
+      <meta itemprop="description" content>
       <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="泰迪熊的程式足跡">
     </span>
 
@@ -368,7 +368,7 @@
                 <span class="post-meta-item-text">分類於</span>
               
               
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/其他/" itemprop="url" rel="index">
                     <span itemprop="name">其他</span>
                   </a>
@@ -414,9 +414,9 @@
 
       
         <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>在研發過程中，軟硬體與韌體都非常重要，某一個的錯誤都會導致異常現象，有時候檢驗不出軟體問題的時候我們就需要檢查韌體與硬體的問題，最近認識這個工具Cyconsole，可以透過Cyconsole下指令給firmware或是硬體，可以驗證Cypress或是FPGA Code正確性，這一篇記錄一下這個我很少用到的工具</p>
-<h2 id="Cyconsole"><a href="#Cyconsole" class="headerlink" title="Cyconsole"></a>Cyconsole</h2><h3 id="簡介"><a href="#簡介" class="headerlink" title="簡介"></a>簡介</h3><p>是Cypress公司釋出的軟體，可以用來下指令到底層，來驅動韌體或是硬體，<br>用來檢測，Cyconsole它的Icon如下圖<br><img src="https://i.imgur.com/2ovPmIF.png" alt=""></p>
-<h3 id="連結"><a href="#連結" class="headerlink" title="連結"></a>連結</h3><p>在連結裝置後，我們開Cyconsole並點選到Misc.可以找到我們的USB連結裝置，接著點選上方Options內的Ez-USB會跳出下方第二張圖<br><img src="https://i.imgur.com/NqQ8BbT.png" alt=""></p>
-<h3 id="EZ-USB"><a href="#EZ-USB" class="headerlink" title="EZ-USB"></a>EZ-USB</h3><p><img src="https://i.imgur.com/GnrVAc0.png" alt=""></p>
+<h2 id="Cyconsole"><a href="#Cyconsole" class="headerlink" title="Cyconsole"></a>Cyconsole</h2><h3 id="簡介"><a href="#簡介" class="headerlink" title="簡介"></a>簡介</h3><p>是Cypress公司釋出的軟體，可以用來下指令到底層，來驅動韌體或是硬體，<br>用來檢測，Cyconsole它的Icon如下圖<br><img src="https://i.imgur.com/2ovPmIF.png" alt></p>
+<h3 id="連結"><a href="#連結" class="headerlink" title="連結"></a>連結</h3><p>在連結裝置後，我們開Cyconsole並點選到Misc.可以找到我們的USB連結裝置，接著點選上方Options內的Ez-USB會跳出下方第二張圖<br><img src="https://i.imgur.com/NqQ8BbT.png" alt></p>
+<h3 id="EZ-USB"><a href="#EZ-USB" class="headerlink" title="EZ-USB"></a>EZ-USB</h3><p><img src="https://i.imgur.com/GnrVAc0.png" alt></p>
 <h4 id="逐一輸入的方式-通常是直接下給FPGA"><a href="#逐一輸入的方式-通常是直接下給FPGA" class="headerlink" title="逐一輸入的方式(通常是直接下給FPGA)"></a>逐一輸入的方式(通常是直接下給FPGA)</h4><ul>
 <li>Req輸入request方式</li>
 <li>Value輸入計算出來的16進制值</li>
@@ -469,7 +469,7 @@
   </li>
   <li class="post-copyright-license">
     <strong>Copyright Notice： </strong>
-    All articles in this blog are licensed under <a href="" rel="external nofollow" target="_blank"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a></a> unless stating additionally.
+    All articles in this blog are licensed under <a href rel="external nofollow" target="_blank"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a></a> unless stating additionally.
   </li>
 </ul>
 
@@ -591,7 +591,7 @@
 
       <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
-          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
               <p class="site-author-name" itemprop="name">G.C.L.</p>
               <p class="site-description motion-element" itemprop="description">在浩瀚的程式領域中，將走過的足跡記錄下來，文章著重在Qt、C++、python</p>

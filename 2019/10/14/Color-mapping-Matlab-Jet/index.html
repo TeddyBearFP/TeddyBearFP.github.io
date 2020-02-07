@@ -6,7 +6,7 @@
 
 
 <html class="theme-next pisces use-motion" lang="zh-tw">
-<head><meta name="generator" content="Hexo 3.8.0">
+<head><meta name="generator" content="Hexo 3.9.0">
   <meta name="google-site-verification" content="6FSPL7W8VK5_r7N9kUUjs091G70s4tIlG_BfxOmVa9U">
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -176,7 +176,7 @@
 
 </head>
 
-<body oncontextmenu="return false" onselectstart="return false" oncopy="return false" oncut="return false" itemscope="" itemtype="http://schema.org/WebPage" lang="zh-tw">
+<body oncontextmenu="return false" onselectstart="return false" oncopy="return false" oncut="return false" itemscope itemtype="http://schema.org/WebPage" lang="zh-tw">
 
   
   
@@ -186,7 +186,7 @@
   <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
-    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-wrapper">
   <div class="site-meta ">
     
@@ -306,20 +306,20 @@
   
   
 
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
   
   
   
   <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://teddybearfp.github.io/2019/10/14/Color-mapping-Matlab-Jet/">
 
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="G.C.L.">
-      <meta itemprop="description" content="">
+      <meta itemprop="description" content>
       <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="泰迪熊的程式足跡">
     </span>
 
@@ -370,7 +370,7 @@
                 <span class="post-meta-item-text">分類於</span>
               
               
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/Qt/" itemprop="url" rel="index">
                     <span itemprop="name">Qt</span>
                   </a>
@@ -418,15 +418,15 @@
         <h1 id="Color-mapping-Matlab-Jet-in-Qt"><a href="#Color-mapping-Matlab-Jet-in-Qt" class="headerlink" title="Color mapping ( Matlab Jet ) in Qt"></a>Color mapping ( Matlab Jet ) in Qt</h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>今天記錄最近編寫的小工具( ColorMappingJet )，將灰階重新分布為色彩空間( Matlab Jet )，顏色映射( Color mapping )是將一個圖像的顏色映射到另一個圖像的顏色的功能。顏色映射可以被稱為導致映射函數的算法或者變換圖像顏色的算法。</p>
 <h2 id="Matlab-Jet"><a href="#Matlab-Jet" class="headerlink" title="Matlab Jet"></a>Matlab Jet</h2><p>這是種顏色映射的算法，是將灰階值放到 Jet 上進行顏色映射( Color mapping )，值由小到大從深藍到綠到深紅</p>
 <p>如下圖:</p>
-<p><img src="https://i.imgur.com/gUzSwAv.png" alt=""></p>
+<p><img src="https://i.imgur.com/gUzSwAv.png" alt></p>
 <p>下圖是截取自 <a href="https://blogs.mathworks.com/cleve/2015/02/02/origins-of-colormaps/#1b2ebb6e-d715-4a3b-a473-4940ab7ba7b7" target="_blank" rel="noopener">Origins of Colormaps</a> 網站講解的 Jet 映射原理</p>
 <p><img src="https://i.imgur.com/7Dzl98j.png" alt="圖1"></p>
 <p>主要是在 1/8 , 3/8 , 5/8 , 7/8 這幾個位置進行顏色轉折</p>
 <h2 id="Color-mapping-in-Qt"><a href="#Color-mapping-in-Qt" class="headerlink" title="Color mapping in Qt"></a>Color mapping in Qt</h2><p>我編寫的小工具 ( ColorMappingJet ) 是可以輸入任意上下限的灰階值再透過 Slider 調整當下數值，讓下方的方型進行顏色映射</p>
 <p>上下限不一定要是0 ~ 255 或是 -1 ~ 1<br>可以是 0 ~ 300 或是 123 ~ 777</p>
 <p>例如:<br>下限為 0</p>
-<p><img src="https://i.imgur.com/rB75nGX.png" alt=""></p>
-<p>上限為 300<br><img src="https://i.imgur.com/v87ITRr.png" alt=""></p>
+<p><img src="https://i.imgur.com/rB75nGX.png" alt></p>
+<p>上限為 300<br><img src="https://i.imgur.com/v87ITRr.png" alt></p>
 <p>那麼我們要怎麼將灰階值轉換成三通道( RGB )值?</p>
 <p>我的做法是將輸入的灰階值做顏色映射，將單通道的灰階值轉成三通道<br>由深藍色 -&gt; 藍色 -&gt;綠色 -&gt; 紅色 -&gt; 深紅色</p>
 <pre><code>Slider 控制單通道灰階值 value
@@ -446,7 +446,7 @@ value 在小於 0.875 時: 紅色通道維持 1 ， 綠色通道值則從 1 減�
 else
 其他 value: 紅色通道值則從 1 減至 0.5 ， 綠色通道值為 0 ， 藍色通道值為 0
 </code></pre><p>運算出來的數值存取至 Q_PROPERTY 的 QColor 中傳遞給 qml<br>透過以上方法就完成啦!</p>
-<p><img src="https://i.imgur.com/FTi7JMC.png" alt=""></p>
+<p><img src="https://i.imgur.com/FTi7JMC.png" alt></p>
 <h2 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h2><p><a href="https://blogs.mathworks.com/cleve/2015/02/02/origins-of-colormaps/#1b2ebb6e-d715-4a3b-a473-4940ab7ba7b7" target="_blank" rel="noopener">Origins of Colormaps</a></p>
 <p><a href="https://blogs.mathworks.com/cleve/2015/02/02/origins-of-colormaps/#1b2ebb6e-d715-4a3b-a473-4940ab7ba7b7" target="_blank" rel="noopener">圖1 來源</a></p>
 
@@ -483,7 +483,7 @@ else
   </li>
   <li class="post-copyright-license">
     <strong>Copyright Notice： </strong>
-    All articles in this blog are licensed under <a href="" rel="external nofollow" target="_blank"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a></a> unless stating additionally.
+    All articles in this blog are licensed under <a href rel="external nofollow" target="_blank"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a></a> unless stating additionally.
   </li>
 </ul>
 
@@ -605,7 +605,7 @@ else
 
       <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
-          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
               <p class="site-author-name" itemprop="name">G.C.L.</p>
               <p class="site-description motion-element" itemprop="description">在浩瀚的程式領域中，將走過的足跡記錄下來，文章著重在Qt、C++、python</p>

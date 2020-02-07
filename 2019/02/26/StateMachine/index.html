@@ -6,7 +6,7 @@
 
 
 <html class="theme-next pisces use-motion" lang="zh-tw">
-<head><meta name="generator" content="Hexo 3.8.0">
+<head><meta name="generator" content="Hexo 3.9.0">
   <meta name="google-site-verification" content="6FSPL7W8VK5_r7N9kUUjs091G70s4tIlG_BfxOmVa9U">
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -172,7 +172,7 @@
 
 </head>
 
-<body oncontextmenu="return false" onselectstart="return false" oncopy="return false" oncut="return false" itemscope="" itemtype="http://schema.org/WebPage" lang="zh-tw">
+<body oncontextmenu="return false" onselectstart="return false" oncopy="return false" oncut="return false" itemscope itemtype="http://schema.org/WebPage" lang="zh-tw">
 
   
   
@@ -182,7 +182,7 @@
   <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
-    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-wrapper">
   <div class="site-meta ">
     
@@ -302,20 +302,20 @@
   
   
 
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
   
   
   
   <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://teddybearfp.github.io/2019/02/26/StateMachine/">
 
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="G.C.L.">
-      <meta itemprop="description" content="">
+      <meta itemprop="description" content>
       <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="泰迪熊的程式足跡">
     </span>
 
@@ -366,7 +366,7 @@
                 <span class="post-meta-item-text">分類於</span>
               
               
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/架構/" itemprop="url" rel="index">
                     <span itemprop="name">架構</span>
                   </a>
@@ -450,7 +450,7 @@
 <p>上面步驟都完成後使用moveToThread將屬於QObject的class在新開的執行緒中執行<br>最後再透過ViewChanger呼叫BuildGraph()函式讓狀態機創建、連結與執行<br>例如:<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">StateMachine::Inst()-&gt;BuildGraph();</span><br></pre></td></tr></table></figure></p>
 <h2 id="程式關閉處理"><a href="#程式關閉處理" class="headerlink" title="程式關閉處理"></a>程式關閉處理</h2><p>為了避免程式運作時，按右上角的X終止程式<br>我們可以在qml中更改關閉行為<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">onClosing&#123;</span><br><span class="line">    close.accept =<span class="literal">false</span></span><br><span class="line">    mainWindow.closing()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p>改由C++內的狀態機去處理<br>運用connect的方式指定某些狀態可以關閉<br>某些狀態不可關閉(ex:RunningState、MotorMove…)</p>
-<h2 id="實作狀態機"><a href="#實作狀態機" class="headerlink" title="實作狀態機"></a>實作狀態機</h2><p><img src="https://i.imgur.com/hSsomJS.png" alt="" title="馬達控制狀態機圖"></p>
+<h2 id="實作狀態機"><a href="#實作狀態機" class="headerlink" title="實作狀態機"></a>實作狀態機</h2><p><img src="https://i.imgur.com/hSsomJS.png" alt title="馬達控制狀態機圖"></p>
 <h3 id="檔案名稱簡介"><a href="#檔案名稱簡介" class="headerlink" title="檔案名稱簡介"></a>檔案名稱簡介</h3><p>StateMachine: 定義狀態機、build graph<br>BaseState: 所有狀態的基類<br>InitialState: 初始化狀態<br>HomeState: 馬達歸位狀態<br>MotorMoveState: 馬達移動狀態<br>ErrorState: 錯誤狀態<br>Uninitial: 最終狀態</p>
 <h3 id="StateMachine"><a href="#StateMachine" class="headerlink" title="StateMachine"></a>StateMachine</h3><p>statemachine.h</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">ifndef</span> STATEMACHINE_H</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> STATEMACHINE_H</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;QObject&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;QStateMachine&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;QThread&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"statemachine/states/basestate.h"</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"statemachine/states/nonestate.h"</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"statemachine/states/initstate.h"</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"statemachine/states/homestate.h"</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"statemachine/states/idlestate.h"</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"statemachine/states/motormovestate.h"</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"statemachine/states/errorstate.h"</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"statemachine/states/uninitstate.h"</span></span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">StateMachine</span> :</span> <span class="keyword">public</span> QStateMachine</span><br><span class="line">&#123;</span><br><span class="line">    Q_OBJECT</span><br><span class="line"><span class="keyword">public</span>:    </span><br><span class="line">    StateMachine();</span><br><span class="line">    ~StateMachine();</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">static</span> StateMachine *<span class="title">Inst</span><span class="params">()</span> </span>&#123; <span class="keyword">return</span> &amp;sm; &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">BuildGraph</span><span class="params">()</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">StopSMThread</span><span class="params">()</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="keyword">static</span> StateMachine sm;</span><br><span class="line"></span><br><span class="line">    NoneState stateNone;</span><br><span class="line">    InitState stateInit;</span><br><span class="line">    HomeState stateHome;</span><br><span class="line">    IdleState stateIdle;</span><br><span class="line">    MotorMoveState stateMotorMove;</span><br><span class="line">    ErrorState stateError;</span><br><span class="line">    UninitState stateUninit;</span><br><span class="line"></span><br><span class="line">    QThread thd;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// switch to next state by idle state</span></span><br><span class="line">    QString nextState;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">SetupState</span><span class="params">(BaseState *state)</span></span>;</span><br><span class="line"></span><br><span class="line">signals:</span><br><span class="line">    <span class="comment">//CommonState</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">init</span><span class="params">()</span></span>;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">uninit</span><span class="params">()</span></span>;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">ok</span><span class="params">()</span></span>;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">state_changed</span><span class="params">( QString )</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//MoveState</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">move</span><span class="params">(<span class="keyword">float</span>, <span class="keyword">float</span>, <span class="keyword">float</span>, <span class="keyword">float</span>, <span class="keyword">float</span>, <span class="keyword">float</span>)</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//HomeState</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">home</span><span class="params">(CoreMotorID)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">private</span> slots:</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">on_state_entered</span><span class="params">()</span></span>;</span><br><span class="line"></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span> <span class="comment">// STATEMACHINE_H</span></span></span><br></pre></td></tr></table></figure>
@@ -502,7 +502,7 @@
   </li>
   <li class="post-copyright-license">
     <strong>Copyright Notice： </strong>
-    All articles in this blog are licensed under <a href="" rel="external nofollow" target="_blank"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a></a> unless stating additionally.
+    All articles in this blog are licensed under <a href rel="external nofollow" target="_blank"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a></a> unless stating additionally.
   </li>
 </ul>
 
@@ -624,7 +624,7 @@
 
       <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
-          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
               <p class="site-author-name" itemprop="name">G.C.L.</p>
               <p class="site-description motion-element" itemprop="description">在浩瀚的程式領域中，將走過的足跡記錄下來，文章著重在Qt、C++、python</p>

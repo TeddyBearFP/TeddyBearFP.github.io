@@ -6,7 +6,7 @@
 
 
 <html class="theme-next pisces use-motion" lang="zh-tw">
-<head><meta name="generator" content="Hexo 3.8.0">
+<head><meta name="generator" content="Hexo 3.9.0">
   <meta name="google-site-verification" content="6FSPL7W8VK5_r7N9kUUjs091G70s4tIlG_BfxOmVa9U">
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -177,7 +177,7 @@
 
 </head>
 
-<body oncontextmenu="return false" onselectstart="return false" oncopy="return false" oncut="return false" itemscope="" itemtype="http://schema.org/WebPage" lang="zh-tw">
+<body oncontextmenu="return false" onselectstart="return false" oncopy="return false" oncut="return false" itemscope itemtype="http://schema.org/WebPage" lang="zh-tw">
 
   
   
@@ -187,7 +187,7 @@
   <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
-    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-wrapper">
   <div class="site-meta ">
     
@@ -307,20 +307,20 @@
   
   
 
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
   
   
   
   <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://teddybearfp.github.io/2019/03/29/Hexo-SEO分析網站/">
 
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="G.C.L.">
-      <meta itemprop="description" content="">
+      <meta itemprop="description" content>
       <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="泰迪熊的程式足跡">
     </span>
 
@@ -371,7 +371,7 @@
                 <span class="post-meta-item-text">分類於</span>
               
               
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/Hexo/" itemprop="url" rel="index">
                     <span itemprop="name">Hexo</span>
                   </a>
@@ -426,22 +426,22 @@
 <p>達到網站分析與關鍵字研究</p>
 <h2 id="Google-search-console"><a href="#Google-search-console" class="headerlink" title="Google search console"></a>Google search console</h2><p>用Google search console可以看整體成長趨勢包含曝光度與點擊次數與點閱率</p>
 <p>首先至<a href="https://search.google.com/search-console/welcome" target="_blank" rel="noopener">Google search console</a>新增資源，將部落格的網址(<a href="https://teddybearfp.github.io/)輸入在網址前置字元">https://teddybearfp.github.io/)輸入在網址前置字元</a></p>
-<p><img src="https://i.imgur.com/P291fYl.png" alt=""></p>
+<p><img src="https://i.imgur.com/P291fYl.png" alt></p>
 <p>有了資源後我們來驗證，除了上傳HTML檔案驗證的方法還有另一種使用HTML標記，在所謂中繼標記就是以meta開頭的程式碼head.swig前方加入Google驗證碼並上傳即可</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">檔案位置:</span><br><span class="line">blog\themes\next\layout\_partials\head.swig</span><br></pre></td></tr></table></figure>
 <p>開啟head.swig並把Google驗證碼貼在最上方<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;meta name=&quot;google-site-verification&quot; content=&quot;XXXXXXXXXXX_XXXXXXXXXXXXXXXXXXXXX_XXXXXXXXX&quot; /&gt;</span><br></pre></td></tr></table></figure></p>
 <p>重新佈署部落格<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo d -g</span><br></pre></td></tr></table></figure></p>
 <p>完成啦~ 可以看看我們的網頁數據並開始進行分析囉</p>
-<p><img src="https://i.imgur.com/0R9E2qT.png" alt=""></p>
+<p><img src="https://i.imgur.com/0R9E2qT.png" alt></p>
 <p>還可以看讀者是輸入什麼關鍵字搜尋你的文章的</p>
-<p><img src="https://i.imgur.com/z3EFoPs.png" alt=""></p>
+<p><img src="https://i.imgur.com/z3EFoPs.png" alt></p>
 <h2 id="Google-Analytics"><a href="#Google-Analytics" class="headerlink" title="Google Analytics"></a>Google Analytics</h2><p>Google Analytics可以更進一步的分析讀者在文章閱讀的時間，讓我們能了解是否能留住讀者，還可以知道什麼時段讀者較多與來自哪裡</p>
 <p>首先去<a href="https://analytics.google.com/analytics/web/provision/?authuser=0#/provision" target="_blank" rel="noopener">Google Analytics</a>申請帳號，</p>
-<p><img src="https://i.imgur.com/jFM5RC5.png" alt=""></p>
+<p><img src="https://i.imgur.com/jFM5RC5.png" alt></p>
 <p>然後將追蹤ID輸入到主題的主配置中<br>\themes\next<br>google_analytics: UA-XXXXXXXXX-X<br>將部落格再次部屬<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo d -g</span><br></pre></td></tr></table></figure></p>
 <p>成功後我們就可以看到用戶的使用情形了<br>這Google分析是不是超猛的~~</p>
-<p><img src="https://i.imgur.com/2h7Fuj8.png" alt=""></p>
-<p><img src="https://i.imgur.com/ng1iv2n.png" alt=""></p>
+<p><img src="https://i.imgur.com/2h7Fuj8.png" alt></p>
+<p><img src="https://i.imgur.com/ng1iv2n.png" alt></p>
 <p>上圖是剛分析的第一天資料量較少，但是可以看一下功能</p>
 <h2 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h2><p><a href="https://www.newscan.com.tw/all-seo/seo-guide.htm" target="_blank" rel="noopener">SEO的初學者教學，搞懂SEO搜尋引擎優化，讓你網站訂單接不完-新視野</a></p>
 
@@ -478,7 +478,7 @@
   </li>
   <li class="post-copyright-license">
     <strong>Copyright Notice： </strong>
-    All articles in this blog are licensed under <a href="" rel="external nofollow" target="_blank"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a></a> unless stating additionally.
+    All articles in this blog are licensed under <a href rel="external nofollow" target="_blank"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a></a> unless stating additionally.
   </li>
 </ul>
 
@@ -606,7 +606,7 @@
 
       <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
-          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
               <p class="site-author-name" itemprop="name">G.C.L.</p>
               <p class="site-description motion-element" itemprop="description">在浩瀚的程式領域中，將走過的足跡記錄下來，文章著重在Qt、C++、python</p>
