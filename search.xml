@@ -3,7 +3,7 @@
   <entry>
     <title>Python generate fake data for testing database syntax efficiency</title>
     <url>/2020/02/14/Python-generate-fake-data-for-testing-database-syntax-efficiency/</url>
-    <content><![CDATA[<h1 id="Python-generate-fake-data-for-testing-database-syntax-efficiency"><a href="#Python-generate-fake-data-for-testing-database-syntax-efficiency" class="headerlink" title="Python generate fake data for testing database syntax efficiency"></a>Python generate fake data for testing database syntax efficiency</h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>有時候我們需要一些測試資料，例如:要測試資料庫語法是否夠快速，那麼我們可以先寫一個 FakeDataGenerator 來產生包含 ( 名字、性別、生日、到訪日、地址、EMail、備註文字 ) 的測試資料</p>
+    <content><![CDATA[<h1 id="Python-產出假資料來測試資料庫語法的效率"><a href="#Python-產出假資料來測試資料庫語法的效率" class="headerlink" title="Python 產出假資料來測試資料庫語法的效率"></a>Python 產出假資料來測試資料庫語法的效率</h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>有時候我們需要一些測試資料，例如:要測試資料庫語法是否夠快速，那麼我們可以先寫一個 FakeDataGenerator 來產生包含 ( 名字、性別、生日、到訪日、地址、EMail、備註文字 ) 的測試資料</p>
 <h2 id="fake2db"><a href="#fake2db" class="headerlink" title="fake2db"></a>fake2db</h2><p>這邊我們使用的是 Python 有人提供的 fake2db 函式庫可以得到許多隨機特定格式資料。</p>
 <h3 id="安裝-fake2db"><a href="#安裝-fake2db" class="headerlink" title="安裝 fake2db"></a>安裝 fake2db</h3><p>老樣子用 pip 安裝一下 fake2db<br><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">pip3 install fake2db</span><br></pre></td></tr></table></figure></p>
 <h3 id="使用-fake2db"><a href="#使用-fake2db" class="headerlink" title="使用 fake2db"></a>使用 fake2db</h3><p>每次取得 faker 的函式回傳值皆會是函式隨機產生後回傳的每次不一樣</p>
