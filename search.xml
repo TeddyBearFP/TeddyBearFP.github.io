@@ -2185,28 +2185,6 @@ ex:
       </tags>
   </entry>
   <entry>
-    <title>如何將Windows安裝到外接硬碟給Mac使用</title>
-    <url>/2018/11/15/%E5%A6%82%E4%BD%95%E5%B0%87Windows%E5%AE%89%E8%A3%9D%E5%88%B0%E5%A4%96%E6%8E%A5%E7%A1%AC%E7%A2%9F%E7%B5%A6Mac%E4%BD%BF%E7%94%A8/</url>
-    <content><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>雖然Mac十分好用也非常流暢，但是有些程式在Mac上是無法使用或是還沒支援的，於是懷念起我們熟悉的Windows，除了bootcamp方式外，透過rufus這套軟體置作windows外接硬碟，可以很輕鬆的能在Mac裝置上看到Windows的身影</p>
-<h2 id="rufus"><a href="#rufus" class="headerlink" title="rufus"></a>rufus</h2><p>可開機USB製作軟體 - Rufus，將一般的USB格式化，並製作成可以用於電腦重灌的可開機USB，支援各式ISO光碟映像檔及MS-DOS、FreeDOS的匯入，映像檔的匯入支援Windows 8/7/XP/Vista/2003R2等作業系統光碟、Hiren’s Boot CD等多功能開機片、CentOS等Linux作業系統光碟、LiveXP等Live CD。<br>可以至<a href="https://www.azofreeware.com/2013/12/rufus-141-usb.html" target="_blank" rel="noopener">阿榮福利味</a>下載</p>
-<h2 id="製作步驟"><a href="#製作步驟" class="headerlink" title="製作步驟"></a>製作步驟</h2><h3 id="下載Windows-iso檔"><a href="#下載Windows-iso檔" class="headerlink" title="下載Windows iso檔"></a>下載Windows iso檔</h3><p>首先先取得Windows的映像檔(Windows 10 Pro/Windows 10 Home…)</p>
-<h3 id="製做Windows環境外接硬碟"><a href="#製做Windows環境外接硬碟" class="headerlink" title="製做Windows環境外接硬碟"></a>製做Windows環境外接硬碟</h3><p>執行rufus將第一步驟的Windows.iso寫入外接硬碟(建議為SSD效能有時甚至可差距到十倍以上)</p>
-<h3 id="Mac執行外接硬碟"><a href="#Mac執行外接硬碟" class="headerlink" title="Mac執行外接硬碟"></a>Mac執行外接硬碟</h3><p>將Mac開機(option + 開機)，然後選擇EFI boot進入安裝介面安裝，此時需準備滑鼠跟鍵盤，因為還沒安裝驅動mac的軌跡版與鍵盤將會無法使用</p>
-<h3 id="安裝完後回到Mac-OS"><a href="#安裝完後回到Mac-OS" class="headerlink" title="安裝完後回到Mac OS"></a>安裝完後回到Mac OS</h3><p>回到Mac OS開啟boot camp選擇動作並下載Windows支援軟體(mac driver)，放到外接硬碟中</p>
-<h3 id="設定Windows並安裝支援軟體"><a href="#設定Windows並安裝支援軟體" class="headerlink" title="設定Windows並安裝支援軟體"></a>設定Windows並安裝支援軟體</h3><p>將Mac開機(option + 開機)，然後選擇EFI boot進入已經安裝好的Windows，此時會跑一些Windows基本設定，設定完後就進入Windows介面了，但是有些功能尚未齊全，像是充電功能或是聲音、fn鍵等功能…，把剛剛從bootcamp下載到的driver執行，安裝成功後，跟一般的Windows沒什麼兩樣了!</p>
-<h2 id="延伸閱讀"><a href="#延伸閱讀" class="headerlink" title="延伸閱讀"></a>延伸閱讀</h2><p><a href="https://teddybearfp.github.io/2019/03/20/Python-%E8%B3%87%E6%96%99%E8%A6%96%E8%A6%BA%E5%8C%96/">Python 資料視覺化(Data Visualization)</a><br><a href="https://teddybearfp.github.io/2019/01/31/Python-%E7%88%AC%E5%8F%96%E5%AD%B8%E8%A1%93%E7%B6%B2%E9%A0%81PDF/">Python 爬取Google學術網頁PDF</a><br><a href="https://teddybearfp.github.io/2018/11/16/%E5%8B%95%E6%85%8B%E7%B6%B2%E9%A0%81%E7%88%AC%E5%8F%96/">Python 爬蟲幫你掌握氣象!(動態網頁爬取)</a><br><a href="https://teddybearfp.github.io/2018/11/07/Ptt%E7%88%AC%E8%9F%B2/">Python 爬蟲幫你精選PTT文章!(靜態頁面爬取)</a><br><a href="https://teddybearfp.github.io/2018/10/26/Python-LineBot/">Python 如何打造專屬的LineBot呢</a><br><a href="https://teddybearfp.github.io/2019/03/19/Python-%E8%B3%87%E6%96%99%E6%AF%94%E5%B0%8D/#more">Python 資料比對</a><br><a href="https://teddybearfp.github.io/2018/11/15/%E5%84%AA%E8%B3%AA%E5%B0%8F%E5%B7%A5%E5%85%B7/">優質小工具</a></p>
-<h2 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h2><p><a href="https://applealmond.com/posts/15795" target="_blank" rel="noopener">如何將Windows安裝到外接硬碟上給Mac使用（非Bootcamp/虛擬 …</a></p>
-]]></content>
-      <categories>
-        <category>其他</category>
-      </categories>
-      <tags>
-        <tag>Mac</tag>
-        <tag>rufus</tag>
-        <tag>WinToGo</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>優質小工具</title>
     <url>/2018/11/15/%E5%84%AA%E8%B3%AA%E5%B0%8F%E5%B7%A5%E5%85%B7/</url>
     <content><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>俗話說的好，工欲善其事必先利其器，在工作上常常需要一些小工具來輔佐達到目的，可能會製作UI或是拍攝教學影片，或是使用些跟程式相關的軟體，這時候若沒有一組好工具就還要花費時間在搜尋你的工具時間上，尤其一堆要付費，都出來上班工作了還要用付費軟體太哀傷了，所以記錄了目前覺得不錯的免費軟體收錄在工具箱中，這樣下次使用就快狠準啦!</p>
@@ -2238,6 +2216,28 @@ ex:
       <tags>
         <tag>優質小工具</tag>
         <tag>CMake</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>如何將Windows安裝到外接硬碟給Mac使用</title>
+    <url>/2018/11/15/%E5%A6%82%E4%BD%95%E5%B0%87Windows%E5%AE%89%E8%A3%9D%E5%88%B0%E5%A4%96%E6%8E%A5%E7%A1%AC%E7%A2%9F%E7%B5%A6Mac%E4%BD%BF%E7%94%A8/</url>
+    <content><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>雖然Mac十分好用也非常流暢，但是有些程式在Mac上是無法使用或是還沒支援的，於是懷念起我們熟悉的Windows，除了bootcamp方式外，透過rufus這套軟體置作windows外接硬碟，可以很輕鬆的能在Mac裝置上看到Windows的身影</p>
+<h2 id="rufus"><a href="#rufus" class="headerlink" title="rufus"></a>rufus</h2><p>可開機USB製作軟體 - Rufus，將一般的USB格式化，並製作成可以用於電腦重灌的可開機USB，支援各式ISO光碟映像檔及MS-DOS、FreeDOS的匯入，映像檔的匯入支援Windows 8/7/XP/Vista/2003R2等作業系統光碟、Hiren’s Boot CD等多功能開機片、CentOS等Linux作業系統光碟、LiveXP等Live CD。<br>可以至<a href="https://www.azofreeware.com/2013/12/rufus-141-usb.html" target="_blank" rel="noopener">阿榮福利味</a>下載</p>
+<h2 id="製作步驟"><a href="#製作步驟" class="headerlink" title="製作步驟"></a>製作步驟</h2><h3 id="下載Windows-iso檔"><a href="#下載Windows-iso檔" class="headerlink" title="下載Windows iso檔"></a>下載Windows iso檔</h3><p>首先先取得Windows的映像檔(Windows 10 Pro/Windows 10 Home…)</p>
+<h3 id="製做Windows環境外接硬碟"><a href="#製做Windows環境外接硬碟" class="headerlink" title="製做Windows環境外接硬碟"></a>製做Windows環境外接硬碟</h3><p>執行rufus將第一步驟的Windows.iso寫入外接硬碟(建議為SSD效能有時甚至可差距到十倍以上)</p>
+<h3 id="Mac執行外接硬碟"><a href="#Mac執行外接硬碟" class="headerlink" title="Mac執行外接硬碟"></a>Mac執行外接硬碟</h3><p>將Mac開機(option + 開機)，然後選擇EFI boot進入安裝介面安裝，此時需準備滑鼠跟鍵盤，因為還沒安裝驅動mac的軌跡版與鍵盤將會無法使用</p>
+<h3 id="安裝完後回到Mac-OS"><a href="#安裝完後回到Mac-OS" class="headerlink" title="安裝完後回到Mac OS"></a>安裝完後回到Mac OS</h3><p>回到Mac OS開啟boot camp選擇動作並下載Windows支援軟體(mac driver)，放到外接硬碟中</p>
+<h3 id="設定Windows並安裝支援軟體"><a href="#設定Windows並安裝支援軟體" class="headerlink" title="設定Windows並安裝支援軟體"></a>設定Windows並安裝支援軟體</h3><p>將Mac開機(option + 開機)，然後選擇EFI boot進入已經安裝好的Windows，此時會跑一些Windows基本設定，設定完後就進入Windows介面了，但是有些功能尚未齊全，像是充電功能或是聲音、fn鍵等功能…，把剛剛從bootcamp下載到的driver執行，安裝成功後，跟一般的Windows沒什麼兩樣了!</p>
+<h2 id="延伸閱讀"><a href="#延伸閱讀" class="headerlink" title="延伸閱讀"></a>延伸閱讀</h2><p><a href="https://teddybearfp.github.io/2019/03/20/Python-%E8%B3%87%E6%96%99%E8%A6%96%E8%A6%BA%E5%8C%96/">Python 資料視覺化(Data Visualization)</a><br><a href="https://teddybearfp.github.io/2019/01/31/Python-%E7%88%AC%E5%8F%96%E5%AD%B8%E8%A1%93%E7%B6%B2%E9%A0%81PDF/">Python 爬取Google學術網頁PDF</a><br><a href="https://teddybearfp.github.io/2018/11/16/%E5%8B%95%E6%85%8B%E7%B6%B2%E9%A0%81%E7%88%AC%E5%8F%96/">Python 爬蟲幫你掌握氣象!(動態網頁爬取)</a><br><a href="https://teddybearfp.github.io/2018/11/07/Ptt%E7%88%AC%E8%9F%B2/">Python 爬蟲幫你精選PTT文章!(靜態頁面爬取)</a><br><a href="https://teddybearfp.github.io/2018/10/26/Python-LineBot/">Python 如何打造專屬的LineBot呢</a><br><a href="https://teddybearfp.github.io/2019/03/19/Python-%E8%B3%87%E6%96%99%E6%AF%94%E5%B0%8D/#more">Python 資料比對</a><br><a href="https://teddybearfp.github.io/2018/11/15/%E5%84%AA%E8%B3%AA%E5%B0%8F%E5%B7%A5%E5%85%B7/">優質小工具</a></p>
+<h2 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h2><p><a href="https://applealmond.com/posts/15795" target="_blank" rel="noopener">如何將Windows安裝到外接硬碟上給Mac使用（非Bootcamp/虛擬 …</a></p>
+]]></content>
+      <categories>
+        <category>其他</category>
+      </categories>
+      <tags>
+        <tag>Mac</tag>
+        <tag>rufus</tag>
+        <tag>WinToGo</tag>
       </tags>
   </entry>
   <entry>
