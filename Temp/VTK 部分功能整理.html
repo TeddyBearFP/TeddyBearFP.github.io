@@ -72,7 +72,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT">
+  <meta name="keywords" content="VTK 部分功能整理">
 
 
 
@@ -83,17 +83,18 @@
 
 
 
-<meta name="description" content="在浩瀚的程式領域中，將走過的足跡記錄下來，文章著重在Qt、C++、python">
-<meta name="keywords" content="Qt,C++,python,泰迪熊,泰迪熊的程式,泰迪熊的程式足跡,GCL">
+<meta name="description" content="前言在編寫VTK的時候，有些許小功能在這一篇稍微記錄一下是如何實現的，此篇是個人在讀VTK時的理解不一定正確，純粹記錄 函式庫簡介以下特別注意某些函式庫專門提供給2D某些則是提供給3D使用 123456789101112131415161718#include &amp;lt;vtkCommand.h&amp;gt; // recieve some call back action.#include &amp;lt;vt">
+<meta name="keywords" content="VTK 部分功能整理">
 <meta property="og:type" content="website">
-<meta property="og:title" content="泰迪熊的程式足跡">
-<meta property="og:url" content="https://teddybearfp.github.io/categories/VTK/index.html">
+<meta property="og:title" content="VTK 部分功能整理">
+<meta property="og:url" content="https://teddybearfp.github.io/Temp/VTK 部分功能整理.html">
 <meta property="og:site_name" content="泰迪熊的程式足跡">
-<meta property="og:description" content="在浩瀚的程式領域中，將走過的足跡記錄下來，文章著重在Qt、C++、python">
+<meta property="og:description" content="前言在編寫VTK的時候，有些許小功能在這一篇稍微記錄一下是如何實現的，此篇是個人在讀VTK時的理解不一定正確，純粹記錄 函式庫簡介以下特別注意某些函式庫專門提供給2D某些則是提供給3D使用 123456789101112131415161718#include &amp;lt;vtkCommand.h&amp;gt; // recieve some call back action.#include &amp;lt;vt">
 <meta property="og:locale" content="zh-tw">
+<meta property="og:updated_time" content="2019-09-11T13:51:58.122Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="泰迪熊的程式足跡">
-<meta name="twitter:description" content="在浩瀚的程式領域中，將走過的足跡記錄下來，文章著重在Qt、C++、python">
+<meta name="twitter:title" content="VTK 部分功能整理">
+<meta name="twitter:description" content="前言在編寫VTK的時候，有些許小功能在這一篇稍微記錄一下是如何實現的，此篇是個人在讀VTK時的理解不一定正確，純粹記錄 函式庫簡介以下特別注意某些函式庫專門提供給2D某些則是提供給3D使用 123456789101112131415161718#include &amp;lt;vtkCommand.h&amp;gt; // recieve some call back action.#include &amp;lt;vt">
 
 
 
@@ -123,13 +124,13 @@
 
 
 
-  <link rel="canonical" href="https://teddybearfp.github.io/categories/VTK/">
+  <link rel="canonical" href="https://teddybearfp.github.io/Temp/VTK 部分功能整理.html">
 
 
 
 
 
-  <title>分類: VTK | 泰迪熊的程式足跡</title>
+  <title>VTK 部分功能整理 | 泰迪熊的程式足跡</title>
   
 <script>
   window.fbAsyncInit = function() {
@@ -176,7 +177,7 @@
     
   
 
-  <div class="container sidebar-position-left ">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -322,53 +323,60 @@
           <div id="content" class="content">
             
 
-  
-  
-  
-  <div class="post-block category">
+  <div id="posts" class="posts-expand">
+    
+    
+    
+    <div class="post-block page">
+      <header class="post-header">
 
-    <div id="posts" class="posts-collapse">
-      <div class="collection-title">
-        <h1>VTK<small>分類</small>
-        </h1>
-      </div>
+	<h1 class="post-title" itemprop="name headline">VTK 部分功能整理</h1>
+
+
+
+</header>
 
       
+      
+      
+      <div class="post-body">
         
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
         
-            <a class="post-title-link" href="/2019/09/11/VTK-部分功能整理/" itemprop="url">
-              
-                <span itemprop="name">VTK 部分功能整理</span>
-              
-            </a>
-        
-      </h2>
+          <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>在編寫VTK的時候，有些許小功能在這一篇稍微記錄一下是如何實現的，此篇是個人在讀VTK時的理解不一定正確，純粹記錄</p>
+<h2 id="函式庫簡介"><a href="#函式庫簡介" class="headerlink" title="函式庫簡介"></a>函式庫簡介</h2><p>以下特別注意某些函式庫專門提供給2D某些則是提供給3D使用</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vtkCommand.h&gt; // recieve some call back action.</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vtkGPUVolumeRayCastMapper.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vtkImageActor.h&gt; // present slice of XY, YZ, XZ plane. ( 2D )</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vtkImageCast.h&gt;  // transfer Images information. like output scalars...</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vtkImageMapToColors.h&gt; // remap images opacity and colors. ( 2D )</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vtkImageReslice.h&gt;     // reslice 3D volume to get XY, YZ, XZ plane. ( 2D )</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vtkImageShiftScale.h&gt;  // set some parameters after load a stack of jpeg pics.</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vtkInteractorStyleTrackballCamera.h&gt; // this class can let interactor operate normally.</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vtkJPEGReader.h&gt;                     // read a stack of jpeg pics.</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vtkLookupTable.h&gt;                    // ImageMapToColors reference this table to remap voxels.</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vtkNew.h&gt;                     // vtkNew is a drop in replacement for vtkSmartPointer</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vtkOrientationMarkerWidget.h&gt; // for Axes item</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vtkPNGReader.h&gt;               // read a stack of png pics.</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vtkPiecewiseFunction.h&gt;       // set volume opacity. ( 3D )</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vtkRenderWindow.h&gt;            // to show users.</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vtkRenderWindowInteractor.h&gt;  // to let users operate 3D volume.</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vtkVolume.h&gt;         // set Mappers and VolumeProperty. ( 3D )</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vtkVolumeProperty.h&gt; // set opacity and colors in 3D volume. ( 3D )</span></span></span><br></pre></td></tr></table></figure>
+<h2 id="顯示畫面"><a href="#顯示畫面" class="headerlink" title="顯示畫面"></a>顯示畫面</h2><p>一開始我們寫好VTK程式碼要在Qt 的Qt console中執行的時候並需加上下列幾句程式碼否則無畫面</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"vtkAutoInit.h"</span></span></span><br><span class="line">VTK_MODULE_INIT( vtkRenderingOpenGL2 ); <span class="comment">// VTK was built with vtkRenderingOpenGL2</span></span><br><span class="line">VTK_MODULE_INIT( vtkInteractionStyle );</span><br><span class="line">VTK_MODULE_INIT( vtkRenderingVolumeOpenGL2 );</span><br><span class="line">VTK_MODULE_INIT( vtkRenderingFreeType ); <span class="comment">// to slove "Failed getting the TextRenderer instance" problem.</span></span><br></pre></td></tr></table></figure>
+<h2 id="讀取檔案"><a href="#讀取檔案" class="headerlink" title="讀取檔案"></a>讀取檔案</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//Load a stack of jpeg pics to JPEGReader.</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vtkJPEGReader.h&gt;</span></span></span><br><span class="line"><span class="comment">//設定Reader格式:JPEGReader, PNGReader, BMPReader...</span></span><br><span class="line">vtkNew&lt;vtkJPEGReader&gt; reader;</span><br><span class="line"></span><br><span class="line"><span class="comment">//設定來源資料路徑</span></span><br><span class="line">reader-&gt;SetFilePattern( <span class="string">"%s%d.jpg"</span> );</span><br><span class="line">reader-&gt;SetFilePrefix( <span class="string">"D:\\Project\\VTK\\pics\\"</span> );</span><br><span class="line"><span class="comment">//進行一個讀取寬高與張數的動作, 寬:512 高:512 張數:128使用時要各-1</span></span><br><span class="line">reader-&gt;SetDataExtent( <span class="number">0</span>, <span class="number">511</span>, <span class="number">0</span>, <span class="number">511</span>, <span class="number">0</span>, <span class="number">127</span> );</span><br><span class="line"><span class="comment">//重新配置空間分布, Z軸放至4倍大與512一樣讓這個Volume變為正方體</span></span><br><span class="line">reader-&gt;SetDataSpacing( <span class="number">1</span>, <span class="number">1</span>, <span class="number">512</span> / <span class="number">128</span> );</span><br><span class="line"><span class="comment">//將資料Remap成0~255</span></span><br><span class="line">reader-&gt;SetDataScalarTypeToUnsignedChar();</span><br><span class="line"><span class="comment">//將通道改為1通道</span></span><br><span class="line">reader-&gt;SetNumberOfScalarComponents( <span class="number">1</span> );</span><br><span class="line">reader-&gt;SetDataByteOrderToBigEndian();</span><br><span class="line">reader-&gt;Update();</span><br></pre></td></tr></table></figure>
+<h2 id="Interactor-按壓滑動旋轉"><a href="#Interactor-按壓滑動旋轉" class="headerlink" title="Interactor 按壓滑動旋轉"></a>Interactor 按壓滑動旋轉</h2><p>Interactor交互器預設是按壓時會進行旋轉物件而不是我們習慣的按壓滑動才進行旋轉物件，主要是透過vtkInteractorStyleTrackballCamera<br>設定成按下左鍵滑動旋轉要使用以下幾句程式碼</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">vtkNew&lt;vtkInteractorStyleTrackballCamera&gt; style;</span><br><span class="line">vtkNew&lt;vtkRenderWindowInteractor&gt; renderWindowInteractor;</span><br><span class="line">renderWindowInteractor-&gt;SetInteractorStyle( style );</span><br><span class="line">renderWindowInteractor-&gt;SetRenderWindow( renderWindow );</span><br><span class="line">renderWindowInteractor-&gt;Initialize();</span><br><span class="line">renderWindow-&gt;Render();</span><br><span class="line">renderWindowInteractor-&gt;Start();</span><br></pre></td></tr></table></figure>
+<h2 id="旋轉座標小標-Icon"><a href="#旋轉座標小標-Icon" class="headerlink" title="旋轉座標小標 Icon"></a>旋轉座標小標 Icon</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//Axes item to show current direction.</span></span><br><span class="line">vtkNew&lt;vtkAxesActor&gt; axes;</span><br><span class="line">vtkNew&lt;vtkTransform&gt; transform;</span><br><span class="line">vtkNew&lt;vtkOrientationMarkerWidget&gt; widget;</span><br><span class="line">widget-&gt;SetOutlineColor( <span class="number">0.9300</span>, <span class="number">0.5700</span>, <span class="number">0.1300</span> );</span><br><span class="line">widget-&gt;SetOrientationMarker( axes );</span><br><span class="line">widget-&gt;SetInteractor( renderWindowInteractor );</span><br><span class="line">widget-&gt;SetViewport( <span class="number">0.0</span>, <span class="number">0.0</span>, <span class="number">0.3</span>, <span class="number">0.3</span> );</span><br><span class="line">widget-&gt;SetEnabled( <span class="number">1</span> );</span><br><span class="line">widget-&gt;InteractiveOff();</span><br><span class="line">transform-&gt;Translate( <span class="number">1.0</span>, <span class="number">0.0</span>, <span class="number">0.0</span> );</span><br><span class="line">axes-&gt;SetTotalLength( <span class="number">200</span>, <span class="number">200</span>, <span class="number">200</span> );</span><br></pre></td></tr></table></figure>
+<h2 id="vtkSmartPoint-vs-vtkNew"><a href="#vtkSmartPoint-vs-vtkNew" class="headerlink" title="vtkSmartPoint vs vtkNew"></a>vtkSmartPoint vs vtkNew</h2><p>我們使用vtk宣告新的函式庫時有兩種方式</p>
+<p>第一種: </p>
+<pre><code>vtkSmartPointer&lt;vtkImageImport&gt; reader = vtkSmartPointer&lt;vtkImageImport&gt;::New();
+</code></pre><p>第二種: </p>
+<pre><code>vtkNew&lt;vtkImageImport&gt; reader;
+</code></pre><p>以官方的解釋來說</p>
+<pre><code>vtkNew is a drop in replacement for vtkSmartPointer
+</code></pre><p>Drop-in replacement: 直接替換是計算機科學和其他領域中使用的術語。它指的是在不需要任何其他代碼或配置更改的情況下將一個硬件組件替換為另一個硬件組件的能力，並且不會產生負面影響。通常，替換有一些好處，包括以下一項或多項： 增加安全性 提高速度 功能集增加 增強兼容性 增加支持</p>
+<h2 id="2D-切片"><a href="#2D-切片" class="headerlink" title="2D 切片"></a>2D 切片</h2><p>將3D Volume進行切片呈現2D圖形要使用vtkImageReslice並搭配vtkImageActor最後使用vtkRenderer顯示在畫面中，特別注意這邊顯示僅能為2D平面圖不會是3D Volume喔</p>
+<p>這邊我就不提供原碼了<br>如有需要更進一步了解請連絡作者G.C.L.如果會的話為你解惑</p>
+<h2 id="3D-剪裁"><a href="#3D-剪裁" class="headerlink" title="3D 剪裁"></a>3D 剪裁</h2><p>如果是需要將3D Volume剪裁，剪裁完還是以3D Volume呈現的話有以下兩種方法</p>
+<p>第一種: vtkPlane切單一平面加上volumeMapper-&gt;AddClippingPlane(plane);達到切平面效果，但是這樣僅能以一個平面的方式去做剪裁好像不太能同時多個平面剪裁</p>
+<p>第二種: 使用vtkGPUVolumeRayCastMapper類別內的SetCroppingRegionPlanes函式達到3D剪裁功能(完美解決第一種遇到的問題)</p>
+<p>另外可以搭配vtkImageInteractionCallback綁定一些滑鼠事件，讓滑鼠做指定操作時達到相對應剪裁動作，或是vtkSliderCallback讓Slider變化時達到相對應剪裁動作</p>
+<p>這邊我就不提供原碼了<br>如有需要更進一步了解請連絡作者G.C.L.如果會的話為你解惑</p>
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-09-11T15:05:16+08:00" content="2019-09-11">
-          09-11
-        </time>
+        
       </div>
-
-    </header>
-  </article>
-
-
+      
+      
       
     </div>
-
+    
+    
+    
   </div>
-  
-  
-  
-
-  
-
 
 
           </div>
@@ -376,6 +384,20 @@
 
 
           
+
+  
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    </div>
+
+  
+
+
 
         </div>
         
@@ -396,8 +418,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目錄
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            本站概覽
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -412,7 +443,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">89</span>
+                  <span class="site-state-item-count">86</span>
                   <span class="site-state-item-name">文章</span>
                 </a>
               </div>
@@ -457,6 +488,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#函式庫簡介"><span class="nav-number">2.</span> <span class="nav-text">函式庫簡介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#顯示畫面"><span class="nav-number">3.</span> <span class="nav-text">顯示畫面</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#讀取檔案"><span class="nav-number">4.</span> <span class="nav-text">讀取檔案</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Interactor-按壓滑動旋轉"><span class="nav-number">5.</span> <span class="nav-text">Interactor 按壓滑動旋轉</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#旋轉座標小標-Icon"><span class="nav-number">6.</span> <span class="nav-text">旋轉座標小標 Icon</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#vtkSmartPoint-vs-vtkNew"><span class="nav-number">7.</span> <span class="nav-text">vtkSmartPoint vs vtkNew</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2D-切片"><span class="nav-number">8.</span> <span class="nav-text">2D 切片</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3D-剪裁"><span class="nav-number">9.</span> <span class="nav-text">3D 剪裁</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -618,6 +665,10 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 
@@ -635,6 +686,18 @@
       <script id="dsq-count-scr" src="https://TeddyBearFP.disqus.com/count.js" async></script>
     
 
+    
+      <script type="text/javascript">
+        var disqus_config = function () {
+          this.page.url = 'https://teddybearfp.github.io/Temp/VTK 部分功能整理.html';
+          this.page.identifier = 'Temp/VTK 部分功能整理.html';
+          this.page.title = 'VTK 部分功能整理';
+        };
+        var d = document, s = d.createElement('script');
+        s.src = 'https://TeddyBearFP.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      </script>
     
 
   

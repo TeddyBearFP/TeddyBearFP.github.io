@@ -72,7 +72,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT">
+  <meta name="keywords" content="VTK 讀檔">
 
 
 
@@ -83,17 +83,18 @@
 
 
 
-<meta name="description" content="在浩瀚的程式領域中，將走過的足跡記錄下來，文章著重在Qt、C++、python">
-<meta name="keywords" content="Qt,C++,python,泰迪熊,泰迪熊的程式,泰迪熊的程式足跡,GCL">
+<meta name="description" content="前言VTK讀檔案，若是在Python即使不使用VTK的函式也可以很方便的Load指定資料夾中某一類型的所有檔案，但是直接用C++寫就沒那麼方便了，所以我們看一下這篇紀錄的VTK函式如何Load檔案進來 VTK Load file ( C++ )123456789101112131415161718192021222324252627282930313233343536373839404142voi">
+<meta name="keywords" content="VTK 讀檔">
 <meta property="og:type" content="website">
-<meta property="og:title" content="泰迪熊的程式足跡">
-<meta property="og:url" content="https://teddybearfp.github.io/tags/VTK-讀檔/index.html">
+<meta property="og:title" content="VTK 讀檔">
+<meta property="og:url" content="https://teddybearfp.github.io/Temp/VTK 讀檔.html">
 <meta property="og:site_name" content="泰迪熊的程式足跡">
-<meta property="og:description" content="在浩瀚的程式領域中，將走過的足跡記錄下來，文章著重在Qt、C++、python">
+<meta property="og:description" content="前言VTK讀檔案，若是在Python即使不使用VTK的函式也可以很方便的Load指定資料夾中某一類型的所有檔案，但是直接用C++寫就沒那麼方便了，所以我們看一下這篇紀錄的VTK函式如何Load檔案進來 VTK Load file ( C++ )123456789101112131415161718192021222324252627282930313233343536373839404142voi">
 <meta property="og:locale" content="zh-tw">
+<meta property="og:updated_time" content="2019-08-22T13:30:29.900Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="泰迪熊的程式足跡">
-<meta name="twitter:description" content="在浩瀚的程式領域中，將走過的足跡記錄下來，文章著重在Qt、C++、python">
+<meta name="twitter:title" content="VTK 讀檔">
+<meta name="twitter:description" content="前言VTK讀檔案，若是在Python即使不使用VTK的函式也可以很方便的Load指定資料夾中某一類型的所有檔案，但是直接用C++寫就沒那麼方便了，所以我們看一下這篇紀錄的VTK函式如何Load檔案進來 VTK Load file ( C++ )123456789101112131415161718192021222324252627282930313233343536373839404142voi">
 
 
 
@@ -123,13 +124,13 @@
 
 
 
-  <link rel="canonical" href="https://teddybearfp.github.io/tags/VTK-讀檔/">
+  <link rel="canonical" href="https://teddybearfp.github.io/Temp/VTK 讀檔.html">
 
 
 
 
 
-  <title>標籤: VTK 讀檔 | 泰迪熊的程式足跡</title>
+  <title>VTK 讀檔 | 泰迪熊的程式足跡</title>
   
 <script>
   window.fbAsyncInit = function() {
@@ -176,7 +177,7 @@
     
   
 
-  <div class="container sidebar-position-left ">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -322,52 +323,42 @@
           <div id="content" class="content">
             
 
-  
-  
-  
-  <div class="post-block tag">
+  <div id="posts" class="posts-expand">
+    
+    
+    
+    <div class="post-block page">
+      <header class="post-header">
 
-    <div id="posts" class="posts-collapse">
-      <div class="collection-title">
-        <h1>VTK 讀檔<small>標籤</small>
-        </h1>
-      </div>
+	<h1 class="post-title" itemprop="name headline">VTK 讀檔</h1>
+
+
+
+</header>
 
       
+      
+      
+      <div class="post-body">
         
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
         
-            <a class="post-title-link" href="/2019/08/22/VTK-讀檔/" itemprop="url">
-              
-                <span itemprop="name">VTK 讀檔</span>
-              
-            </a>
-        
-      </h2>
+          <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>VTK讀檔案，若是在Python即使不使用VTK的函式也可以很方便的Load指定資料夾中某一類型的所有檔案，但是直接用C++寫就沒那麼方便了，所以我們看一下這篇紀錄的VTK函式如何Load檔案進來</p>
+<h2 id="VTK-Load-file-C"><a href="#VTK-Load-file-C" class="headerlink" title="VTK Load file ( C++ )"></a>VTK Load file ( C++ )</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">traverse</span><span class="params">( <span class="keyword">const</span> QString &amp;pattern, <span class="keyword">const</span> QString &amp;dirname, <span class="keyword">int</span> level, QVariantList *path )</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="function">QDir <span class="title">dir</span><span class="params">( dirname )</span></span>;</span><br><span class="line">    dir.setFilter( QDir::Dirs | QDir::Files | QDir::NoSymLinks | QDir::NoDot | QDir::NoDotDot );</span><br><span class="line"></span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">const</span> QStringList stringList = pattern.split( <span class="string">'/'</span> );</span><br><span class="line">    foreach ( QFileInfo fileInfo, dir.entryInfoList( stringList.mid( level, <span class="number">1</span> ) ) )</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span> ( fileInfo.isDir() &amp;&amp; fileInfo.isReadable() )</span><br><span class="line">            traverse( pattern, fileInfo.filePath(), level + <span class="number">1</span>, path );</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span> ( stringList.size() == ( level + <span class="number">1</span> ) )</span><br><span class="line">            path-&gt;append( fileInfo.filePath() );</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">variantLessThan</span><span class="params">( <span class="keyword">const</span> QVariant &amp;v1, <span class="keyword">const</span> QVariant &amp;v2 )</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    QString s1 = v1.toString();</span><br><span class="line">    s1 = s1.replace( <span class="string">"./pics/"</span>, <span class="string">""</span> ).replace( <span class="string">".jpg"</span>, <span class="string">""</span> );</span><br><span class="line">    QString s2 = v2.toString();</span><br><span class="line">    s2 = s2.replace( <span class="string">"./pics/"</span>, <span class="string">""</span> ).replace( <span class="string">".jpg"</span>, <span class="string">""</span> );</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> ( s1.toInt() &lt; s2.toInt() )</span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line">QVariantList path;</span><br><span class="line">traverse( <span class="string">"pics/*.jpg"</span>, <span class="string">"."</span>, <span class="number">0</span>, &amp;path );</span><br><span class="line">qSort( path.begin(), path.end(), variantLessThan ); <span class="comment">//檔名數字由小到大排列</span></span><br><span class="line"></span><br><span class="line">vtkSmartPointer&lt;vtkStringArray&gt; filePath = vtkSmartPointer&lt;vtkStringArray&gt;::New();</span><br><span class="line">filePath-&gt;SetNumberOfValues( path.length() );</span><br><span class="line"><span class="keyword">for</span> ( <span class="keyword">int</span> i = <span class="number">0</span>; i &lt; path.length(); i++ )</span><br><span class="line">&#123;</span><br><span class="line">    qDebug() &lt;&lt; path[ i ].toString();</span><br><span class="line">    vtkStdString s = path[ i ].toString().toStdString();</span><br><span class="line">    filePath-&gt;SetValue( i, s );</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">vtkSmartPointer&lt;vtkJPEGReader&gt; jpegReader = vtkSmartPointer&lt;vtkJPEGReader&gt;::New();</span><br><span class="line">jpegReader-&gt;SetFileNames( filePath );</span><br><span class="line">jpegReader-&gt;SetDataSpacing( <span class="number">1</span>, <span class="number">1</span>, <span class="number">512</span> / <span class="number">128</span> );</span><br><span class="line">jpegReader-&gt;Update();</span><br></pre></td></tr></table></figure>
+<h2 id="VTK-Load-file-C-用VTK函式"><a href="#VTK-Load-file-C-用VTK函式" class="headerlink" title="VTK Load file ( C++ 用VTK函式 )"></a>VTK Load file ( C++ 用VTK函式 )</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">char</span>* path = <span class="string">"D:\\VTK\\pics\\"</span>;</span><br><span class="line">vtkSmartPointer&lt;vtkJPEGReader&gt; jpegReader = vtkSmartPointer&lt;vtkJPEGReader&gt;::New();</span><br><span class="line">jpegReader-&gt;SetFilePrefix( path );</span><br><span class="line"><span class="comment">//jpegReader-&gt;SetFilePattern( "%sfile_%02d.jpg" ); //file_01.jpg, file_10.jpg ...</span></span><br><span class="line">jpegReader-&gt;SetFilePattern( <span class="string">"%s%d.jpg"</span> ); <span class="comment">//0.jpg, 1.jpg ...</span></span><br><span class="line">jpegReader-&gt;SetDataExtent( <span class="number">0</span>, <span class="number">511</span>, <span class="number">0</span>, <span class="number">511</span>, <span class="number">0</span>, <span class="number">127</span> ); <span class="comment">//讀取寬:512 高:512 張數:128</span></span><br><span class="line">jpegReader-&gt;SetDataSpacing( <span class="number">1</span>, <span class="number">1</span>, <span class="number">512</span> / <span class="number">128</span> ); <span class="comment">//空間分布比值 1:1:512/128</span></span><br><span class="line">jpegReader-&gt;Update();</span><br></pre></td></tr></table></figure>
+<p>這種方法比第一種程式碼簡潔多拉</p>
+<h2 id="VTK-Load-file-Python"><a href="#VTK-Load-file-Python" class="headerlink" title="VTK Load file ( Python )"></a>VTK Load file ( Python )</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#1. 將128張圖讀入</span></span><br><span class="line"><span class="comment"># PNG files path source (stack of images)</span></span><br><span class="line">files=glob.glob(<span class="string">r"D:\VTKTester\pics"</span>+<span class="string">r"\*.jpg"</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Setting the file path</span></span><br><span class="line">filePath = vtk.vtkStringArray()</span><br><span class="line"><span class="comment"># Sorting file to arrange in ascending order to get slices correctly</span></span><br><span class="line">files.sort(key=<span class="keyword">lambda</span> x: int(<span class="string">''</span>.join(filter(str.isdigit, x))))</span><br><span class="line">filePath.SetNumberOfValues(len(files))</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">0</span>,len(files),<span class="number">1</span>):</span><br><span class="line">    filePath.SetValue(i,files[i])</span><br><span class="line">    print(files[i])</span><br><span class="line"></span><br><span class="line"><span class="comment">#2. 用JPEGReader去設置這128張圖</span></span><br><span class="line">reader=vtk.vtkJPEGReader()</span><br><span class="line"><span class="comment">#reader=vtk.vtkPNGReader()</span></span><br><span class="line">reader.SetFileNames(filePath)</span><br><span class="line">reader.SetDataSpacing(<span class="number">1</span>,<span class="number">1</span>,<span class="number">512</span>/<span class="number">128</span>)</span><br><span class="line">reader.Update()</span><br><span class="line">print(reader)</span><br></pre></td></tr></table></figure>
+<h2 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h2><p><a href="https://quppler.com/3d-volume-rendering/" target="_blank" rel="noopener">3D Volume Rendering using Python</a></p>
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-08-22T14:05:16+08:00" content="2019-08-22">
-          08-22
-        </time>
+        
       </div>
-
-    </header>
-  </article>
-
-
+      
+      
       
     </div>
-
+    
+    
+    
   </div>
-  
-  
-  
-
-  
 
 
           </div>
@@ -375,6 +366,20 @@
 
 
           
+
+  
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    </div>
+
+  
+
+
 
         </div>
         
@@ -395,8 +400,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目錄
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            本站概覽
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -411,7 +425,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">89</span>
+                  <span class="site-state-item-count">86</span>
                   <span class="site-state-item-name">文章</span>
                 </a>
               </div>
@@ -456,6 +470,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#VTK-Load-file-C"><span class="nav-number">2.</span> <span class="nav-text">VTK Load file ( C++ )</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#VTK-Load-file-C-用VTK函式"><span class="nav-number">3.</span> <span class="nav-text">VTK Load file ( C++ 用VTK函式 )</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#VTK-Load-file-Python"><span class="nav-number">4.</span> <span class="nav-text">VTK Load file ( Python )</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#參考資料"><span class="nav-number">5.</span> <span class="nav-text">參考資料</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -617,6 +647,10 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 
@@ -634,6 +668,18 @@
       <script id="dsq-count-scr" src="https://TeddyBearFP.disqus.com/count.js" async></script>
     
 
+    
+      <script type="text/javascript">
+        var disqus_config = function () {
+          this.page.url = 'https://teddybearfp.github.io/Temp/VTK 讀檔.html';
+          this.page.identifier = 'Temp/VTK 讀檔.html';
+          this.page.title = 'VTK 讀檔';
+        };
+        var d = document, s = d.createElement('script');
+        s.src = 'https://TeddyBearFP.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      </script>
     
 
   
