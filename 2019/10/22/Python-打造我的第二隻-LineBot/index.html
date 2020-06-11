@@ -1,0 +1,1454 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-tw">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta name="google-site-verification" content="6FSPL7W8VK5_r7N9kUUjs091G70s4tIlG_BfxOmVa9U">
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+  <meta name="google-site-verification" content="google1efc50360bd796c6.html">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Python 打造我的第二隻專屬 LineBot">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="Python 打造我的第二隻專屬 LineBot前言我的第一個 LineBot 泰迪熊 已經運作一年多了，最近 M 學長想要有一隻可以在公司揪團購的時候能用的機器人，這題材我覺得蠻有趣的，想說順便整理先前的做法並作一些改善，同時記錄製做過程，所以決定再創造一隻機器人 LineBotLineBot 因不需安裝程式，可直接在 Line 上進行操作，若是僅提供些訊息的話是比 app 來的更方便快速的，給">
+<meta name="keywords" content="Python 打造我的第二隻專屬 LineBot">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Python 打造我的第二隻專屬 LineBot">
+<meta property="og:url" content="https://teddybearfp.github.io/2019/10/22/Python-打造我的第二隻-LineBot/index.html">
+<meta property="og:site_name" content="泰迪熊的程式足跡">
+<meta property="og:description" content="Python 打造我的第二隻專屬 LineBot前言我的第一個 LineBot 泰迪熊 已經運作一年多了，最近 M 學長想要有一隻可以在公司揪團購的時候能用的機器人，這題材我覺得蠻有趣的，想說順便整理先前的做法並作一些改善，同時記錄製做過程，所以決定再創造一隻機器人 LineBotLineBot 因不需安裝程式，可直接在 Line 上進行操作，若是僅提供些訊息的話是比 app 來的更方便快速的，給">
+<meta property="og:locale" content="zh-tw">
+<meta property="og:image" content="https://i.imgur.com/lD7kLQD.png">
+<meta property="og:image" content="https://i.imgur.com/C5k8vaO.png">
+<meta property="og:image" content="https://i.imgur.com/9o73ACv.png">
+<meta property="og:image" content="https://i.imgur.com/NHhhuMr.png">
+<meta property="og:image" content="https://i.imgur.com/nNUUEl0.png">
+<meta property="og:image" content="https://i.imgur.com/Ot4Qd67.png">
+<meta property="og:image" content="https://i.imgur.com/Flx16BJ.png">
+<meta property="og:image" content="https://i.imgur.com/hY8gZn4.png">
+<meta property="og:image" content="https://i.imgur.com/J0hw0Ez.png">
+<meta property="og:image" content="https://i.imgur.com/PlTUdWl.png">
+<meta property="og:image" content="https://i.imgur.com/uylQ6lp.png">
+<meta property="og:image" content="https://i.imgur.com/C66dMoq.png">
+<meta property="og:image" content="https://i.imgur.com/FL4Wjxc.png">
+<meta property="og:image" content="https://i.imgur.com/KyzN5FP.png">
+<meta property="og:image" content="https://i.imgur.com/bBQIxsE.png">
+<meta property="og:updated_time" content="2019-10-23T13:49:25.621Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Python 打造我的第二隻專屬 LineBot">
+<meta name="twitter:description" content="Python 打造我的第二隻專屬 LineBot前言我的第一個 LineBot 泰迪熊 已經運作一年多了，最近 M 學長想要有一隻可以在公司揪團購的時候能用的機器人，這題材我覺得蠻有趣的，想說順便整理先前的做法並作一些改善，同時記錄製做過程，所以決定再創造一隻機器人 LineBotLineBot 因不需安裝程式，可直接在 Line 上進行操作，若是僅提供些訊息的話是比 app 來的更方便快速的，給">
+<meta name="twitter:image" content="https://i.imgur.com/lD7kLQD.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://teddybearfp.github.io/2019/10/22/Python-打造我的第二隻-LineBot/">
+
+
+
+
+
+  <title>Python 打造我的第二隻專屬 LineBot | 泰迪熊的程式足跡</title>
+  
+<script>
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '',
+      xfbml      : true,
+      version    : 'v2.10'
+    });
+  };
+
+  (function(d, s, id){
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement(s); js.id = id;
+     js.src = "//connect.facebook.net/zh_tw/sdk.js";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));
+</script>
+
+
+
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-137198611-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+
+
+
+
+</head>
+
+<body oncontextmenu="return false" onselectstart="return false" oncopy="return false" oncut="return false" itemscope itemtype="http://schema.org/WebPage" lang="zh-tw">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">泰迪熊的程式足跡</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">遊走程式森林的泰迪熊</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首頁
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            關於
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            標籤
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分類
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            歸檔
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-top">
+          <a href="/top/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-signal"></i> <br>
+            
+            文章排行榜
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            檢索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://teddybearfp.github.io/2019/10/22/Python-打造我的第二隻-LineBot/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="G.C.L.">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="泰迪熊的程式足跡">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Python 打造我的第二隻專屬 LineBot</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+ 
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">發表於</span>
+              
+              <time title="創建於" itemprop="dateCreated datePublished" datetime="2019-10-22T15:05:16+08:00">
+                2019-10-22
+              </time>
+            
+            
+            <span class="post-updated">
+            &nbsp; | &nbsp; 更新於
+            <time itemprop="dateUpdated" datetime="2019-10-23T21:49:25+08:00" content="2019-10-23">
+            2019-10-23
+            </time>
+            </span>
+            
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分類於</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Python/" itemprop="url" rel="index">
+                    <span itemprop="name">Python</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+          
+             <span id="/2019/10/22/Python-打造我的第二隻-LineBot/" class="leancloud_visitors" data-flag-title="Python 打造我的第二隻專屬 LineBot">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">閱讀次數&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="Python-打造我的第二隻專屬-LineBot"><a href="#Python-打造我的第二隻專屬-LineBot" class="headerlink" title="Python 打造我的第二隻專屬 LineBot"></a>Python 打造我的第二隻專屬 LineBot</h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>我的第一個 <a href="https://teddybearfp.github.io/2018/10/26/Python-LineBot/">LineBot 泰迪熊</a> 已經運作一年多了，最近 M 學長想要有一隻可以在公司揪團購的時候能用的機器人，這題材我覺得蠻有趣的，想說順便整理先前的做法並作一些改善，同時記錄製做過程，所以決定再創造一隻機器人</p>
+<h2 id="LineBot"><a href="#LineBot" class="headerlink" title="LineBot"></a>LineBot</h2><p>LineBot 因不需安裝程式，可直接在 Line 上進行操作，若是僅提供些訊息的話是比 app 來的更方便快速的，給親朋好友使用也只需分享好友資料並可開始使用，所以也是個不錯的開發方式</p>
+<h2 id="我的第一隻-LineBot-泰迪熊"><a href="#我的第一隻-LineBot-泰迪熊" class="headerlink" title="我的第一隻 LineBot 泰迪熊"></a>我的第一隻 LineBot 泰迪熊</h2><p>在我先前的文章有記錄我的第一個 <a href="https://teddybearfp.github.io/2018/10/26/Python-LineBot/">LineBot 泰迪熊</a> </p>
+<p>主要功能有以下幾個</p>
+<ol>
+<li>快速輸入面板</li>
+<li>取得天氣資訊</li>
+<li>取得將各大版 PTT 的 Top 15 文章，直接幫你篩選熱門文章節省時間</li>
+<li>取得即時新聞內容</li>
+<li>取得現正熱映電影與電影評分</li>
+<li>推薦附近好吃的餐廳與小吃並得到評分與距離</li>
+<li>聊天功能</li>
+<li>圖戰功能</li>
+<li>關鍵字搜尋功能</li>
+</ol>
+<h2 id="第二隻-LineBot-泰迪熊-Super"><a href="#第二隻-LineBot-泰迪熊-Super" class="headerlink" title="第二隻 LineBot 泰迪熊 Super"></a>第二隻 LineBot 泰迪熊 Super</h2><p>目前第二隻 LineBot 的定位，會是功能較簡單，利於之後重新定位或是擴充的角色，命名方式是以七龍珠的內的命名法則為參考</p>
+<p>主要功能暫定有以下幾個</p>
+<ol>
+<li>呈現菜單</li>
+<li>紀錄大家要點什麼餐點</li>
+<li>呈現大家要點的餐點內容</li>
+</ol>
+<h2 id="創建-LineBot"><a href="#創建-LineBot" class="headerlink" title="創建 LineBot"></a>創建 LineBot</h2><h3 id="申請-Line-帳號"><a href="#申請-Line-帳號" class="headerlink" title="申請 Line 帳號"></a>申請 Line 帳號</h3><p>第一步是先申請 Line 帳號，或用自己的 Line 帳號，才可以創建 LineBot </p>
+<h3 id="LINE-Develop"><a href="#LINE-Develop" class="headerlink" title="LINE Develop"></a>LINE Develop</h3><h4 id="創建頻道"><a href="#創建頻道" class="headerlink" title="創建頻道"></a>創建頻道</h4><p><a href="https://developers.line.biz/en/" target="_blank" rel="noopener">LINE Develop</a> 中登入 Line 帳號後會看到此頁面<br>選擇 Provider List 看到現有頻道</p>
+<p><img src="https://i.imgur.com/lD7kLQD.png" alt></p>
+<p>選擇 Create new Channel ，如果要製做 LineBot 請選 Message API</p>
+<p><img src="https://i.imgur.com/C5k8vaO.png" alt></p>
+<p>接著填寫 LineBot 基本資料，信箱、概述等等，填寫完畢後送出並同意 Line 相關規章</p>
+<p>完成後會看到 Provider List 新增了剛剛創建的 LineBot</p>
+<p><img src="https://i.imgur.com/9o73ACv.png" alt></p>
+<h4 id="允許-webhook-傳訊"><a href="#允許-webhook-傳訊" class="headerlink" title="允許 webhook 傳訊"></a>允許 webhook 傳訊</h4><p>點選剛剛創建的 LineBot 會看到該機器人的設置內容，將 webhook enabled 並儲存</p>
+<p><img src="https://i.imgur.com/NHhhuMr.png" alt></p>
+<h4 id="取得-Channel-secret、Channel-access-token"><a href="#取得-Channel-secret、Channel-access-token" class="headerlink" title="取得 Channel secret、Channel access token"></a>取得 Channel secret、Channel access token</h4><p>這邊最重要的事情就是取得 Channel secret 跟 Channel access token</p>
+<p>Channel secret</p>
+<p><img src="https://i.imgur.com/nNUUEl0.png" alt></p>
+<p>若 Channel access token 是空的，則按右邊 Issue 產生</p>
+<p><img src="https://i.imgur.com/Ot4Qd67.png" alt></p>
+<p>到時候將這兩個值貼在程式碼中</p>
+<pre><code>Channel_Access_Token = YOUR_CHANNEL_SECRET
+Channel_Secret = YOUR_CHANNEL_SECRET
+</code></pre><h3 id="LINE-Official-Account-Manager"><a href="#LINE-Official-Account-Manager" class="headerlink" title="LINE Official Account Manager"></a>LINE Official Account Manager</h3><p>接著我們到 <a href="https://manager.line.biz" target="_blank" rel="noopener">LINE Official Account Manager</a> 對泰迪熊 Super 進行更詳細的設定</p>
+<h4 id="帳號設定頁面"><a href="#帳號設定頁面" class="headerlink" title="帳號設定頁面"></a>帳號設定頁面</h4><p><img src="https://i.imgur.com/Flx16BJ.png" alt></p>
+<p>勾選 接受邀請加入群組或多人聊天室 讓泰迪熊 Super 能變群組機器人<br><img src="https://i.imgur.com/hY8gZn4.png" alt></p>
+<h4 id="回應設定頁面"><a href="#回應設定頁面" class="headerlink" title="回應設定頁面"></a>回應設定頁面</h4><p>可以設置一些基本問後語句，可以在這邊將罐頭訊息關閉</p>
+<p><img src="https://i.imgur.com/J0hw0Ez.png" alt></p>
+<h2 id="部屬-LineBot"><a href="#部屬-LineBot" class="headerlink" title="部屬 LineBot"></a>部屬 LineBot</h2><h3 id="Heroku"><a href="#Heroku" class="headerlink" title="Heroku"></a>Heroku</h3><p>設定完一些基本資料與行為後，要將 LineBot 部屬到 Heroku 上運行， 首先要先申辦 Heroku 帳號</p>
+<h4 id="heroku-cli"><a href="#heroku-cli" class="headerlink" title="heroku-cli"></a>heroku-cli</h4><p>有了帳號後下載 <a href="https://devcenter.heroku.com/articles/heroku-cli" target="_blank" rel="noopener">heroku-cli</a></p>
+<p>注意: Heroku CLI 需要 Git 環境需先安裝完成後再安裝 CLI<br>The Heroku CLI requires Git, the popular version control system. If you don’t already have Git installed, complete the following before installing the CLI:</p>
+<p><a href="https://git-scm.com/book/en/v2/Getting-Started-Installing-Git" target="_blank" rel="noopener">Git installation</a><br><a href="https://git-scm.com/book/en/v2/Getting-Started-First-Time-Git-Setup" target="_blank" rel="noopener">First-time Git setup</a></p>
+<h4 id="cmd"><a href="#cmd" class="headerlink" title="cmd"></a>cmd</h4><p>Git 與 Heroku CLI 安裝完成後，開啟命令提示字元 command line 切換到 linebot 的資料夾並輸入以下指令</p>
+<p>1.登入 Heroku</p>
+<pre><code>heroku login
+</code></pre><p>輸入 heroku 帳號密碼登入成功會寫 Logged in as “你的信箱” 如下圖</p>
+<p><img src="https://i.imgur.com/PlTUdWl.png" alt></p>
+<p>2.創建.git資料夾(初始化 git)<br>僅在第一次使用時要輸入</p>
+<pre><code>git config --global user.name &quot;你的名字&quot;
+git config --global user.email 你的信箱
+
+git init
+</code></pre><p><img src="https://i.imgur.com/uylQ6lp.png" alt></p>
+<p>可以到該層看是否創建 .git 資料夾</p>
+<p>3.與 Heroku 連線</p>
+<pre><code>heroku git:remote -a HEROKU_APP名稱
+</code></pre><p><img src="https://i.imgur.com/C66dMoq.png" alt></p>
+<p>4.偵測變更 與 commit 與 push<br>注意1: git add .中的這個.需要與 add 空一格<br>注意2: 建置時 buildpackages 可以選擇語言 例如: 選擇Python<br><img src="https://i.imgur.com/FL4Wjxc.png" alt></p>
+<pre><code>git add .
+git commit -m &quot;此次變更說明&quot;
+git push heroku master
+</code></pre><p>成功部屬後，會在 Heroku app 的 overview 中看到 build successed</p>
+<p><img src="https://i.imgur.com/KyzN5FP.png" alt></p>
+<p>以上四步驟指令可以在 web app 裡的 deploy 看到</p>
+<p><img src="https://i.imgur.com/bBQIxsE.png" alt></p>
+<p>之後有任何變更要套用僅需第一步驟登入 heroku 與第三步驟連線 heroku 並且反覆執行第四步驟即可更新</p>
+<h4 id="Sourcetree"><a href="#Sourcetree" class="headerlink" title="Sourcetree"></a>Sourcetree</h4><p>除了 cmd 指令方式還可以用 git gui 方式上傳程式碼，部屬到 Heroku 上面，我用的是 <a href="https://www.sourcetreeapp.com" target="_blank" rel="noopener">Sourcetree</a> 整體使用上算是容易上手且頁面簡潔，如果覺得用 cmd 部屬太困難那麼就用有使用者介面的 git gui 方式吧</p>
+<h2 id="Webhook-URL"><a href="#Webhook-URL" class="headerlink" title="Webhook URL"></a>Webhook URL</h2><p>最後要把之前尚未填寫的 Webhook URL 給補上，這個值會是你的 Heroku 部屬完成後的網址加上/callback</p>
+<p>例如: 我部屬完成 Heroku ，在 Heroku 主頁右上角 Open app 得到剛剛部屬完成的位置 <a href="https://superteddybearbot.herokuapp.com" target="_blank" rel="noopener">https://superteddybearbot.herokuapp.com</a><br>那麼我們的 Webhook URL 即是 <a href="https://superteddybearbot.herokuapp.com/callback" target="_blank" rel="noopener">https://superteddybearbot.herokuapp.com/callback</a></p>
+<h2 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h2><p><a href="https://www.oxxostudio.tw/articles/201701/line-bot.html" target="_blank" rel="noopener">LINE BOT 實戰 (原理篇)</a><br><a href="https://github.com/twtrubiks/line-bot-tutorial" target="_blank" rel="noopener">twtrubiks/line-bot-tutorial - GitHub</a><br><a href="https://yaoandy107.github.io/line-bot-tutorial/" target="_blank" rel="noopener">LineBot+Python，輕鬆建立聊天機器人</a></p>
+
+      
+    </div>
+    
+    
+    
+    
+    <div>
+    
+    <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束 感謝你的閱讀 本部落格之內容嚴禁轉載-------------</div>
+    
+</div>
+    
+    </div>
+
+    
+
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>Post author：</strong>
+    G.C.L.
+  </li>
+  <li class="post-copyright-link">
+    <strong>Post link：</strong>
+    <a href="https://teddybearfp.github.io/2019/10/22/Python-打造我的第二隻-LineBot/" title="Python 打造我的第二隻專屬 LineBot">https://teddybearfp.github.io/2019/10/22/Python-打造我的第二隻-LineBot/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>Copyright Notice： </strong>
+    All articles in this blog are licensed under <a href rel="external nofollow" target="_blank"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a></a> unless stating additionally.
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Python/" rel="tag"># Python</a>
+          
+            <a href="/tags/LineBot/" rel="tag"># LineBot</a>
+          
+        </div>
+      
+
+      
+      
+        <div class="post-widgets">
+        
+          <div class="wp_rating">
+            <div id="wpac-rating"></div>
+          </div>
+        
+
+        
+
+        
+        </div>
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/10/19/求圓的極座標位置/" rel="next" title="Qt 求圓邊上的極座標位置">
+                <i class="fa fa-chevron-left"></i> Qt 求圓邊上的極座標位置
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2020/02/14/Python-generate-fake-data-for-testing-database-syntax-efficiency/" rel="prev" title="Python generate fake data for testing database syntax efficiency">
+                Python generate fake data for testing database syntax efficiency <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目錄
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            本站概覽
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">G.C.L.</p>
+              <p class="site-description motion-element" itemprop="description">在浩瀚的程式領域中，將走過的足跡記錄下來，文章著重在Qt、C++、python</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">45</span>
+                  <span class="site-state-item-name">文章</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-name">分類</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">81</span>
+                  <span class="site-state-item-name">標籤</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          <script type="text/javascript" src="//js1.bloggerads.net/ShowBanner.aspx?blogid=20190324000004" async></script>
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Python-打造我的第二隻專屬-LineBot"><span class="nav-number">1.</span> <span class="nav-text">Python 打造我的第二隻專屬 LineBot</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#LineBot"><span class="nav-number">1.2.</span> <span class="nav-text">LineBot</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#我的第一隻-LineBot-泰迪熊"><span class="nav-number">1.3.</span> <span class="nav-text">我的第一隻 LineBot 泰迪熊</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第二隻-LineBot-泰迪熊-Super"><span class="nav-number">1.4.</span> <span class="nav-text">第二隻 LineBot 泰迪熊 Super</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#創建-LineBot"><span class="nav-number">1.5.</span> <span class="nav-text">創建 LineBot</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#申請-Line-帳號"><span class="nav-number">1.5.1.</span> <span class="nav-text">申請 Line 帳號</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#LINE-Develop"><span class="nav-number">1.5.2.</span> <span class="nav-text">LINE Develop</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#創建頻道"><span class="nav-number">1.5.2.1.</span> <span class="nav-text">創建頻道</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#允許-webhook-傳訊"><span class="nav-number">1.5.2.2.</span> <span class="nav-text">允許 webhook 傳訊</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#取得-Channel-secret、Channel-access-token"><span class="nav-number">1.5.2.3.</span> <span class="nav-text">取得 Channel secret、Channel access token</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#LINE-Official-Account-Manager"><span class="nav-number">1.5.3.</span> <span class="nav-text">LINE Official Account Manager</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#帳號設定頁面"><span class="nav-number">1.5.3.1.</span> <span class="nav-text">帳號設定頁面</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#回應設定頁面"><span class="nav-number">1.5.3.2.</span> <span class="nav-text">回應設定頁面</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#部屬-LineBot"><span class="nav-number">1.6.</span> <span class="nav-text">部屬 LineBot</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Heroku"><span class="nav-number">1.6.1.</span> <span class="nav-text">Heroku</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#heroku-cli"><span class="nav-number">1.6.1.1.</span> <span class="nav-text">heroku-cli</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#cmd"><span class="nav-number">1.6.1.2.</span> <span class="nav-text">cmd</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Sourcetree"><span class="nav-number">1.6.1.3.</span> <span class="nav-text">Sourcetree</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Webhook-URL"><span class="nav-number">1.7.</span> <span class="nav-text">Webhook URL</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#參考資料"><span class="nav-number">1.8.</span> <span class="nav-text">參考資料</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">G.C.L.</span>
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      訪客數
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      人
+    </span>
+        <script src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+  
+  
+  
+    <span class="site-pv">
+      總訪問次數
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      次
+    </span>
+  
+  
+
+</div>
+
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+    
+      <script id="dsq-count-scr" src="https://TeddyBearFP.disqus.com/count.js" async></script>
+    
+
+    
+      <script type="text/javascript">
+        var disqus_config = function () {
+          this.page.url = 'https://teddybearfp.github.io/2019/10/22/Python-打造我的第二隻-LineBot/';
+          this.page.identifier = '2019/10/22/Python-打造我的第二隻-LineBot/';
+          this.page.title = 'Python 打造我的第二隻專屬 LineBot';
+        };
+        var d = document, s = d.createElement('script');
+        s.src = 'https://TeddyBearFP.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      </script>
+    
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("bDcJ07lb17xLnJp4usXdCdBa-gzGzoHsz", "KI9S9GpncakybyNyQcVhRCNe");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+  
+  <script type="text/javascript">
+  wpac_init = window.wpac_init || [];
+  wpac_init.push({widget: 'Rating', id: ,
+    el: 'wpac-rating',
+    color: 'fc6423'
+  });
+  (function() {
+    if ('WIDGETPACK_LOADED' in window) return;
+    WIDGETPACK_LOADED = true;
+    var mc = document.createElement('script');
+    mc.type = 'text/javascript';
+    mc.async = true;
+    mc.src = '//embed.widgetpack.com/widget.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(mc, s.nextSibling);
+  })();
+  </script>
+
+
+  
+
+  
+
+  
+
+</body>
+</html>
