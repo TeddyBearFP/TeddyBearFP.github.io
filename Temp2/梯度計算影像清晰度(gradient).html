@@ -72,7 +72,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT">
+  <meta name="keywords" content="清晰度,梯度,gradient,梯度計算,清晰度計算">
 
 
 
@@ -83,17 +83,20 @@
 
 
 
-<meta name="description" content="在浩瀚的程式領域中，將走過的足跡記錄下來，文章著重在Qt、C++、python">
-<meta name="keywords" content="Qt,C++,python,泰迪熊,泰迪熊的程式,泰迪熊的程式足跡,GCL">
+<meta name="description" content="前言相機提供的訊息影響接下來對圖的運算，所以對焦有沒有清楚很重要，藉由梯度計算出來的數值，簡易的判別出是否屬於良好的對焦 梯度計算像素與右方、下方的差累加，可以得出一組梯度值(gradient)，對焦清晰的圖像相比對焦模糊的圖像，它的數據之間的灰度差異應該更大，即它的方差應該較大，可以通過圖像灰度數據的方差來衡量圖像的清晰度，方差越大，表示清晰度越好。  RGB圖用綠色的像素去做，因為綠色對光的反">
+<meta name="keywords" content="清晰度,梯度,gradient,梯度計算,清晰度計算">
 <meta property="og:type" content="website">
-<meta property="og:title" content="泰迪熊的程式足跡">
-<meta property="og:url" content="https://teddybearfp.github.io/tags/XML/index.html">
+<meta property="og:title" content="梯度計算影像清晰度">
+<meta property="og:url" content="https://teddybearfp.github.io/Temp2/梯度計算影像清晰度(gradient).html">
 <meta property="og:site_name" content="泰迪熊的程式足跡">
-<meta property="og:description" content="在浩瀚的程式領域中，將走過的足跡記錄下來，文章著重在Qt、C++、python">
+<meta property="og:description" content="前言相機提供的訊息影響接下來對圖的運算，所以對焦有沒有清楚很重要，藉由梯度計算出來的數值，簡易的判別出是否屬於良好的對焦 梯度計算像素與右方、下方的差累加，可以得出一組梯度值(gradient)，對焦清晰的圖像相比對焦模糊的圖像，它的數據之間的灰度差異應該更大，即它的方差應該較大，可以通過圖像灰度數據的方差來衡量圖像的清晰度，方差越大，表示清晰度越好。  RGB圖用綠色的像素去做，因為綠色對光的反">
 <meta property="og:locale" content="zh-tw">
+<meta property="og:image" content="https://i.imgur.com/HktcuD6.png">
+<meta property="og:updated_time" content="2019-07-05T15:23:09.837Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="泰迪熊的程式足跡">
-<meta name="twitter:description" content="在浩瀚的程式領域中，將走過的足跡記錄下來，文章著重在Qt、C++、python">
+<meta name="twitter:title" content="梯度計算影像清晰度">
+<meta name="twitter:description" content="前言相機提供的訊息影響接下來對圖的運算，所以對焦有沒有清楚很重要，藉由梯度計算出來的數值，簡易的判別出是否屬於良好的對焦 梯度計算像素與右方、下方的差累加，可以得出一組梯度值(gradient)，對焦清晰的圖像相比對焦模糊的圖像，它的數據之間的灰度差異應該更大，即它的方差應該較大，可以通過圖像灰度數據的方差來衡量圖像的清晰度，方差越大，表示清晰度越好。  RGB圖用綠色的像素去做，因為綠色對光的反">
+<meta name="twitter:image" content="https://i.imgur.com/HktcuD6.png">
 
 
 
@@ -123,13 +126,13 @@
 
 
 
-  <link rel="canonical" href="https://teddybearfp.github.io/tags/XML/">
+  <link rel="canonical" href="https://teddybearfp.github.io/Temp2/梯度計算影像清晰度(gradient).html">
 
 
 
 
 
-  <title>標籤: XML | 泰迪熊的程式足跡</title>
+  <title>梯度計算影像清晰度 | 泰迪熊的程式足跡</title>
   
 <script>
   window.fbAsyncInit = function() {
@@ -176,7 +179,7 @@
     
   
 
-  <div class="container sidebar-position-left ">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -322,52 +325,52 @@
           <div id="content" class="content">
             
 
-  
-  
-  
-  <div class="post-block tag">
+  <div id="posts" class="posts-expand">
+    
+    
+    
+    <div class="post-block page">
+      <header class="post-header">
 
-    <div id="posts" class="posts-collapse">
-      <div class="collection-title">
-        <h1>XML<small>標籤</small>
-        </h1>
-      </div>
+	<h1 class="post-title" itemprop="name headline">梯度計算影像清晰度</h1>
+
+
+
+</header>
 
       
+      
+      
+      <div class="post-body">
         
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
         
-            <a class="post-title-link" href="/2019/01/11/Python解析ts檔-XML/" itemprop="url">
-              
-                <span itemprop="name">Python 解析ts檔(XML)</span>
-              
-            </a>
-        
-      </h2>
+          <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>相機提供的訊息影響接下來對圖的運算，所以對焦有沒有清楚很重要，藉由梯度計算出來的數值，簡易的判別出是否屬於良好的對焦</p>
+<h2 id="梯度計算"><a href="#梯度計算" class="headerlink" title="梯度計算"></a>梯度計算</h2><p>像素與右方、下方的差累加，可以得出一組梯度值(gradient)，<br>對焦清晰的圖像相比對焦模糊的圖像，它的數據之間的灰度差異應該更大，即它的方差應該較大，可以通過圖像灰度數據的方差來衡量圖像的清晰度，方差越大，表示清晰度越好。</p>
+<ul>
+<li>RGB圖用綠色的像素去做，因為綠色對光的反應是最靈敏的</li>
+<li>每個G跟右邊、下方的比較</li>
+<li>最右排跟最下排不做</li>
+</ul>
+<p>由左上至右下</p>
+<p><img src="https://i.imgur.com/HktcuD6.png" alt title="左上到右下計算"></p>
+<blockquote>
+<p>梯度 = ((G1-G2)+(G1-G4))+((G2-G3)+(G2-G5))+…<br>數值越大代表清晰度越好</p>
+</blockquote>
+<h2 id="算法"><a href="#算法" class="headerlink" title="算法"></a>算法</h2><p>640 x 480的圖梯度計算處理<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">double</span> gradient = <span class="number">0</span>;</span><br><span class="line">uchar* buf = canvas.bits()</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">639</span>; i++) &#123;<span class="comment">//略過最右排</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; <span class="number">479</span>; j++) &#123;<span class="comment">//略過最下排</span></span><br><span class="line">        <span class="keyword">int</span> idx = i * <span class="number">3</span> + j * canvas.bytePerline();</span><br><span class="line">        <span class="keyword">int</span> idxRight = (i + <span class="number">1</span>) * <span class="number">3</span> + j * bytePerLine();</span><br><span class="line">        <span class="keyword">int</span> idxBottom = i * <span class="number">3</span> + (j + <span class="number">1</span>) * canvas.bytePerLine();</span><br><span class="line">        gradient += <span class="built_in">abs</span>(buf[idx + <span class="number">1</span>] - buf[idxRight + <span class="number">1</span>]) + <span class="built_in">abs</span>(buf[idx +<span class="number">1</span>] - buf[idxBottom +<span class="number">1</span>])<span class="comment">//梯度等於綠色像素跟右方與下方比較</span></span><br><span class="line">    &#125;    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="水波紋現象"><a href="#水波紋現象" class="headerlink" title="水波紋現象"></a>水波紋現象</h2><p>頻率不一致造成水波紋，室內拍攝時會造成水波紋，主要的原因是日光燈的閃爍頻率所致。一般常見的T9日光燈管是種氣體電燈，燈管內有低壓氬氣或氬氖混合氣體及水銀蒸氣，燈管的光線與色溫會隨著交流電的頻率（60Hz）變化，也就造成閃爍的現象。但因為閃爍的頻率很高，因此肉眼難以辨識，會覺得燈管放出的是連續光。但對於電子儀器來說，日光燈的閃爍頻率並不算高。因此造成手機、相機在拍攝上的波紋現象，關鍵就在於光源、快門、感光元件的頻率不一所致。</p>
+<h2 id="結論"><a href="#結論" class="headerlink" title="結論"></a>結論</h2><p>在工業應用中，最清晰的對焦拍攝出來的圖像不一定是最好的，有可能出現摩爾紋（水波紋）現象，一般需要在最清晰對焦位置做微調。</p>
+<h2 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h2><p><a href="https://blog.csdn.net/dcrmg/article/details/53543341" target="_blank" rel="noopener">OpenCV 图像清晰度评价（相机自动对焦） - 牧野的博客- CSDN博客</a><br><a href="https://www.techbang.com/posts/17861-principle-analysis-of-cell-phone-camera-water-ripples-all-fluorescent-lamp-frequency-labranche" target="_blank" rel="noopener">解決手機、相機水波紋現象，全是日光燈頻率在搞鬼| T客邦</a></p>
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-01-11T13:05:16+08:00" content="2019-01-11">
-          01-11
-        </time>
+        
       </div>
-
-    </header>
-  </article>
-
-
+      
+      
       
     </div>
-
+    
+    
+    
   </div>
-  
-  
-  
-
-  
 
 
           </div>
@@ -375,6 +378,20 @@
 
 
           
+
+  
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    </div>
+
+  
+
+
 
         </div>
         
@@ -395,8 +412,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目錄
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            本站概覽
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -411,7 +437,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">45</span>
+                  <span class="site-state-item-count">37</span>
                   <span class="site-state-item-name">文章</span>
                 </a>
               </div>
@@ -422,7 +448,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-count">9</span>
                   <span class="site-state-item-name">分類</span>
                 </a>
               </div>
@@ -433,7 +459,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">81</span>
+                  <span class="site-state-item-count">64</span>
                   <span class="site-state-item-name">標籤</span>
                 </a>
               </div>
@@ -456,6 +482,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#梯度計算"><span class="nav-number">2.</span> <span class="nav-text">梯度計算</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#算法"><span class="nav-number">3.</span> <span class="nav-text">算法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#水波紋現象"><span class="nav-number">4.</span> <span class="nav-text">水波紋現象</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#結論"><span class="nav-number">5.</span> <span class="nav-text">結論</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#參考資料"><span class="nav-number">6.</span> <span class="nav-text">參考資料</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -617,6 +659,10 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 
@@ -634,6 +680,18 @@
       <script id="dsq-count-scr" src="https://TeddyBearFP.disqus.com/count.js" async></script>
     
 
+    
+      <script type="text/javascript">
+        var disqus_config = function () {
+          this.page.url = 'https://teddybearfp.github.io/Temp2/梯度計算影像清晰度(gradient).html';
+          this.page.identifier = 'Temp2/梯度計算影像清晰度(gradient).html';
+          this.page.title = '梯度計算影像清晰度';
+        };
+        var d = document, s = d.createElement('script');
+        s.src = 'https://TeddyBearFP.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      </script>
     
 
   

@@ -85,9 +85,9 @@
 
 <meta name="description" content="執行緒執行緒（thread）是作業系統能夠進行運算排程的最小單位。它被包含在行程之中，是行程中的實際運作單位。一條執行緒指的是行程中一個單一順序的控制流，一個行程中可以並行多個執行緒，每條執行緒並列執行不同的任務。  擁有多CPU的電腦系統可以同時處理多項程序或將單一程序平行處理。 一個程序被執行時至少要有一個執行緒，但也可同時擁有多個執行緒來進行處理。  CreateThread  vs _be">
 <meta name="keywords" content="C Thread,C 執行緒,_beginthreadex,Thread,C++ 執行緒">
-<meta property="og:type" content="article">
+<meta property="og:type" content="website">
 <meta property="og:title" content="C 執行緒">
-<meta property="og:url" content="https://teddybearfp.github.io/2018/11/12/執行緒/index.html">
+<meta property="og:url" content="https://teddybearfp.github.io/Temp/執行緒.html">
 <meta property="og:site_name" content="泰迪熊的程式足跡">
 <meta property="og:description" content="執行緒執行緒（thread）是作業系統能夠進行運算排程的最小單位。它被包含在行程之中，是行程中的實際運作單位。一條執行緒指的是行程中一個單一順序的控制流，一個行程中可以並行多個執行緒，每條執行緒並列執行不同的任務。  擁有多CPU的電腦系統可以同時處理多項程序或將單一程序平行處理。 一個程序被執行時至少要有一個執行緒，但也可同時擁有多個執行緒來進行處理。  CreateThread  vs _be">
 <meta property="og:locale" content="zh-tw">
@@ -124,7 +124,7 @@
 
 
 
-  <link rel="canonical" href="https://teddybearfp.github.io/2018/11/12/執行緒/">
+  <link rel="canonical" href="https://teddybearfp.github.io/Temp/執行緒.html">
 
 
 
@@ -325,123 +325,24 @@
 
   <div id="posts" class="posts-expand">
     
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://teddybearfp.github.io/2018/11/12/執行緒/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="G.C.L.">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="泰迪熊的程式足跡">
-    </span>
-
     
+    
+    <div class="post-block page">
       <header class="post-header">
 
-        
-        
-          <h1 class="post-title" itemprop="name headline">C 執行緒</h1>
-        
+	<h1 class="post-title" itemprop="name headline">C 執行緒</h1>
 
-        <div class="post-meta">
-          <span class="post-time">
- 
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">發表於</span>
-              
-              <time title="創建於" itemprop="dateCreated datePublished" datetime="2018-11-12T09:05:16+08:00">
-                2018-11-12
-              </time>
-            
-            
-            <span class="post-updated">
-            &nbsp; | &nbsp; 更新於
-            <time itemprop="dateUpdated" datetime="2019-07-02T22:43:42+08:00" content="2019-07-02">
-            2019-07-02
-            </time>
-            </span>
-            
-            
 
-            
-          </span>
 
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分類於</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/C/" itemprop="url" rel="index">
-                    <span itemprop="name">C</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-          
-             <span id="/2018/11/12/執行緒/" class="leancloud_visitors" data-flag-title="C 執行緒">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">閱讀次數&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
+</header>
 
       
       
-
       
-        <h2 id="執行緒"><a href="#執行緒" class="headerlink" title="執行緒"></a>執行緒</h2><p>執行緒（thread）是作業系統能夠進行運算排程的最小單位。它被包含在行程之中，是行程中的實際運作單位。一條執行緒指的是行程中一個單一順序的控制流，一個行程中可以並行多個執行緒，每條執行緒並列執行不同的任務。</p>
+      <div class="post-body">
+        
+        
+          <h2 id="執行緒"><a href="#執行緒" class="headerlink" title="執行緒"></a>執行緒</h2><p>執行緒（thread）是作業系統能夠進行運算排程的最小單位。它被包含在行程之中，是行程中的實際運作單位。一條執行緒指的是行程中一個單一順序的控制流，一個行程中可以並行多個執行緒，每條執行緒並列執行不同的任務。</p>
 <ul>
 <li>擁有多CPU的電腦系統可以同時處理多項程序或將單一程序平行處理。</li>
 <li>一個程序被執行時至少要有一個執行緒，但也可同時擁有多個執行緒來進行處理。</li>
@@ -473,111 +374,15 @@
 <h4 id="缺點"><a href="#缺點" class="headerlink" title="缺點"></a>缺點</h4><p>#pragma once有好也有壞，設計者必須依賴編譯器正確的管理#pragma once。編譯器如果犯錯，例如沒有辨認出在相同檔案中的兩個不同符號連結名稱指標，此時編譯會錯誤。</p>
 <h2 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h2><p><a href="https://msdn.microsoft.com/zh-tw/library/kdzttdcb.aspx" target="_blank" rel="noopener">_beginthread、_beginthreadex - MSDN - Microsoft</a><br><a href="http://puremonkey2010.blogspot.com/2010/08/c-windows-thread-beginthread.html" target="_blank" rel="noopener">在Windows下建立Thread(使用_beginthread,_beginthreadex)</a><br><a href="https://www.smwenku.com/a/5b8659722b71775d1cd50531/" target="_blank" rel="noopener">CreateThread和_beginthread區別及使用</a><br><a href="http://monkeycoding.com/?p=826" target="_blank" rel="noopener">程序、執行緒、多執行緒| 阿洲的程式教學</a><br><a href="https://zh.wikipedia.org/wiki/Pragma_once" target="_blank" rel="noopener">#pragma once - 维基百科，自由的百科全書</a></p>
 
-      
-    </div>
-    
-    
-    
-    
-    <div>
-    
-    <div>
-    
-        <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束 感謝你的閱讀 本部落格之內容嚴禁轉載-------------</div>
-    
-</div>
-    
-    </div>
-
-    
-
-    
-
-    
-      <div>
-        <ul class="post-copyright">
-  <li class="post-copyright-author">
-    <strong>Post author：</strong>
-    G.C.L.
-  </li>
-  <li class="post-copyright-link">
-    <strong>Post link：</strong>
-    <a href="https://teddybearfp.github.io/2018/11/12/執行緒/" title="C 執行緒">https://teddybearfp.github.io/2018/11/12/執行緒/</a>
-  </li>
-  <li class="post-copyright-license">
-    <strong>Copyright Notice： </strong>
-    All articles in this blog are licensed under <a href rel="external nofollow" target="_blank"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a></a> unless stating additionally.
-  </li>
-</ul>
-
+        
       </div>
-    
-
-    <footer class="post-footer">
-      
-        <div class="post-tags">
-          
-            <a href="/tags/執行緒/" rel="tag"># 執行緒</a>
-          
-            <a href="/tags/beginthreadex/" rel="tag"># _beginthreadex</a>
-          
-            <a href="/tags/Thread/" rel="tag"># Thread</a>
-          
-        </div>
-      
-
       
       
-        <div class="post-widgets">
-        
-          <div class="wp_rating">
-            <div id="wpac-rating"></div>
-          </div>
-        
-
-        
-
-        
-        </div>
-      
-      
-
-      
-        <div class="post-nav">
-          <div class="post-nav-next post-nav-item">
-            
-              <a href="/2018/11/09/計時器/" rel="next" title="C 計時器">
-                <i class="fa fa-chevron-left"></i> C 計時器
-              </a>
-            
-          </div>
-
-          <span class="post-nav-divider"></span>
-
-          <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/11/15/梯度計算影像清晰度-gradient/" rel="prev" title="梯度計算影像清晰度">
-                梯度計算影像清晰度 <i class="fa fa-chevron-right"></i>
-              </a>
-            
-          </div>
-        </div>
-      
-
-      
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-
-    <div class="post-spread">
       
     </div>
+    
+    
+    
   </div>
 
 
@@ -645,7 +450,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">45</span>
+                  <span class="site-state-item-count">37</span>
                   <span class="site-state-item-name">文章</span>
                 </a>
               </div>
@@ -656,7 +461,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-count">9</span>
                   <span class="site-state-item-name">分類</span>
                 </a>
               </div>
@@ -667,7 +472,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">81</span>
+                  <span class="site-state-item-count">64</span>
                   <span class="site-state-item-name">標籤</span>
                 </a>
               </div>
@@ -891,8 +696,8 @@
     
       <script type="text/javascript">
         var disqus_config = function () {
-          this.page.url = 'https://teddybearfp.github.io/2018/11/12/執行緒/';
-          this.page.identifier = '2018/11/12/執行緒/';
+          this.page.url = 'https://teddybearfp.github.io/Temp/執行緒.html';
+          this.page.identifier = 'Temp/執行緒.html';
           this.page.title = 'C 執行緒';
         };
         var d = document, s = d.createElement('script');
@@ -1366,23 +1171,6 @@
 
   
   
-  <script type="text/javascript">
-  wpac_init = window.wpac_init || [];
-  wpac_init.push({widget: 'Rating', id: ,
-    el: 'wpac-rating',
-    color: 'fc6423'
-  });
-  (function() {
-    if ('WIDGETPACK_LOADED' in window) return;
-    WIDGETPACK_LOADED = true;
-    var mc = document.createElement('script');
-    mc.type = 'text/javascript';
-    mc.async = true;
-    mc.src = '//embed.widgetpack.com/widget.js';
-    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(mc, s.nextSibling);
-  })();
-  </script>
-
 
   
 
