@@ -1,0 +1,1244 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-tw">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta name="google-site-verification" content="6FSPL7W8VK5_r7N9kUUjs091G70s4tIlG_BfxOmVa9U">
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+  <meta name="google-site-verification" content="google1efc50360bd796c6.html">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="OpenGL著色器,shader,OpenGL GLSL">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="前言3D是結合容器與紋理呈現在畫面上，透過著色器我們就可以把現有的每點位置與該點像素顏色精準的繪製在其中，接下來我們就來了解一下GLSL這語言，其變數型態與傳遞方式需要先有所了解才能跟c++端資料互相傳遞，此篇文章將會記錄如何使用這兩種著色器處理字串集傳送到驅動中。 GLSL(OpenGL Shading Language) OpenGL繪製圖形是透過GLSL(OpenGL Shading Lan">
+<meta name="keywords" content="OpenGL著色器,shader,OpenGL GLSL">
+<meta property="og:type" content="website">
+<meta property="og:title" content="OpenGL GLSL著色器">
+<meta property="og:url" content="https://teddybearfp.github.io/Temp/OpenGL GLSL著色器.html">
+<meta property="og:site_name" content="泰迪熊的程式足跡">
+<meta property="og:description" content="前言3D是結合容器與紋理呈現在畫面上，透過著色器我們就可以把現有的每點位置與該點像素顏色精準的繪製在其中，接下來我們就來了解一下GLSL這語言，其變數型態與傳遞方式需要先有所了解才能跟c++端資料互相傳遞，此篇文章將會記錄如何使用這兩種著色器處理字串集傳送到驅動中。 GLSL(OpenGL Shading Language) OpenGL繪製圖形是透過GLSL(OpenGL Shading Lan">
+<meta property="og:locale" content="zh-tw">
+<meta property="og:image" content="https://i.imgur.com/dRpccHC.png">
+<meta property="og:image" content="https://i.imgur.com/Oyh5P1d.png">
+<meta property="og:image" content="https://i.imgur.com/Z2sOgQl.png">
+<meta property="og:image" content="https://i.imgur.com/Z2sOgQl.png">
+<meta property="og:image" content="https://i.imgur.com/ETRSfRP.png">
+<meta property="og:image" content="https://i.imgur.com/Q1cexe3.png">
+<meta property="og:image" content="https://i.imgur.com/KWobbmi.png">
+<meta property="og:image" content="https://i.imgur.com/Z2sOgQl.png">
+<meta property="og:image" content="https://i.imgur.com/nfcqO7k.png">
+<meta property="og:image" content="https://i.imgur.com/zafnspQ.png">
+<meta property="og:updated_time" content="2019-07-06T01:34:00.910Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="OpenGL GLSL著色器">
+<meta name="twitter:description" content="前言3D是結合容器與紋理呈現在畫面上，透過著色器我們就可以把現有的每點位置與該點像素顏色精準的繪製在其中，接下來我們就來了解一下GLSL這語言，其變數型態與傳遞方式需要先有所了解才能跟c++端資料互相傳遞，此篇文章將會記錄如何使用這兩種著色器處理字串集傳送到驅動中。 GLSL(OpenGL Shading Language) OpenGL繪製圖形是透過GLSL(OpenGL Shading Lan">
+<meta name="twitter:image" content="https://i.imgur.com/dRpccHC.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://teddybearfp.github.io/Temp/OpenGL GLSL著色器.html">
+
+
+
+
+
+  <title>OpenGL GLSL著色器 | 泰迪熊的程式足跡</title>
+  
+<script>
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '',
+      xfbml      : true,
+      version    : 'v2.10'
+    });
+  };
+
+  (function(d, s, id){
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement(s); js.id = id;
+     js.src = "//connect.facebook.net/zh_tw/sdk.js";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));
+</script>
+
+
+
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-137198611-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+
+
+
+
+</head>
+
+<body oncontextmenu="return false" onselectstart="return false" oncopy="return false" oncut="return false" itemscope itemtype="http://schema.org/WebPage" lang="zh-tw">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">泰迪熊的程式足跡</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">遊走程式森林的泰迪熊</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首頁
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            關於
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            標籤
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分類
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            歸檔
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-top">
+          <a href="/top/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-signal"></i> <br>
+            
+            文章排行榜
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            檢索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+    
+    
+    <div class="post-block page">
+      <header class="post-header">
+
+	<h1 class="post-title" itemprop="name headline">OpenGL GLSL著色器</h1>
+
+
+
+</header>
+
+      
+      
+      
+      <div class="post-body">
+        
+        
+          <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>3D是結合容器與紋理呈現在畫面上，透過著色器我們就可以把現有的每點位置與該點像素顏色精準的繪製在其中，接下來我們就來了解一下GLSL這語言，其變數型態與傳遞方式需要先有所了解才能跟c++端資料互相傳遞，此篇文章將會記錄如何使用這兩種著色器處理字串集傳送到驅動中。</p>
+<h2 id="GLSL-OpenGL-Shading-Language"><a href="#GLSL-OpenGL-Shading-Language" class="headerlink" title="GLSL(OpenGL Shading Language)"></a>GLSL(OpenGL Shading Language)</h2><ul>
+<li>OpenGL繪製圖形是透過GLSL(OpenGL Shading Language)也稱作 GLslang，是一個以C語言為基礎的高階著色語言。</li>
+<li>GLSL 著色器不是獨立的應用程式；其需要使用 OpenGL API 的應用程式。C、C++、C#、Delphi 和 Java 皆支援 OpenGL API，且支援 OpenGL 著色語言。</li>
+<li>GLSL 著色器本身只是簡單的字串集，這些字串集會傳送到硬體廠商的驅動程式，並從程式內部的 OpenGL API 進入點編譯。</li>
+</ul>
+<h2 id="著色器-shader"><a href="#著色器-shader" class="headerlink" title="著色器(shader)"></a>著色器(shader)</h2><p>透過著色器可以透過glsl這個語言來將vertex與texture繪製呈現在program中，著色器的檔案格式為glsl<br>繪製成圖形基本上會運用到以下兩個檔案</p>
+<ul>
+<li>頂點著色器(vertex shader.glsl)</li>
+<li>片段著色器(fragment shader.glsl)</li>
+</ul>
+<h3 id="著色器執行順序"><a href="#著色器執行順序" class="headerlink" title="著色器執行順序"></a>著色器執行順序</h3><p>著色器的執行順序會由vertex shader.glsl先執行再執行fragment shader.glsl<br><img src="https://i.imgur.com/dRpccHC.png" alt title="vertex shader.glsl -&gt; fragment shader.glsl"></p>
+<h3 id="頂點著色器-vertex-shader"><a href="#頂點著色器-vertex-shader" class="headerlink" title="頂點著色器(vertex shader)"></a>頂點著色器(vertex shader)</h3><h4 id="目的"><a href="#目的" class="headerlink" title="目的"></a>目的</h4><p>頂點著色器目的return gl_Position</p>
+<h4 id="運作原理"><a href="#運作原理" class="headerlink" title="運作原理"></a>運作原理</h4><p><img src="https://i.imgur.com/Oyh5P1d.png" alt title="Model,View,Projection matrix是三種不同的變換矩陣"></p>
+<h5 id="Model-matrix"><a href="#Model-matrix" class="headerlink" title="Model matrix"></a>Model matrix</h5><p>將模型自己的座標系對應到空間座標系(針對空間座標處理縮放、旋轉、平移)<br><img src="https://i.imgur.com/Z2sOgQl.png" alt></p>
+<h6 id="平移"><a href="#平移" class="headerlink" title="平移"></a>平移</h6><p>translate(x位移, y位移, z位移)<br>下面這個例子是向量(10,10,10,1)沿著X軸平移3個單位<br><img src="https://i.imgur.com/Z2sOgQl.png" alt><br>經過上述運算就得到了(13,10,10,1)的齊次座標，其中的1代表的是這向量為一個點而不是一個方向，即使經過變換矩陣點還是點</p>
+<h6 id="縮放"><a href="#縮放" class="headerlink" title="縮放"></a>縮放</h6><p>scale(2.0f, 2.0f ,2.0f);<br><img src="https://i.imgur.com/ETRSfRP.png" alt></p>
+<h6 id="example"><a href="#example" class="headerlink" title="example"></a>example</h6><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//translate(x位移-0.5, y位移-0.5, z位移0.0)</span></span><br><span class="line">modelUniform.translate(<span class="number">-0.5f</span>, <span class="number">-0.5f</span>, <span class="number">0.0f</span> );</span><br><span class="line"><span class="comment">//rotate(旋轉角度, 0.0, 1.0, 0.0) 以y軸做旋轉 </span></span><br><span class="line">modelUniform.rotate( m_angle, <span class="number">0.0f</span>, <span class="number">1.0f</span>, <span class="number">0.0f</span> );</span><br></pre></td></tr></table></figure>
+<h5 id="View-matrix"><a href="#View-matrix" class="headerlink" title="View matrix"></a>View matrix</h5><p>將空間座標系對應到攝影機所看到的座標系(將世界的視野重新定義)<br>設定鏡頭位置、世界中心位置、觀看方向<br><img src="https://i.imgur.com/Q1cexe3.png" alt></p>
+<h6 id="example-1"><a href="#example-1" class="headerlink" title="example"></a>example</h6><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//lookAt(鏡頭位置, 世界中心位置, 觀看角度)</span></span><br><span class="line">viewUniform.lookAt(QVector3D(<span class="number">0</span>,<span class="number">0</span>,<span class="number">3</span>),QVector3D(<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>),QVector3D(<span class="number">0</span>,<span class="number">1</span>,<span class="number">0</span>));</span><br></pre></td></tr></table></figure>
+<h5 id="Projection-matrix"><a href="#Projection-matrix" class="headerlink" title="Projection matrix"></a>Projection matrix</h5><p>確定了物體的形狀位置和攝影機的位置以後，最後還要確定攝影機的攝影區域。<br>設定視野跟最近處與最遠處，若是物體小於最近處或是大於最遠處將會看不到物體<br><img src="https://i.imgur.com/KWobbmi.png" alt title="設定視野跟最近處與最遠處"></p>
+<h6 id="example-2"><a href="#example-2" class="headerlink" title="example"></a>example</h6><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//perspective (視角多大, 螢幕長寬比, 最近處, 最遠處)</span></span><br><span class="line">projUniform.perspective( <span class="number">60.0f</span>, ( GLfloat ) width() / ( GLfloat ) height() , <span class="number">1.0f</span>, <span class="number">200.0f</span> );</span><br></pre></td></tr></table></figure>
+<p>頂點著色器主要將頂點vertex去做變換矩陣(model縮放、旋轉、平移)與世界視角變化(view)，最後乘上投影機設定(projector)得到最終的gl_Position回傳</p>
+<h4 id="運作順序"><a href="#運作順序" class="headerlink" title="運作順序"></a>運作順序</h4><p>將Vertex乘上變化矩陣後得到齊次座標(Homogeneous Coordinates)後賦值給gl_Position回傳<br><img src="https://i.imgur.com/Z2sOgQl.png" alt><br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gl_Position = P * (V * (M * vertex));</span><br></pre></td></tr></table></figure></p>
+<p>Model coordinates - (<em>Model Matrix) &gt; World coordinates - (</em>View Matrix) &gt; Camera coordinates</p>
+<h5 id="example-3"><a href="#example-3" class="headerlink" title="example"></a>example</h5><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">attribute highp vec4 vertex;</span><br><span class="line">uniform mediump mat4 toMatrix;<span class="comment">//平移要比旋轉先處理否則結果不同(因為旋轉會比較先處理所以拉到glsl自行設定)</span></span><br><span class="line">uniform mediump mat4 model;</span><br><span class="line">uniform mediump mat4 view;</span><br><span class="line">uniform mediump mat4 proj;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    gl_Position = proj *(view *(model * vertex))) ;</span><br><span class="line">    <span class="comment">//equal to (proj * view * model) * vertex</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>proj <em>(view </em>(model <em>(toMatrix </em> vertex)))<br>equal to<br>(proj <em> view </em> model) * vertex</p>
+</blockquote>
+<h3 id="片段著色器-fragment-shader"><a href="#片段著色器-fragment-shader" class="headerlink" title="片段著色器(fragment shader)"></a>片段著色器(fragment shader)</h3><p>片段著色器最主要的return值為原生變數gl_FragColor來決定最終的像素顏色，而gl_FragColor會把值傳去做透明度(Alpha test)跟混合(Blending)<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    gl_FragColor = vec4(<span class="number">1.0</span>, <span class="number">0.0</span>, <span class="number">0.0</span>, <span class="number">1.0</span>);<span class="comment">//把輸出變量設置為紅色</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p><img src="https://i.imgur.com/nfcqO7k.png" alt></p>
+<h2 id="變數型態"><a href="#變數型態" class="headerlink" title="變數型態"></a>變數型態</h2><p>較常使用到的有以下幾種變數型態</p>
+<ul>
+<li>attribute</li>
+<li>vec2, vec3, vec4</li>
+<li>mat2, mat3, mat4</li>
+<li>Uniform</li>
+<li>varying</li>
+<li>sampler2D, sampler3D<h3 id="Vec-向量"><a href="#Vec-向量" class="headerlink" title="Vec 向量"></a>Vec 向量</h3>glsl中的向量分為以下三種</li>
+<li>vec2 二分量的浮點向量</li>
+<li>vec3 三分量的浮點向量</li>
+<li>vec4 四分量的浮點向量</li>
+</ul>
+<p>值可以為空間座標(x,y,z,w)或是顏色(r,g,b,a)或是紋理座標(s,t,p,q)</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">vec4 <span class="built_in">vector</span>;</span><br><span class="line"><span class="built_in">vector</span>[<span class="number">0</span>] = <span class="built_in">vector</span>.r = <span class="built_in">vector</span>.x = <span class="built_in">vector</span>.s;</span><br><span class="line"><span class="built_in">vector</span>[<span class="number">1</span>] = <span class="built_in">vector</span>.g = <span class="built_in">vector</span>.y = <span class="built_in">vector</span>.t;</span><br><span class="line"><span class="built_in">vector</span>[<span class="number">2</span>] = <span class="built_in">vector</span>.b = <span class="built_in">vector</span>.z = <span class="built_in">vector</span>.p;</span><br><span class="line"><span class="built_in">vector</span>[<span class="number">3</span>] = <span class="built_in">vector</span>.a = <span class="built_in">vector</span>.w = <span class="built_in">vector</span>.q;</span><br></pre></td></tr></table></figure>
+<h4 id="分量與向量與純量差異"><a href="#分量與向量與純量差異" class="headerlink" title="分量與向量與純量差異"></a>分量與向量與純量差異</h4><blockquote>
+<p>向量具有方向以及不為零的值，而純量只有值，一向量可分解成x,y分量，而x,y分量還是向量，因為它依然還是有方向，只是一個方向會垂直於x軸，另一個方向會垂直於y軸。</p>
+</blockquote>
+<h4 id="空間座標"><a href="#空間座標" class="headerlink" title="空間座標"></a>空間座標</h4><p>這裡我們所講述的四分量浮點向量為齊次座標因為齊次座標了方便將空間的平移、縮放、旋轉等轉換使用矩陣來記錄。<br>所以空間座標為(x,y,z,w)</p>
+<h5 id="齊次座標"><a href="#齊次座標" class="headerlink" title="齊次座標"></a>齊次座標</h5><p>在3D世界中(x,y,z)可能是一個點也可能是一個向量，點只有位置，向量則是沒有位置只有大小與方向，當(x,y,z,0)時我們規定他為向量，而(x,y,z,1)或(x,y,z,2)當w不為0時我們稱為位置。</p>
+<blockquote>
+<p>補充說明<br>齊次座標除了能夠區分點和向量，在3D圖形學中還有重要的意義。齊次座標系使得我們可以在一中特殊的方程組中求出解，這個方程組中每一個方程都表示一個與系統中其他直線平行的直線。我們知道在歐幾里得空間中，對這種方程組是無解的，因爲他們沒有交點。然而在現實世界中我們是可以看到兩條平行線相交的。<br>三維點的齊次座標爲（X, Y, Z, w）,那麼它的3D空間座標爲：<br>x = X / w<br>y = Y / w<br>z = Z / w<br>我們可以看到的齊次座標(1, 2, 3, 1)與(2, 4, 6, 2)表示的都是3d空間中的點（1， 2， 3）；所以通常在程序設計中我們都取w爲1.</p>
+</blockquote>
+<h4 id="顏色"><a href="#顏色" class="headerlink" title="顏色"></a>顏色</h4><p>顏色(r,g,b,a)<br>r代表的是紅色<br>g代表的是綠色<br>b代表的是藍色<br>a代表的是透明度<br>值介於0~1</p>
+<h3 id="attribute"><a href="#attribute" class="headerlink" title="attribute"></a>attribute</h3><p>這個屬性只能存在於頂點著色器中，所以一般只存放vertex(頂點座標)與texCoord(紋理座標)</p>
+<p>example<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">attribute highp vec4 vertex;  <span class="comment">//頂點座標</span></span><br><span class="line">attribute highp vec4 texCoord;<span class="comment">//紋理座標</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="Uniforms"><a href="#Uniforms" class="headerlink" title="Uniforms"></a>Uniforms</h3><p>CPU給每個線程輸入數據所有線程的輸入值必須統一（uniform），而且必須設為只讀。也就是說，每條線程接收相同的數據，並且是不可改變的數據。shader在運行的時候是無法改變Unifroms的數值。<br>資料型態通常為：float、vec2、vec3、vec4、mat2、mat3、mat4、，sampler2D、sampler3D和samplerCube。</p>
+<blockquote>
+<p>一般用來存放變換矩陣(縮放、旋轉、位移),與光照</p>
+</blockquote>
+<h4 id="example-4"><a href="#example-4" class="headerlink" title="example"></a>example</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">uniform mediump mat4 model;<span class="comment">//處理縮放、旋轉、位移</span></span><br><span class="line">uniform mediump mat4 view;</span><br><span class="line">uniform mediump mat4 proj;</span><br></pre></td></tr></table></figure>
+<h3 id="varying"><a href="#varying" class="headerlink" title="varying"></a>varying</h3><p>從vertex shader傳遞給fragment shader的媒介，在vertex shader修改完然後給fragment shader使用，但是在fragment shader中並不能修改它。</p>
+<h4 id="example-5"><a href="#example-5" class="headerlink" title="example"></a>example</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">attribute highp vec4 vertex;   <span class="comment">//頂點座標</span></span><br><span class="line">attribute highp vec4 texCoord; <span class="comment">//紋理座標</span></span><br><span class="line">varying highp vec4 texc;       <span class="comment">//將紋理座標傳送給片段著色器</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">main</span><span class="params">( <span class="keyword">void</span> )</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    gl_Position = MVP * vertex;</span><br><span class="line">    texc = texCoord; <span class="comment">//透過varying傳送給片段著色器</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="精度"><a href="#精度" class="headerlink" title="精度"></a>精度</h3><p>float型態在shader中扮演重要角色，所以精度非常重要，低的精度可以加快渲染速度，但是質量就差，相對的高精度的質量較好，渲染速度則較慢，glsl光柵著色時，會有大量的浮點運算，設備可能不一定能承受，glsl提供了三種浮點數的精度，我們可以在變數前面加上highp, mediump, lowp達到該變數的精度聲明</p>
+<h4 id="設定默認精度"><a href="#設定默認精度" class="headerlink" title="設定默認精度"></a>設定默認精度</h4><p>可以直接統一設定，在片段著色器最開始時，直接加上precision mediump float;這樣就默認了所有精度，若是變數沒特別聲明則會以默認精度來處理。</p>
+<h4 id="精度套用"><a href="#精度套用" class="headerlink" title="精度套用"></a>精度套用</h4><p>在運算時會套用已知最高的精度參數為運算精度，若沒有已知最高的則會套用默認精度或是更高的精度。</p>
+<h4 id="example-6"><a href="#example-6" class="headerlink" title="example"></a>example</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">lowp <span class="keyword">float</span> color;</span><br><span class="line">uniform mediump mat4 model;</span><br><span class="line">uniform mediump mat4 view;</span><br><span class="line">uniform mediump mat4 proj;</span><br><span class="line">varying highp vec4 texc;</span><br></pre></td></tr></table></figure>
+<h2 id="矩陣"><a href="#矩陣" class="headerlink" title="矩陣"></a>矩陣</h2><p>矩陣乘法講究次序<br>矩陣運算A * B != B * A<br>所以先後順序很重要</p>
+<h3 id="example-7"><a href="#example-7" class="headerlink" title="example"></a>example</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">transformedVector = translateMatrix * rotationMatrix * scaleMatrix * originalVector;</span><br></pre></td></tr></table></figure>
+<p>上述的程式碼會先執行縮放再執行旋轉最後才執行平移，這就是矩陣乘法的運算方式</p>
+<h2 id="GLSL好用的函式"><a href="#GLSL好用的函式" class="headerlink" title="GLSL好用的函式"></a>GLSL好用的函式</h2><h3 id="Step"><a href="#Step" class="headerlink" title="Step"></a>Step</h3><p>step() 插值函數需要輸入兩個參數。第一個是極限或閥值，第二個是我們想要檢測或通過的值。<br>對任何小於閥值的值，返回 0.0，大於閥值，則返回 1.0。</p>
+<h4 id="example-8"><a href="#example-8" class="headerlink" title="example"></a>example</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//若是st.x &gt; 0.5則回傳1.0否則回傳0.0</span></span><br><span class="line"><span class="keyword">float</span> y = step(<span class="number">0.5</span>,st.x);</span><br></pre></td></tr></table></figure>
+<h3 id="Smoothstep"><a href="#Smoothstep" class="headerlink" title="Smoothstep"></a>Smoothstep</h3><p>smoothstep()當給定一個範圍的上下限和一個數值，這個函數會在已有的範圍內給出插值。<br>前兩個參數規定轉換的開始和結束點，第三個是給出一個值用來插值。</p>
+<h4 id="example-9"><a href="#example-9" class="headerlink" title="example"></a>example</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Smooth interpolation between 0.1 and 0.9</span></span><br><span class="line"><span class="keyword">float</span> y = smoothstep(<span class="number">0.1</span>,<span class="number">0.9</span>,st.x);</span><br></pre></td></tr></table></figure>
+<h3 id="其他有用函式"><a href="#其他有用函式" class="headerlink" title="其他有用函式"></a>其他有用函式</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">y = mod(x,<span class="number">0.5</span>); <span class="comment">// 返回 x 對 0.5 取mod的值</span></span><br><span class="line">y = fract(x); <span class="comment">// 僅僅返回數的小數部分</span></span><br><span class="line">y = <span class="built_in">ceil</span>(x); <span class="comment">// 向正無窮取整</span></span><br><span class="line">y = <span class="built_in">floor</span>(x); <span class="comment">// 向負無窮取整</span></span><br><span class="line">y = <span class="built_in">abs</span>(x); <span class="comment">// 返回 x 的絕對值</span></span><br><span class="line">y = clamp(x,<span class="number">0.0</span>,<span class="number">1.0</span>); <span class="comment">// 把 x 的值限制在 0.0 到 1.0</span></span><br><span class="line">y = min(<span class="number">0.0</span>,x); <span class="comment">// 返回 x 和 0.0 中的較小值</span></span><br><span class="line">y = max(<span class="number">0.0</span>,x); <span class="comment">// 返回 x 和 0.0 中的較大值</span></span><br></pre></td></tr></table></figure>
+<h2 id="實作著色器"><a href="#實作著色器" class="headerlink" title="實作著色器"></a>實作著色器</h2><p>以下是3D Volume Rendering的著色器編寫</p>
+<h3 id="vertexShader-glsl"><a href="#vertexShader-glsl" class="headerlink" title="vertexShader.glsl"></a>vertexShader.glsl</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">attribute highp vec4 vertex;</span><br><span class="line">attribute highp vec4 texCoord;</span><br><span class="line">uniform mediump mat4 verMatrix;</span><br><span class="line">uniform mediump mat4 toMatrix;</span><br><span class="line">uniform mediump mat4 toTexMatrix;</span><br><span class="line">uniform mediump mat4 backMatrix;</span><br><span class="line">uniform mediump mat4 texMatrix;</span><br><span class="line"><span class="comment">//MVP</span></span><br><span class="line">uniform mediump mat4 model;</span><br><span class="line">uniform mediump mat4 view;</span><br><span class="line">uniform mediump mat4 proj;</span><br><span class="line">varying highp vec4 texc; <span class="comment">//varying傳送給fragment shader</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">main</span><span class="params">( <span class="keyword">void</span> )</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    gl_Position = proj *(view *(model *(toMatrix * vertex))) ;<span class="comment">//equal to (proj * view * model) * vertex</span></span><br><span class="line">    texc = backMatrix* (texMatrix * (toTexMatrix * texCoord)) ;<span class="comment">//texture rotate</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="fragmentShader-glsl"><a href="#fragmentShader-glsl" class="headerlink" title="fragmentShader.glsl"></a>fragmentShader.glsl</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">varying highp vec4 texc;</span><br><span class="line">uniform sampler2D tex2D;</span><br><span class="line">uniform sampler3D tex3D;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">main</span><span class="params">( <span class="keyword">void</span> )</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">//2D</span></span><br><span class="line">    <span class="comment">//highp vec4 color = texture2D( tex2D , texc.st ).rgba;</span></span><br><span class="line">    <span class="comment">//3D</span></span><br><span class="line">    highp vec4 color = texture3D( tex3D , texc.stp ).rgba;<span class="comment">//紋理的格式為(s,t,p,q)</span></span><br><span class="line">    <span class="keyword">if</span> (color.a &gt; <span class="number">0.1</span>) &#123; <span class="comment">//把透明度太低的丟棄(用來過濾的閥值)</span></span><br><span class="line">        gl_FragColor = color;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        discard;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="Scene-h"><a href="#Scene-h" class="headerlink" title="Scene.h"></a>Scene.h</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">QOpenGLShaderProgram m_program;</span><br><span class="line"><span class="keyword">int</span> m_vertexAttr;</span><br><span class="line"><span class="keyword">int</span> m_texCoordAttr;</span><br><span class="line"><span class="keyword">int</span> m_verMatrixUniform;</span><br><span class="line"><span class="keyword">int</span> m_toMatrixUniform;</span><br><span class="line"><span class="keyword">int</span> m_toTexMatrixUniform;</span><br><span class="line"><span class="keyword">int</span> m_backMatrixUniform;</span><br><span class="line"><span class="keyword">int</span> m_texMatrixUniform;</span><br><span class="line"><span class="keyword">int</span> m_texUniform;</span><br><span class="line"><span class="keyword">int</span> m_modelUniform;</span><br><span class="line"><span class="keyword">int</span> m_viewUniform;</span><br><span class="line"><span class="keyword">int</span> m_projUniform;</span><br></pre></td></tr></table></figure>
+<h3 id="Scene-cpp"><a href="#Scene-cpp" class="headerlink" title="Scene.cpp"></a>Scene.cpp</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">QOpenGLShader <span class="title">vShader</span><span class="params">( QOpenGLShader::Vertex )</span></span>;</span><br><span class="line">vShader.compileSourceFile( <span class="string">":/Shaders/vertexShader.glsl"</span> );</span><br><span class="line"><span class="function">QOpenGLShader <span class="title">fShader</span><span class="params">( QOpenGLShader::Fragment )</span></span>;</span><br><span class="line">fShader.compileSourceFile( <span class="string">":/Shaders/fragmentShader.glsl"</span> );</span><br><span class="line"></span><br><span class="line">m_program.addShader( &amp;vShader );</span><br><span class="line">m_program.addShader( &amp;fShader );</span><br><span class="line">m_program.link();</span><br><span class="line"></span><br><span class="line">m_vertexAttr = m_program.attributeLocation( <span class="string">"vertex"</span> );</span><br><span class="line">m_texCoordAttr = m_program.attributeLocation( <span class="string">"texCoord"</span> );</span><br><span class="line">m_verMatrixUniform = m_program.uniformLocation( <span class="string">"verMatrix"</span> );</span><br><span class="line">m_toMatrixUniform = m_program.uniformLocation( <span class="string">"toMatrix"</span> );</span><br><span class="line">m_toTexMatrixUniform = m_program.uniformLocation( <span class="string">"toTexMatrix"</span> );</span><br><span class="line">m_backMatrixUniform = m_program.uniformLocation( <span class="string">"backMatrix"</span> );</span><br><span class="line">m_texMatrixUniform = m_program.uniformLocation( <span class="string">"texMatrix"</span> );</span><br><span class="line">m_modelUniform = m_program.uniformLocation( <span class="string">"model"</span> );</span><br><span class="line">m_viewUniform = m_program.uniformLocation( <span class="string">"view"</span> );</span><br><span class="line">m_projUniform = m_program.uniformLocation( <span class="string">"proj"</span> );</span><br><span class="line">m_texUniform = m_program.uniformLocation( <span class="string">"tex3D"</span> ); <span class="comment">//3D</span></span><br><span class="line"></span><br><span class="line">QMatrix4x4 modelViewVertex; <span class="comment">//vertex</span></span><br><span class="line">QMatrix4x4 modeltoVertex;</span><br><span class="line">QMatrix4x4 modeltoTexVertex;</span><br><span class="line">QMatrix4x4 modelbackVertex;</span><br><span class="line"></span><br><span class="line">QMatrix4x4 modelUniform;</span><br><span class="line">QMatrix4x4 viewUniform;</span><br><span class="line">QMatrix4x4 projUniform;</span><br><span class="line">modeltoVertex.translate( <span class="number">0.0f</span>, <span class="number">0.0f</span>, <span class="number">-0.5f</span> );</span><br><span class="line">viewUniform.lookAt(QVector3D(<span class="number">0</span>,<span class="number">0</span>,<span class="number">3</span>),QVector3D(<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>),QVector3D(<span class="number">0</span>,<span class="number">1</span>,<span class="number">0</span>));</span><br><span class="line">projUniform.perspective( <span class="number">60.0f</span>, ( GLfloat ) width() / ( GLfloat ) height() , <span class="number">1.0f</span>, <span class="number">200.0f</span> );</span><br><span class="line"></span><br><span class="line">QMatrix4x4 modelViewTexture; <span class="comment">//texture</span></span><br><span class="line">modeltoTexVertex.translate(<span class="number">-0.5f</span>, <span class="number">-0.5f</span>, <span class="number">0.0f</span> );</span><br><span class="line"><span class="keyword">if</span> (direction == <span class="number">0</span>)   <span class="comment">//horizontal 0 / vertical 1</span></span><br><span class="line">    modelViewTexture.rotate( m_angle, <span class="number">0.0f</span>, <span class="number">1.0f</span>, <span class="number">0.0f</span> );</span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">    modelViewTexture.rotate( m_angle, <span class="number">1.0f</span>, <span class="number">0.0f</span>, <span class="number">0.0f</span> );</span><br><span class="line">modelbackVertex.translate(<span class="number">0.5f</span>, <span class="number">0.5f</span>, <span class="number">0.5f</span> );</span><br><span class="line">m_program.setUniformValue( m_verMatrixUniform, modelViewVertex );</span><br><span class="line">m_program.setUniformValue( m_texMatrixUniform, modelViewTexture );</span><br><span class="line">m_program.setUniformValue( m_toMatrixUniform, modeltoVertex );</span><br><span class="line">m_program.setUniformValue( m_toTexMatrixUniform, modeltoTexVertex );</span><br><span class="line">m_program.setUniformValue( m_backMatrixUniform, modelbackVertex );</span><br><span class="line"></span><br><span class="line">m_program.setUniformValue( m_modelUniform, modelUniform );</span><br><span class="line">m_program.setUniformValue( m_viewUniform, viewUniform );</span><br><span class="line">m_program.setUniformValue( m_projUniform, projUniform );</span><br><span class="line"></span><br><span class="line">m_program.release();</span><br></pre></td></tr></table></figure>
+<h2 id="總結"><a href="#總結" class="headerlink" title="總結"></a>總結</h2><p>GLSL就是透過從C++端取得到的頂點座標與紋理座標用頂點著色器得到gl_Position齊次座標與片段著色器得到gl_FragColor最終像素顏色繪製圖形，有了這些認知後下一篇我們將繼續看C++端如何建立頂點、紋理座標資訊建立與著色器連結繪製出3D Volume Rendering達到下圖的3D渲染效果<br><img src="https://i.imgur.com/zafnspQ.png" alt></p>
+<h2 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h2><p><a href="https://zh.wikipedia.org/wiki/GLSL" target="_blank" rel="noopener">GLSL - 维基百科</a><br><a href="https://thebookofshaders.com/02/?lan=ch" target="_blank" rel="noopener">The Book of Shaders by Patricio Gonzalez Vivo &amp; Jen Lowe</a><br><a href="https://github.com/wshxbqq/GLSL-Card" target="_blank" rel="noopener">GitHub - wshxbqq/GLSL-Card: 着色器语言GLSL</a><br><a href="https://www.smwenku.com/a/5b87a23d2b71775d1cd837c7/" target="_blank" rel="noopener">https://www.smwenku.com/a/5b87a23d2b71775d1cd837c7/</a> 齊次座標相關文獻<br><a href="http://www.opengl-tutorial.org/cn/beginners-tutorials/tutorial-3-matrices/" target="_blank" rel="noopener">第三课：矩阵</a> MVP觀念<br><a href="https://www.smwenku.com/a/5c1c72febd9eee5e4184bcb7" target="_blank" rel="noopener">OpenGL學習——第5天（着色器）</a> 純粹覺得寫得好的文章</p>
+
+        
+      </div>
+      
+      
+      
+    </div>
+    
+    
+    
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目錄
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            本站概覽
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">G.C.L.</p>
+              <p class="site-description motion-element" itemprop="description">在浩瀚的程式領域中，將走過的足跡記錄下來，文章著重在Qt、C++、python</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-name">文章</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-name">分類</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">標籤</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          <script type="text/javascript" src="//js1.bloggerads.net/ShowBanner.aspx?blogid=20190324000004" async></script>
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#GLSL-OpenGL-Shading-Language"><span class="nav-number">2.</span> <span class="nav-text">GLSL(OpenGL Shading Language)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#著色器-shader"><span class="nav-number">3.</span> <span class="nav-text">著色器(shader)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#著色器執行順序"><span class="nav-number">3.1.</span> <span class="nav-text">著色器執行順序</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#頂點著色器-vertex-shader"><span class="nav-number">3.2.</span> <span class="nav-text">頂點著色器(vertex shader)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#目的"><span class="nav-number">3.2.1.</span> <span class="nav-text">目的</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#運作原理"><span class="nav-number">3.2.2.</span> <span class="nav-text">運作原理</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Model-matrix"><span class="nav-number">3.2.2.1.</span> <span class="nav-text">Model matrix</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#平移"><span class="nav-number">3.2.2.1.1.</span> <span class="nav-text">平移</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#縮放"><span class="nav-number">3.2.2.1.2.</span> <span class="nav-text">縮放</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#example"><span class="nav-number">3.2.2.1.3.</span> <span class="nav-text">example</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#View-matrix"><span class="nav-number">3.2.2.2.</span> <span class="nav-text">View matrix</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#example-1"><span class="nav-number">3.2.2.2.1.</span> <span class="nav-text">example</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Projection-matrix"><span class="nav-number">3.2.2.3.</span> <span class="nav-text">Projection matrix</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#example-2"><span class="nav-number">3.2.2.3.1.</span> <span class="nav-text">example</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#運作順序"><span class="nav-number">3.2.3.</span> <span class="nav-text">運作順序</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#example-3"><span class="nav-number">3.2.3.1.</span> <span class="nav-text">example</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#片段著色器-fragment-shader"><span class="nav-number">3.3.</span> <span class="nav-text">片段著色器(fragment shader)</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#變數型態"><span class="nav-number">4.</span> <span class="nav-text">變數型態</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Vec-向量"><span class="nav-number">4.1.</span> <span class="nav-text">Vec 向量</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#分量與向量與純量差異"><span class="nav-number">4.1.1.</span> <span class="nav-text">分量與向量與純量差異</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#空間座標"><span class="nav-number">4.1.2.</span> <span class="nav-text">空間座標</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#齊次座標"><span class="nav-number">4.1.2.1.</span> <span class="nav-text">齊次座標</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#顏色"><span class="nav-number">4.1.3.</span> <span class="nav-text">顏色</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#attribute"><span class="nav-number">4.2.</span> <span class="nav-text">attribute</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Uniforms"><span class="nav-number">4.3.</span> <span class="nav-text">Uniforms</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#example-4"><span class="nav-number">4.3.1.</span> <span class="nav-text">example</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#varying"><span class="nav-number">4.4.</span> <span class="nav-text">varying</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#example-5"><span class="nav-number">4.4.1.</span> <span class="nav-text">example</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#精度"><span class="nav-number">4.5.</span> <span class="nav-text">精度</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#設定默認精度"><span class="nav-number">4.5.1.</span> <span class="nav-text">設定默認精度</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#精度套用"><span class="nav-number">4.5.2.</span> <span class="nav-text">精度套用</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#example-6"><span class="nav-number">4.5.3.</span> <span class="nav-text">example</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#矩陣"><span class="nav-number">5.</span> <span class="nav-text">矩陣</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#example-7"><span class="nav-number">5.1.</span> <span class="nav-text">example</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#GLSL好用的函式"><span class="nav-number">6.</span> <span class="nav-text">GLSL好用的函式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Step"><span class="nav-number">6.1.</span> <span class="nav-text">Step</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#example-8"><span class="nav-number">6.1.1.</span> <span class="nav-text">example</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Smoothstep"><span class="nav-number">6.2.</span> <span class="nav-text">Smoothstep</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#example-9"><span class="nav-number">6.2.1.</span> <span class="nav-text">example</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#其他有用函式"><span class="nav-number">6.3.</span> <span class="nav-text">其他有用函式</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#實作著色器"><span class="nav-number">7.</span> <span class="nav-text">實作著色器</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#vertexShader-glsl"><span class="nav-number">7.1.</span> <span class="nav-text">vertexShader.glsl</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#fragmentShader-glsl"><span class="nav-number">7.2.</span> <span class="nav-text">fragmentShader.glsl</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Scene-h"><span class="nav-number">7.3.</span> <span class="nav-text">Scene.h</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Scene-cpp"><span class="nav-number">7.4.</span> <span class="nav-text">Scene.cpp</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#總結"><span class="nav-number">8.</span> <span class="nav-text">總結</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#參考資料"><span class="nav-number">9.</span> <span class="nav-text">參考資料</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">G.C.L.</span>
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      訪客數
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      人
+    </span>
+        <script src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+  
+  
+  
+    <span class="site-pv">
+      總訪問次數
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      次
+    </span>
+  
+  
+
+</div>
+
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+    
+      <script id="dsq-count-scr" src="https://TeddyBearFP.disqus.com/count.js" async></script>
+    
+
+    
+      <script type="text/javascript">
+        var disqus_config = function () {
+          this.page.url = 'https://teddybearfp.github.io/Temp/OpenGL GLSL著色器.html';
+          this.page.identifier = 'Temp/OpenGL GLSL著色器.html';
+          this.page.title = 'OpenGL GLSL著色器';
+        };
+        var d = document, s = d.createElement('script');
+        s.src = 'https://TeddyBearFP.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      </script>
+    
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("bDcJ07lb17xLnJp4usXdCdBa-gzGzoHsz", "KI9S9GpncakybyNyQcVhRCNe");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
